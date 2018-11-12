@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPaneMain" fx:id="AnchorPaneMain" prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientMenu_Controller">
+   <children>
+      <Label layoutX="129.0" layoutY="172.0" prefHeight="104.0" prefWidth="221.0" text="Comidas">
+         <font>
+            <Font name="Edwardian Script ITC" size="75.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="205.0" fitWidth="277.0" layoutX="137.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/service.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="174.0" fitWidth="194.0" layoutX="521.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/ice-cream.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="168.0" fitWidth="174.0" layoutX="893.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/ice-tea.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="521.0" layoutY="172.0" prefHeight="104.0" prefWidth="174.0" text="Postres">
+         <font>
+            <Font name="Edwardian Script ITC" size="75.0" />
+         </font>
+      </Label>
+      <Label layoutX="879.0" layoutY="172.0" prefHeight="104.0" prefWidth="197.0" text="Bebidas">
+         <font>
+            <Font name="Edwardian Script ITC" size="75.0" />
+         </font>
+      </Label>
+      <MenuBar layoutY="-2.0" prefHeight="48.0" prefWidth="1204.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
