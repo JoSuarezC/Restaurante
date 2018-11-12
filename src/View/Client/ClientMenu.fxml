@@ -42,17 +42,17 @@
       </Label>
       <MenuBar layoutY="-2.0" prefHeight="48.0" prefWidth="1204.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Menu">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Perfil">
             <items>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Contactenos">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>
