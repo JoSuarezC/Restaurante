@@ -43,4 +43,10 @@ public class Login_Controller {
         }
     }
 
+    @FXML
+    void SignUp(ActionEvent event) {
+
+    }
+
+
 }

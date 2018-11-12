@@ -14,15 +14,17 @@ package Controller;
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+import javafx.animation.FadeTransition;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.HashMap;
-import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.Parent;
-import javafx.util.Duration;
-import javafx.animation.FadeTransition;
 
 
 /**
@@ -33,8 +35,8 @@ import javafx.animation.FadeTransition;
  */
 public final class FXRouter {
     private static final String WINDOW_TITLE = "";
-    private static final Double WINDOW_WIDTH = 800.0;
-    private static final Double WINDOW_HEIGHT = 600.0;
+    private static final Double WINDOW_WIDTH = 600.0;
+    private static final Double WINDOW_HEIGHT = 400.0;
     private static final Double FADE_ANIMATION_DURATION = 800.0;
 
     // FXRouter Singleton
@@ -214,7 +216,8 @@ public final class FXRouter {
         currentRoute = route;
 
         // create correct file path.  "/" doesn't affect any OS
-        String scenePath = "/" + pathRef + "/" + route.scenePath;
+        //String scenePath = "/" + pathRef + "/" + route.scenePath;
+        String scenePath = route.scenePath;
 
         // load .fxml resource
         Parent resource = FXMLLoader.load(new Object() { }.getClass().getResource(scenePath));
@@ -255,6 +258,9 @@ public final class FXRouter {
         animationDuration = anDuration;
     }
 
+    /** Animate routes switching based on animation type
+     * @param resource: .FXML scene file to animate
+     */
     private static void routeAnimation(Parent node) {
         String anType = animationType != null ? animationType.toLowerCase() : "";
         switch(anType) {

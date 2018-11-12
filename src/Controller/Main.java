@@ -7,9 +7,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //primaryStage.setResizable(false);
+        primaryStage.setResizable(false);
         FXRouter.bind(this, primaryStage);
-        FXRouter.when("Login", "/View/Login.fxml", "Login"/*, 1204, 666*/);
+        FXRouter.when("Login", "/View/Login.fxml", "Login", 1204, 666);
         FXRouter.goTo("Login");
 
     }
