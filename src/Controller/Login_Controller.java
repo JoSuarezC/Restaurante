@@ -25,9 +25,9 @@ public class Login_Controller {
 
     @FXML
     void login(ActionEvent event) {
-        String email = TextBox_Email.getText();
+        String user = TextBox_Email.getText();
         String password = TextBox_Password.getText();
-        String userType = ConnectionDB.getInstance().login(email, password);
+        String userType = ConnectionDB.getInstance().login(user, password);
         if (userType.equals("Personal")){
             try{
                 FXRouter.goTo("admMenu");
