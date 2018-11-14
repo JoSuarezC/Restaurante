@@ -1,12 +1,12 @@
 package Model;
 
-public class Cliente extends Usuario{
+public class Client extends User {
     private String IdCliente;
     private String Telefono1;
     private String Telefono2;
 
-    public Cliente(String idUsuario, String contraseña, String correo, String estado, String cedula, String apellidos, String nombre, String idCliente, String telefono1, String telefono2) {
-        super(idUsuario, contraseña, correo, estado, cedula, apellidos, nombre);
+    public Client(String idUsuario, String contraseña, String correo, String cedula, String apellidos, String nombre, String idCliente, String telefono1, String telefono2) {
+        super(idUsuario, contraseña, correo, cedula, apellidos, nombre);
         IdCliente = idCliente;
         Telefono1 = telefono1;
         Telefono2 = telefono2;

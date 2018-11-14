@@ -1,19 +1,18 @@
 package Model;
 
-public class Usuario {
+public class User {
     private String IdUsuario;
     private String Contraseña;
     private String Correo;
-    private String Estado;
     private String Cedula;
     private String Apellidos;
     private String Nombre;
+    private static User currentUser;
 
-    public Usuario(String idUsuario, String contraseña, String correo, String estado, String cedula, String apellidos, String nombre) {
+    public User(String idUsuario, String contraseña, String correo, String cedula, String apellidos, String nombre) {
         IdUsuario = idUsuario;
         Contraseña = contraseña;
         Correo = correo;
-        Estado = estado;
         Cedula = cedula;
         Apellidos = apellidos;
         Nombre = nombre;
@@ -43,14 +42,6 @@ public class Usuario {
         Correo = correo;
     }
 
-    public String getEstado() {
-        return Estado;
-    }
-
-    public void setEstado(String estado) {
-        Estado = estado;
-    }
-
     public String getCedula() {
         return Cedula;
     }
@@ -73,5 +64,13 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         Nombre = nombre;
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        User.currentUser = currentUser;
     }
 }

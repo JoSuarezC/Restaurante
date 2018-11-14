@@ -34,7 +34,7 @@ public class Login_Controller {
             }catch (IOException e){
 
             }
-        }else if(userType.equals("Usuario")){
+        }else if(userType.equals("User")){
             try{
                     FXRouter.goTo("userMenu");
             }catch (IOException e){

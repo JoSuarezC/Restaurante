@@ -1,12 +1,12 @@
 package Model;
 
-public class Empleado extends Usuario{
+public class Employee extends User {
     private String IdEmpleado;
     private String Puesto;
     private String CuentaBancaria;
 
-    public Empleado(String idUsuario, String contraseña, String correo, String estado, String cedula, String apellidos, String nombre, String idEmpleado, String puesto, String cuentaBancaria) {
-        super(idUsuario, contraseña, correo, estado, cedula, apellidos, nombre);
+    public Employee(String idUsuario, String contraseña, String correo, String cedula, String apellidos, String nombre, String idEmpleado, String puesto, String cuentaBancaria) {
+        super(idUsuario, contraseña, correo, cedula, apellidos, nombre);
         IdEmpleado = idEmpleado;
         Puesto = puesto;
         CuentaBancaria = cuentaBancaria;
