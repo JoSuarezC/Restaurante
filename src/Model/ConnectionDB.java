@@ -1,7 +1,6 @@
 package Model;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,42 +46,40 @@ public class ConnectionDB {
                     if (myResponse.getString("status").equals("true")){
 
                         String email = myResponse.getJSONObject("value").getString("Correo");
-                        String userType = myResponse.getJSONObject("value").getString("TipoUsuario");
+                        String userType = myResponse.getJSONObject("value").getString("NombreTipoUsuario");
                         String idCard = myResponse.getJSONObject("value").getString("Cedula");
                         String lastname = myResponse.getJSONObject("value").getString("Apellidos");
                         String firstname = myResponse.getJSONObject("value").getString("Nombre");
 
-                        if (userType.equals("Employee")){
+                        if (userType.equals("Empleado")){
                             String EmID = myResponse.getJSONObject("value").getString("IdEm");
                             String job = myResponse.getJSONObject("value").getString("Puesto");
                             String bankAcc = myResponse.getJSONObject("value").getString("CuentaBancaria");
                             Employee e = new Employee(user, password, email, idCard, lastname, firstname, EmID, job, bankAcc);
                             User.setCurrentUser(e);
-                        }else if(userType.equals("Client")){
+
+                        }else if(userType.equals("Cliente")){
                             String ClientID = myResponse.getJSONObject("value").getString("IdCliente");
                             String telf1 = myResponse.getJSONObject("value").getString("Telefono1");
                             String telf2 = myResponse.getJSONObject("value").getString("Telefono2");
                             Client e = new Client(user, password, email, idCard, lastname, firstname, ClientID, telf1, telf2);
                             User.setCurrentUser(e);
                         }
-
+                        return userType;
                     }else{
-                        System.out.print("no funca");
+                        System.out.print("No existe el usuario");
                     }
-
-                }catch (JSONException e){ System.out.print(e);}
-
+                }catch (JSONException e){ System.out.println(e);}
             } else {
                 System.out.println("GET NOT WORKED");
             }
-
-        }catch (IOException e){}
+        }catch (IOException e){System.out.println(e);}
         return "";
     }
 
 
     public ArrayList selectProductInventory_byType (String productType){
-        ArrayList<Product> result = new ArrayList<>();
+        ArrayList<Product> arraylistProducto = new ArrayList<>();
         try{
             URL urlForGetRequest = new URL(select_products_by_productType_PHP+"?TipoProducto="+productType);
             String readLine = null;
@@ -92,30 +89,31 @@ public class ConnectionDB {
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
                 StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    response.append(readLine);
+                } in .close();
                 try{
-                    while ((readLine = in .readLine()) != null) {
-                        JSONObject myResponse = new JSONObject(readLine.toString());
-                        if (myResponse.getString("status").equals("true")){
-
-                            String productID = myResponse.getJSONObject("value").getString("IdProd");
-                            String name = myResponse.getJSONObject("value").getString("Nombre");
-                            String detail = myResponse.getJSONObject("value").getString("Detalle");
-                            int prize = myResponse.getJSONObject("value").getInt("PrecioUnitario");
-                            String type = myResponse.getJSONObject("value").getString("TipoProducto");
-                            Product p = new Product(new SimpleStringProperty(name), new SimpleStringProperty(type), new SimpleStringProperty(productID), new SimpleIntegerProperty(prize), new SimpleStringProperty(detail));
-                            result.add(p);
-                        }else{
-                            System.out.print("no funca");
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    if (myResponse.getString("status").equals("true")){
+                        JSONArray results = myResponse.getJSONArray("value");
+                        for (int i = 0; i < results.length(); i++) {
+                            String productID = results.getJSONObject(i).getString("IdProd");
+                            String name = results.getJSONObject(i).getString("Nombre");
+                            String detail = results.getJSONObject(i).getString("Detalle");
+                            int prize = results.getJSONObject(i).getInt("PrecioUnitario");
+                            String type = results.getJSONObject(i).getString("TipoProducto");
+                            Product p = new Product(name, type, productID, prize, detail);
+                            arraylistProducto.add(p);
                         }
-
-                    } in .close();
-                }catch (JSONException e){ System.out.print(e);}
-            } else {
-                System.out.println("GET NOT WORKED");
-            }
-
+                    }else{System.out.print("No existe el producto");}
+                }catch (JSONException e){ System.out.println(e);}
+            } else {System.out.println("GET NOT WORKED");}
         }catch (IOException e){}
-        return result;
+        return arraylistProducto;
+    }
+
+    public String makeOrder(String date){
+        return "";
     }
 
 }

@@ -7,9 +7,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ClientOrder_Controller {
 
@@ -36,13 +41,12 @@ public class ClientOrder_Controller {
     @FXML private TableColumn<Product, String> tableColumn_Producto_Comida;
     @FXML private TableColumn<Product, String> tableColumn_Precio_Comida;
 
-
     // ListaCompra //
-    @FXML private TableView<Product> tablaView_Inventario;
+    @FXML private TableView<ShoppingList_Product> tablaView_Inventario;
     @FXML private TableColumn<ShoppingList_Product, String> tableColumn_Producto_ListaCompra;
     @FXML private TableColumn<ShoppingList_Product, String> tableColumn_Precio_ListaCompra;
     @FXML private TableColumn<ShoppingList_Product, String> tableColumn_Cantidad_ListaCompra;
-
+    @FXML private Label Label_TotalCost;
     private int totalCost;
 
     @FXML
@@ -83,17 +87,54 @@ public class ClientOrder_Controller {
 
     @FXML
     void MakeOrder(ActionEvent event) {
+        if(!tablaView_Inventario.getItems().isEmpty()){
+            Date fecha = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
+            String resp = ConnectionDB.getInstance().makeOrder(dateFormat.format(fecha).toString());
+            ObservableList<ShoppingList_Product> inventario_list = FXCollections.observableArrayList();
+            inventario_list = tablaView_Inventario.getItems();
+            for ( int i = 0; i < inventario_list.size(); i ++ ) {
+           //     ConnectionDB.getInstance().ComprarProducto(inventario_list.get(i).getIdProducto(), inventario_list.get(i).getCantidadProducto(), idPedido);
+            }
 
+        }else{
+            Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
+
+        }
     }
 
     @FXML
     void RemoveProduct(ActionEvent event) {
-
+        if(!tablaView_Inventario.getItems().isEmpty()){
+            int i = tablaView_Inventario.getSelectionModel().getSelectedIndex();
+            tablaView_Inventario.getItems().remove(i);
+        }
     }
 
     @FXML
     void SelectProduct(ActionEvent event) {
-
+        if (TextBox_ProductQuantity.getText().matches("-?([1-9][0-9]*)?") && !TextBox_ProductQuantity.getText().equals("")) {
+            if (tablaView_Bebida.getSelectionModel().getSelectedIndex() != -1) {
+                checkProduct(tablaView_Bebida.getSelectionModel().getSelectedItem());
+                totalCost = totalCost + (tablaView_Bebida.getSelectionModel().getSelectedItem().getProductPrize() * Integer.parseInt(TextBox_ProductQuantity.getText()));
+                Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
+                tablaView_Bebida.getSelectionModel().clearSelection();
+            } else if (tablaView_Comida.getSelectionModel().getSelectedIndex() != -1) {
+                checkProduct(tablaView_Comida.getSelectionModel().getSelectedItem());
+                totalCost = totalCost + (tablaView_Comida.getSelectionModel().getSelectedItem().getProductPrize() * Integer.parseInt(TextBox_ProductQuantity.getText()));
+                Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
+                tablaView_Comida.getSelectionModel().clearSelection();
+            } else if (tablaView_Dulce.getSelectionModel().getSelectedIndex() != -1) {
+                checkProduct(tablaView_Dulce.getSelectionModel().getSelectedItem());
+                totalCost = totalCost + (tablaView_Dulce.getSelectionModel().getSelectedItem().getProductPrize() * Integer.parseInt(TextBox_ProductQuantity.getText()));
+                Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
+                tablaView_Dulce.getSelectionModel().clearSelection();
+            } else {
+                Main.MessageBox("No se ha seleccionado el producto", "Seleccione el producto que desea agregar a su pedido");
+            }
+        }else{
+            Main.MessageBox("No se ha indicado la cantidad de producto deseada", "Indique la cantidad de producto que desea agregar a su pedido");
+        }
     }
 
     @FXML
@@ -105,5 +146,23 @@ public class ClientOrder_Controller {
     void CerrarSesion(ActionEvent event) {
 
     }
+
+    private void checkProduct(Product selection){
+        int indice = -1;
+        for (int i = 0; i < tablaView_Inventario.getItems().size(); i ++) {
+            if (tablaView_Inventario.getItems().size() == 0) {
+                break;
+            } else if (tablaView_Inventario.getItems().get(i).getProductID().equals(selection.getProductID())) {
+                indice = i;
+                break;
+            }
+        }
+        if(indice != -1){
+            tablaView_Inventario.getItems().get(indice).setProductQuantity(tablaView_Inventario.getItems().get(indice).getProductQuantity() + Integer.parseInt(TextBox_ProductQuantity.getText()));
+        }else{
+            tablaView_Inventario.getItems().add(new ShoppingList_Product(selection.getProductName(), selection.getProductType(), selection.getProductID(), selection.getProductPrize(), selection.getProductDetail(), Integer.parseInt(TextBox_ProductQuantity.getText())));
+        }
+    }
+
 
 }

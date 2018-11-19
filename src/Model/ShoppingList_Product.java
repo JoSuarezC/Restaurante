@@ -1,15 +1,15 @@
 package Model;
 
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 public class ShoppingList_Product extends Product{
 
     private IntegerProperty productQuantity;
 
-    public ShoppingList_Product(StringProperty productName, StringProperty productType, StringProperty productID, IntegerProperty productPrize, StringProperty productDetail, IntegerProperty productQuantity) {
+    public ShoppingList_Product(String productName, String productType, String productID, int productPrize, String productDetail, int productQuantity) {
         super(productName, productType, productID, productPrize, productDetail);
-        this.productQuantity = productQuantity;
+        this.productQuantity = new SimpleIntegerProperty(productQuantity);
     }
 
     public int getProductQuantity() {

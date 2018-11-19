@@ -27,19 +27,22 @@ public class Login_Controller {
     void login(ActionEvent event) {
         String user = TextBox_Email.getText();
         String password = TextBox_Password.getText();
+        System.out.print(user + password);
         String userType = ConnectionDB.getInstance().login(user, password);
-        if (userType.equals("Personal")){
+        if (userType.equals("Empleado")){
             try{
                 FXRouter.goTo("admMenu");
             }catch (IOException e){
-
+                System.out.print(e);
             }
-        }else if(userType.equals("User")){
+        }else if(userType.equals("Cliente")){
             try{
-                    FXRouter.goTo("userMenu");
+                    FXRouter.goTo("Client");
             }catch (IOException e){
-
+                System.out.print(e);
             }
+        }else{
+            System.out.print("no sirve ??");
         }
     }
 

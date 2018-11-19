@@ -36,7 +36,7 @@
             <Font name="Edwardian Script ITC" size="37.0" />
          </font>
       </Label>
-      <Label fx:id="Label_CosteTotal" layoutX="827.0" layoutY="620.0" text="0.0">
+      <Label fx:id="Label_TotalCost" layoutX="827.0" layoutY="620.0" text="0.0">
          <font>
             <Font name="Edwardian Script ITC" size="32.0" />
          </font>
@@ -82,9 +82,8 @@
                      <children>
                         <TableView fx:id="tablaView_Bebida" prefHeight="362.0" prefWidth="598.0">
                            <columns>
-                              <TableColumn fx:id="tableColumn_Producto_Bebida" prefWidth="179.0" text="Producto" />
-                              <TableColumn fx:id="tableColumn_CantidadDisponible_Bebida" prefWidth="272.0" text="Cantidad disponible" />
-                              <TableColumn fx:id="tableColumn_Precio_Bebida" prefWidth="146.0" text="Precio" />
+                              <TableColumn fx:id="tableColumn_Producto_Bebida" prefWidth="296.0" text="Producto" />
+                              <TableColumn fx:id="tableColumn_Precio_Bebida" prefWidth="301.0" text="Precio" />
                            </columns>
                         </TableView>
                      </children>

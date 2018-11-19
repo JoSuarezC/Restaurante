@@ -11,6 +11,7 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         FXRouter.bind(this, primaryStage);
         FXRouter.when("Login", "/View/Login.fxml", "Login", 1204, 666);
+        FXRouter.when("Client", "/View/Client/ClientOrder.fxml", "Client Order", 1204, 666);
         FXRouter.goTo("Login");
 
     }

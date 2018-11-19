@@ -1,6 +1,8 @@
 package Model;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Product {
@@ -12,12 +14,12 @@ public class Product {
     private final IntegerProperty productPrize;
     private final StringProperty productDetail;
 
-    public Product(StringProperty productName, StringProperty productType, StringProperty productID, IntegerProperty productPrize, StringProperty productDetail) {
-        this.productName = productName;
-        this.productType = productType;
-        this.productID = productID;
-        this.productPrize = productPrize;
-        this.productDetail = productDetail;
+    public Product(String productName, String productType, String productID, int productPrize, String productDetail) {
+        this.productName = new SimpleStringProperty(productName);
+        this.productType = new SimpleStringProperty(productType);
+        this.productID = new SimpleStringProperty(productID);
+        this.productPrize = new SimpleIntegerProperty(productPrize);
+        this.productDetail = new SimpleStringProperty(productDetail);
     }
 
 
