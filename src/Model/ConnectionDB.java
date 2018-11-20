@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.DataOutputStream;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -19,6 +20,8 @@ public class ConnectionDB {
     private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
     private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
     private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/select_products_by_productType.php";
+    private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
+    private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
     private static final String search_product_PHP = URL_HOST +"RestaurantePHP/search_product.php";
     private static final String add_product_PHP = URL_HOST +"RestaurantePHP/insert_product.php";
 
@@ -48,25 +51,18 @@ public class ConnectionDB {
                     JSONObject myResponse = new JSONObject(response.toString());
                     if (myResponse.getString("status").equals("true")){
 
-                        String email = myResponse.getJSONObject("value").getString("Correo");
                         String userType = myResponse.getJSONObject("value").getString("NombreTipoUsuario");
-                        String idCard = myResponse.getJSONObject("value").getString("Cedula");
-                        String lastname = myResponse.getJSONObject("value").getString("Apellidos");
-                        String firstname = myResponse.getJSONObject("value").getString("Nombre");
 
                         if (userType.equals("Empleado")){
                             String EmID = myResponse.getJSONObject("value").getString("IdEm");
-                            String job = myResponse.getJSONObject("value").getString("Puesto");
-                            String bankAcc = myResponse.getJSONObject("value").getString("CuentaBancaria");
-                            Employee e = new Employee(user, password, email, idCard, lastname, firstname, EmID, job, bankAcc);
-                            User.setCurrentUser(e);
+                            String job = myResponse.getJSONObject("value").getString("NombrePuesto");
+                            User u = new User(EmID,userType,job);
+                            User.setCurrentUser(u);
 
                         }else if(userType.equals("Cliente")){
                             String ClientID = myResponse.getJSONObject("value").getString("IdCliente");
-                            String telf1 = myResponse.getJSONObject("value").getString("Telefono1");
-                            String telf2 = myResponse.getJSONObject("value").getString("Telefono2");
-                            Client e = new Client(user, password, email, idCard, lastname, firstname, ClientID, telf1, telf2);
-                            User.setCurrentUser(e);
+                            User u = new User(ClientID,userType,"");
+                            User.setCurrentUser(u);
                         }
                         return userType;
                     }else{
@@ -115,8 +111,36 @@ public class ConnectionDB {
         return arraylistProducto;
     }
 
-    public String makeOrder(String date){
-        return "";
+
+    public String makeOrder(String ClientID, String DateTime, String OrderType){
+        try{
+            String readLine = null;
+            URL obj = new URL(makeOrder);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("POST");
+            String urlParameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType;
+            con.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(urlParameters);
+            wr.flush();
+            wr.close();
+            int responseCode = con.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    response.append(readLine);
+                } in .close();
+                try{
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    if (myResponse.getString("status").equals("true")) {
+                        JSONArray results = myResponse.getJSONArray("value");
+                        return results.getJSONObject(0).getString("orderID");
+                    }
+                }catch (JSONException e){ System.out.println(e);}
+            } else {System.out.println("GET NOT WORKED");}
+        }catch (IOException e){}
+        return null;
     }
 
 
@@ -188,4 +212,33 @@ public class ConnectionDB {
         }catch(IOException e){}
         return false;
     }
+    public void buyProduct(String productID, String productQuantity, String orderID, String prize){
+        try{
+            String readLine = null;
+            URL obj = new URL(buyProduct);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod("POST");
+            String urlParameters = "IdProducto=" + productID + "&IdPedido=" + orderID + "&Cantidad=" + productQuantity + "&Precio=" + prize;
+            con.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(urlParameters);
+            wr.flush();
+            wr.close();
+            int responseCode = con.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    response.append(readLine);
+                } in .close();
+                try{
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    if (myResponse.getString("status").equals("true")) {
+                        System.out.print("producto agregado");
+                    }
+                }catch (JSONException e){ System.out.println(e);}
+            } else {System.out.println("GET NOT WORKED");}
+        }catch (IOException e){}
+    }
+
 }

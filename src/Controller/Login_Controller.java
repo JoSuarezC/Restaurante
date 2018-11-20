@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.ConnectionDB;
+import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,14 +31,28 @@ public class Login_Controller {
         System.out.print(user + password);
         String userType = ConnectionDB.getInstance().login(user, password);
         if (userType.equals("Empleado")){
-            try{
-                FXRouter.goTo("MenuAdm");
-            }catch (IOException e){
-                System.out.print(e);
+            if(User.getCurrentUser().getJob().equals("Gerente")){
+                try{
+                    FXRouter.goTo("admMenu");
+                }catch (IOException e){
+                    System.out.print(e);
+                }
+            }else if(User.getCurrentUser().getJob().equals("Gerente General")){
+                try{
+                    FXRouter.goTo("admMenu");
+                }catch (IOException e){
+                    System.out.print(e);
+                }
+            }else{
+                try{
+                    FXRouter.goTo("Client");
+                }catch (IOException e){
+                    System.out.print(e);
+                }
             }
         }else if(userType.equals("Cliente")){
             try{
-                    FXRouter.goTo("MenuAdm");
+                FXRouter.goTo("Client");
             }catch (IOException e){
                 System.out.print(e);
             }

@@ -1,76 +1,46 @@
 package Model;
 
 public class User {
-    private String IdUsuario;
-    private String Contraseña;
-    private String Correo;
-    private String Cedula;
-    private String Apellidos;
-    private String Nombre;
+    private String userID;
+    private String userType;
+    private String job;
     private static User currentUser;
 
-    public User(String idUsuario, String contraseña, String correo, String cedula, String apellidos, String nombre) {
-        IdUsuario = idUsuario;
-        Contraseña = contraseña;
-        Correo = correo;
-        Cedula = cedula;
-        Apellidos = apellidos;
-        Nombre = nombre;
+    public User(String userID, String userType, String job) {
+        this.userID = userID;
+        this.userType = userType;
+        this.job = job;
     }
 
-    public String getIdUsuario() {
-        return IdUsuario;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setIdUsuario(String idUsuario) {
-        IdUsuario = idUsuario;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setContraseña(String contraseña) {
-        Contraseña = contraseña;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
-    public String getCorreo() {
-        return Correo;
+    public String getJob() {
+        return job;
     }
 
-    public void setCorreo(String correo) {
-        Correo = correo;
+    public void setJob(String job) {
+        this.job = job;
     }
 
-    public String getCedula() {
-        return Cedula;
+    public static void setCurrentUser(User u){
+        User.currentUser = u;
     }
 
-    public void setCedula(String cedula) {
-        Cedula = cedula;
-    }
-
-    public String getApellidos() {
-        return Apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        Apellidos = apellidos;
-    }
-
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String nombre) {
-        Nombre = nombre;
-    }
-
-    public static User getCurrentUser() {
+    public static User getCurrentUser(){
         return currentUser;
-    }
-
-    public static void setCurrentUser(User currentUser) {
-        User.currentUser = currentUser;
     }
 }

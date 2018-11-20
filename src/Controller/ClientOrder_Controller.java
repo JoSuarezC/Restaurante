@@ -1,8 +1,6 @@
 package Controller;
 
-import Model.ConnectionDB;
-import Model.Product;
-import Model.ShoppingList_Product;
+import Model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -90,13 +88,30 @@ public class ClientOrder_Controller {
         if(!tablaView_Inventario.getItems().isEmpty()){
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
-            String resp = ConnectionDB.getInstance().makeOrder(dateFormat.format(fecha));
-            ObservableList<ShoppingList_Product> inventario_list = FXCollections.observableArrayList();
-            inventario_list = tablaView_Inventario.getItems();
-            for ( int i = 0; i < inventario_list.size(); i ++ ) {
-           //     ConnectionDB.getInstance().ComprarProducto(inventario_list.get(i).getIdProducto(), inventario_list.get(i).getCantidadProducto(), idPedido);
-            }
+            if (User.getCurrentUser().getUserType().equals("Empleado")){
 
+                String orderID = ConnectionDB.getInstance().makeOrder("", dateFormat.format(fecha).toString(), "Local");
+                System.out.print(orderID);
+                ObservableList<ShoppingList_Product> list;
+                list = tablaView_Inventario.getItems();
+                int prize = 0;
+                for ( int i = 0; i < list.size(); i ++ ) {
+                    prize = list.get(i).getProductPrize() * list.get(i).getProductQuantity();
+                    ConnectionDB.getInstance().buyProduct(list.get(i).getProductID(),String.valueOf(list.get(i).getProductQuantity()),orderID, String.valueOf(prize));
+                }
+                tablaView_Inventario.getItems().clear();
+            }else{
+                String orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local");
+                System.out.print(orderID);
+                ObservableList<ShoppingList_Product> list;
+                list = tablaView_Inventario.getItems();
+                int prize = 0;
+                for ( int i = 0; i < list.size(); i ++ ) {
+                    prize = list.get(i).getProductPrize() * list.get(i).getProductQuantity();
+                    ConnectionDB.getInstance().buyProduct(list.get(i).getProductID(),String.valueOf(list.get(i).getProductQuantity()),orderID, String.valueOf(prize));
+                }
+                tablaView_Inventario.getItems().clear();
+            }
         }else{
             Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
 
