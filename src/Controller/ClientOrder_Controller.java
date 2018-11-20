@@ -90,7 +90,7 @@ public class ClientOrder_Controller {
         if(!tablaView_Inventario.getItems().isEmpty()){
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
-            String resp = ConnectionDB.getInstance().makeOrder(dateFormat.format(fecha).toString());
+            String resp = ConnectionDB.getInstance().makeOrder(dateFormat.format(fecha));
             ObservableList<ShoppingList_Product> inventario_list = FXCollections.observableArrayList();
             inventario_list = tablaView_Inventario.getItems();
             for ( int i = 0; i < inventario_list.size(); i ++ ) {

@@ -6,6 +6,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.io.IOException;
+
 public class Products_Controller {
 
     @FXML
@@ -61,5 +63,14 @@ public class Products_Controller {
 
     @FXML
     private Button Button_Atras;
+
+    @FXML
+    public void AddProduct(){
+        try {
+            FXRouter.goTo("AddProduct");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
 
 }

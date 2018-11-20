@@ -3,25 +3,35 @@
 
 package Controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 public class AdminMenu_Controller {
 
-    @FXML // ResourceBundle that was given to the FXMLLoader
-    private ResourceBundle resources;
+    @FXML
+    private AnchorPane AnchorPaneMain;
 
-    @FXML // URL location of the FXML file that was given to the FXMLLoader
-    private URL location;
+    @FXML
+    private Button btn_Reportes;
 
-    @FXML // fx:id="AnchorPaneMain"
-    private AnchorPane AnchorPaneMain; // Value injected by FXMLLoader
+    @FXML
+    private Button btn_Productos;
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
-        assert AnchorPaneMain != null : "fx:id=\"AnchorPaneMain\" was not injected: check your FXML file 'AdminMenu.fxml'.";
+    @FXML
+    private Button btn_Cajero;
 
+    @FXML
+    private Button btn_Salir;
+
+    @FXML
+    public void GoToProductos(ActionEvent event) {
+        try {
+            FXRouter.goTo("Products");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 }

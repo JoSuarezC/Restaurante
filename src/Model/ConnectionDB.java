@@ -3,7 +3,7 @@ package Model;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import java.io.DataOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +19,9 @@ public class ConnectionDB {
     private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
     private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
     private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/select_products_by_productType.php";
+    private static final String search_product_PHP = URL_HOST +"RestaurantePHP/search_product.php";
+    private static final String add_product_PHP = URL_HOST +"RestaurantePHP/insert_product.php";
+
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -116,4 +119,73 @@ public class ConnectionDB {
         return "";
     }
 
+
+    public boolean searchProduct(String ProductName){
+        try{
+            URL urlForGetRequest = new URL(search_product_PHP+"?Nombre=");
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestMethod("POST");
+            String URLparameters = "Nombre="+ProductName;
+            conection.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(conection.getOutputStream());
+            wr.writeBytes(URLparameters);
+            wr.flush();
+            wr.close();
+            int responseCode = conection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    response.append(readLine);
+                } in .close();
+                try {
+                    JSONObject myResponse = new JSONObject(response.toString());
+                    if (myResponse.getString("status").equals("true")){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }catch (JSONException e){ System.out.println(e);}
+            }
+        }catch(IOException e){
+            System.out.println(e);
+        }
+       return false;
+    }
+
+    public boolean insertProduct(String pName, String pType, String pDescription, String pPrice){
+        try {
+            URL urlForGetRequest = new URL(add_product_PHP);
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestMethod("POST");
+            String URLparameters = "Nombre="+pName+"&Tipo="+pType+"&Descripcion="+pDescription+"&Precio="+pPrice;
+            conection.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(conection.getOutputStream());
+            wr.writeBytes(URLparameters);
+            wr.flush();
+            wr.close();
+            int responseCode = conection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    response.append(readLine);
+                } in .close();
+                try{
+                    JSONObject myResponse = new JSONObject(response.toString()); // Get JSON response
+                    System.out.print(myResponse.getString("status"));
+                    if (myResponse.getString("status").equals("true")){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }catch (JSONException e){ System.out.println(e);}
+            } else {System.out.println("GET NOT WORKED");}
+        }catch(IOException e){}
+        return false;
+    }
 }

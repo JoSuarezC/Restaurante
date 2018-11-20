@@ -31,13 +31,13 @@ public class Login_Controller {
         String userType = ConnectionDB.getInstance().login(user, password);
         if (userType.equals("Empleado")){
             try{
-                FXRouter.goTo("admMenu");
+                FXRouter.goTo("MenuAdm");
             }catch (IOException e){
                 System.out.print(e);
             }
         }else if(userType.equals("Cliente")){
             try{
-                    FXRouter.goTo("Client");
+                    FXRouter.goTo("MenuAdm");
             }catch (IOException e){
                 System.out.print(e);
             }

@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #41457f;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Products_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #41457f;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Products_Controller">
    <children>
       <Pane layoutX="137.0" layoutY="38.0" prefHeight="597.0" prefWidth="906.0" style="-fx-background-color: #7d83db;">
          <children>
@@ -72,7 +71,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button fx:id="Button_AgregarProducto" layoutX="525.0" layoutY="566.0" mnemonicParsing="false" text="Agregar producto">
+      <Button fx:id="Button_AgregarProducto" layoutX="525.0" layoutY="566.0" mnemonicParsing="false" onAction="#AddProduct" text="Agregar producto">
          <font>
             <Font name="SansSerif Regular" size="14.0" />
          </font>
