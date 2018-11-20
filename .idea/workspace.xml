@@ -17,6 +17,25 @@
       <change beforePath="$PROJECT_DIR$/src/Model/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ConnectionDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Administrator/AdminMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Administrator/AdminMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Products.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Products.fxml" afterDir="false" />
+=======      <change beforePath="$PROJECT_DIR$/Restaurante.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurante.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/ClientOrder_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/Login_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/ConnectionDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/Employee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/View/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Restaurante/View/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Login_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Login.fxml" afterDir="false" />
+
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,34 +47,80 @@
     <session id="623715858">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+<<<<<<< Updated upstream
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
+=======
+          <entry key="project.closed" value="17" />
+          <entry key="project.open.time.1" value="5" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.13" value="2" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.39" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.opened" value="19" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="fxml" value="7" />
+<<<<<<< Updated upstream
           <entry key="java" value="12" />
           <entry key="php" value="1" />
+=======
+          <entry key="gitignore" value="1" />
+          <entry key="iml" value="1" />
+          <entry key="java" value="60" />
+          <entry key="md" value="1" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< Updated upstream
           <entry key="JAVA" value="12" />
           <entry key="PLAIN_TEXT" value="1" />
+=======
+          <entry key="CLASS" value="1" />
+          <entry key="CSS" value="1" />
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="60" />
+          <entry key="PLAIN_TEXT" value="2" />
+>>>>>>> Stashed changes
           <entry key="XML" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+<<<<<<< Updated upstream
           <entry key="fxml" value="111" />
           <entry key="java" value="1847" />
+=======
+          <entry key="css" value="11" />
+          <entry key="dummy" value="47" />
+          <entry key="fxml" value="22" />
+          <entry key="java" value="6449" />
+          <entry key="txt" value="287" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+<<<<<<< Updated upstream
           <entry key="JAVA" value="1847" />
           <entry key="XML" value="111" />
+=======
+          <entry key="CSS" value="11" />
+          <entry key="JAVA" value="6449" />
+          <entry key="PLAIN_TEXT" value="334" />
+          <entry key="XML" value="22" />
+>>>>>>> Stashed changes
         </counts>
       </usages-collector>
     </session>
@@ -65,13 +130,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="238">
               <caret line="18" column="33" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="33" />
+=======
+            <state relative-caret-position="462">
+              <caret line="168" column="32" lean-forward="true" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="222">
@@ -123,6 +197,12 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="33" column="41" lean-forward="true" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="107" column="30" lean-forward="true" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,21 +226,55 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/src/View/NewProduct.fxml" />
         <option value="$PROJECT_DIR$/src/Controller/AdminMenu_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/Login_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/Main.java" />
         <option value="$PROJECT_DIR$/src/Controller/Products_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/NewProduct_Controller.java" />
+=======
+        <option value="$PROJECT_DIR$/src/Vista/Controller.java" />
+        <option value="$PROJECT_DIR$/src/View/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/View/Main.java" />
+        <option value="$PROJECT_DIR$/src/Controller/FXRouter/FXRouter.java" />
+        <option value="$PROJECT_DIR$/src/Model/ConexionBD.java" />
+        <option value="$PROJECT_DIR$/src/Model/ConectionBD.java" />
+        <option value="$PROJECT_DIR$/src/Model/ConnectionBD.java" />
+        <option value="$PROJECT_DIR$/src/Controller/FXRouter.java" />
+        <option value="$PROJECT_DIR$/src/View/Client/ClienteMenuStyle.css" />
+        <option value="$PROJECT_DIR$/src/View/Client/ClientMenu.fxml" />
+        <option value="$PROJECT_DIR$/src/Controller/ClientMenu_Controller.java" />
+        <option value="$PROJECT_DIR$/src/Model/Usuario.java" />
+        <option value="$PROJECT_DIR$/src/Model/Empleado.java" />
+        <option value="$PROJECT_DIR$/src/Model/Cliente.java" />
+        <option value="$PROJECT_DIR$/src/Model/Producto.java" />
+        <option value="$PROJECT_DIR$/src/Model/Product.java" />
+        <option value="$PROJECT_DIR$/src/Model/ShoppingList_Product.java" />
+        <option value="$PROJECT_DIR$/src/Model/Client.java" />
+        <option value="$PROJECT_DIR$/src/Model/Employee.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Main.java" />
+        <option value="$PROJECT_DIR$/src/Model/User.java" />
+        <option value="$PROJECT_DIR$/src/Controller/Login_Controller.java" />
+>>>>>>> Stashed changes
         <option value="$PROJECT_DIR$/src/Model/ConnectionDB.java" />
       </list>
     </option>
   </component>
+<<<<<<< Updated upstream
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+=======
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="950" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+>>>>>>> Stashed changes
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -226,11 +340,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542753227726" />
     <property name="last_opened_file_path" value="D:/SceneBuilder/SceneBuilder.exe" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15527344" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542755833143" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/java-json.jar!/" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+>>>>>>> Stashed changes
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
@@ -282,10 +404,20 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="15114000" />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< Updated upstream
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
@@ -311,6 +443,31 @@
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Maven Projects" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22147651" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="simpleUML" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13597734" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
+      <window_info anchor="bottom" id="Problems" order="9" />
+      <window_info anchor="bottom" id="Changes" order="10" />
+      <window_info anchor="bottom" id="Profiler" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="14" weight="0.3286119" />
+>>>>>>> Stashed changes
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -322,6 +479,7 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+<<<<<<< Updated upstream
   <component name="editorHistoryManager">
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -331,6 +489,37 @@
             <element signature="e#66921#66922#0" expanded="true" />
             <element signature="e#66966#66967#0" expanded="true" />
           </folding>
+=======
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Restaurante" />
+    </ignored-roots>
+    <MESSAGE value="sadas" />
+    <MESSAGE value="Pantalla Login creada y clase controladora.&#10;Iniciar sesión no funciona aún." />
+    <MESSAGE value="Pantalla Login creada y clase controladora.&#10;Iniciar sesión no funciona aún.&#10;Menú de cliente medio hecho" />
+    <MESSAGE value="La picha de la vaca" />
+    <MESSAGE value="La picha de la vaca v2" />
+    <MESSAGE value="Conexión con la base de datos hecha, se descargan los datos correctamente." />
+    <option name="LAST_COMMIT_MESSAGE" value="Conexión con la base de datos hecha, se descargan los datos correctamente." />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Controller/Controller.java" />
+    <entry file="jar://$PROJECT_DIR$/lib/FXRouter.jar!/com/github/fxrouter/FXRouter.class" />
+    <entry file="file://$USER_HOME$/Desktop/FXRouter-1.0.0/.gitignore" />
+    <entry file="file://$USER_HOME$/Desktop/FXRouter-1.0.0/README.md" />
+    <entry file="file://$PROJECT_DIR$/src/View/Vista_Administrador/Pedidos.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/View/Client/ClienteMenuStyle.css" />
+    <entry file="file://$PROJECT_DIR$/src/Controller/ClientMenu_Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
@@ -352,6 +541,7 @@
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/php/login.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -406,16 +596,113 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="30" column="8" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="34" selection-end-column="9" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Controller/Sign_in_Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/FXRouter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="191" selection-start-line="191" selection-end-line="191" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Restaurante.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/ShoppingList_Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Login.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="53" column="113" selection-start-line="53" selection-start-column="108" selection-end-line="53" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="1773" selection-start-line="1773" selection-end-line="1773" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="50" column="5" lean-forward="true" selection-start-line="41" selection-start-column="3" selection-end-line="50" selection-end-column="5" />
+          <folding>
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+>>>>>>> Stashed changes
+          <folding>
+            <element signature="e#304#305#0" expanded="true" />
+            <element signature="e#333#334#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+            <element signature="e#897#898#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/Controller/NewProduct_Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Model/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Login_Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#603#604#0" expanded="true" />
@@ -424,10 +711,37 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Controller/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="168" column="32" lean-forward="true" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="107" column="30" lean-forward="true" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -491,6 +805,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

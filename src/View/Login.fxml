@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -38,7 +39,7 @@
             <DropShadow />
          </effect>
          <children>
-            <Label layoutX="116.0" layoutY="92.0" text="Correo">
+            <Label layoutX="116.0" layoutY="92.0" text="Usuario">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
