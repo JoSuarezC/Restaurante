@@ -33,13 +33,13 @@ public class Login_Controller {
         if (userType.equals("Empleado")){
             if(User.getCurrentUser().getJob().equals("Gerente")){
                 try{
-                    FXRouter.goTo("admMenu");
+                    FXRouter.goTo("MenuAdm");
                 }catch (IOException e){
                     System.out.print(e);
                 }
             }else if(User.getCurrentUser().getJob().equals("Gerente General")){
                 try{
-                    FXRouter.goTo("admMenu");
+                    FXRouter.goTo("MenuAdm");
                 }catch (IOException e){
                     System.out.print(e);
                 }
