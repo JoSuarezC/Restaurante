@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminMenu_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminMenu_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Login_Controller.java" afterDir="false" />
@@ -17,6 +18,26 @@
       <change beforePath="$PROJECT_DIR$/src/Model/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ConnectionDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Administrator/AdminMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Administrator/AdminMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Products.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Products.fxml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Restaurante.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurante.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/ClientOrder_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/Login_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/ConnectionDB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/Employee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Restaurante/View/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Restaurante/View/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Login_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Login_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ConnectionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Login.fxml" afterDir="false" />
+>>>>>>> Stashed changes
 =======      <change beforePath="$PROJECT_DIR$/Restaurante.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurante.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/ClientOrder_Controller.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Restaurante/Controller/Login_Controller.class" beforeDir="false" />
