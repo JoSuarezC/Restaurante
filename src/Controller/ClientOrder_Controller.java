@@ -147,7 +147,7 @@ public class ClientOrder_Controller {
 
     }
 
-    private void checkProduct(Product selection){
+    private void checkProduct(Product selection){   // jejejeje
         int indice = -1;
         for (int i = 0; i < tablaView_Inventario.getItems().size(); i ++) {
             if (tablaView_Inventario.getItems().size() == 0) {
