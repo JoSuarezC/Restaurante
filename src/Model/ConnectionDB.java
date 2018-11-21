@@ -24,7 +24,8 @@ public class ConnectionDB {
     private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
     private static final String search_product_PHP = URL_HOST +"RestaurantePHP/search_product.php";
     private static final String add_product_PHP = URL_HOST +"RestaurantePHP/insert_product.php";
-
+    private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/insert_client.php";
+    private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -134,8 +135,7 @@ public class ConnectionDB {
                 try{
                     JSONObject myResponse = new JSONObject(response.toString());
                     if (myResponse.getString("status").equals("true")) {
-                        JSONArray results = myResponse.getJSONArray("value");
-                        return results.getJSONObject(0).getString("orderID");
+                        return myResponse.getJSONObject("value").getString("orderID");
                     }
                 }catch (JSONException e){ System.out.println(e);}
             } else {System.out.println("GET NOT WORKED");}
@@ -239,6 +239,74 @@ public class ConnectionDB {
                 }catch (JSONException e){ System.out.println(e);}
             } else {System.out.println("GET NOT WORKED");}
         }catch (IOException e){}
+    }
+
+    public boolean createUser(String pUsername,String pPassword,String pEmail, String pIdClient){
+        try {
+            URL urlForGetRequest = new URL(create_user_PHP);
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestMethod("POST");
+            String URLparameters = "NombreUsuario=" + pUsername + "&Contrasenia=" + pPassword + "&Correo=" + pEmail + "&IdCliente=" + pIdClient;
+            conection.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(conection.getOutputStream());
+            wr.writeBytes(URLparameters);
+            wr.flush();
+            wr.close();
+            int responseCode = conection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    response.append(readLine);
+                } in .close();
+                try{
+                    JSONObject myResponse = new JSONObject(response.toString()); // Get JSON response
+                    System.out.print(myResponse.getString("status"));
+                    if (myResponse.getString("status").equals("true")){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }catch (JSONException e){ System.out.println(e);}
+            } else {System.out.println("GET NOT WORKED");}
+        }catch(IOException e){}
+        return false;
+    }
+
+    public int insertClient(String pName, String pLastName, String pIdNumber, String pPhoneNumber){
+        try {
+            URL urlForGetRequest = new URL(insert_Client_PHP);
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestMethod("POST");
+            String URLparameters = "Nombre=" + pName + "&Apellido=" + pLastName + "&Cedula=" + pIdNumber + "&Telefono=" + pPhoneNumber;
+            conection.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(conection.getOutputStream());
+            wr.writeBytes(URLparameters);
+            wr.flush();
+            wr.close();
+            int responseCode = conection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    response.append(readLine);
+                } in .close();
+                try{
+                    JSONObject myResponse = new JSONObject(response.toString()); // Get JSON response
+                    System.out.print(myResponse.getString("status"));
+                    if (myResponse.getString("status").equals("true")){
+                        return Integer.parseInt(myResponse.getJSONObject("value").getString("orderID"));
+                    }
+                    else{
+                        return -1;
+                    }
+                }catch (JSONException e){ System.out.println(e);}
+            } else {System.out.println("GET NOT WORKED");}
+        }catch(IOException e){}
+        return -1;
     }
 
 }

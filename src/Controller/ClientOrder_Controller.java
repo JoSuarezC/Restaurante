@@ -89,8 +89,7 @@ public class ClientOrder_Controller {
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             if (User.getCurrentUser().getUserType().equals("Empleado")){
-
-                String orderID = ConnectionDB.getInstance().makeOrder("", dateFormat.format(fecha).toString(), "Local");
+                String orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local");
                 System.out.print(orderID);
                 ObservableList<ShoppingList_Product> list;
                 list = tablaView_Inventario.getItems();

@@ -63,7 +63,11 @@ public class Login_Controller {
 
     @FXML
     void SignUp(ActionEvent event) {
-
+        try{
+            FXRouter.goTo("SignIn");
+        }catch (IOException e){
+            System.out.print(e);
+        }
     }
 
 
