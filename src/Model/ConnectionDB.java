@@ -26,6 +26,7 @@ public class ConnectionDB {
     private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/insert_client.php";
     private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
     private static final String select_sucursales = URL_HOST + "RestaurantePHP/select_sucursales.php";
+    private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -124,7 +125,7 @@ public class ConnectionDB {
     }
 
 
-    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price){
+    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price/*, String Sucursal*/){
         String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
@@ -202,5 +203,24 @@ public class ConnectionDB {
             }else{System.out.print("No hay sucursales en la base de datos");}
         }catch (JSONException e){ System.out.println(e);}
         return arraylistSucursal;
+    }
+
+    public ArrayList selectPedidos_porCliente(){
+        ArrayList<Pedido> arraylistPedidos = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_pedidos_de_usuario_PHP+"?IdCliente="+User.getCurrentUser().getUserID()));
+            if (myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    int idPedido = results.getJSONObject(i).getInt("IdPedido");
+                    String fecha = results.getJSONObject(i).getString("FechaHora");
+                    String precio = results.getJSONObject(i).getString("TotalAPagar");
+                    String estado = results.getJSONObject(i).getString("Estado");
+                    Pedido p = new Pedido(idPedido, fecha, precio, estado, null);
+                    arraylistPedidos.add(p);
+                }
+            }else{System.out.print("No existe el pedido");}
+        }catch (JSONException e){ System.out.println(e);}
+        return arraylistPedidos;
     }
 }

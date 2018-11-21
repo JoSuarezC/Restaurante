@@ -50,9 +50,10 @@ public class ClientOrder_Controller {
 
     @FXML
     protected void initialize(){
-      //  choiceBox_Sucursal.setItems();
+        ObservableList<String> brachOffice_list = FXCollections.observableArrayList();
+        brachOffice_list.addAll(ConnectionDB.getInstance().selectSucursales());
+        choiceBox_Sucursal.setItems(brachOffice_list);
         fillTables();
-
     }
 
     private void fillTables(){
