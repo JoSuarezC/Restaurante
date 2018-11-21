@@ -19,12 +19,6 @@ public class Login_Controller {
     private TextField TextBox_Email;
 
     @FXML
-    private Button Button_Login;
-
-    @FXML
-    private Button Button_SignUp;
-
-    @FXML
     void login(ActionEvent event) {
         String user = TextBox_Email.getText();
         String password = TextBox_Password.getText();

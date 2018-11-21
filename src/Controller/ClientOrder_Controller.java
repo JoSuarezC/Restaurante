@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -44,12 +41,16 @@ public class ClientOrder_Controller {
     @FXML private TableColumn<ShoppingList_Product, String> tableColumn_Producto_ListaCompra;
     @FXML private TableColumn<ShoppingList_Product, String> tableColumn_Precio_ListaCompra;
     @FXML private TableColumn<ShoppingList_Product, String> tableColumn_Cantidad_ListaCompra;
+
+    @FXML
+    private ChoiceBox<String> choiceBox_Sucursal;
+
     @FXML private Label Label_TotalCost;
     private int totalCost;
 
     @FXML
     protected void initialize(){
-
+      //  choiceBox_Sucursal.setItems();
         fillTables();
 
     }
@@ -88,34 +89,23 @@ public class ClientOrder_Controller {
         if(!tablaView_Inventario.getItems().isEmpty()){
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
+            String orderID;
             if (User.getCurrentUser().getUserType().equals("Empleado")){
-                String totalAPagar = Label_TotalCost.getText();
-                String orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local", totalAPagar);
-                System.out.print(orderID);
-                ObservableList<ShoppingList_Product> list;
-                list = tablaView_Inventario.getItems();
-                int prize = 0;
-                for ( int i = 0; i < list.size(); i ++ ) {
-                    prize = list.get(i).getProductPrize() * list.get(i).getProductQuantity();
-                    ConnectionDB.getInstance().buyProduct(list.get(i).getProductID(),String.valueOf(list.get(i).getProductQuantity()),orderID, String.valueOf(prize));
-                }
-                tablaView_Inventario.getItems().clear();
+                orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local");
             }else{
-                String totalAPagar = Label_TotalCost.getText();
-                String orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local", totalAPagar);
-                System.out.print(orderID);
-                ObservableList<ShoppingList_Product> list;
-                list = tablaView_Inventario.getItems();
-                int prize = 0;
-                for ( int i = 0; i < list.size(); i ++ ) {
-                    prize = list.get(i).getProductPrize() * list.get(i).getProductQuantity();
-                    ConnectionDB.getInstance().buyProduct(list.get(i).getProductID(),String.valueOf(list.get(i).getProductQuantity()),orderID, String.valueOf(prize));
-                }
-                tablaView_Inventario.getItems().clear();
+                orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local");
             }
+            System.out.print(orderID);
+            ObservableList<ShoppingList_Product> list;
+            list = tablaView_Inventario.getItems();
+            int prize = 0;
+            for (ShoppingList_Product i : list) {
+                prize = i.getProductPrize() * i.getProductQuantity();
+                ConnectionDB.getInstance().buyProduct(i.getProductID(),String.valueOf(i.getProductQuantity()),orderID, String.valueOf(prize));
+            }
+            tablaView_Inventario.getItems().clear();
         }else{
             Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
-
         }
     }
 
@@ -163,7 +153,7 @@ public class ClientOrder_Controller {
 
     }
 
-    private void checkProduct(Product selection){   // jejejeje
+    private void checkProduct(Product selection){
         int indice = -1;
         for (int i = 0; i < tablaView_Inventario.getItems().size(); i ++) {
             if (tablaView_Inventario.getItems().size() == 0) {
