@@ -35,7 +35,7 @@ public class ConnectionDB {
     }
 
     private String POSTrequest(String url, String parameters){
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
         try {
             URL urlForPOSTRequest = new URL(url);
             String readLine = null;
@@ -60,7 +60,7 @@ public class ConnectionDB {
 
 
     private String GETRequest(String url){
-        StringBuffer response = new StringBuffer();
+        StringBuilder response = new StringBuilder();
         try{
             URL urlForGetRequest = new URL(url);
             String readLine = null;
@@ -124,8 +124,8 @@ public class ConnectionDB {
     }
 
 
-    public String makeOrder(String ClientID, String DateTime, String OrderType){
-        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType;
+    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price){
+        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
             if (myResponse.getString("status").equals("true")) {

@@ -90,10 +90,11 @@ public class ClientOrder_Controller {
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
+            String totalAPagar = Label_TotalCost.getText();
             if (User.getCurrentUser().getUserType().equals("Empleado")){
-                orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local");
+                orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local", totalAPagar);
             }else{
-                orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local");
+                orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local", totalAPagar);
             }
             System.out.print(orderID);
             ObservableList<ShoppingList_Product> list;
