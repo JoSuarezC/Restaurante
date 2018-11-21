@@ -113,13 +113,13 @@ public class ConnectionDB {
     }
 
 
-    public String makeOrder(String ClientID, String DateTime, String OrderType){
+    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price){
         try{
             String readLine = null;
             URL obj = new URL(makeOrder);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
             con.setRequestMethod("POST");
-            String urlParameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType;
+            String urlParameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(urlParameters);

@@ -89,7 +89,8 @@ public class ClientOrder_Controller {
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             if (User.getCurrentUser().getUserType().equals("Empleado")){
-                String orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local");
+                String totalAPagar = Label_TotalCost.getText();
+                String orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local", totalAPagar);
                 System.out.print(orderID);
                 ObservableList<ShoppingList_Product> list;
                 list = tablaView_Inventario.getItems();
@@ -100,7 +101,8 @@ public class ClientOrder_Controller {
                 }
                 tablaView_Inventario.getItems().clear();
             }else{
-                String orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local");
+                String totalAPagar = Label_TotalCost.getText();
+                String orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local", totalAPagar);
                 System.out.print(orderID);
                 ObservableList<ShoppingList_Product> list;
                 list = tablaView_Inventario.getItems();
