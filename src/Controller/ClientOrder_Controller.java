@@ -92,8 +92,14 @@ public class ClientOrder_Controller {
     void MakeOrder(ActionEvent event) {
         if(!tablaView_Inventario.getItems().isEmpty()){
             Pair<ObservableList,String> tupla = new Pair(tablaView_Inventario.getItems(), Label_TotalCost.getText());
-            try {FXRouter.goTo("InfoPago", tupla);}
-            catch (IOException e) {System.out.print(e);}
+            if (User.getCurrentUser().getUserType().equals("Cliente")){
+                try {FXRouter.goTo("OnlinePayment", tupla);}
+                catch (IOException e) {System.out.print(e);}
+            }else{
+                try {FXRouter.goTo("LocalPayment", tupla);}
+                catch (IOException e) {System.out.print(e);}
+            }
+
         }else{
             Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
         }

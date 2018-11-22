@@ -15,7 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ClientPayment_Controller {
+public class ClientOnlinePayment_Controller {
 
 
     @FXML
@@ -43,13 +43,17 @@ public class ClientPayment_Controller {
     private Label Label_TotalCost;
 
     @FXML
-    private CheckBox chequeCheck;
+    private TextField nameTF;
 
     @FXML
-    private Button backButton;
+    private TextField codeTF;
 
     @FXML
-    private CheckBox cashCheck;
+    private TextField creditCardTF;
+
+    @FXML
+    private DatePicker datePicker;
+
 
     @FXML
     private TableColumn<ShoppingList_Product, String> productColumn;
@@ -94,7 +98,7 @@ public class ClientPayment_Controller {
 
     @FXML
     void payOrder(ActionEvent event) {
-        if(!choiceBox_Sucursal.getSelectionModel().isEmpty() && !directionTF.getText().isEmpty()){
+        if(validaciones()){
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
@@ -106,50 +110,24 @@ public class ClientPayment_Controller {
             int prize;
             for (ShoppingList_Product i : list) {
                 prize = i.getProductPrize() * i.getProductQuantity();
-                ConnectionDB.getInstance().buyProduct(i.getProductID(),String.valueOf(i.getProductQuantity()),orderID, String.valueOf(prize));
+                ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
             }
-            if(creditCardCheck.isSelected()){
-                try {FXRouter.goTo("CreditCard");}
-                catch (IOException e) {System.out.print(e);}
-            }
-            //      generateBill(orderID);
+            generateBill(orderID,totalAPagar);
         }
     }
 
-    @FXML
-    void handleCheckBoxCard(ActionEvent event){
-        if(creditCardCheck.isSelected()){
-            chequeCheck.setSelected(false);
-            cashCheck.setSelected(false);
-            bankTransferCheck.setSelected(false);
-        }
+    private void generateBill(String orderID, String total){
+        ConnectionDB.getInstance().generateBill("Tarjeta Bancaria", bankCardToString(), orderID,total);
     }
 
-    @FXML
-    void handleCheckBoxCheque(ActionEvent event){
-        if(chequeCheck.isSelected()){
-            creditCardCheck.setSelected(false);
-            cashCheck.setSelected(false);
-            bankTransferCheck.setSelected(false);
+    private Boolean validaciones() {
+        if (!choiceBox_Sucursal.getSelectionModel().isEmpty() && !directionTF.getText().isEmpty() && !nameTF.getText().isEmpty() && !codeTF.getText().isEmpty() && !creditCardTF.getText().isEmpty()) {
+            return true;
         }
+        return false;
     }
 
-    @FXML
-    void handleCheckBoxCash(ActionEvent event){
-        if(cashCheck.isSelected()){
-            creditCardCheck.setSelected(false);
-            chequeCheck.setSelected(false);
-            bankTransferCheck.setSelected(false);
-        }
+    private String bankCardToString(){
+        return "Número de tarjeta: " + creditCardTF.getText() + "\n Nombre: " + nameTF.getText();
     }
-
-    @FXML
-    void handleCheckBoxTransfer(ActionEvent event){
-        if(bankTransferCheck.isSelected()){
-            creditCardCheck.setSelected(false);
-            chequeCheck.setSelected(false);
-            cashCheck.setSelected(false);
-        }
-    }
-
 }

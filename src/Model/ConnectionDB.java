@@ -30,6 +30,7 @@ public class ConnectionDB {
     private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/select_productos_por_pedido.php";
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
     private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
+    private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -278,5 +279,20 @@ public class ConnectionDB {
             return myResponse.getString("status").equals("true");
         }catch (JSONException e){ System.out.println(e);}
         return false;
+    }
+
+    public void generateBill(String formapago, String bankCard, String orderID, String total){
+        String URLparameters = "IdPedido=" + orderID + "&TarjetaBancaria=" + bankCard + "&FormaPago=" + formapago + "&Total=" + total;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(generateBill, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            if (myResponse.getString("status").equals("true")){
+              //  return Integer.parseInt(myResponse.getJSONObject("value").getString("orderID"));
+            }
+            else{
+                //return -1;
+            }
+        }catch (JSONException e){ System.err.print(e);}
+        //return -1;
     }
 }
