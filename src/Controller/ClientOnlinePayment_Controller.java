@@ -109,7 +109,7 @@ public class ClientOnlinePayment_Controller {
                     ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
                 }
                 generateBill(orderID, totalAPagar);
-                Main.MessageBox("Ëxito", "Su orden ha sido creada exitosamente");
+                Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
                 try {
                     FXRouter.goTo("Client");
                 } catch (IOException e) {
