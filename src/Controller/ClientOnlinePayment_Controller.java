@@ -92,27 +92,33 @@ public class ClientOnlinePayment_Controller {
     }
 
     @FXML
-    void back(ActionEvent event) {
-
-    }
-
-    @FXML
     void payOrder(ActionEvent event) {
-        if(validaciones()){
-            Date fecha = new Date();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
-            String orderID;
-            String totalAPagar = Label_TotalCost.getText();
-            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), choiceBox_Entrega.getSelectionModel().getSelectedItem(), totalAPagar,choiceBox_Sucursal.getValue().toString(),directionTF.getText());
-            System.out.print(orderID);
-            ObservableList<ShoppingList_Product> list;
-            list = inventoryTable.getItems();
-            int prize;
-            for (ShoppingList_Product i : list) {
-                prize = i.getProductPrize() * i.getProductQuantity();
-                ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
+        if(!nameTF.getText().equals("") && !codeTF.getText().equals("") && !creditCardTF.getText().equals("") && !datePicker.equals("") && !choiceBox_Sucursal.getSelectionModel().getSelectedItem().equals(null)) {
+            if (validaciones()) {
+                Date fecha = new Date();
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
+                String orderID;
+                String totalAPagar = Label_TotalCost.getText();
+                orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), choiceBox_Entrega.getSelectionModel().getSelectedItem(), totalAPagar, choiceBox_Sucursal.getValue().toString(), directionTF.getText());
+                System.out.print(orderID);
+                ObservableList<ShoppingList_Product> list;
+                list = inventoryTable.getItems();
+                int prize;
+                for (ShoppingList_Product i : list) {
+                    prize = i.getProductPrize() * i.getProductQuantity();
+                    ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
+                }
+                generateBill(orderID, totalAPagar);
+                Main.MessageBox("Ëxito", "Su orden ha sido creada exitosamente");
+                try {
+                    FXRouter.goTo("Client");
+                } catch (IOException e) {
+                    System.out.print(e);
+                }
             }
-            generateBill(orderID,totalAPagar);
+        }
+        else{
+            Main.MessageBox("Error", "Rellene todas las casilla necesarias para realizar el pedido.");
         }
     }
 
@@ -129,5 +135,14 @@ public class ClientOnlinePayment_Controller {
 
     private String bankCardToString(){
         return "Número de tarjeta: " + creditCardTF.getText() + "\n Nombre: " + nameTF.getText();
+    }
+
+    @FXML
+    void Atras(ActionEvent event) {
+        try {
+            FXRouter.goTo("Client");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 }

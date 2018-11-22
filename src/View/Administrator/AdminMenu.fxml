@@ -48,7 +48,7 @@
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>
-            <Button fx:id="btn_Cajero" layoutX="113.0" layoutY="170.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="195.0" text="Cajero">
+            <Button fx:id="btn_Cajero" layoutX="113.0" layoutY="170.0" mnemonicParsing="false" onAction="#Cajero" prefHeight="36.0" prefWidth="195.0" text="Cajero">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>

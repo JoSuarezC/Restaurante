@@ -21,6 +21,7 @@ public class Main extends Application {
         FXRouter.when("LocalPayment", "/View/Client/ClientLocalPayment.fxml","Pago por tarjeta bancaria",1290,690);
         FXRouter.when("PedidosPendientesAdm","/View/Administrator/PedidosPendientesAdm.fxml","Pedidos Pendientes",1204,666);
         FXRouter.when("DetalleProducto","/View/DetalleProducto.fxml","Detalle Producto",1204,666);
+        FXRouter.when("Cajero","/View/Client/ClientLocalPayment.fxml","Cajero",1204,666);
         FXRouter.goTo("Login");
 
     }

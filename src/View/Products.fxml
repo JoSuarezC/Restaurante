@@ -6,25 +6,33 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #41457f;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Products_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Products_Controller">
    <children>
-      <Pane layoutX="149.0" layoutY="35.0" prefHeight="597.0" prefWidth="906.0" style="-fx-background-color: #7d83db;">
+      <ImageView fitHeight="862.0" fitWidth="630.0" layoutY="78.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="852.0" fitWidth="637.0" layoutX="629.0" layoutY="78.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="169.0" layoutY="96.0" prefHeight="536.0" prefWidth="866.0" style="-fx-background-color: #ff9900;">
          <children>
-            <Label layoutX="383.0" layoutY="3.0" text="La Galeta" textFill="WHITE">
-               <font>
-                  <Font name="SansSerif Bold" size="36.0" />
-               </font>
-            </Label>
-            <Button fx:id="Button_CrearCombos" layoutX="107.0" layoutY="530.0" mnemonicParsing="false" onAction="#CreateCombo" prefHeight="26.0" prefWidth="129.0" text="Crear combos">
+            <Button fx:id="Button_CrearCombos" layoutX="85.0" layoutY="491.0" mnemonicParsing="false" onAction="#CreateCombo" prefHeight="26.0" prefWidth="129.0" text="Crear combos">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
             </Button>
-            <TabPane layoutX="79.0" layoutY="62.0" prefHeight="449.0" prefWidth="749.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="59.0" layoutY="24.0" prefHeight="449.0" prefWidth="749.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="Tab_Secona" text="Secona">
                      <content>
@@ -73,22 +81,44 @@
                   </Tab>
               </tabs>
             </TabPane>
-            <Button fx:id="Button_CrearCombos1" layoutX="286.0" layoutY="543.0" mnemonicParsing="false" onAction="#ActivarProducto" prefHeight="26.0" prefWidth="129.0" text="Activar producto">
+            <Button fx:id="Button_CrearCombos1" layoutX="243.0" layoutY="491.0" mnemonicParsing="false" onAction="#DetallesProducto" prefHeight="26.0" prefWidth="129.0" text="Ver detalle">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Button_AgregarProducto" layoutX="481.0" layoutY="533.0" mnemonicParsing="false" onAction="#AddProduct" text="Agregar producto">
+            <Button fx:id="Button_AgregarProducto" layoutX="396.0" layoutY="491.0" mnemonicParsing="false" onAction="#AddProduct" text="Agregar producto">
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button_Atras" layoutX="755.0" layoutY="491.0" mnemonicParsing="false" onAction="#Atras" text="Atrás">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
             </Button>
          </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </Pane>
-      <Button fx:id="Button_Atras" layoutX="907.0" layoutY="592.0" mnemonicParsing="false" text="Atrás">
-         <font>
-            <Font name="SansSerif Regular" size="14.0" />
-         </font>
-      </Button>
+      <Pane prefHeight="78.0" prefWidth="1204.0" style="-fx-background-color: #ffcc00;">
+         <children>
+            <Label layoutX="510.0" layoutY="17.0" text="La Galeta">
+               <font>
+                  <Font name="SansSerif Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="64.0" fitWidth="62.0" layoutX="692.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/guitar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="62.0" layoutX="438.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/guitar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

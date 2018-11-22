@@ -22,6 +22,9 @@ public class ClientOrder_Controller {
     @FXML
     private TextField TextBox_ProductQuantity;
 
+    @FXML
+    private MenuBar id_menuBar;
+
     // Combos //
     @FXML private TableView<Product> tablaView_Combos;
     @FXML private TableColumn<Product, String> tableColumn_Producto_Combos;
