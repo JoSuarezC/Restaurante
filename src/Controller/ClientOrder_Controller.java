@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -55,9 +56,6 @@ public class ClientOrder_Controller {
 
     @FXML
     protected void initialize(){
-        ObservableList<String> brachOffice_list = FXCollections.observableArrayList();
-        brachOffice_list.addAll(ConnectionDB.getInstance().selectSucursales());
-        choiceBox_Sucursal.setItems(brachOffice_list);
         fillTables();
     }
 
@@ -93,15 +91,9 @@ public class ClientOrder_Controller {
     @FXML
     void MakeOrder(ActionEvent event) {
         if(!tablaView_Inventario.getItems().isEmpty()){
-            String OrderType = MessageOrderType();
-            if (!OrderType.equals("Error")){
-
-                ArrayList<Object> list = new ArrayList<Object>();
-                list.add(tablaView_Inventario.getItems());
-                list.add(Label_TotalCost.getText());
-                try {FXRouter.goTo("InfoPago", list);}
-                catch (IOException e) {System.out.print(e);}
-            }
+            Pair<ObservableList,String> tupla = new Pair(tablaView_Inventario.getItems(), Label_TotalCost.getText());
+            try {FXRouter.goTo("InfoPago", tupla);}
+            catch (IOException e) {System.out.print(e);}
         }else{
             Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
         }
@@ -172,7 +164,7 @@ public class ClientOrder_Controller {
         }
     }
 
-    private String MessageOrderType(){
+ /*   private String MessageOrderType(){
         try{
             List<String> choices = new ArrayList<>();
             choices.add("Express");
@@ -186,5 +178,5 @@ public class ClientOrder_Controller {
             result.ifPresent(letter -> System.out.println("Your choice: " + letter));
             return result.get();
         }catch (Exception e){return "Error";}
-    }
+    }*/
 }

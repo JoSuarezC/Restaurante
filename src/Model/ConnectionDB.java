@@ -128,8 +128,8 @@ public class ConnectionDB {
     }
 
 
-    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price/*, String Sucursal*/){
-        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price;
+    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega){
+        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&IdSucursal";
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
             if (myResponse.getString("status").equals("true")) {
@@ -194,14 +194,19 @@ public class ConnectionDB {
     }
 
     public ArrayList selectSucursales (){
-        ArrayList<String> arraylistSucursal= new ArrayList<>();
+        ArrayList<Sucursal> arraylistSucursal= new ArrayList<>();
         try{
             JSONObject myResponse = new JSONObject(GETRequest(select_sucursales));
             if (myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");
                 for (int i = 0; i < results.length(); i++) {
+                    String IDBO = results.getJSONObject(i).getString("IdSuc");
                     String brachOffice = results.getJSONObject(i).getString("Nombre");
-                    arraylistSucursal.add(brachOffice);
+                    String Direccion = results.getJSONObject(i).getString("Direccion");
+                    String telfPedidos = results.getJSONObject(i).getString("Telf-Pedidos");
+                    String telfSuc = results.getJSONObject(i).getString("Telf-Sucursal");
+                    Sucursal s = new Sucursal(IDBO, brachOffice, Direccion, telfSuc, telfPedidos);
+                    arraylistSucursal.add(s);
                 }
             }else{System.out.print("No hay sucursales en la base de datos");}
         }catch (JSONException e){ System.out.println(e);}

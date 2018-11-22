@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="679.0" prefWidth="1227.0" style="-fx-background-color: #fffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrder_Controller">
+<AnchorPane prefHeight="679.0" prefWidth="1227.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrder_Controller">
    <children>
       <Button fx:id="Button_Order" layoutX="1077.0" layoutY="306.0" mnemonicParsing="false" onAction="#MakeOrder" prefHeight="31.0" prefWidth="127.0" text="Realizar pedido" />
       <Button fx:id="Button_Remove" layoutX="1077.0" layoutY="243.0" mnemonicParsing="false" onAction="#RemoveProduct" text="Quitar producto" />
@@ -30,7 +30,7 @@
          </font>
       </Label>
       <Button fx:id="Button_SelectProduct" layoutX="55.0" layoutY="620.0" mnemonicParsing="false" onAction="#SelectProduct" text="Seleccionar producto" />
-      <Label layoutX="37.0" layoutY="45.0" prefHeight="60.0" prefWidth="271.0" style="-fx-background-color: ;" text="Inventario" textAlignment="CENTER">
+      <Label layoutX="37.0" layoutY="45.0" prefHeight="60.0" prefWidth="271.0" text="Inventario" textAlignment="CENTER">
          <font>
             <Font name="Edwardian Script ITC" size="69.0" />
          </font>
