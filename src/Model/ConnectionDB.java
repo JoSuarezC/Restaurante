@@ -18,7 +18,7 @@ public class ConnectionDB {
 
     /*private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
     private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
-    private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/select_products_by_productType.php";
+    private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/Producto/select_products_by_productType.php";
     private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
     private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
     private static final String search_product_PHP = URL_HOST +"restaurante-ak7.esy.es/RestaurantePHP/Producto/search_product.php";
@@ -27,7 +27,7 @@ public class ConnectionDB {
     private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
     private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
     private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
-    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/select_productos_por_pedido.php";
+    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/Producto/select_productos_por_pedido.php";
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
     private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
     private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";*/
@@ -46,7 +46,13 @@ public class ConnectionDB {
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
     private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
     private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";
+// RestaurantePHP/Producto/insert_product.php
+//RestaurantePHP/Producto/search_product.php
+    //RestaurantePHP/Producto/select_productos_por_pedido.php
+    // RestaurantePHP/Producto/select_products_by_productType.php
 
+    /*RestaurantePHP/Usuario/login.php
+RestaurantePHP/Usuario/create_user.php*/
     public static ConnectionDB getInstance(){
         if (instance == null){
             instance = new ConnectionDB();

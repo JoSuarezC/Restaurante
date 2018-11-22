@@ -55,13 +55,22 @@ public class AdminMenu_Controller {
     }
 
     @FXML
+<<<<<<< Updated upstream
     public void GoOutApplication(ActionEvent event) {
         try {
             FXRouter.goTo("Login");
+=======
+    public void goCashier(ActionEvent event) {
+        try {
+            FXRouter.goTo("Client");
+>>>>>>> Stashed changes
         } catch (IOException e) {
             System.out.print(e);
         }
     }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }
