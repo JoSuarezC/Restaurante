@@ -16,74 +16,79 @@
 
 <AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #41457f;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Products_Controller">
    <children>
-      <Pane layoutX="137.0" layoutY="38.0" prefHeight="597.0" prefWidth="906.0" style="-fx-background-color: #7d83db;">
+      <Pane layoutX="149.0" layoutY="35.0" prefHeight="597.0" prefWidth="906.0" style="-fx-background-color: #7d83db;">
          <children>
             <Label layoutX="383.0" layoutY="3.0" text="La Galeta" textFill="WHITE">
                <font>
                   <Font name="SansSerif Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="Button_CrearCombos" layoutX="240.0" layoutY="530.0" mnemonicParsing="false" onAction="#CreateCombo" prefHeight="26.0" prefWidth="129.0" text="Crear combos">
+            <Button fx:id="Button_CrearCombos" layoutX="107.0" layoutY="530.0" mnemonicParsing="false" onAction="#CreateCombo" prefHeight="26.0" prefWidth="129.0" text="Crear combos">
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font>
+            </Button>
+            <TabPane layoutX="79.0" layoutY="62.0" prefHeight="449.0" prefWidth="749.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="Tab_Secona" text="Secona">
+                     <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="821.0" style="-fx-background-color: #a582a1;">
+                           <children>
+                              <TableView fx:id="Tabla_Secona" prefHeight="410.0" prefWidth="749.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="ClmNombre_tbl_Secona" prefWidth="196.0" text="Nombre" />
+                                  <TableColumn fx:id="ClmDescripcion_tbl_Secona" prefWidth="350.0" text="Descripción" />
+                                    <TableColumn fx:id="ClmPrecio_tbl_Secona" prefWidth="202.0" text="Precio" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                </Tab>
+                <Tab fx:id="Tab_Dulcillo" text="Dulcillo">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #a582a1;">
+                           <children>
+                              <TableView fx:id="Tabla_Dulcillo" prefHeight="420.0" prefWidth="749.0">
+                                <columns>
+                                  <TableColumn fx:id="ClmNombre_tbl_Dulcillo" prefWidth="196.0" text="Nombre" />
+                                  <TableColumn fx:id="ClmDescripcion_tbl_Dulcillo" prefWidth="431.0" text="Descripción" />
+                                    <TableColumn fx:id="ClmPrecio_tbl_Dulcillo" prefWidth="121.0" text="Precio" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="Tab_Monchona" text="Monchona">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #a582a1;">
+                           <children>
+                              <TableView fx:id="Tabla_Monchona" prefHeight="421.0" prefWidth="749.0">
+                                <columns>
+                                  <TableColumn fx:id="ClmNombre_tbl_Monchona" prefWidth="196.0" text="Nombre" />
+                                  <TableColumn fx:id="ClmDescripcion_tbl_Monchona" prefWidth="444.0" text="Descripción" />
+                                    <TableColumn fx:id="ClmPrecio_tbl_Monchona" prefWidth="108.0" text="Precio" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Button fx:id="Button_CrearCombos1" layoutX="286.0" layoutY="543.0" mnemonicParsing="false" onAction="#CreateCombo" prefHeight="26.0" prefWidth="129.0" text="Activar producto">
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button_AgregarProducto" layoutX="481.0" layoutY="533.0" mnemonicParsing="false" onAction="#AddProduct" text="Agregar producto">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <TabPane layoutX="228.0" layoutY="96.0" prefHeight="449.0" prefWidth="749.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab fx:id="Tab_Secona" text="Secona">
-               <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="821.0" style="-fx-background-color: #a582a1;">
-                     <children>
-                        <TableView fx:id="Tabla_Secona" prefHeight="420.0" prefWidth="749.0">
-                          <columns>
-                            <TableColumn fx:id="ClmNombre_tbl_Secona" prefWidth="196.0" text="Nombre" />
-                            <TableColumn fx:id="ClmDescripcion_tbl_Secona" prefWidth="350.0" text="Descripción" />
-                              <TableColumn fx:id="ClmPrecio_tbl_Secona" prefWidth="202.0" text="Precio" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </content>
-          </Tab>
-          <Tab fx:id="Tab_Dulcillo" text="Dulcillo">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #a582a1;">
-                     <children>
-                        <TableView fx:id="Tabla_Dulcillo" prefHeight="420.0" prefWidth="749.0">
-                          <columns>
-                            <TableColumn fx:id="ClmNombre_tbl_Dulcillo" prefWidth="196.0" text="Nombre" />
-                            <TableColumn fx:id="ClmDescripcion_tbl_Dulcillo" prefWidth="431.0" text="Descripción" />
-                              <TableColumn fx:id="ClmPrecio_tbl_Dulcillo" prefWidth="121.0" text="Precio" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab fx:id="Tab_Monchona" text="Monchona">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #a582a1;">
-                     <children>
-                        <TableView fx:id="Tabla_Monchona" prefHeight="421.0" prefWidth="749.0">
-                          <columns>
-                            <TableColumn fx:id="ClmNombre_tbl_Monchona" prefWidth="196.0" text="Nombre" />
-                            <TableColumn fx:id="ClmDescripcion_tbl_Monchona" prefWidth="444.0" text="Descripción" />
-                              <TableColumn fx:id="ClmPrecio_tbl_Monchona" prefWidth="108.0" text="Precio" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-      <Button fx:id="Button_AgregarProducto" layoutX="525.0" layoutY="566.0" mnemonicParsing="false" onAction="#AddProduct" text="Agregar producto">
-         <font>
-            <Font name="SansSerif Regular" size="14.0" />
-         </font>
-      </Button>
       <Button fx:id="Button_Atras" layoutX="907.0" layoutY="592.0" mnemonicParsing="false" text="Atrás">
          <font>
             <Font name="SansSerif Regular" size="14.0" />

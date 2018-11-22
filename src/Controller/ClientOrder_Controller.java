@@ -6,11 +6,15 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 public class ClientOrder_Controller {
 
@@ -82,31 +86,40 @@ public class ClientOrder_Controller {
         tableColumn_Producto_Dulce.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
         tableColumn_Precio_Dulce.setCellValueFactory(cellData -> cellData.getValue().productPrizeProperty().asString());
         ObservableList<Product> dulces_list = FXCollections.observableArrayList();
-        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Dulce"));
+        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Postre"));
         tablaView_Dulce.setItems(dulces_list);
     }
 
     @FXML
     void MakeOrder(ActionEvent event) {
         if(!tablaView_Inventario.getItems().isEmpty()){
-            Date fecha = new Date();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
-            String orderID;
-            String totalAPagar = Label_TotalCost.getText();
-            if (User.getCurrentUser().getUserType().equals("Empleado")){
-                orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local", totalAPagar);
-            }else{
-                orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local", totalAPagar);
+            String OrderType = MessageOrderType();
+            if (!OrderType.equals("Error")){
+                String formaPago = MessagePayment();
+                String creditCard;
+                if(formaPago.equals("Tarjeta de crédito")){creditCard = MessageCreditCard(); }
+                if(!formaPago.equals("Error") ){
+                    Date fecha = new Date();
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
+                    String orderID;
+                    String totalAPagar = Label_TotalCost.getText();
+                    if (User.getCurrentUser().getUserType().equals("Empleado")){
+                        orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local", totalAPagar);
+                    }else{
+                        orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), OrderType, totalAPagar);
+                    }
+                    System.out.print(orderID);
+                    ObservableList<ShoppingList_Product> list;
+                    list = tablaView_Inventario.getItems();
+                    int prize = 0;
+                    for (ShoppingList_Product i : list) {
+                        prize = i.getProductPrize() * i.getProductQuantity();
+                        ConnectionDB.getInstance().buyProduct(i.getProductID(),String.valueOf(i.getProductQuantity()),orderID, String.valueOf(prize));
+                    }
+                    tablaView_Inventario.getItems().clear();
+              //      generateBill(orderID);
+                }
             }
-            System.out.print(orderID);
-            ObservableList<ShoppingList_Product> list;
-            list = tablaView_Inventario.getItems();
-            int prize = 0;
-            for (ShoppingList_Product i : list) {
-                prize = i.getProductPrize() * i.getProductQuantity();
-                ConnectionDB.getInstance().buyProduct(i.getProductID(),String.valueOf(i.getProductQuantity()),orderID, String.valueOf(prize));
-            }
-            tablaView_Inventario.getItems().clear();
         }else{
             Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
         }
@@ -177,5 +190,53 @@ public class ClientOrder_Controller {
         }
     }
 
+    private String MessageOrderType(){
+        try{
+            List<String> choices = new ArrayList<>();
+            choices.add("Express");
+            choices.add("Pasar a retirar");
+            ChoiceDialog<String> dialog = new ChoiceDialog<>("Express", choices);
+            dialog.setTitle("Indique la forma de recibir su pedido");
+            dialog.setHeaderText("Seleccione la forma de recibir su pedido");
+            dialog.setContentText("Pedido: ");
+          //  dialog.setGraphic(new ImageView(this.getClass().getResource("View/img/store.png").toString()));
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+            return result.get();
+        }catch (Exception e){return "Error";}
+    }
+
+    private String MessagePayment(){
+        try{
+            List<String> choices = new ArrayList<>();
+            choices.add("Tarjeta de crédito");
+            if(User.getCurrentUser().getUserType().equals("Empleado")){
+                choices.add("Efectivo");
+                choices.add("Cheque");
+                choices.add("Transferencia");
+            }
+            ChoiceDialog<String> dialog = new ChoiceDialog<>("Tarjeta de crédito", choices);
+            dialog.setTitle("Indique la forma de pago del pedido");
+            dialog.setHeaderText("Seleccione la forma de pago de su pedido");
+            dialog.setContentText("Forma de pago: ");
+            //  dialog.setGraphic(new ImageView(this.getClass().getResource("View/img/store.png").toString()));
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+            return result.get();
+        }catch (Exception e){return "Error";}
+    }
+
+
+    private String MessageCreditCard(){
+        try{
+            TextInputDialog dialog = new TextInputDialog("");
+            dialog.setTitle("Indique el número de tarjeta de crédito");
+            dialog.setHeaderText("Indique el número de tarjeta de crédito");
+            dialog.setContentText("Tarjeta de crédito: ");
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(name -> System.out.println("Your name: " + name));
+            return result.get();
+        }catch (Exception e){return "Error";}
+    }
 
 }
