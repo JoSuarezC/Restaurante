@@ -52,7 +52,7 @@ public class Products_Controller {
     @FXML
     public void AddProduct(ActionEvent event){
         try {
-            FXRouter.goTo("AddProduct");
+            FXRouter.goTo("ClientOrderHistory");
         } catch (IOException e) {
             System.out.print(e);
         }
@@ -92,7 +92,7 @@ public class Products_Controller {
         ClmPrecio_tbl_Dulcillo.setCellValueFactory(cellData -> cellData.getValue().productPrizeProperty().asString());
         ClmDescripcion_tbl_Dulcillo.setCellValueFactory(cellData -> cellData.getValue().productDetailProperty());
         ObservableList<Product> dulces_list = FXCollections.observableArrayList();
-        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Dulce"));
+        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Postre"));
         Tabla_Dulcillo.setItems(dulces_list);
     }
 

@@ -60,6 +60,7 @@ public final class FXRouter {
     private static AbstractMap<String, RouteScene> routes = new HashMap<>();
     // FXRouter current route
     private static RouteScene currentRoute;
+  //  private static RouteScene previousRoute;
 
     /**
      * FXRouter Inner Class used into routes map
@@ -213,6 +214,7 @@ public final class FXRouter {
         String pathRef = mainRef.getClass().getPackage().getName();
 
         // set FXRouter current route reference
+     //   previousRoute = currentRoute;
         currentRoute = route;
 
         // create correct file path.  "/" doesn't affect any OS
@@ -281,5 +283,7 @@ public final class FXRouter {
     public static Object getData() {
         return currentRoute.data;
     }
+
+    //public static String (){ return previousRoute.tag; }
 
 }
