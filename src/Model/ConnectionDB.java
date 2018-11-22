@@ -43,7 +43,7 @@ public class ConnectionDB {
         StringBuilder response = new StringBuilder();
         try {
             URL urlForPOSTRequest = new URL(url);
-            String readLine = null;
+            String readLine;
             HttpURLConnection conection = (HttpURLConnection) urlForPOSTRequest.openConnection();
             conection.setRequestMethod("POST");
             conection.setDoOutput(true);
@@ -59,7 +59,7 @@ public class ConnectionDB {
                 } in .close();
             } else {
                 Main.MessageBox("Error de conexión", "No se ha podido conectar con el servidor.");}
-        }catch(IOException e){System.out.print(e);}
+        }catch(IOException e){e.printStackTrace();}
         return response.toString();
     }
 
@@ -68,7 +68,7 @@ public class ConnectionDB {
         StringBuilder response = new StringBuilder();
         try{
             URL urlForGetRequest = new URL(url);
-            String readLine = null;
+            String readLine;
             HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
             conection.setRequestMethod("GET");
             int responseCode = conection.getResponseCode();
@@ -79,7 +79,7 @@ public class ConnectionDB {
                 } in .close();
             } else {
                 Main.MessageBox("Error de conexión", "No se ha podido conectar con el servidor.");}
-        }catch(IOException e){System.out.print(e);}
+        }catch(IOException e){e.printStackTrace();}
         return response.toString();
     }
 
@@ -105,12 +105,12 @@ public class ConnectionDB {
             }else{
                 System.out.print("No existe el usuario");
             }
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return userType;
     }
 
 
-    public ArrayList selectProductInventory_byType (String productType){
+    public ArrayList<Product> selectProductInventory_byType (String productType){
         ArrayList<Product> arraylistProducto = new ArrayList<>();
         try{
             JSONObject myResponse = new JSONObject(GETRequest(select_products_by_productType_PHP+"?TipoProducto="+productType));
@@ -127,19 +127,19 @@ public class ConnectionDB {
                     arraylistProducto.add(p);
                 }
             }else{System.out.print("No existe el producto");}
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return arraylistProducto;
     }
 
 
     public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega){
-        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&IdSucursal";
+        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&IdSucursal" + Sucursal + "&DireccionEntrega="+DireccionEntrega;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
             if (myResponse.getString("status").equals("true")) {
                 return myResponse.getJSONObject("value").getString("orderID");
             }
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return null;
     }
 
@@ -148,7 +148,7 @@ public class ConnectionDB {
         try {
             JSONObject myResponse = new JSONObject(POSTrequest(search_product_PHP, "Nombre="+ProductName));
             return myResponse.getString("status").equals("true");
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return false;
     }
 
@@ -158,7 +158,7 @@ public class ConnectionDB {
             JSONObject myResponse = new JSONObject(POSTrequest(add_product_PHP, URLparameters));
             System.out.print(myResponse.getString("status"));
             return myResponse.getString("status").equals("true");
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return false;
     }
 
@@ -169,7 +169,7 @@ public class ConnectionDB {
             if (myResponse.getString("status").equals("true")) {
                 System.out.print("Producto comprado \n");
             }else{System.out.print("Error, producto no comprado \n");}
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
     }
 
     public boolean createUser(String pUsername,String pPassword,String pEmail, String pIdClient){
@@ -178,7 +178,7 @@ public class ConnectionDB {
             JSONObject myResponse = new JSONObject(POSTrequest(create_user_PHP, URLparameters));
             System.out.print(myResponse.getString("status"));
             return myResponse.getString("status").equals("true");
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return false;
     }
 
@@ -193,11 +193,11 @@ public class ConnectionDB {
             else{
                 return -1;
             }
-        }catch (JSONException e){ System.err.print(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return -1;
     }
 
-    public ArrayList selectSucursales (){
+    public ArrayList<Sucursal> selectSucursales (){
         ArrayList<Sucursal> arraylistSucursal= new ArrayList<>();
         try{
             JSONObject myResponse = new JSONObject(GETRequest(select_sucursales));
@@ -213,11 +213,11 @@ public class ConnectionDB {
                     arraylistSucursal.add(s);
                 }
             }else{System.out.print("No hay sucursales en la base de datos");}
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return arraylistSucursal;
     }
 
-    public ArrayList selectPedidos_porCliente(){
+    public ArrayList<Pedido> selectPedidos_porCliente(){
         ArrayList<Pedido> arraylistPedidos = new ArrayList<>();
         try{
             JSONObject myResponse = new JSONObject(GETRequest(select_pedidos_de_usuario_PHP+"?IdCliente="+User.getCurrentUser().getUserID()));
@@ -233,7 +233,7 @@ public class ConnectionDB {
                     arraylistPedidos.add(p);
                 }
             }else{System.out.print("No existe el pedido");}
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return arraylistPedidos;
     }
 
@@ -251,11 +251,11 @@ public class ConnectionDB {
                     listaRetorno.add(shoppingList_product);
                 }
             }else{System.out.print("No sirvo");}
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return listaRetorno;
     }
 
-    public ArrayList selectPedidos_pendientes(){
+    public ArrayList<Pedido>  selectPedidos_pendientes(){
         ArrayList<Pedido> arraylistPedidos = new ArrayList<>();
         try{
             JSONObject myResponse = new JSONObject(GETRequest(select_pedidos_pendientes_PHP));
@@ -271,7 +271,7 @@ public class ConnectionDB {
                     arraylistPedidos.add(p);
                 }
             }else{System.out.print("No existe el pedido");}
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return arraylistPedidos;
     }
 
@@ -279,7 +279,7 @@ public class ConnectionDB {
         try {
             JSONObject myResponse = new JSONObject(GETRequest(set_pedido_entregado_PHP+"?IdPedido="+IdPedido));
             return myResponse.getString("status").equals("true");
-        }catch (JSONException e){ System.out.println(e);}
+        }catch (JSONException e){ e.printStackTrace();}
         return false;
     }
 
@@ -288,6 +288,6 @@ public class ConnectionDB {
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(generateBill, URLparameters));
             System.out.print(myResponse.getString("status"));
-        }catch (JSONException e){ System.err.print(e);}
+        }catch (JSONException e){ e.printStackTrace();}
     }
 }

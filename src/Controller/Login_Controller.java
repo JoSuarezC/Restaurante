@@ -4,11 +4,9 @@ import Model.ConnectionDB;
 import Model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import java.awt.Image;
+
 
 import java.io.IOException;
 
@@ -31,26 +29,26 @@ public class Login_Controller {
                 try{
                     FXRouter.goTo("MenuAdm");
                 }catch (IOException e){
-                    System.out.print(e);
+                    e.printStackTrace();
                 }
             }else if(User.getCurrentUser().getJob().equals("Gerente General")){
                 try{
                     FXRouter.goTo("MenuAdm");
                 }catch (IOException e){
-                    System.out.print(e);
+                    e.printStackTrace();
                 }
             }else{
                 try{
                     FXRouter.goTo("Client");
                 }catch (IOException e){
-                    System.out.print(e);
+                    e.printStackTrace();
                 }
             }
         }else if(userType.equals("Cliente")){
             try{
                 FXRouter.goTo("Client");
             }catch (IOException e){
-                System.out.print(e);
+                e.printStackTrace();
             }
         }else{
             System.out.print("no sirve ??");
@@ -62,7 +60,7 @@ public class Login_Controller {
         try{
             FXRouter.goTo("SignIn");
         }catch (IOException e){
-            System.out.print(e);
+            e.printStackTrace();
         }
 
     }

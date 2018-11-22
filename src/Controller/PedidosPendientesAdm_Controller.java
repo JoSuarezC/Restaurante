@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,10 +21,7 @@ public class PedidosPendientesAdm_Controller {
 
     @FXML
     private TableColumn<Pedido,String> clm_pedidos;
-
-    @FXML
-    private Button btn_marcarEntregado;
-
+    
     @FXML
     private TableView<ShoppingList_Product> tbl_productos;
 
@@ -103,7 +99,7 @@ public class PedidosPendientesAdm_Controller {
         try {
             FXRouter.goTo("MenuAdm");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 

@@ -12,13 +12,6 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 public class NewProduct_Controller {
-
-    @FXML
-    private Button btn_Agregar;
-
-    @FXML
-    private Button btn_Atras;
-
     @FXML
     private TextField txt_Nombre;
 
@@ -48,13 +41,7 @@ public class NewProduct_Controller {
         }
 
     }
-
-    @FXML
-    protected void initialize(String productName, String productDesc, String productPrice, String productType){
-
-        cbx_Tipo.getItems().add(productType);
-    }
-
+    
     @FXML
     public void addProduct(ActionEvent event){
         if(txt_Nombre.getText().equals("") || txt_Descripcion.getText().equals("") || txt_Precio.getText().equals("")){
@@ -69,7 +56,7 @@ public class NewProduct_Controller {
                     try {
                         FXRouter.goTo("Products");
                     } catch (IOException e) {
-                        System.out.print(e);
+                        e.printStackTrace();
                     }
                 }
                 else{
@@ -87,7 +74,7 @@ public class NewProduct_Controller {
         try {
             FXRouter.loadPreviousRoute();
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 }

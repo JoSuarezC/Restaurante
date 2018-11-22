@@ -54,7 +54,7 @@ public class Products_Controller {
         try {
             FXRouter.goTo("AddProduct");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
@@ -68,7 +68,7 @@ public class Products_Controller {
         try {
             FXRouter.goTo("DetalleProducto");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
@@ -77,7 +77,7 @@ public class Products_Controller {
         try {
             FXRouter.goTo("MenuAdm");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 

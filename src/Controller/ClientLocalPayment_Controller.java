@@ -2,17 +2,11 @@ package Controller;
 
 import Model.ConnectionDB;
 import Model.ShoppingList_Product;
-import Model.Sucursal;
 import Model.User;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -136,7 +130,7 @@ public class ClientLocalPayment_Controller {
     }
 
     private void generateBill(String orderID, String total,String formaPago){
-        ConnectionDB.getInstance().generateBill("formaPago", "", orderID,total);
+        ConnectionDB.getInstance().generateBill(formaPago, "", orderID,total);
     }
 
     private String getCheckBox() {
