@@ -31,6 +31,8 @@ public class AdminCreateCombo_Controller {
     @FXML private Button btn_quitarP;
     @FXML private Button btn_crearCombo;
     @FXML private TableView<Product> tableView_Combo;
+    @FXML private TableColumn<Product, String> tableColumn_Combo_Producto;
+    @FXML private TableColumn<Product, String> tableColumn_Combo_Cantidad;
     @FXML private Spinner spinner_descuento;
 
     private Map<String,Integer> productQty;
@@ -99,6 +101,8 @@ public class AdminCreateCombo_Controller {
         });
 
         //Tabla Combo
+        tableColumn_Combo_Producto.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
+        tableColumn_Combo_Cantidad.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
 
         Callback<TableColumn<Product, String>, TableCell<Product, String>> cellFactorySpinner
                 =
@@ -113,17 +117,11 @@ public class AdminCreateCombo_Controller {
                             private final ChangeListener<Number> valueChangeListener;
 
                             {
-                                valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 0);
+                                valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, Integer.MAX_VALUE, 1, 1);
                                 count = new Spinner<>(valueFactory);
-                                count.setVisible(false);
-                                setGraphic(count);
                                 valueChangeListener = (ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
                                     valueFactory.setValue(newValue.intValue());
                                 };
-                                count.valueProperty().addListener((obs, oldValue, newValue) -> {
-                                    //map.put(key, map.get(key) + 1);
-                                    productQty.put()
-                                });
                             }
 
                             @Override
@@ -133,23 +131,25 @@ public class AdminCreateCombo_Controller {
                                     setGraphic(null);
                                     setText(null);
                                 } else {
-                                    btn.setOnAction(event -> {
-                                        Product myProduct = getTableView().getItems().get(getIndex());
-                                        try {
-                                            FXRouter.goTo("AddProduct", myProduct);
-                                        } catch (IOException e) {
-                                            System.out.print(e);
-                                        }
 
+                                    count.valueProperty().addListener((obs, oldValue, newValue) -> {
+                                        //map.put(key, map.get(key) + 1);
+                                        productQty.put(getTableView().getItems().get(getIndex()).getProductID(), newValue);
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "New Value: " + newValue, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+                                        alert.showAndWait();
                                     });
-                                    setGraphic(btn);
-                                    setText(null);
+
+                                    setGraphic(count);
                                 }
                             }
                         };
                         return cell;
                     }
                 };
+
+        tableColumn_Combo_Cantidad.setCellFactory(cellFactorySpinner);
+
+        tableView_Combo.setItems(product_list);
     }
 
     @FXML

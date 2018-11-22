@@ -44,7 +44,7 @@
             <DropShadow />
          </effect>
          <children>
-            <Button fx:id="btn_Productos" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#GoToProductos" prefHeight="36.0" prefWidth="195.0" text="Productos">
+            <Button fx:id="btn_Productos" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#GoToManageMenu" prefHeight="36.0" prefWidth="195.0" text="Productos">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>
