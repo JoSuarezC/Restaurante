@@ -116,7 +116,7 @@ public class ConnectionDB {
                     String detail = results.getJSONObject(i).getString("Detalle");
                     int prize = results.getJSONObject(i).getInt("PrecioUnitario");
                     String type = results.getJSONObject(i).getString("TipoProducto");
-                    Product p = new Product(name, type, productID, prize, detail, 1);
+                    Product p = new Product(name, type, productID, prize, detail);
                     arraylistProducto.add(p);
                 }
             }else{System.out.print("No existe el producto");}

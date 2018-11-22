@@ -1,6 +1,9 @@
 package Model;
 
-import javafx.beans.property.*;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Product {
 
@@ -10,17 +13,15 @@ public class Product {
     private final StringProperty productID;
     private final IntegerProperty productPrize;
     private final StringProperty productDetail;
-    private final IntegerProperty productState;
 
-    public Product(String productName, String productType, String productID, int productPrize,
-                   String productDetail, int productState) {
+    public Product(String productName, String productType, String productID, int productPrize, String productDetail) {
         this.productName = new SimpleStringProperty(productName);
         this.productType = new SimpleStringProperty(productType);
         this.productID = new SimpleStringProperty(productID);
         this.productPrize = new SimpleIntegerProperty(productPrize);
         this.productDetail = new SimpleStringProperty(productDetail);
-        this.productState = new SimpleIntegerProperty(productState);
     }
+
 
     public String getProductDetail() {
         return productDetail.get();
@@ -66,16 +67,8 @@ public class Product {
         return productID;
     }
 
-    public int getProductState() {
-        return productState.get();
-    }
-
-    public IntegerProperty productStateProperty() {
-        return productState;
-    }
-
-    public void setProductState(int productState) {
-        this.productState.set(productState);
+    public void setProductID(String productID) {
+        this.productID.set(productID);
     }
 
     public int getProductPrize() {
