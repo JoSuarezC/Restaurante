@@ -36,6 +36,16 @@ public class AdminMenu_Controller {
     }
 
     @FXML
+    public void GoToManageMenu(ActionEvent event) {
+        try {
+            FXRouter.goTo("Adm_ManagePMenu");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
+
+    @FXML
     public void GoToPedidosPendientes(ActionEvent event) {
         try {
             FXRouter.goTo("PedidosPendientesAdm");
@@ -45,9 +55,15 @@ public class AdminMenu_Controller {
     }
 
     @FXML
+<<<<<<< Updated upstream
     public void GoOutApplication(ActionEvent event) {
         try {
             FXRouter.goTo("Login");
+=======
+    public void goCashier(ActionEvent event) {
+        try {
+            FXRouter.goTo("Client");
+>>>>>>> Stashed changes
         } catch (IOException e) {
             System.out.print(e);
         }

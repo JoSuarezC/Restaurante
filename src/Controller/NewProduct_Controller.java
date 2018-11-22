@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.ConnectionDB;
+import Model.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,7 +33,26 @@ public class NewProduct_Controller {
 
     @FXML
     protected void initialize(){
-        cbx_Tipo.getItems().addAll("Bebida", "Comida", "Postre");
+
+        if(FXRouter.getData() != null){
+            Product myProduct = (Product) FXRouter.getData();
+            txt_Nombre.setText(myProduct.getProductName());
+            txt_Nombre.setEditable(false);
+            txt_Descripcion.setText(myProduct.getProductDetail());
+            txt_Descripcion.setEditable(false);
+            txt_Precio.setText(String.valueOf(myProduct.getProductPrize()));
+            txt_Precio.setEditable(false);
+            cbx_Tipo.getItems().addAll(myProduct.getProductType());
+        }else{
+            cbx_Tipo.getItems().addAll("Bebida", "Comida", "Postre");
+        }
+
+    }
+
+    @FXML
+    protected void initialize(String productName, String productDesc, String productPrice, String productType){
+
+        cbx_Tipo.getItems().add(productType);
     }
 
     @FXML
@@ -65,7 +85,7 @@ public class NewProduct_Controller {
     @FXML
     public void GoBack(ActionEvent event){
         try {
-            FXRouter.goTo("Products");
+            FXRouter.loadPreviousRoute();
         } catch (IOException e) {
             System.out.print(e);
         }

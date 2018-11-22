@@ -60,7 +60,7 @@ public final class FXRouter {
     private static AbstractMap<String, RouteScene> routes = new HashMap<>();
     // FXRouter current route
     private static RouteScene currentRoute;
-  //  private static RouteScene previousRoute;
+    private static RouteScene previousRoute;
 
     /**
      * FXRouter Inner Class used into routes map
@@ -214,7 +214,7 @@ public final class FXRouter {
         String pathRef = mainRef.getClass().getPackage().getName();
 
         // set FXRouter current route reference
-     //   previousRoute = currentRoute;
+        previousRoute = currentRoute;
         currentRoute = route;
 
         // create correct file path.  "/" doesn't affect any OS
@@ -233,6 +233,10 @@ public final class FXRouter {
 
         // set scene animation
         routeAnimation(resource);
+    }
+
+    public static void loadPreviousRoute() throws IOException {
+        loadNewRoute(previousRoute);
     }
 
     /* Syntactic sugar for goTo() method when FXRouter get set */
