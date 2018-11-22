@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrder_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrderHistory_Controller">
    <children>
       <MenuBar layoutY="1.0" prefHeight="32.0" prefWidth="1204.0">
         <menus>
@@ -29,21 +28,75 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane layoutY="33.0" prefHeight="634.0" prefWidth="1204.0" style="-fx-background-color: #ce533d;">
+      <AnchorPane layoutY="33.0" prefHeight="634.0" prefWidth="1204.0" style="-fx-background-color: #2a73c1;">
          <children>
-            <Label layoutX="422.0" layoutY="24.0" text="Historial de pedidos">
+            <Label layoutX="457.0" layoutY="14.0" text="Historial de pedidos" textFill="WHITE">
                <font>
-                  <Font name="SansSerif Regular" size="41.0" />
+                  <Font name="SansSerif Regular" size="33.0" />
                </font>
             </Label>
-            <TableView fx:id="tbl_historialPedidos" layoutX="217.0" layoutY="105.0" prefHeight="440.0" prefWidth="770.0">
+            <TableView fx:id="tbl_pedidos" layoutX="201.0" layoutY="125.0" onMousePressed="#mostrarInfo" prefHeight="440.0" prefWidth="167.0">
               <columns>
-                <TableColumn fx:id="clm_fechaHora" prefWidth="158.3999786376953" text="Fecha/Hora" />
-                <TableColumn fx:id="clm_Productos" prefWidth="345.6000061035156" text="Productos" />
-                  <TableColumn fx:id="clm_totalAPagar" prefWidth="139.199951171875" text="Total a pagar" />
-                  <TableColumn fx:id="clm_Estado" prefWidth="125.60009765625" text="Estado" />
+                <TableColumn fx:id="clm_pedidos" prefWidth="165.5999755859375" text="Pedido" />
               </columns>
             </TableView>
+            <Label layoutX="192.0" layoutY="83.0" text="Seleccione el pedido" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="513.0" layoutY="125.0" prefHeight="440.0" prefWidth="544.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="38.0" layoutY="26.0" text="Fecha y Hora:">
+                     <font>
+                        <Font name="SansSerif Regular" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="65.0" text="Estado:">
+                     <font>
+                        <Font name="SansSerif Regular" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="39.0" layoutY="369.0" text="Monto total:">
+                     <font>
+                        <Font name="SansSerif Regular" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="102.0" text="Productos:">
+                     <font>
+                        <Font name="SansSerif Regular" size="19.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tbl_ProductosPedido" layoutX="39.0" layoutY="137.0" prefHeight="200.0" prefWidth="477.0">
+                    <columns>
+                      <TableColumn fx:id="clm_producto" prefWidth="159.20001220703125" text="Prodcuto" />
+                      <TableColumn fx:id="clm_cantidad" prefWidth="82.39996337890625" text="Cantidad" />
+                        <TableColumn fx:id="clm_precio" prefWidth="135.20001220703125" text="Precio unitario" />
+                        <TableColumn fx:id="clm_precioTotalProducto" prefWidth="100.7999267578125" text="Precio total" />
+                    </columns>
+                  </TableView>
+                  <Label fx:id="lbl_fechaHora" layoutX="169.0" layoutY="23.0">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_estado" layoutX="169.0" layoutY="62.0">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_productos" layoutX="169.0" layoutY="99.0">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_montoTotal" layoutX="169.0" layoutY="366.0">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

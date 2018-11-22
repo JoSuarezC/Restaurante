@@ -27,6 +27,7 @@ public class ConnectionDB {
     private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
     private static final String select_sucursales = URL_HOST + "RestaurantePHP/select_sucursales.php";
     private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
+    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/select_productos_por_pedido.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -216,11 +217,31 @@ public class ConnectionDB {
                     String fecha = results.getJSONObject(i).getString("FechaHora");
                     String precio = results.getJSONObject(i).getString("TotalAPagar");
                     String estado = results.getJSONObject(i).getString("Estado");
-                    Pedido p = new Pedido(idPedido, fecha, precio, estado, null);
+                    ArrayList<ShoppingList_Product> listaProductosPedido=selectProductos_porPedido(Integer.toString(idPedido));
+                    Pedido p = new Pedido(idPedido, fecha, precio, estado, listaProductosPedido);
                     arraylistPedidos.add(p);
                 }
             }else{System.out.print("No existe el pedido");}
         }catch (JSONException e){ System.out.println(e);}
         return arraylistPedidos;
+    }
+
+
+    public ArrayList selectProductos_porPedido(String pIdPedido){
+        ArrayList<ShoppingList_Product> listaRetorno = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_productos_por_pedido_PHP+"?IdPedido="+pIdPedido));
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    int Cantidad = results.getJSONObject(i).getInt("Cantidad");
+                    String Nombre = results.getJSONObject(i).getString("Nombre");
+                    int PrecioUnitario = results.getJSONObject(i).getInt("PrecioUnitario");
+                    ShoppingList_Product shoppingList_product = new ShoppingList_Product(Nombre,null,null, PrecioUnitario,null,Cantidad);
+                    listaRetorno.add(shoppingList_product);
+                }
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ System.out.println(e);}
+        return listaRetorno;
     }
 }

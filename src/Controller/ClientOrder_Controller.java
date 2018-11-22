@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -147,7 +148,11 @@ public class ClientOrder_Controller {
 
     @FXML
     void mostrarHistorialPedidos(ActionEvent event) {
-
+        try {
+            FXRouter.goTo("ClientOrderHistory");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 
     @FXML

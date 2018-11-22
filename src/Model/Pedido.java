@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 
@@ -13,9 +14,9 @@ public class Pedido {
     private final StringProperty fechaPedido;
     private final StringProperty totalAPagar;
     private final StringProperty estadoPedido;
-    private final ArrayList<StringProperty> listaProductos;
+    private final ArrayList<ShoppingList_Product> listaProductos;
 
-    public Pedido(int idPedido, String fechaPedido, String totalAPagar, String estadoPedido, ArrayList<StringProperty> listaProductos) {
+    public Pedido(int idPedido, String fechaPedido, String totalAPagar, String estadoPedido, ArrayList<ShoppingList_Product> listaProductos) {
         this.idPedido = new SimpleIntegerProperty(idPedido);
         this.fechaPedido = new SimpleStringProperty(fechaPedido);
         this.totalAPagar = new SimpleStringProperty(totalAPagar);
@@ -59,7 +60,7 @@ public class Pedido {
         this.estadoPedido.set(estadoPedido);
     }
 
-    public ArrayList<StringProperty> getListaProductos() {
+    public ArrayList<ShoppingList_Product> getListaProductos() {
         return listaProductos;
     }
 
