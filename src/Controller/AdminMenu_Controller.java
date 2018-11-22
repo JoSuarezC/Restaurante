@@ -44,4 +44,14 @@ public class AdminMenu_Controller {
         }
     }
 
+    @FXML
+    public void GoOutApplication(ActionEvent event) {
+        try {
+            FXRouter.goTo("Login");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
+
 }

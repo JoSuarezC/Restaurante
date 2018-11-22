@@ -1,9 +1,12 @@
 package Controller;
 
 import Model.ConnectionDB;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class Sign_in_Controller {
 
@@ -55,6 +58,15 @@ public class Sign_in_Controller {
                 Main.MessageBox("Error", "No se ha podido realizar el registro correctamente (cliente)");
             }
 
+        }
+    }
+
+    @FXML
+    void GoBack(ActionEvent event) {
+        try{
+            FXRouter.goTo("Login");
+        }catch (IOException e){
+            System.out.print(e);
         }
     }
 }

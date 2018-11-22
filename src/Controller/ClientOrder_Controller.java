@@ -149,8 +149,12 @@ public class ClientOrder_Controller {
     }
 
     @FXML
-    void CerrarSesion(ActionEvent event) {
-
+    public void LogOut(ActionEvent event) {
+        try {
+            FXRouter.goTo("Login");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 
     private void checkProduct(Product selection){

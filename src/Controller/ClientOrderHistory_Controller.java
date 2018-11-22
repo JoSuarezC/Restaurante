@@ -5,6 +5,7 @@ import Model.ShoppingList_Product;
 import Model.Product;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import Model.Pedido;
+
+import java.io.IOException;
 
 public class ClientOrderHistory_Controller {
     @FXML
@@ -76,6 +79,24 @@ public class ClientOrderHistory_Controller {
         ObservableList<ShoppingList_Product> listProductos = FXCollections.observableArrayList();
         listProductos.addAll(tbl_pedidos.getSelectionModel().getSelectedItem().getListaProductos());
         tbl_ProductosPedido.setItems(listProductos);
+    }
+
+    @FXML
+    public void RealizarOrden(ActionEvent event) {
+        try {
+            FXRouter.goTo("Client");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+    @FXML
+
+    public void LogOut(ActionEvent event) {
+        try {
+            FXRouter.goTo("Login");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 }
 

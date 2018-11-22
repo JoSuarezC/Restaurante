@@ -6,11 +6,14 @@ import Model.ShoppingList_Product;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+import java.io.IOException;
 
 public class PedidosPendientesAdm_Controller {
 
@@ -95,4 +98,13 @@ public class PedidosPendientesAdm_Controller {
             Main.MessageBox("Error", "Seleccione un pedido para poder marcarlo como entregado.");
         }
     }
+
+    public void GoBack(ActionEvent event) {
+        try {
+            FXRouter.goTo("MenuAdm");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
 }
