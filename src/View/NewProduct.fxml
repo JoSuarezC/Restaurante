@@ -5,28 +5,81 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #0b5484;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewProduct_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewProduct_Controller">
    <children>
-      <AnchorPane layoutX="372.0" layoutY="98.0" prefHeight="469.0" prefWidth="460.0" style="-fx-background-color: #ffffff;">
+      <ImageView fitHeight="862.0" fitWidth="630.0" layoutY="75.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="852.0" fitWidth="637.0" layoutX="629.0" layoutY="75.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="384.0" layoutY="98.0" prefHeight="447.0" prefWidth="460.0" style="-fx-background-color: #ff9900;">
          <children>
-            <Label layoutX="147.0" layoutY="36.0" text="Agregar producto">
+            <Label layoutX="76.0" layoutY="29.0" text="Complete la información">
                <font>
-                  <Font size="22.0" />
+                  <Font name="SansSerif Regular" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="76.0" layoutY="89.0" text="Nombre" />
-            <Label layoutX="80.0" layoutY="139.0" text="Tipo" />
-            <Label layoutX="76.0" layoutY="195.0" text="Descripcion" />
-            <Label layoutX="76.0" layoutY="280.0" text="Precio" />
-            <Button fx:id="btn_Agregar" layoutX="204.0" layoutY="339.0" mnemonicParsing="false" onAction="#addProduct" text="Agregar" />
-            <Button fx:id="btn_Atras" layoutX="339.0" layoutY="405.0" mnemonicParsing="false" text="Atrás" />
-            <TextField fx:id="txt_Nombre" layoutX="159.0" layoutY="85.0" prefHeight="26.0" prefWidth="200.0" />
-            <ComboBox fx:id="cbx_Tipo" layoutX="159.0" layoutY="135.0" prefHeight="26.0" prefWidth="200.0" />
-            <TextArea fx:id="txt_Descripcion" layoutX="159.0" layoutY="189.0" prefHeight="65.0" prefWidth="200.0" />
-            <TextField fx:id="txt_Precio" layoutX="159.0" layoutY="276.0" prefHeight="26.0" prefWidth="200.0" />
+            <Label layoutX="76.0" layoutY="89.0" text="Nombre">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Label layoutX="80.0" layoutY="139.0" text="Tipo">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Label layoutX="76.0" layoutY="195.0" text="Descripción">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Label layoutX="76.0" layoutY="280.0" text="Precio">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Button fx:id="btn_Agregar" layoutX="186.0" layoutY="340.0" mnemonicParsing="false" onAction="#addProduct" text="Agregar">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font></Button>
+            <Button fx:id="btn_Atras" layoutX="358.0" layoutY="393.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
+               <font>
+                  <Font name="SansSerif Regular" size="15.0" />
+               </font></Button>
+            <TextField fx:id="txt_Nombre" layoutX="186.0" layoutY="87.0" prefHeight="26.0" prefWidth="200.0" />
+            <ComboBox fx:id="cbx_Tipo" layoutX="186.0" layoutY="137.0" prefHeight="26.0" prefWidth="200.0" />
+            <TextArea fx:id="txt_Descripcion" layoutX="186.0" layoutY="195.0" prefHeight="65.0" prefWidth="200.0" />
+            <TextField fx:id="txt_Precio" layoutX="186.0" layoutY="278.0" prefHeight="26.0" prefWidth="200.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane prefHeight="75.0" prefWidth="1227.0" style="-fx-background-color: #ffcc00;">
+         <children>
+            <Label layoutX="424.0" layoutY="8.0" prefHeight="60.0" prefWidth="379.0" text="Agregar nuevo producto" textAlignment="CENTER">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="322.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/guitar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="821.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/guitar.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

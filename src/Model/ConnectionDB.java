@@ -21,11 +21,11 @@ public class ConnectionDB {
     private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/select_products_by_productType.php";
     private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
     private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
-    private static final String search_product_PHP = URL_HOST +"RestaurantePHP/search_product.php";
+    private static final String search_product_PHP = URL_HOST +"restaurante-ak7.esy.es/RestaurantePHP/Producto/search_product.php";
     private static final String add_product_PHP = URL_HOST +"RestaurantePHP/insert_product.php";
     private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/insert_client.php";
     private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
-    private static final String select_sucursales = URL_HOST + "RestaurantePHP/select_sucursales.php";
+    private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
     private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
     private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/select_productos_por_pedido.php";
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
@@ -145,7 +145,7 @@ public class ConnectionDB {
 
     public boolean searchProduct(String ProductName){
         try {
-            JSONObject myResponse = new JSONObject(GETRequest(search_product_PHP+"?Nombre="+ProductName));
+            JSONObject myResponse = new JSONObject(POSTrequest(search_product_PHP, "Nombre="+ProductName));
             return myResponse.getString("status").equals("true");
         }catch (JSONException e){ System.out.println(e);}
         return false;
@@ -204,7 +204,7 @@ public class ConnectionDB {
                 JSONArray results = myResponse.getJSONArray("value");
                 for (int i = 0; i < results.length(); i++) {
                     String IDBO = results.getJSONObject(i).getString("IdSuc");
-                    String brachOffice = results.getJSONObject(i).getString("Nombre");
+                    String brachOffice = results.getJSONObject(i).getString("NombreSucursal");
                     String Direccion = results.getJSONObject(i).getString("Direccion");
                     String telfPedidos = results.getJSONObject(i).getString("Telf-Pedidos");
                     String telfSuc = results.getJSONObject(i).getString("Telf-Sucursal");

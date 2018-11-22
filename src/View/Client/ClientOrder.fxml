@@ -31,8 +31,7 @@
           <Menu mnemonicParsing="false" text="Ayuda">
             <items>
               <MenuItem fx:id="MenuItem_Manual" mnemonicParsing="false" text="Manual de usuario" />
-                  <MenuItem fx:id="MenuItem_Contacto" mnemonicParsing="false" text="Contacto" />
-                  <MenuItem fx:id="MenuItem_AboutUs" mnemonicParsing="false" text="About us" />
+                  <MenuItem fx:id="MenuItem_Contacto" mnemonicParsing="false" onAction="#ContactoMessage" text="Contacto" />
             </items>
           </Menu>
         </menus>

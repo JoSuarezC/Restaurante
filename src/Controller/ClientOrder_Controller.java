@@ -174,6 +174,11 @@ public class ClientOrder_Controller {
         }
     }
 
+    @FXML
+    private void ContactoMessage(){
+        Main.MessageBox("Contacto","Para contactar con el restaurante comuniquese al: \r\n +506 8618 4965");
+    }
+
  /*   private String MessageOrderType(){
         try{
             List<String> choices = new ArrayList<>();

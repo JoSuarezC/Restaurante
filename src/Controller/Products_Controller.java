@@ -52,7 +52,7 @@ public class Products_Controller {
     @FXML
     public void AddProduct(ActionEvent event){
         try {
-            FXRouter.goTo("ClientOrderHistory");
+            FXRouter.goTo("AddProduct");
         } catch (IOException e) {
             System.out.print(e);
         }

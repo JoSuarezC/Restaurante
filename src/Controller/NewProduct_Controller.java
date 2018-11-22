@@ -8,6 +8,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class NewProduct_Controller {
 
     @FXML
@@ -44,6 +46,11 @@ public class NewProduct_Controller {
                 boolean response = ConnectionDB.getInstance().insertProduct(txt_Nombre.getText(),cbx_Tipo.getSelectionModel().getSelectedItem(),txt_Descripcion.getText(),txt_Precio.getText());
                 if(response){
                     Main.MessageBox("Éxito","Se ha agregado el producto correctamente.");
+                    try {
+                        FXRouter.goTo("Products");
+                    } catch (IOException e) {
+                        System.out.print(e);
+                    }
                 }
                 else{
                     Main.MessageBox("Error","No se ha podido agregar el producto al sistema.");
@@ -52,6 +59,15 @@ public class NewProduct_Controller {
             else{
                 Main.MessageBox("Error","El producto ya existe en el sistema.");
             }
+        }
+    }
+
+    @FXML
+    public void GoBack(ActionEvent event){
+        try {
+            FXRouter.goTo("Products");
+        } catch (IOException e) {
+            System.out.print(e);
         }
     }
 }
