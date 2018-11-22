@@ -92,12 +92,14 @@ public class ConnectionDB {
                 if (userType.equals("Empleado")){
                     String EmID = myResponse.getJSONObject("value").getString("IdEm");
                     String job = myResponse.getJSONObject("value").getString("NombrePuesto");
-                    User u = new User(EmID,userType,job);
+                    String sucursalID = myResponse.getJSONObject("value").getString("IdSuc");
+                    String sucursalName = myResponse.getJSONObject("value").getString("NombreSucursal");
+                    User u = new User(EmID,userType,job,sucursalName,sucursalID);
                     User.setCurrentUser(u);
 
                 }else if(userType.equals("Cliente")){
                     String ClientID = myResponse.getJSONObject("value").getString("IdCliente");
-                    User u = new User(ClientID,userType,"");
+                    User u = new User(ClientID,userType,"","","");
                     User.setCurrentUser(u);
                 }
             }else{

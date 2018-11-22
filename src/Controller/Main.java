@@ -18,7 +18,7 @@ public class Main extends Application {
         FXRouter.when("SignIn","/View/Sign_in.fxml","Sign In",1204,666);
         FXRouter.when("ClientOrderHistory","/View/Client/ClientOrderHistory.fxml","Order History",1204,666);
         FXRouter.when("OnlinePayment", "/View/Client/ClientOnlinePayment.fxml","Información de pago",1290,690);
-        FXRouter.when("LocalPayment","/View/Client/CreditCardPayment.fxml","Pago por tarjeta bancaria",1290,690);
+        FXRouter.when("LocalPayment", "/View/Client/ClientLocalPayment.fxml","Pago por tarjeta bancaria",1290,690);
         FXRouter.when("PedidosPendientesAdm","/View/Administrator/PedidosPendientesAdm.fxml","Pedidos Pendientes",1204,666);
         FXRouter.goTo("Login");
 
