@@ -64,7 +64,7 @@ public class Products_Controller {
     }
 
     @FXML
-    void ActivarProducto(ActionEvent event) {
+    void DetallesProducto(ActionEvent event) {
         try {
             FXRouter.goTo("DetalleProducto");
         } catch (IOException e) {
@@ -73,10 +73,17 @@ public class Products_Controller {
     }
 
     @FXML
-    protected void initialize(){
+    void Atras(ActionEvent event) {
+        try {
+            FXRouter.goTo("MenuAdm");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
 
+    @FXML
+    protected void initialize() {
         fillTables();
-
     }
 
     private void fillTables(){

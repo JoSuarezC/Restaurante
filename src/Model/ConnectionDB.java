@@ -18,7 +18,7 @@ public class ConnectionDB {
 
     /*private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
     private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
-    private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/select_products_by_productType.php";
+    private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/Producto/select_products_by_productType.php";
     private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
     private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
     private static final String search_product_PHP = URL_HOST +"restaurante-ak7.esy.es/RestaurantePHP/Producto/search_product.php";
@@ -27,25 +27,25 @@ public class ConnectionDB {
     private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
     private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
     private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
-    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/select_productos_por_pedido.php";
+    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/Producto/select_productos_por_pedido.php";
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
     private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
     private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";*/
     private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
-    private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
+    private static final String login_PHP = URL_HOST + "RestaurantePHP/Usuario/login.php";
     private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/Producto/select_products_by_productType.php";
-    private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
-    private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
+    private static final String makeOrder = URL_HOST + "RestaurantePHP/Pedido/makeOrder.php";
+    private static final String buyProduct = URL_HOST + "RestaurantePHP/Pedido/buyProduct.php";
     private static final String search_product_PHP = URL_HOST +"RestaurantePHP/Producto/search_product.php";
     private static final String add_product_PHP = URL_HOST +"RestaurantePHP/Producto/insert_product.php";
-    private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/insert_client.php";
-    private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
+    private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/Usuario/insert_client.php";
+    private static final String create_user_PHP = URL_HOST + "RestaurantePHP/Usuario/create_user.php";
     private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
-    private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
+    private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/Pedido/select_pedido_usuario.php";
     private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/Producto/select_productos_por_pedido.php";
-    private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
-    private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
-    private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";
+    private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/Pedido/select_pedidos_pendientes.php";
+    private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/Pedido/set_pedido_entregado.php";
+    private static final String generateBill = URL_HOST+"RestaurantePHP/Pedido/generateBill.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -137,7 +137,8 @@ public class ConnectionDB {
                     String detail = results.getJSONObject(i).getString("Detalle");
                     int prize = results.getJSONObject(i).getInt("PrecioUnitario");
                     String type = results.getJSONObject(i).getString("TipoProducto");
-                    Product p = new Product(name, type, productID, prize, detail);
+                    int state = results.getJSONObject(i).getInt("Estado");
+                    Product p = new Product(name, type, productID, prize, detail, state);
                     arraylistProducto.add(p);
                 }
             }else{System.out.print("No existe el producto");}
@@ -262,7 +263,7 @@ public class ConnectionDB {
                     int Cantidad = results.getJSONObject(i).getInt("Cantidad");
                     String Nombre = results.getJSONObject(i).getString("Nombre");
                     int PrecioUnitario = results.getJSONObject(i).getInt("PrecioUnitario");
-                    ShoppingList_Product shoppingList_product = new ShoppingList_Product(Nombre,null,null, PrecioUnitario,null,Cantidad);
+                    ShoppingList_Product shoppingList_product = new ShoppingList_Product(Nombre,null,null, PrecioUnitario,null,Cantidad, 1);
                     listaRetorno.add(shoppingList_product);
                 }
             }else{System.out.print("No sirvo");}

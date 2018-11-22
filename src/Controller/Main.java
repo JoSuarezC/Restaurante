@@ -12,7 +12,7 @@ public class Main extends Application {
         FXRouter.bind(this, primaryStage);
         FXRouter.when("Login", "/View/Login.fxml", "Login", 1204, 666);
         FXRouter.when("Client", "/View/Client/ClientOrder.fxml", "Client Order", 1204, 666);
-        FXRouter.when("MenuAdm","/View/Administrator/AdminMenu.fxml","Admin Menu",1024,666);
+        FXRouter.when("MenuAdm","/View/Administrator/AdminMenu.fxml","Admin Menu",1204,666);
         FXRouter.when("Adm_ManagePMenu","/View/Administrator/AdminManageProdMenu.fxml","Menú",1204,666);
         FXRouter.when("Adm_CreateCombo","/View/Administrator/AdminCreateCombo.fxml","Create Combo",1204,666);
         FXRouter.when("Products","/View/Products.fxml","Products",1204,666);
@@ -23,8 +23,8 @@ public class Main extends Application {
         FXRouter.when("LocalPayment", "/View/Client/ClientLocalPayment.fxml","Pago por tarjeta bancaria",1290,690);
         FXRouter.when("PedidosPendientesAdm","/View/Administrator/PedidosPendientesAdm.fxml","Pedidos Pendientes",1204,666);
         FXRouter.when("DetalleProducto","/View/DetalleProducto.fxml","Detalle Producto",1204,666);
+        FXRouter.when("Cajero","/View/Client/ClientLocalPayment.fxml","Cajero",1204,666);
         FXRouter.goTo("Login");
-
     }
 
     public static void MessageBox(String tittle, String content){

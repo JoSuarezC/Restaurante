@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="pnlVistaGerente" fx:id="AnchorPaneMain" prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminMenu_Controller">
+<AnchorPane id="pnlVistaGerente" fx:id="AnchorPaneMain" prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #ff9900;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminMenu_Controller">
    <children>
       <AnchorPane prefHeight="175.0" prefWidth="1211.0" style="-fx-background-color: #ffcc00;">
          <children>
@@ -44,11 +44,11 @@
             <DropShadow />
          </effect>
          <children>
-            <Button fx:id="btn_Productos" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#GoToManageMenu" prefHeight="36.0" prefWidth="195.0" text="Administrar Menú">
+            <Button fx:id="btn_Productos" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#GoToProductos" prefHeight="36.0" prefWidth="195.0" text="Productos">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>
-            <Button fx:id="btn_Cajero" layoutX="113.0" layoutY="170.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="195.0" text="Cajero">
+            <Button fx:id="btn_Cajero" layoutX="113.0" layoutY="170.0" mnemonicParsing="false" onAction="#Cajero" prefHeight="36.0" prefWidth="195.0" text="Cajero">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>

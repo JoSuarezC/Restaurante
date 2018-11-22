@@ -55,13 +55,21 @@ public class AdminMenu_Controller {
     }
 
     @FXML
+
     public void GoOutApplication(ActionEvent event) {
         try {
             FXRouter.goTo("Login");
+        }catch (IOException e){};
+    }
+
+
+    @FXML
+    public void Cajero(ActionEvent event) {
+        try {
+            FXRouter.goTo("Client");
         } catch (IOException e) {
             System.out.print(e);
         }
     }
-
 
 }

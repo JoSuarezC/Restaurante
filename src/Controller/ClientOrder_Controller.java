@@ -20,7 +20,13 @@ import java.util.Optional;
 public class ClientOrder_Controller {
 
     @FXML
+    private Button btn_cancelarPedido;
+
+    @FXML
     private TextField TextBox_ProductQuantity;
+
+    @FXML
+    private MenuBar id_menuBar;
 
     // Combos //
     @FXML private TableView<Product> tablaView_Combos;
@@ -56,6 +62,14 @@ public class ClientOrder_Controller {
 
     @FXML
     protected void initialize(){
+        if(User.getCurrentUser().getUserType().equals("Empleado")){
+            id_menuBar.setDisable(true);
+            id_menuBar.setVisible(false);
+        }
+        else{
+            btn_cancelarPedido.setDisable(true);
+            btn_cancelarPedido.setVisible(false);
+        }
         fillTables();
     }
 
@@ -170,13 +184,22 @@ public class ClientOrder_Controller {
         if(indice != -1){
             tablaView_Inventario.getItems().get(indice).setProductQuantity(tablaView_Inventario.getItems().get(indice).getProductQuantity() + Integer.parseInt(TextBox_ProductQuantity.getText()));
         }else{
-            tablaView_Inventario.getItems().add(new ShoppingList_Product(selection.getProductName(), selection.getProductType(), selection.getProductID(), selection.getProductPrize(), selection.getProductDetail(), Integer.parseInt(TextBox_ProductQuantity.getText())));
+            tablaView_Inventario.getItems().add(new ShoppingList_Product(selection.getProductName(), selection.getProductType(), selection.getProductID(), selection.getProductPrize(), selection.getProductDetail(), selection.getProductState(), Integer.parseInt(TextBox_ProductQuantity.getText())));
         }
     }
 
     @FXML
     private void ContactoMessage(){
         Main.MessageBox("Contacto","Para contactar con el restaurante comuniquese al: \r\n +506 8618 4965");
+    }
+
+    @FXML
+    private void cancelarPedido(){
+        try {
+            FXRouter.goTo("MenuAdm");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 
  /*   private String MessageOrderType(){

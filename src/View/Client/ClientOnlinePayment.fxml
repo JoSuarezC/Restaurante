@@ -1,33 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0b5484;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOnlinePayment_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOnlinePayment_Controller">
    <children>
-      <Pane layoutX="56.0" layoutY="38.0" prefHeight="353.0" prefWidth="795.0" style="-fx-background-color: #ffffff;">
+      <ImageView fitHeight="862.0" fitWidth="630.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="897.0" fitWidth="679.0" layoutX="629.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="56.0" layoutY="38.0" prefHeight="258.0" prefWidth="795.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Label layoutX="34.0" layoutY="85.0" text="El pedido sera entregado en">
+            <Pane prefHeight="58.0" prefWidth="795.0" style="-fx-background-color: #ffcc00;">
+               <children>
+                  <Label layoutX="36.0" layoutY="15.0" prefHeight="27.0" prefWidth="224.0" text="Dirección de envío">
+                     <font>
+                        <Font name="SansSerif Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="34.0" layoutY="67.0" text="El pedido será entregado en">
                <font>
-                  <Font name="SansSerif Regular" size="16.0" />
+                  <Font name="SansSerif Regular" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="directionTF" layoutX="34.0" layoutY="118.0" prefHeight="193.0" prefWidth="715.0" />
-            <Label layoutX="23.0" layoutY="8.0" prefHeight="27.0" prefWidth="224.0" text="Direccion de envio">
-               <font>
-                  <Font name="SansSerif Bold" size="24.0" />
-               </font>
-            </Label>
+            <TextArea fx:id="directionTF" layoutX="34.0" layoutY="98.0" prefHeight="133.0" prefWidth="715.0" />
          </children>
       </Pane>
       <Pane layoutX="927.0" layoutY="38.0" prefHeight="562.0" prefWidth="319.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TableView fx:id="inventoryTable" layoutX="17.0" layoutY="62.0" prefHeight="317.0" prefWidth="285.0">
+            <Pane layoutY="-1.0" prefHeight="58.0" prefWidth="319.0" style="-fx-background-color: #ffcc00;">
+               <children>
+                  <Label layoutX="21.0" layoutY="15.0" prefHeight="27.0" prefWidth="230.0" text="Detalles del pedido">
+                     <font>
+                        <Font name="SansSerif Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <TableView fx:id="inventoryTable" layoutX="17.0" layoutY="68.0" prefHeight="317.0" prefWidth="285.0">
               <columns>
                 <TableColumn fx:id="productColumn" prefWidth="143.0" text="Producto" />
                 <TableColumn fx:id="quantityColumn" prefWidth="141.0" text="Cantidad" />
@@ -49,11 +79,6 @@
                   <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="14.0" prefHeight="27.0" prefWidth="230.0" text="Detalles del pedido">
-               <font>
-                  <Font name="SansSerif Bold" size="24.0" />
-               </font>
-            </Label>
             <Label layoutX="24.0" layoutY="399.0" prefHeight="20.0" prefWidth="76.0" text="Entrega">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
@@ -62,7 +87,7 @@
             <ChoiceBox fx:id="choiceBox_Entrega" layoutX="139.0" layoutY="394.0" prefHeight="31.0" prefWidth="161.0" />
          </children>
       </Pane>
-      <Button fx:id="backButton" layoutX="1113.0" layoutY="636.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="133.0" text="Atras">
+      <Button fx:id="backButton" layoutX="1113.0" layoutY="636.0" mnemonicParsing="false" onAction="#Atras" prefHeight="31.0" prefWidth="133.0" text="Atras">
          <font>
             <Font name="SansSerif Regular" size="16.0" />
          </font>
@@ -73,14 +98,9 @@
          </font>
       </Button>
       <Separator layoutX="875.0" layoutY="33.0" orientation="VERTICAL" prefHeight="660.0" prefWidth="10.0" />
-      <Pane layoutX="56.0" layoutY="413.0" prefHeight="271.0" prefWidth="795.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="56.0" layoutY="328.0" prefHeight="271.0" prefWidth="795.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Label layoutX="14.0" layoutY="21.0" text="Informacion de la tarjeta bancaria">
-               <font>
-                  <Font name="SansSerif Regular" size="23.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="90.0" text="Ingrese y elija su tarjeta">
+            <Label layoutX="14.0" layoutY="90.0" text="Ingrese el número su tarjeta">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
@@ -104,6 +124,15 @@
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
             </Label>
+            <Pane prefHeight="58.0" prefWidth="795.0" style="-fx-background-color: #ffcc00;">
+               <children>
+                  <Label layoutX="30.0" layoutY="16.0" text="Información de la tarjeta bancaria">
+                     <font>
+                        <Font name="SansSerif Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

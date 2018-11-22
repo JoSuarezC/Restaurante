@@ -13,15 +13,29 @@ public class Product {
     private final StringProperty productID;
     private final IntegerProperty productPrize;
     private final StringProperty productDetail;
+    private final IntegerProperty productState;
 
-    public Product(String productName, String productType, String productID, int productPrize, String productDetail) {
+    public Product(String productName, String productType, String productID, int productPrize, String productDetail,
+                   int productState) {
         this.productName = new SimpleStringProperty(productName);
         this.productType = new SimpleStringProperty(productType);
         this.productID = new SimpleStringProperty(productID);
         this.productPrize = new SimpleIntegerProperty(productPrize);
         this.productDetail = new SimpleStringProperty(productDetail);
+        this.productState = new SimpleIntegerProperty(productState);
     }
 
+    public int getProductState() {
+        return productState.get();
+    }
+
+    public IntegerProperty productStateProperty() {
+        return productState;
+    }
+
+    public void setProductState(int productState) {
+        this.productState.set(productState);
+    }
 
     public String getProductDetail() {
         return productDetail.get();
