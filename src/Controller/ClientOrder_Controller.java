@@ -20,6 +20,9 @@ import java.util.Optional;
 public class ClientOrder_Controller {
 
     @FXML
+    private Button btn_cancelarPedido;
+
+    @FXML
     private TextField TextBox_ProductQuantity;
 
     @FXML
@@ -59,6 +62,14 @@ public class ClientOrder_Controller {
 
     @FXML
     protected void initialize(){
+        if(User.getCurrentUser().getUserType().equals("Empleado")){
+            id_menuBar.setDisable(true);
+            id_menuBar.setVisible(false);
+        }
+        else{
+            btn_cancelarPedido.setDisable(true);
+            btn_cancelarPedido.setVisible(false);
+        }
         fillTables();
     }
 
@@ -180,6 +191,15 @@ public class ClientOrder_Controller {
     @FXML
     private void ContactoMessage(){
         Main.MessageBox("Contacto","Para contactar con el restaurante comuniquese al: \r\n +506 8618 4965");
+    }
+
+    @FXML
+    private void cancelarPedido(){
+        try {
+            FXRouter.goTo("MenuAdm");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 
  /*   private String MessageOrderType(){

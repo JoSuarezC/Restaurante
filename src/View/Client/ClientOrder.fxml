@@ -176,6 +176,11 @@
                   <Font size="29.0" />
                </font>
             </Label>
+            <Button fx:id="btn_cancelarPedido" layoutX="683.0" layoutY="447.0" mnemonicParsing="false" onAction="#cancelarPedido" prefHeight="34.0" prefWidth="166.0" text="Cancelar pedido">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font>
+            </Button>
          </children>
          <effect>
             <DropShadow />
