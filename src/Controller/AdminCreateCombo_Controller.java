@@ -135,8 +135,7 @@ public class AdminCreateCombo_Controller {
                                     count.valueProperty().addListener((obs, oldValue, newValue) -> {
                                         //map.put(key, map.get(key) + 1);
                                         productQty.put(getTableView().getItems().get(getIndex()).getProductID(), newValue);
-                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "New Value: " + newValue, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-                                        alert.showAndWait();
+                                        System.out.println(newValue);
                                     });
 
                                     setGraphic(count);

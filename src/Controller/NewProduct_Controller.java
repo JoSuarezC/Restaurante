@@ -25,6 +25,9 @@ public class NewProduct_Controller {
     private TextField txt_Precio;
 
     @FXML
+    private Button btn_Agregar;
+
+    @FXML
     protected void initialize(){
 
         if(FXRouter.getData() != null){
