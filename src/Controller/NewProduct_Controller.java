@@ -43,6 +43,9 @@ public class NewProduct_Controller {
             txt_Precio.setText(String.valueOf(myProduct.getProductPrize()));
             txt_Precio.setEditable(false);
             cbx_Tipo.getItems().addAll(myProduct.getProductType());
+            cbx_Tipo.setValue(myProduct.getProductType());
+            btn_Agregar.setDisable(true);
+            btn_Agregar.setVisible(false);
         }else{
             cbx_Tipo.getItems().addAll("Bebida", "Comida", "Postre");
         }
