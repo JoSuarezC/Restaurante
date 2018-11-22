@@ -16,21 +16,6 @@ public class ConnectionDB {
 
     private static ConnectionDB instance;
 
-    /*private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
-    private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
-    private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/Producto/select_products_by_productType.php";
-    private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
-    private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
-    private static final String search_product_PHP = URL_HOST +"restaurante-ak7.esy.es/RestaurantePHP/Producto/search_product.php";
-    private static final String add_product_PHP = URL_HOST +"RestaurantePHP/insert_product.php";
-    private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/insert_client.php";
-    private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
-    private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
-    private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
-    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/Producto/select_productos_por_pedido.php";
-    private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
-    private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
-    private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";*/
     private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
     private static final String login_PHP = URL_HOST + "RestaurantePHP/Usuario/login.php";
     private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/Producto/select_products_by_productType.php";
@@ -243,7 +228,7 @@ public class ConnectionDB {
                     String fecha = results.getJSONObject(i).getString("FechaHora");
                     String precio = results.getJSONObject(i).getString("TotalAPagar");
                     String estado = results.getJSONObject(i).getString("Estado");
-                    ArrayList<ShoppingList_Product> listaProductosPedido=selectProductos_porPedido(Integer.toString(idPedido));
+                    ArrayList<ShoppingList_Product> listaProductosPedido= selectProductos_porPedido(Integer.toString(idPedido));
                     Pedido p = new Pedido(idPedido, fecha, precio, estado, listaProductosPedido);
                     arraylistPedidos.add(p);
                 }
@@ -252,8 +237,7 @@ public class ConnectionDB {
         return arraylistPedidos;
     }
 
-
-    public ArrayList selectProductos_porPedido(String pIdPedido){
+    private ArrayList<ShoppingList_Product> selectProductos_porPedido(String pIdPedido){
         ArrayList<ShoppingList_Product> listaRetorno = new ArrayList<>();
         try{
             JSONObject myResponse = new JSONObject(GETRequest(select_productos_por_pedido_PHP+"?IdPedido="+pIdPedido));
@@ -304,13 +288,6 @@ public class ConnectionDB {
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(generateBill, URLparameters));
             System.out.print(myResponse.getString("status"));
-            if (myResponse.getString("status").equals("true")){
-              //  return Integer.parseInt(myResponse.getJSONObject("value").getString("orderID"));
-            }
-            else{
-                //return -1;
-            }
         }catch (JSONException e){ System.err.print(e);}
-        //return -1;
     }
 }
