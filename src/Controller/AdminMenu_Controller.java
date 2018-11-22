@@ -1,5 +1,3 @@
-/**
- */
 
 package Controller;
 
@@ -12,26 +10,11 @@ import javafx.scene.layout.AnchorPane;
 public class AdminMenu_Controller {
 
     @FXML
-    private AnchorPane AnchorPaneMain;
-
-    @FXML
-    private Button btn_Reportes;
-
-    @FXML
-    private Button btn_Productos;
-
-    @FXML
-    private Button btn_Cajero;
-
-    @FXML
-    private Button btn_Salir;
-
-    @FXML
     public void GoToProductos(ActionEvent event) {
         try {
             FXRouter.goTo("Products");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
@@ -40,7 +23,7 @@ public class AdminMenu_Controller {
         try {
             FXRouter.goTo("Adm_ManagePMenu");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
@@ -50,16 +33,15 @@ public class AdminMenu_Controller {
         try {
             FXRouter.goTo("PedidosPendientesAdm");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
     @FXML
-
     public void GoOutApplication(ActionEvent event) {
         try {
             FXRouter.goTo("Login");
-        }catch (IOException e){};
+        }catch (IOException e){e.printStackTrace();};
     }
 
 
@@ -68,7 +50,7 @@ public class AdminMenu_Controller {
         try {
             FXRouter.goTo("Client");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 

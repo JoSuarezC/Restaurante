@@ -2,22 +2,17 @@ package Controller;
 
 import Model.ConnectionDB;
 import Model.ShoppingList_Product;
-import Model.Sucursal;
 import Model.User;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Pair;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -108,12 +103,12 @@ public class ClientLocalPayment_Controller {
 
     @FXML
     void payOrder(ActionEvent event) {
-        if(!getCheckBox().equals("Sin selección")){
+        if (!getCheckBox().equals("Sin selección")) {
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
             String totalAPagar = Label_TotalCost.getText();
-            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar,Label_Sucursal.getText(),"Orden Local");
+            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, Label_Sucursal.getText(), "Orden Local");
             System.out.print(orderID);
             ObservableList<ShoppingList_Product> list;
             list = inventoryTable.getItems();
@@ -122,14 +117,20 @@ public class ClientLocalPayment_Controller {
                 prize = i.getProductPrize() * i.getProductQuantity();
                 ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
             }
-            generateBill(orderID,totalAPagar,getCheckBox());
-        }else{
-            Main.MessageBox("Espacios vacíos","Indique el tipo de pago del pedido");
+            generateBill(orderID, totalAPagar, getCheckBox());
+            Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
+            try {
+                FXRouter.goTo("Client");
+            } catch (IOException e) {
+                System.out.print(e);
+            }
+        } else {
+            Main.MessageBox("Espacios vacíos", "Indique el tipo de pago del pedido");
         }
     }
 
     private void generateBill(String orderID, String total,String formaPago){
-        ConnectionDB.getInstance().generateBill("formaPago", "", orderID,total);
+        ConnectionDB.getInstance().generateBill(formaPago, "", orderID,total);
     }
 
     private String getCheckBox() {

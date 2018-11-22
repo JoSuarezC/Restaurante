@@ -17,10 +17,6 @@ import java.util.Date;
 
 public class ClientOnlinePayment_Controller {
 
-
-    @FXML
-    private CheckBox bankTransferCheck;
-
     @FXML
     private TextArea directionTF;
 
@@ -29,9 +25,6 @@ public class ClientOnlinePayment_Controller {
 
     @FXML
     private ChoiceBox<String> choiceBox_Entrega;
-
-    @FXML
-    private CheckBox creditCardCheck;
 
     @FXML
     private TableView<ShoppingList_Product> inventoryTable;
@@ -109,11 +102,11 @@ public class ClientOnlinePayment_Controller {
                     ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
                 }
                 generateBill(orderID, totalAPagar);
-                Main.MessageBox("Ëxito", "Su orden ha sido creada exitosamente");
+                Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
                 try {
                     FXRouter.goTo("Client");
                 } catch (IOException e) {
-                    System.out.print(e);
+                    e.printStackTrace();
                 }
             }
         }
@@ -127,10 +120,7 @@ public class ClientOnlinePayment_Controller {
     }
 
     private Boolean validaciones() {
-        if (!choiceBox_Sucursal.getSelectionModel().isEmpty() && !directionTF.getText().isEmpty() && !nameTF.getText().isEmpty() && !codeTF.getText().isEmpty() && !creditCardTF.getText().isEmpty()) {
-            return true;
-        }
-        return false;
+        return choiceBox_Sucursal.getSelectionModel().isEmpty() && !directionTF.getText().isEmpty() && !nameTF.getText().isEmpty() && !codeTF.getText().isEmpty() && !creditCardTF.getText().isEmpty();
     }
 
     private String bankCardToString(){
@@ -142,7 +132,7 @@ public class ClientOnlinePayment_Controller {
         try {
             FXRouter.goTo("Client");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 }

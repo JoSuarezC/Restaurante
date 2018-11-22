@@ -2,9 +2,7 @@ package Controller;
 
 import Model.ConnectionDB;
 import Model.ShoppingList_Product;
-import Model.Product;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.collections.FXCollections;
@@ -40,9 +38,6 @@ public class ClientOrderHistory_Controller {
 
     @FXML
     private Label lbl_estado;
-
-    @FXML
-    private Label lbl_productos;
 
     @FXML
     private Label lbl_montoTotal;
@@ -86,7 +81,7 @@ public class ClientOrderHistory_Controller {
         try {
             FXRouter.goTo("Client");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
     @FXML
@@ -95,7 +90,7 @@ public class ClientOrderHistory_Controller {
         try {
             FXRouter.goTo("Login");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 }

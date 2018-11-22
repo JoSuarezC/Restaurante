@@ -6,16 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.util.Pair;
-
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 public class ClientOrder_Controller {
 
@@ -108,10 +100,10 @@ public class ClientOrder_Controller {
             Pair<ObservableList,String> tupla = new Pair(tablaView_Inventario.getItems(), Label_TotalCost.getText());
             if (User.getCurrentUser().getUserType().equals("Cliente")){
                 try {FXRouter.goTo("OnlinePayment", tupla);}
-                catch (IOException e) {System.out.print(e);}
+                catch (IOException e) {e.printStackTrace();}
             }else{
                 try {FXRouter.goTo("LocalPayment", tupla);}
-                catch (IOException e) {System.out.print(e);}
+                catch (IOException e) {e.printStackTrace();}
             }
 
         }else{
@@ -158,7 +150,7 @@ public class ClientOrder_Controller {
         try {
             FXRouter.goTo("ClientOrderHistory");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
@@ -167,7 +159,7 @@ public class ClientOrder_Controller {
         try {
             FXRouter.goTo("Login");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
 
@@ -198,23 +190,7 @@ public class ClientOrder_Controller {
         try {
             FXRouter.goTo("MenuAdm");
         } catch (IOException e) {
-            System.out.print(e);
+            e.printStackTrace();
         }
     }
-
- /*   private String MessageOrderType(){
-        try{
-            List<String> choices = new ArrayList<>();
-            choices.add("Express");
-            choices.add("Pasar a retirar");
-            ChoiceDialog<String> dialog = new ChoiceDialog<>("Express", choices);
-            dialog.setTitle("Indique la forma de recibir su pedido");
-            dialog.setHeaderText("Seleccione la forma de recibir su pedido");
-            dialog.setContentText("Pedido: ");
-          //  dialog.setGraphic(new ImageView(this.getClass().getResource("View/img/store.png").toString()));
-            Optional<String> result = dialog.showAndWait();
-            result.ifPresent(letter -> System.out.println("Your choice: " + letter));
-            return result.get();
-        }catch (Exception e){return "Error";}
-    }*/
 }

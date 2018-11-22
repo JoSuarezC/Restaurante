@@ -43,15 +43,15 @@ public class DetalleProducto_Controller {
         showButtonsOptions();
     }
 
-    protected void clearFields(){
-        this.txt_NombreProducto.setText(new String(""));
-        this.txt_DescripcionProducto.setText(new String(""));
-        this.txt_PrecioProducto.setText(new String(""));
-        this.txt_TipoProducto.setText(new String(""));
+    private void clearFields(){
+        this.txt_NombreProducto.setText("");
+        this.txt_DescripcionProducto.setText("");
+        this.txt_PrecioProducto.setText("");
+        this.txt_TipoProducto.setText("");
         this.chkBox_Disponible.setSelected(false);
     }
 
-    protected void showButtonsOptions(){
+    private void showButtonsOptions(){
         this.btnAtras.setVisible(true);
         this.btnModficar.setVisible(true);
         this.btnAtras.setDisable(false);
@@ -63,7 +63,7 @@ public class DetalleProducto_Controller {
         this.btnGuardar.setDisable(true);
     }
 
-    protected void showButtonsState(){
+    private void showButtonsState(){
         this.btnCancelar.setVisible(true);
         this.btnGuardar.setVisible(true);
         this.btnCancelar.setDisable(false);
