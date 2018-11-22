@@ -55,9 +55,9 @@
          </font>
       </Label>
       <CheckBox fx:id="chkBox_Disponible" layoutX="49.0" layoutY="406.0" mnemonicParsing="false" text="Disponible" />
-      <Button layoutX="1117.0" layoutY="608.0" mnemonicParsing="false" onAction="#atras" text="Atras" />
-      <Button layoutX="1012.0" layoutY="608.0" mnemonicParsing="false" onAction="#modificar" text="Modificar" />
-      <Button layoutX="47.0" layoutY="608.0" mnemonicParsing="false" onAction="#guardar" prefHeight="25.0" prefWidth="78.0" text="Guardar" />
-      <Button layoutX="152.0" layoutY="608.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="78.0" text="Cancelar" />
+      <Button fx:id="btnAtras" layoutX="1117.0" layoutY="608.0" mnemonicParsing="false" onAction="#atras" text="Atras" />
+      <Button fx:id="btnModficar" layoutX="1012.0" layoutY="608.0" mnemonicParsing="false" onAction="#modificar" text="Modificar" />
+      <Button fx:id="btnGuardar" layoutX="47.0" layoutY="608.0" mnemonicParsing="false" onAction="#guardar" prefHeight="25.0" prefWidth="78.0" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="152.0" layoutY="608.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="78.0" text="Cancelar" />
    </children>
 </AnchorPane>

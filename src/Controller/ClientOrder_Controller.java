@@ -173,7 +173,7 @@ public class ClientOrder_Controller {
         if(indice != -1){
             tablaView_Inventario.getItems().get(indice).setProductQuantity(tablaView_Inventario.getItems().get(indice).getProductQuantity() + Integer.parseInt(TextBox_ProductQuantity.getText()));
         }else{
-            tablaView_Inventario.getItems().add(new ShoppingList_Product(selection.getProductName(), selection.getProductType(), selection.getProductID(), selection.getProductPrize(), selection.getProductDetail(), Integer.parseInt(TextBox_ProductQuantity.getText())));
+            tablaView_Inventario.getItems().add(new ShoppingList_Product(selection.getProductName(), selection.getProductType(), selection.getProductID(), selection.getProductPrize(), selection.getProductDetail(), selection.getProductState(), Integer.parseInt(TextBox_ProductQuantity.getText())));
         }
     }
 

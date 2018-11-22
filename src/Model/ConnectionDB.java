@@ -137,7 +137,8 @@ public class ConnectionDB {
                     String detail = results.getJSONObject(i).getString("Detalle");
                     int prize = results.getJSONObject(i).getInt("PrecioUnitario");
                     String type = results.getJSONObject(i).getString("TipoProducto");
-                    Product p = new Product(name, type, productID, prize, detail);
+                    int state = results.getJSONObject(i).getInt("Estado");
+                    Product p = new Product(name, type, productID, prize, detail, state);
                     arraylistProducto.add(p);
                 }
             }else{System.out.print("No existe el producto");}
@@ -262,7 +263,7 @@ public class ConnectionDB {
                     int Cantidad = results.getJSONObject(i).getInt("Cantidad");
                     String Nombre = results.getJSONObject(i).getString("Nombre");
                     int PrecioUnitario = results.getJSONObject(i).getInt("PrecioUnitario");
-                    ShoppingList_Product shoppingList_product = new ShoppingList_Product(Nombre,null,null, PrecioUnitario,null,Cantidad);
+                    ShoppingList_Product shoppingList_product = new ShoppingList_Product(Nombre,null,null, PrecioUnitario,null,Cantidad, 1);
                     listaRetorno.add(shoppingList_product);
                 }
             }else{System.out.print("No sirvo");}
