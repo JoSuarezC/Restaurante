@@ -37,9 +37,11 @@ public class NewProduct_Controller {
         if(FXRouter.getData() != null){
             Product myProduct = (Product) FXRouter.getData();
             txt_Nombre.setText(myProduct.getProductName());
-            txt_Nombre.setDisable(true);
+            txt_Nombre.setEditable(false);
             txt_Descripcion.setText(myProduct.getProductDetail());
+            txt_Descripcion.setEditable(false);
             txt_Precio.setText(String.valueOf(myProduct.getProductPrize()));
+            txt_Precio.setEditable(false);
             cbx_Tipo.getItems().addAll(myProduct.getProductType());
         }else{
             cbx_Tipo.getItems().addAll("Bebida", "Comida", "Postre");
@@ -83,7 +85,7 @@ public class NewProduct_Controller {
     @FXML
     public void GoBack(ActionEvent event){
         try {
-            FXRouter.goTo("Products");
+            FXRouter.loadPreviousRoute();
         } catch (IOException e) {
             System.out.print(e);
         }
