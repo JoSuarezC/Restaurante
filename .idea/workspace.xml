@@ -12,7 +12,6 @@
       <change beforePath="$PROJECT_DIR$/src/View/Client/ClientOrder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Client/ClientOrder.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Client/ClientPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Client/ClientPayment.fxml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,32 +21,33 @@
     <session id="-1069565315">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="3" />
-          <entry key="java" value="10" />
+          <entry key="fxml" value="7" />
+          <entry key="java" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="10" />
-          <entry key="XML" value="3" />
+          <entry key="JAVA" value="16" />
+          <entry key="XML" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="fxml" value="61" />
-          <entry key="java" value="1249" />
+          <entry key="fxml" value="69" />
+          <entry key="java" value="1986" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1249" />
-          <entry key="XML" value="61" />
+          <entry key="JAVA" value="1986" />
+          <entry key="XML" value="69" />
         </counts>
       </usages-collector>
     </session>
@@ -133,6 +133,11 @@
     <option name="width" value="1434" />
     <option name="height" value="1040" />
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -174,7 +179,7 @@
               <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="Administrator" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -193,7 +198,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/java-json.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
@@ -233,17 +238,17 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="117a3c36-eef1-4db8-a0a8-a20f881f926c" name="Default Changelist" comment="" />
-      <created>1542812949983</created>
+      <changelist id="a1c3bb96-4093-4849-8fe2-9f166f0fc415" name="Default Changelist" comment="" />
+      <created>1542835039949</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542835039949</updated>
-      <workItem from="1542835044070" duration="12578000" />
+      <workItem from="1542835044070" duration="20208000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12578000" />
+    <option name="totallyTimeSpent" value="20208000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -287,9 +292,6 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -307,7 +309,7 @@
     <entry file="file://$PROJECT_DIR$/src/View/NewProduct.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="16" column="64" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="64" />
+          <caret line="16" column="64" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -337,12 +339,13 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Restaurante.iml">
+    <entry file="file://$PROJECT_DIR$/src/View/Administrator/PedidosPendientes.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        <state relative-caret-position="136">
+          <caret line="8" column="44" lean-forward="true" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/Administrator/AdminMenu.fxml">
       <provider editor-type-id="text-editor" />
@@ -350,18 +353,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/Login_Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        <state relative-caret-position="136">
+          <caret line="70" column="4" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="78" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/Client/ClientPayment.fxml">
+    <entry file="file://$PROJECT_DIR$/src/Controller/NewProduct_Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminMenu_Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/Administrator/PedidosPendientesAdm.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />

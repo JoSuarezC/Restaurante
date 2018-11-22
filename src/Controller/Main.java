@@ -14,13 +14,14 @@ public class Main extends Application {
         FXRouter.bind(this, primaryStage);
         FXRouter.when("Login", "/View/Login.fxml", "Login", 1204, 666);
         FXRouter.when("Client", "/View/Client/ClientOrder.fxml", "Client Order", 1204, 666);
-        FXRouter.when("MenuAdm","/View/Administrator/AdminMenu.fxml","Admin Menu",1024,666);
+        FXRouter.when("MenuAdm","/View/Administrator/AdminMenu.fxml","Admin Menu",1204,666);
         FXRouter.when("Products","/View/Products.fxml","Products",1204,666);
         FXRouter.when("AddProduct","/View/NewProduct.fxml","Products",1204,666);
         FXRouter.when("SignIn","/View/Sign_in.fxml","Sign In",1204,666);
         FXRouter.when("ClientOrderHistory","/View/Client/ClientOrderHistory.fxml","Order History",1204,666);
         FXRouter.when("InfoPago","/View/Client/ClientPayment.fxml","Información de pago",1290,690);
 
+        FXRouter.when("PedidosPendientesAdm","/View/Administrator/PedidosPendientesAdm.fxml","Pedidos Pendientes",1204,666);
         FXRouter.goTo("Login");
 
     }
