@@ -28,6 +28,8 @@ public class ConnectionDB {
     private static final String select_sucursales = URL_HOST + "RestaurantePHP/select_sucursales.php";
     private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
     private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/select_productos_por_pedido.php";
+    private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
+    private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -243,5 +245,33 @@ public class ConnectionDB {
             }else{System.out.print("No sirvo");}
         }catch (JSONException e){ System.out.println(e);}
         return listaRetorno;
+    }
+
+    public ArrayList selectPedidos_pendientes(){
+        ArrayList<Pedido> arraylistPedidos = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_pedidos_pendientes_PHP));
+            if (myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    int idPedido = results.getJSONObject(i).getInt("IdPedido");
+                    String fecha = results.getJSONObject(i).getString("FechaHora");
+                    String precio = results.getJSONObject(i).getString("TotalAPagar");
+                    String estado = results.getJSONObject(i).getString("Estado");
+                    ArrayList<ShoppingList_Product> listaProductosPedido=selectProductos_porPedido(Integer.toString(idPedido));
+                    Pedido p = new Pedido(idPedido, fecha, precio, estado, listaProductosPedido);
+                    arraylistPedidos.add(p);
+                }
+            }else{System.out.print("No existe el pedido");}
+        }catch (JSONException e){ System.out.println(e);}
+        return arraylistPedidos;
+    }
+
+    public boolean SetDelivered(String IdPedido){
+        try {
+            JSONObject myResponse = new JSONObject(GETRequest(set_pedido_entregado_PHP+"?IdPedido="+IdPedido));
+            return myResponse.getString("status").equals("true");
+        }catch (JSONException e){ System.out.println(e);}
+        return false;
     }
 }
