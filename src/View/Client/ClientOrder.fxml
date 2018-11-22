@@ -20,11 +20,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="679.0" prefWidth="1227.0" style="-fx-background-color: #0b5484;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrder_Controller">
+<AnchorPane prefHeight="679.0" prefWidth="1227.0" style="-fx-background-color: #fffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrder_Controller">
    <children>
       <Button fx:id="Button_Order" layoutX="1077.0" layoutY="306.0" mnemonicParsing="false" onAction="#MakeOrder" prefHeight="31.0" prefWidth="127.0" text="Realizar pedido" />
       <Button fx:id="Button_Remove" layoutX="1077.0" layoutY="243.0" mnemonicParsing="false" onAction="#RemoveProduct" text="Quitar producto" />
-      <Label layoutX="593.0" layoutY="62.0" text="Lista de productos seleccionados">
+      <Label layoutX="607.0" layoutY="62.0" text="Lista de productos seleccionados">
          <font>
             <Font size="34.0" />
          </font>
@@ -35,12 +35,12 @@
             <Font name="Edwardian Script ITC" size="69.0" />
          </font>
       </Label>
-      <Label layoutX="909.0" layoutY="575.0" text="Coste acumulado:">
+      <Label layoutX="607.0" layoutY="588.0" text="Coste acumulado:">
          <font>
             <Font name="SansSerif Regular" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="Label_TotalCost" layoutX="1122.0" layoutY="573.0" text="0.0">
+      <Label fx:id="Label_TotalCost" layoutX="836.0" layoutY="588.0" text="0.0">
          <font>
             <Font name="SansSerif Regular" size="26.0" />
          </font>
@@ -135,11 +135,5 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ChoiceBox fx:id="choiceBox_Sucursal" layoutX="607.0" layoutY="620.0" prefWidth="150.0" />
-      <Label layoutX="635.0" layoutY="574.0" text="Sucursal">
-         <font>
-            <Font name="SansSerif Regular" size="24.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

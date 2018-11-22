@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMouseClicked="#marcarEntregado" prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #456f9b;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PedidosPendientesAdm_Controller">
+   <children>
+      <TableView fx:id="tbl_pedidos" layoutX="167.0" layoutY="139.0" prefHeight="406.0" prefWidth="188.0">
+        <columns>
+          <TableColumn fx:id="clm_pedidos" prefWidth="187.1999969482422" text="Pedidos Pendientes" />
+        </columns>
+      </TableView>
+      <Label layoutX="167.0" layoutY="97.0" text="Seleccione el pedido" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="468.0" layoutY="44.0" text="Pedidos Pendientes" textFill="WHITE">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="531.0" layoutY="139.0" prefHeight="406.0" prefWidth="490.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="44.0" layoutY="28.0" text="Fecha y hora:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="44.0" layoutY="73.0" text="Productos:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_marcarEntregado" layoutX="293.0" layoutY="357.0" mnemonicParsing="false" onAction="#marcarEntregado" onMouseClicked="#marcarEntregado" text="Marcar como entregado" />
+            <TableView fx:id="tbl_productos" layoutX="44.0" layoutY="109.0" prefHeight="170.0" prefWidth="418.0">
+              <columns>
+                <TableColumn fx:id="clm_producto" prefWidth="119.20001220703125" text="Producto" />
+                <TableColumn fx:id="clm_cantidad" text="Cantidad" />
+                  <TableColumn fx:id="clm_precioUnit" prefWidth="123.199951171875" text="Precio Unitario" />
+                  <TableColumn fx:id="clm_precioTotal" prefWidth="95.20013427734375" text="Precio Total" />
+              </columns>
+            </TableView>
+            <Label layoutX="47.0" layoutY="298.0" text="Monto total:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_fechaHora" layoutX="190.0" layoutY="28.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_montoTotal" layoutX="190.0" layoutY="298.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

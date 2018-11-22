@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.Client.ClientPayment"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="608.0" prefWidth="1227.0" style="-fx-background-color: #0b5484;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientPayment_Controller">
+   <children>
+      <Pane layoutX="38.0" layoutY="40.0" prefHeight="410.0" prefWidth="795.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label layoutX="34.0" layoutY="79.0" text="Nombre">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="415.0" layoutY="78.0" text="Apellidos">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="170.0" text="Correo">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="416.0" layoutY="171.0" text="Teléfono">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="lastnameTF" layoutX="564.0" layoutY="72.0" />
+            <TextField fx:id="telephoneTF" layoutX="564.0" layoutY="166.0" />
+            <TextField fx:id="passwordTF" layoutX="149.0" layoutY="165.0" />
+            <TextField fx:id="nameTF" layoutX="149.0" layoutY="73.0" />
+            <Label layoutX="34.0" layoutY="239.0" text="Dirección de domicilio">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="directionTF" layoutX="34.0" layoutY="271.0" prefHeight="102.0" prefWidth="543.0" />
+            <Label layoutX="23.0" layoutY="8.0" prefHeight="21.0" prefWidth="177.0" text="Tu información">
+               <font>
+                  <Font name="SansSerif Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="38.0" layoutY="472.0" prefHeight="108.0" prefWidth="795.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <CheckBox fx:id="creditCardCheck" layoutX="29.0" layoutY="64.0" mnemonicParsing="false" text="Tarjeta bancaria">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="cashCheck" layoutX="219.0" layoutY="64.0" mnemonicParsing="false" text="Efectivo">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="chequeCheck" layoutX="355.0" layoutY="64.0" mnemonicParsing="false" text="Cheque">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="bankTransferCheck" layoutX="483.0" layoutY="64.0" mnemonicParsing="false" text="Transferencia">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="29.0" layoutY="14.0" prefHeight="21.0" prefWidth="177.0" text="Forma de pago">
+               <font>
+                  <Font name="SansSerif Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="875.0" layoutY="38.0" prefHeight="434.0" prefWidth="319.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <TableView fx:id="inventoryTable" layoutX="17.0" layoutY="72.0" prefHeight="200.0" prefWidth="285.0">
+              <columns>
+                <TableColumn fx:id="productColumn" prefWidth="143.0" text="Producto" />
+                <TableColumn fx:id="quantityColumn" prefWidth="141.0" text="Cantidad" />
+              </columns>
+            </TableView>
+            <Label layoutX="24.0" layoutY="378.0" text="Monto a pagar">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="total" layoutX="145.0" layoutY="378.0" prefHeight="20.0" prefWidth="114.0" text="₡ 0.0">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="choiceBox_Sucursal" layoutX="139.0" layoutY="319.0" prefHeight="31.0" prefWidth="127.0" />
+            <Label layoutX="24.0" layoutY="324.0" prefHeight="20.0" prefWidth="76.0" text="Sucursal">
+               <font>
+                  <Font name="SansSerif Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="14.0" prefHeight="27.0" prefWidth="230.0" text="Detalles del pedido">
+               <font>
+                  <Font name="SansSerif Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="backButton" layoutX="1056.0" layoutY="526.0" mnemonicParsing="false" onAction="#back" prefHeight="31.0" prefWidth="133.0" text="Atras">
+         <font>
+            <Font name="SansSerif Regular" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="payButton" layoutX="875.0" layoutY="526.0" mnemonicParsing="false" onAction="#payOrder" prefHeight="31.0" prefWidth="133.0" text="Pagar">
+         <font>
+            <Font name="SansSerif Regular" size="16.0" />
+         </font>
+      </Button>
+      <Separator layoutX="851.0" layoutY="31.0" orientation="VERTICAL" prefHeight="547.0" prefWidth="10.0" />
+   </children>
 </AnchorPane>
