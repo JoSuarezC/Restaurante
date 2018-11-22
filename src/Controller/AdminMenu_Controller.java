@@ -34,4 +34,14 @@ public class AdminMenu_Controller {
             System.out.print(e);
         }
     }
+
+    @FXML
+    public void GoToManageMenu(ActionEvent event) {
+        try {
+            FXRouter.goTo("Adm_ManagePMenu");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
 }

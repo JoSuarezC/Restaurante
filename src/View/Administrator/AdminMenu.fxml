@@ -25,7 +25,7 @@
          </image>
       </ImageView>
       <Button id="btn_reportesVentas" fx:id="btn_Reportes" layoutX="571.0" layoutY="201.0" mnemonicParsing="false" text="Reportes de Ventas" />
-      <Button id="btn_admnistrarMenu" fx:id="btn_Productos" layoutX="574.0" layoutY="141.0" mnemonicParsing="false" onAction="#GoToProductos" text="Administrar Menú" />
+      <Button id="btn_admnistrarMenu" fx:id="btn_Productos" layoutX="574.0" layoutY="141.0" mnemonicParsing="false" onAction="#GoToManageMenu" text="Administrar Menú" />
       <Button fx:id="btn_Cajero" layoutX="596.0" layoutY="458.0" mnemonicParsing="false" text="Abrir Caja" />
       <Button fx:id="btn_Salir" layoutX="1073.0" layoutY="596.0" mnemonicParsing="false" text="Salir" />
       <Button id="btn_clientesAsociados" fx:id="btn_Cajero11" layoutX="573.0" layoutY="321.0" mnemonicParsing="false" text="Clientes Asociados" />

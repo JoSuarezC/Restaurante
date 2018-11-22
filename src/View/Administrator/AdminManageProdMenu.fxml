@@ -21,9 +21,9 @@
                            <columns>
                               <TableColumn fx:id="tableColumn_Producto_Comida" prefWidth="173.00003051757812" text="Producto" />
                               <TableColumn fx:id="tableColumn_Precio_Comida" minWidth="0.0" prefWidth="104.0" text="Precio" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida1" prefWidth="151.0" text="Tipo" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida11" prefWidth="177.0" text="Estado" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida111" prefWidth="129.0" />
+                              <TableColumn fx:id="tableColumn_Tipo_Comida" prefWidth="151.0" text="Tipo" />
+                              <TableColumn fx:id="tableColumn_Estado_Comida" prefWidth="177.0" text="Estado" />
+                              <TableColumn fx:id="tableColumn_Ver_Comida" prefWidth="129.0" />
                            </columns>
                         </TableView>
                      </children>
@@ -34,13 +34,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="757.0">
                      <children>
-                        <TableView fx:id="tablaView_Comida1" prefHeight="450.0" prefWidth="745.0">
+                        <TableView fx:id="tablaView_Dulce" prefHeight="450.0" prefWidth="745.0">
                            <columns>
-                              <TableColumn fx:id="tableColumn_Producto_Comida1" prefWidth="173.00003051757812" text="Producto" />
-                              <TableColumn fx:id="tableColumn_Precio_Comida1" minWidth="0.0" prefWidth="104.0" text="Precio" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida11" prefWidth="151.0" text="Tipo" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida111" prefWidth="177.0" text="Estado" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida1111" prefWidth="129.0" />
+                              <TableColumn fx:id="tableColumn_Producto_Dulce" prefWidth="173.00003051757812" text="Producto" />
+                              <TableColumn fx:id="tableColumn_Precio_Dulce" minWidth="0.0" prefWidth="104.0" text="Precio" />
+                              <TableColumn fx:id="tableColumn_Tipo_Dulce" prefWidth="151.0" text="Tipo" />
+                              <TableColumn fx:id="tableColumn_Estado_Dulce" prefWidth="177.0" text="Estado" />
+                              <TableColumn fx:id="tableColumn_Ver_Dulce" prefWidth="129.0" />
                            </columns>
                         </TableView>
                      </children>
@@ -51,13 +51,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="757.0">
                      <children>
-                        <TableView fx:id="tablaView_Comida11" prefHeight="450.0" prefWidth="745.0">
+                        <TableView fx:id="tablaView_Bebida" prefHeight="450.0" prefWidth="745.0">
                            <columns>
-                              <TableColumn fx:id="tableColumn_Producto_Comida11" prefWidth="173.00003051757812" text="Producto" />
-                              <TableColumn fx:id="tableColumn_Precio_Comida11" minWidth="0.0" prefWidth="104.0" text="Precio" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida111" prefWidth="151.0" text="Tipo" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida1111" prefWidth="177.0" text="Estado" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida11111" prefWidth="129.0" />
+                              <TableColumn fx:id="tableColumn_Producto_Bebida" prefWidth="173.00003051757812" text="Producto" />
+                              <TableColumn fx:id="tableColumn_Precio_Bebida" minWidth="0.0" prefWidth="104.0" text="Precio" />
+                              <TableColumn fx:id="tableColumn_Tipo_Bebida" prefWidth="151.0" text="Tipo" />
+                              <TableColumn fx:id="tableColumn_Estado_Bebida" prefWidth="177.0" text="Estado" />
+                              <TableColumn fx:id="tableColumn_Ver_Bebida" prefWidth="129.0" />
                            </columns>
                         </TableView>
                      </children>
@@ -68,13 +68,13 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="757.0">
                      <children>
-                        <TableView fx:id="tablaView_Comida111" prefHeight="450.0" prefWidth="745.0">
+                        <TableView fx:id="tablaView_Combo" prefHeight="450.0" prefWidth="745.0">
                            <columns>
-                              <TableColumn fx:id="tableColumn_Producto_Comida111" prefWidth="173.00003051757812" text="Producto" />
-                              <TableColumn fx:id="tableColumn_Precio_Comida111" minWidth="0.0" prefWidth="104.0" text="Precio" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida1111" prefWidth="151.0" text="Tipo" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida11111" prefWidth="177.0" text="Estado" />
-                              <TableColumn fx:id="tableColumn_Producto_Comida111111" prefWidth="129.0" />
+                              <TableColumn fx:id="tableColumn_Producto_Combo" prefWidth="173.00003051757812" text="Combo" />
+                              <TableColumn fx:id="tableColumn_Precio_Combo" minWidth="0.0" prefWidth="104.0" text="Precio" />
+                              <TableColumn fx:id="tableColumn_Tipo_Combo" prefWidth="151.0" text="Tipo" />
+                              <TableColumn fx:id="tableColumn_Estado_Combo" prefWidth="177.0" text="Estado" />
+                              <TableColumn fx:id="tableColumn_Ver_Combo" prefWidth="129.0" />
                            </columns>
                         </TableView>
                      </children>
@@ -84,7 +84,7 @@
          </tabs>
       </TabPane>
       <Button id="btn_agregarNuevoP" layoutX="746.0" layoutY="544.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="285.0" text="Agregar Nuevo Producto" />
-      <Button id="btn_crearCombo" layoutX="286.0" layoutY="544.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="325.0" text="Crear Combo" textAlignment="CENTER" />
+      <Button id="btn_crearCombo" layoutX="286.0" onAction="#GoToCombo" layoutY="544.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="325.0" text="Crear Combo" textAlignment="CENTER" />
       <Button id="btn_atras" layoutX="987.0" layoutY="616.0" mnemonicParsing="false" text="Atras" />
    </children>
 </AnchorPane>

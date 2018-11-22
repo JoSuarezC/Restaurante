@@ -12,17 +12,17 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminCreateCombo_Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="400.0" stroke="BLACK" strokeType="INSIDE" width="601.0" />
-      <TableView layoutX="28.0" layoutY="54.0" prefHeight="200.0" prefWidth="280.0">
+      <TableView fx:id="tableView_Producto" layoutX="28.0" layoutY="54.0" prefHeight="200.0" prefWidth="280.0">
         <columns>
-          <TableColumn prefWidth="102.0" text="Producto" />
-          <TableColumn prefWidth="86.0" text="Precio" />
-            <TableColumn prefWidth="74.0" />
+          <TableColumn fx:id="tableColumn_Producto_Producto" prefWidth="102.0" text="Producto" />
+          <TableColumn fx:id="tableColumn_Producto_Precio" prefWidth="86.0" text="Precio" />
+            <TableColumn fx:id="tableColumn_Producto_Ver" prefWidth="74.0" />
         </columns>
       </TableView>
-      <ListView layoutX="336.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button layoutX="115.0" layoutY="275.0" mnemonicParsing="false" text="Agregar al combo" />
-      <Button layoutX="381.0" layoutY="275.0" mnemonicParsing="false" text="Quitar del Combo" />
-      <Button layoutX="341.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Crear Combo" />
+      <ListView fx:id="listView_Combo" layoutX="336.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="btn_agregarP" layoutX="115.0" layoutY="275.0" mnemonicParsing="false" text="Agregar al combo" />
+      <Button fx:id="btn_quitarP" layoutX="381.0" layoutY="275.0" mnemonicParsing="false" text="Quitar del Combo" />
+      <Button fx:id="btn_crearCombo" layoutX="341.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Crear Combo" />
       <Label layoutX="28.0" layoutY="354.0" text="Descuento:" />
       <Spinner layoutX="96.0" layoutY="350.0" />
    </children>

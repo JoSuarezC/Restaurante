@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.ConnectionDB;
+import Model.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,7 +31,24 @@ public class NewProduct_Controller {
 
     @FXML
     protected void initialize(){
-        cbx_Tipo.getItems().addAll("Bebida", "Comida", "Postre");
+
+        if(FXRouter.getData() != null){
+            Product myProduct = (Product) FXRouter.getData();
+            txt_Nombre.setText(myProduct.getProductName());
+            txt_Nombre.setDisable(true);
+            txt_Descripcion.setText(myProduct.getProductDetail());
+            txt_Precio.setText(String.valueOf(myProduct.getProductPrize()));
+            cbx_Tipo.getItems().addAll(myProduct.getProductType());
+        }else{
+            cbx_Tipo.getItems().addAll("Bebida", "Comida", "Postre");
+        }
+
+    }
+
+    @FXML
+    protected void initialize(String productName, String productDesc, String productPrice, String productType){
+
+        cbx_Tipo.getItems().add(productType);
     }
 
     @FXML
