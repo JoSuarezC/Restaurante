@@ -64,6 +64,15 @@ public class Products_Controller {
     }
 
     @FXML
+    void ActivarProducto(ActionEvent event) {
+        try {
+            FXRouter.goTo("DetalleProducto");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
+    @FXML
     protected void initialize(){
 
         fillTables();
@@ -92,7 +101,7 @@ public class Products_Controller {
         ClmPrecio_tbl_Dulcillo.setCellValueFactory(cellData -> cellData.getValue().productPrizeProperty().asString());
         ClmDescripcion_tbl_Dulcillo.setCellValueFactory(cellData -> cellData.getValue().productDetailProperty());
         ObservableList<Product> dulces_list = FXCollections.observableArrayList();
-        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Dulce"));
+        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Postre"));
         Tabla_Dulcillo.setItems(dulces_list);
     }
 

@@ -14,4 +14,9 @@ public class Sucursal {
         this.telfSucursal = telfSucursal;
         this.telfPedidos = telfPedidos;
     }
+
+    @Override
+    public String toString() {
+        return "Sucursal " + nombreSucursal;
+    }
 }

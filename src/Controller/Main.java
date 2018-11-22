@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-import javax.swing.text.View;
-
 public class Main extends Application {
 
     @Override
@@ -21,6 +19,10 @@ public class Main extends Application {
         FXRouter.when("AddProduct","/View/NewProduct.fxml","Products",1204,666);
         FXRouter.when("SignIn","/View/Sign_in.fxml","Sign In",1204,666);
         FXRouter.when("ClientOrderHistory","/View/Client/ClientOrderHistory.fxml","Order History",1204,666);
+        FXRouter.when("OnlinePayment", "/View/Client/ClientOnlinePayment.fxml","Información de pago",1290,690);
+        FXRouter.when("LocalPayment", "/View/Client/ClientLocalPayment.fxml","Pago por tarjeta bancaria",1290,690);
+        FXRouter.when("PedidosPendientesAdm","/View/Administrator/PedidosPendientesAdm.fxml","Pedidos Pendientes",1204,666);
+        FXRouter.when("DetalleProducto","/View/DetalleProducto.fxml","Detalle Producto",1204,666);
         FXRouter.goTo("Login");
 
     }

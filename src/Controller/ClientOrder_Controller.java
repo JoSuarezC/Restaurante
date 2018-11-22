@@ -6,10 +6,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.util.Pair;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 public class ClientOrder_Controller {
 
@@ -50,9 +56,6 @@ public class ClientOrder_Controller {
 
     @FXML
     protected void initialize(){
-        ObservableList<String> brachOffice_list = FXCollections.observableArrayList();
-        brachOffice_list.addAll(ConnectionDB.getInstance().selectSucursales());
-        choiceBox_Sucursal.setItems(brachOffice_list);
         fillTables();
     }
 
@@ -81,31 +84,22 @@ public class ClientOrder_Controller {
         tableColumn_Producto_Dulce.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
         tableColumn_Precio_Dulce.setCellValueFactory(cellData -> cellData.getValue().productPrizeProperty().asString());
         ObservableList<Product> dulces_list = FXCollections.observableArrayList();
-        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Dulce"));
+        dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Postre"));
         tablaView_Dulce.setItems(dulces_list);
     }
 
     @FXML
     void MakeOrder(ActionEvent event) {
         if(!tablaView_Inventario.getItems().isEmpty()){
-            Date fecha = new Date();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
-            String orderID;
-            String totalAPagar = Label_TotalCost.getText();
-            if (User.getCurrentUser().getUserType().equals("Empleado")){
-                orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local", totalAPagar);
+            Pair<ObservableList,String> tupla = new Pair(tablaView_Inventario.getItems(), Label_TotalCost.getText());
+            if (User.getCurrentUser().getUserType().equals("Cliente")){
+                try {FXRouter.goTo("OnlinePayment", tupla);}
+                catch (IOException e) {System.out.print(e);}
             }else{
-                orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local", totalAPagar);
+                try {FXRouter.goTo("LocalPayment", tupla);}
+                catch (IOException e) {System.out.print(e);}
             }
-            System.out.print(orderID);
-            ObservableList<ShoppingList_Product> list;
-            list = tablaView_Inventario.getItems();
-            int prize = 0;
-            for (ShoppingList_Product i : list) {
-                prize = i.getProductPrize() * i.getProductQuantity();
-                ConnectionDB.getInstance().buyProduct(i.getProductID(),String.valueOf(i.getProductQuantity()),orderID, String.valueOf(prize));
-            }
-            tablaView_Inventario.getItems().clear();
+
         }else{
             Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
         }
@@ -147,12 +141,20 @@ public class ClientOrder_Controller {
 
     @FXML
     void mostrarHistorialPedidos(ActionEvent event) {
-
+        try {
+            FXRouter.goTo("ClientOrderHistory");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 
     @FXML
-    void CerrarSesion(ActionEvent event) {
-
+    public void LogOut(ActionEvent event) {
+        try {
+            FXRouter.goTo("Login");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
     }
 
     private void checkProduct(Product selection){
@@ -172,5 +174,24 @@ public class ClientOrder_Controller {
         }
     }
 
+    @FXML
+    private void ContactoMessage(){
+        Main.MessageBox("Contacto","Para contactar con el restaurante comuniquese al: \r\n +506 8618 4965");
+    }
 
+ /*   private String MessageOrderType(){
+        try{
+            List<String> choices = new ArrayList<>();
+            choices.add("Express");
+            choices.add("Pasar a retirar");
+            ChoiceDialog<String> dialog = new ChoiceDialog<>("Express", choices);
+            dialog.setTitle("Indique la forma de recibir su pedido");
+            dialog.setHeaderText("Seleccione la forma de recibir su pedido");
+            dialog.setContentText("Pedido: ");
+          //  dialog.setGraphic(new ImageView(this.getClass().getResource("View/img/store.png").toString()));
+            Optional<String> result = dialog.showAndWait();
+            result.ifPresent(letter -> System.out.println("Your choice: " + letter));
+            return result.get();
+        }catch (Exception e){return "Error";}
+    }*/
 }

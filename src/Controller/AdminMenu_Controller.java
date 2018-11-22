@@ -44,4 +44,24 @@ public class AdminMenu_Controller {
         }
     }
 
+
+    @FXML
+    public void GoToPedidosPendientes(ActionEvent event) {
+        try {
+            FXRouter.goTo("PedidosPendientesAdm");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
+    @FXML
+    public void GoOutApplication(ActionEvent event) {
+        try {
+            FXRouter.goTo("Login");
+        } catch (IOException e) {
+            System.out.print(e);
+        }
+    }
+
+
 }

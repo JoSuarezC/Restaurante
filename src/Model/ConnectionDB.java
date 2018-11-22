@@ -16,17 +16,36 @@ public class ConnectionDB {
 
     private static ConnectionDB instance;
 
-    private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
+    /*private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
     private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
     private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/select_products_by_productType.php";
     private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
     private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
-    private static final String search_product_PHP = URL_HOST +"RestaurantePHP/search_product.php";
+    private static final String search_product_PHP = URL_HOST +"restaurante-ak7.esy.es/RestaurantePHP/Producto/search_product.php";
     private static final String add_product_PHP = URL_HOST +"RestaurantePHP/insert_product.php";
     private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/insert_client.php";
     private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
-    private static final String select_sucursales = URL_HOST + "RestaurantePHP/select_sucursales.php";
+    private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
     private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
+    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/select_productos_por_pedido.php";
+    private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
+    private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
+    private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";*/
+    private static final String URL_HOST = "http://restaurante-ak7.esy.es/";
+    private static final String login_PHP = URL_HOST + "RestaurantePHP/login.php";
+    private static final String select_products_by_productType_PHP = URL_HOST + "RestaurantePHP/Producto/select_products_by_productType.php";
+    private static final String makeOrder = URL_HOST + "RestaurantePHP/makeOrder.php";
+    private static final String buyProduct = URL_HOST + "RestaurantePHP/buyProduct.php";
+    private static final String search_product_PHP = URL_HOST +"RestaurantePHP/Producto/search_product.php";
+    private static final String add_product_PHP = URL_HOST +"RestaurantePHP/Producto/insert_product.php";
+    private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/insert_client.php";
+    private static final String create_user_PHP = URL_HOST + "RestaurantePHP/create_user.php";
+    private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
+    private static final String select_pedidos_de_usuario_PHP = URL_HOST + "RestaurantePHP/select_pedido_usuario.php";
+    private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/Producto/select_productos_por_pedido.php";
+    private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/select_pedidos_pendientes.php";
+    private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/set_pedido_entregado.php";
+    private static final String generateBill = URL_HOST+"RestaurantePHP/generateBill.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -88,12 +107,14 @@ public class ConnectionDB {
                 if (userType.equals("Empleado")){
                     String EmID = myResponse.getJSONObject("value").getString("IdEm");
                     String job = myResponse.getJSONObject("value").getString("NombrePuesto");
-                    User u = new User(EmID,userType,job);
+                    String sucursalID = myResponse.getJSONObject("value").getString("IdSuc");
+                    String sucursalName = myResponse.getJSONObject("value").getString("NombreSucursal");
+                    User u = new User(EmID,userType,job,sucursalName,sucursalID);
                     User.setCurrentUser(u);
 
                 }else if(userType.equals("Cliente")){
                     String ClientID = myResponse.getJSONObject("value").getString("IdCliente");
-                    User u = new User(ClientID,userType,"");
+                    User u = new User(ClientID,userType,"","","");
                     User.setCurrentUser(u);
                 }
             }else{
@@ -125,8 +146,8 @@ public class ConnectionDB {
     }
 
 
-    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price/*, String Sucursal*/){
-        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price;
+    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega){
+        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&IdSucursal";
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
             if (myResponse.getString("status").equals("true")) {
@@ -139,7 +160,7 @@ public class ConnectionDB {
 
     public boolean searchProduct(String ProductName){
         try {
-            JSONObject myResponse = new JSONObject(GETRequest(search_product_PHP+"?Nombre="+ProductName));
+            JSONObject myResponse = new JSONObject(POSTrequest(search_product_PHP, "Nombre="+ProductName));
             return myResponse.getString("status").equals("true");
         }catch (JSONException e){ System.out.println(e);}
         return false;
@@ -191,14 +212,19 @@ public class ConnectionDB {
     }
 
     public ArrayList selectSucursales (){
-        ArrayList<String> arraylistSucursal= new ArrayList<>();
+        ArrayList<Sucursal> arraylistSucursal= new ArrayList<>();
         try{
             JSONObject myResponse = new JSONObject(GETRequest(select_sucursales));
             if (myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");
                 for (int i = 0; i < results.length(); i++) {
-                    String brachOffice = results.getJSONObject(i).getString("Nombre");
-                    arraylistSucursal.add(brachOffice);
+                    String IDBO = results.getJSONObject(i).getString("IdSuc");
+                    String brachOffice = results.getJSONObject(i).getString("NombreSucursal");
+                    String Direccion = results.getJSONObject(i).getString("Direccion");
+                    String telfPedidos = results.getJSONObject(i).getString("Telf-Pedidos");
+                    String telfSuc = results.getJSONObject(i).getString("Telf-Sucursal");
+                    Sucursal s = new Sucursal(IDBO, brachOffice, Direccion, telfSuc, telfPedidos);
+                    arraylistSucursal.add(s);
                 }
             }else{System.out.print("No hay sucursales en la base de datos");}
         }catch (JSONException e){ System.out.println(e);}
@@ -216,11 +242,74 @@ public class ConnectionDB {
                     String fecha = results.getJSONObject(i).getString("FechaHora");
                     String precio = results.getJSONObject(i).getString("TotalAPagar");
                     String estado = results.getJSONObject(i).getString("Estado");
-                    Pedido p = new Pedido(idPedido, fecha, precio, estado, null);
+                    ArrayList<ShoppingList_Product> listaProductosPedido=selectProductos_porPedido(Integer.toString(idPedido));
+                    Pedido p = new Pedido(idPedido, fecha, precio, estado, listaProductosPedido);
                     arraylistPedidos.add(p);
                 }
             }else{System.out.print("No existe el pedido");}
         }catch (JSONException e){ System.out.println(e);}
         return arraylistPedidos;
+    }
+
+
+    public ArrayList selectProductos_porPedido(String pIdPedido){
+        ArrayList<ShoppingList_Product> listaRetorno = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_productos_por_pedido_PHP+"?IdPedido="+pIdPedido));
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    int Cantidad = results.getJSONObject(i).getInt("Cantidad");
+                    String Nombre = results.getJSONObject(i).getString("Nombre");
+                    int PrecioUnitario = results.getJSONObject(i).getInt("PrecioUnitario");
+                    ShoppingList_Product shoppingList_product = new ShoppingList_Product(Nombre,null,null, PrecioUnitario,null,Cantidad);
+                    listaRetorno.add(shoppingList_product);
+                }
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ System.out.println(e);}
+        return listaRetorno;
+    }
+
+    public ArrayList selectPedidos_pendientes(){
+        ArrayList<Pedido> arraylistPedidos = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_pedidos_pendientes_PHP));
+            if (myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    int idPedido = results.getJSONObject(i).getInt("IdPedido");
+                    String fecha = results.getJSONObject(i).getString("FechaHora");
+                    String precio = results.getJSONObject(i).getString("TotalAPagar");
+                    String estado = results.getJSONObject(i).getString("Estado");
+                    ArrayList<ShoppingList_Product> listaProductosPedido=selectProductos_porPedido(Integer.toString(idPedido));
+                    Pedido p = new Pedido(idPedido, fecha, precio, estado, listaProductosPedido);
+                    arraylistPedidos.add(p);
+                }
+            }else{System.out.print("No existe el pedido");}
+        }catch (JSONException e){ System.out.println(e);}
+        return arraylistPedidos;
+    }
+
+    public boolean SetDelivered(String IdPedido){
+        try {
+            JSONObject myResponse = new JSONObject(GETRequest(set_pedido_entregado_PHP+"?IdPedido="+IdPedido));
+            return myResponse.getString("status").equals("true");
+        }catch (JSONException e){ System.out.println(e);}
+        return false;
+    }
+
+    public void generateBill(String formapago, String bankCard, String orderID, String total){
+        String URLparameters = "IdPedido=" + orderID + "&TarjetaBancaria=" + bankCard + "&FormaPago=" + formapago + "&Total=" + total;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(generateBill, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            if (myResponse.getString("status").equals("true")){
+              //  return Integer.parseInt(myResponse.getJSONObject("value").getString("orderID"));
+            }
+            else{
+                //return -1;
+            }
+        }catch (JSONException e){ System.err.print(e);}
+        //return -1;
     }
 }
