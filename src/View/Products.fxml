@@ -32,7 +32,7 @@
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
             </Button>
-            <TabPane layoutX="59.0" layoutY="24.0" prefHeight="449.0" prefWidth="749.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabProducts" layoutX="59.0" layoutY="24.0" prefHeight="449.0" prefWidth="749.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab fx:id="Tab_Secona" text="Secona">
                      <content>
@@ -81,7 +81,7 @@
                   </Tab>
               </tabs>
             </TabPane>
-            <Button fx:id="Button_CrearCombos1" layoutX="243.0" layoutY="491.0" mnemonicParsing="false" onAction="#DetallesProducto" prefHeight="26.0" prefWidth="129.0" text="Ver detalle">
+            <Button fx:id="Button_CrearCombos1" layoutX="243.0" layoutY="491.0" mnemonicParsing="false" onAction="#DetalleProducto" prefHeight="26.0" prefWidth="129.0" text="Ver detalle">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
                </font>

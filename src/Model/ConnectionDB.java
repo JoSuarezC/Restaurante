@@ -33,6 +33,9 @@ public class ConnectionDB {
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/Pedido/select_pedidos_pendientes.php";
     private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/Pedido/set_pedido_entregado.php";
     private static final String generateBill = URL_HOST+"RestaurantePHP/Pedido/generateBill.php";
+    private static final String is_assigned_PHP = URL_HOST+"RestaurantePHP/Producto/is_assigned_product.php";
+    private static final String update_product_PHP = URL_HOST+"RestaurantePHP/Producto/update_product.php";
+    private static final String insertPedidoSucursal = URL_HOST+"RestaurantePHP/Pedido/insertPedidoSucursal.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -133,13 +136,27 @@ public class ConnectionDB {
         return arraylistProducto;
     }
 
+    public int is_assigned (int productTd){
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(is_assigned_PHP+"?Id="+productTd));
+            if (myResponse.getString("status").equals("true")){
+                return myResponse.getJSONObject("value").getInt("total");
+            }else{System.out.println("No existe el producto2");}
+        }catch (JSONException e){ System.out.println(e);}
+        return 0;
+    }
 
     public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega){
         String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&IdSucursal" + Sucursal + "&DireccionEntrega="+DireccionEntrega;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
             if (myResponse.getString("status").equals("true")) {
-                return myResponse.getJSONObject("value").getString("orderID");
+                String orderID = myResponse.getJSONObject("value").getString("orderID");
+                System.out.print(orderID);
+                JSONObject myResponse2 = new JSONObject(GETRequest(insertPedidoSucursal+"?sucursal="+Sucursal+"&pedido="+orderID));
+                if (myResponse2.getString("status").equals("true")) {
+                    return orderID; // // insertPedidoSucursal.php?sucursal=3&pedido=1
+                }
             }
         }catch (JSONException e){ e.printStackTrace();}
         return null;
@@ -166,7 +183,6 @@ public class ConnectionDB {
         }catch (JSONException e){ e.printStackTrace();}
     }
 
-
     public boolean searchProduct(String ProductName){
         try {
             JSONObject myResponse = new JSONObject(POSTrequest(search_product_PHP, "Nombre="+ProductName));
@@ -179,6 +195,16 @@ public class ConnectionDB {
         String URLparameters = "Nombre="+pName+"&Tipo="+pType+"&Descripcion="+pDescription+"&Precio="+pPrice;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(add_product_PHP, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            return myResponse.getString("status").equals("true");
+        }catch (JSONException e){ e.printStackTrace();}
+        return false;
+    }
+
+    public boolean updateProduct(String pName, String pType, String pDescription, String pPrice){
+        String URLparameters = "Nombre="+pName+"&Tipo="+pType+"&Descripcion="+pDescription+"&Precio="+pPrice;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(update_product_PHP, URLparameters));
             System.out.print(myResponse.getString("status"));
             return myResponse.getString("status").equals("true");
         }catch (JSONException e){ e.printStackTrace();}
