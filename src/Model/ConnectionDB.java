@@ -39,6 +39,8 @@ public class ConnectionDB {
     private static final String insertPedidoSucursal = URL_HOST+"RestaurantePHP/Pedido/insertPedidoSucursal.php";
     private static final String insertEvaluacion = URL_HOST+"RestaurantePHP/Pedido/insertEvaluacion.php";
     private static final String select_combos = URL_HOST+"RestaurantePHP/Producto/select_combos.php";
+    private static final String select_puestos= URL_HOST + "RestaurantePHP/Usuario/select_puestos.php";
+    private static final String insert_empleado = URL_HOST + "RestaurantePHP/Usuario/insert_empleado.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -361,6 +363,35 @@ public class ConnectionDB {
             return myResponse.getString("status").equals("true");
         }catch (JSONException e){ e.printStackTrace();}
         return false;
+    }
+
+    public ArrayList<Puesto>  select_puestos(){
+        ArrayList<Puesto> arraylistPuestos = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_puestos));
+            if (myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String IdPuesto = results.getJSONObject(i).getString("IdPuesto");
+                    String NombrePuesto = results.getJSONObject(i).getString("NombrePuesto");
+                    Puesto p = new Puesto(IdPuesto, NombrePuesto);
+                    arraylistPuestos.add(p);
+                }
+            }else{System.out.print("No existe el pedido");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return arraylistPuestos;
+    }
+
+    public String insertEmpleado(String pName, String pLastName, String pIdNumber, String pJob, String pBankAcc, String pSalary){
+        String URLparameters = "Nombre=" + pName + "&Apellido=" + pLastName + "&Cedula=" + pIdNumber + "&Puesto=" + pJob + "&CuentaBancaria=" + pBankAcc + "&Salario=" + pSalary;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(insert_empleado, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            if (myResponse.getString("status").equals("true")){
+                return myResponse.getJSONObject("value").getString("orderID");
+            }
+        }catch (JSONException e){ e.printStackTrace();}
+        return null;
     }
 
 
