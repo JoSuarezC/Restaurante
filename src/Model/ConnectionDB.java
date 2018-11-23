@@ -23,6 +23,8 @@ public class ConnectionDB {
     private static final String buyProduct = URL_HOST + "RestaurantePHP/Pedido/buyProduct.php";
     private static final String search_product_PHP = URL_HOST +"RestaurantePHP/Producto/search_product.php";
     private static final String add_product_PHP = URL_HOST +"RestaurantePHP/Producto/insert_product.php";
+    private static final String makeCombo= URL_HOST + "RestaurantePHP/Pedido/makeCombo.php";
+    private static final String addProductCombo = URL_HOST + "RestaurantePHP/Pedido/addProductCombo.php";
     private static final String insert_Client_PHP = URL_HOST+"RestaurantePHP/Usuario/insert_client.php";
     private static final String create_user_PHP = URL_HOST + "RestaurantePHP/Usuario/create_user.php";
     private static final String select_sucursales = URL_HOST + "RestaurantePHP/Sucursal/select_sucursales.php";
@@ -141,6 +143,27 @@ public class ConnectionDB {
             }
         }catch (JSONException e){ e.printStackTrace();}
         return null;
+    }
+
+    public String makeCombo(String ComboDesc, String DateTime, String Discount){
+        String URLparameters = "ComboDesc=" + ComboDesc + "&Datetime=" + DateTime + "&Discount=" + Discount;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(makeCombo, URLparameters));
+            if (myResponse.getString("status").equals("true")) {
+                return myResponse.getJSONObject("value").getString("comboID");
+            }
+        }catch (JSONException e){ e.printStackTrace();}
+        return null;
+    }
+
+    public void addProductCombo(String IdCombo, String IdProducto, String Cantidad){
+        String URLparameters = "IdCombo=" + IdCombo + "&IdProducto=" + IdProducto + "&Cantidad=" + Cantidad;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(addProductCombo, URLparameters));
+            if (myResponse.getString("status").equals("true")) {
+                System.out.print("Producto añadido al combo \n");
+            }else{System.out.print("Producto NO añadido al combo \n");}
+        }catch (JSONException e){ e.printStackTrace();}
     }
 
 

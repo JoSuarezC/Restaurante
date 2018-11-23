@@ -26,21 +26,26 @@
       </ImageView>
       <Pane prefHeight="90.0" prefWidth="1226.0" style="-fx-background-color: #ffcc00;">
          <children>
-            <Label layoutX="472.0" layoutY="22.0" text="Crear Combazo">
-               <font>
-                  <Font name="SansSerif Regular" size="40.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="68.0" fitWidth="66.0" layoutX="772.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/guitar.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="68.0" fitWidth="66.0" layoutX="399.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/guitar.png" />
-               </image>
-            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="438.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="882.0" />
+            <TableView fx:id="tableView_Producto" layoutX="14.0" layoutY="54.0" prefHeight="200.0" prefWidth="392.0">
+              <columns>
+                <TableColumn fx:id="tableColumn_Producto_Producto" prefWidth="158.00001525878906" text="Producto" />
+                <TableColumn fx:id="tableColumn_Producto_Precio" prefWidth="113.0" text="Precio" />
+                  <TableColumn fx:id="tableColumn_Producto_Ver" prefWidth="119.0" />
+              </columns>
+            </TableView>
+            <Button fx:id="btn_agregarP" onAction="#addToComboList" layoutX="14.0" layoutY="275.0" mnemonicParsing="false" text="Agregar al combo" />
+            <Button fx:id="btn_quitarP" onAction="#removeFromComboList" layoutX="682.0" layoutY="275.0" mnemonicParsing="false" text="Quitar del Combo" />
+            <Button fx:id="btn_crearCombo" onAction="#MakeCombo" layoutX="453.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="341.0" text="Crear Combo" />
+            <Label layoutX="453.0" layoutY="279.0" text="Descuento:" />
+            <Spinner fx:id="spinner_descuento" layoutX="521.0" layoutY="275.0" />
+            <Button layoutX="749.0" layoutY="391.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás" />
+            <TableView fx:id="tableView_Combo" layoutX="453.0" layoutY="54.0" prefHeight="200.0" prefWidth="338.0">
+              <columns>
+                <TableColumn fx:id="tableColumn_Combo_Producto" prefWidth="153.0" text="Producto" />
+                <TableColumn fx:id="tableColumn_Combo_Cantidad" prefWidth="160.0" text="Cantidad" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
       <Pane layoutX="127.0" layoutY="124.0" prefHeight="462.0" prefWidth="950.0" style="-fx-background-color: #ff9900;">

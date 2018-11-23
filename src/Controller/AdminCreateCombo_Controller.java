@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -46,6 +47,38 @@ public class AdminCreateCombo_Controller {
     }
 
     private void fillTable(){
+
+        //btn_crearCombo.setDisable(true);
+
+        SpinnerValueFactory discountValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0, 1);
+        discountValueFactory.setConverter(new StringConverter<Integer>() {
+
+            @Override
+            public String toString(Integer value) {
+                return value.toString()+" %";
+            }
+
+            @Override
+            public Integer fromString(String string) {
+                String valueWithoutUnits = string.replaceAll("%", "").trim();
+                System.out.println(valueWithoutUnits);
+                if (valueWithoutUnits.isEmpty()) {
+                    return 0 ;
+                } else {
+                    return Integer.valueOf(valueWithoutUnits);
+                }
+            }
+
+        });
+
+        spinner_descuento.setValueFactory(discountValueFactory);
+        spinner_descuento.setEditable(true);
+        /*
+        spinner_descuento.valueProperty().addListener((obs) -> {
+            btn_crearCombo.setDisable(false);
+        });*/
+        //
+
         // Tabla de Productos
         tableColumn_Producto_Producto.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
         tableColumn_Producto_Precio.setCellValueFactory(cellData -> cellData.getValue().productPrizeProperty().asString());
@@ -92,13 +125,11 @@ public class AdminCreateCombo_Controller {
         product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Comida"));
         product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Bebida"));
 
+        tableView_Producto.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         tableView_Producto.setItems(product_list);
 
-        //HashMap
-        productQty = new HashMap<>();
-        product_list.forEach((product) -> {
-            productQty.put(product.getProductID(),1);
-        });
+
 
         //Tabla Combo
         tableColumn_Combo_Producto.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
@@ -131,11 +162,9 @@ public class AdminCreateCombo_Controller {
                                     setGraphic(null);
                                     setText(null);
                                 } else {
-
+                                    valueFactory.setValue(1);
                                     count.valueProperty().addListener((obs, oldValue, newValue) -> {
-                                        //map.put(key, map.get(key) + 1);
                                         productQty.put(getTableView().getItems().get(getIndex()).getProductID(), newValue);
-                                        System.out.println(newValue);
                                     });
 
                                     setGraphic(count);
@@ -148,51 +177,71 @@ public class AdminCreateCombo_Controller {
 
         tableColumn_Combo_Cantidad.setCellFactory(cellFactorySpinner);
 
-        tableView_Combo.setItems(product_list);
+        tableView_Combo.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        //tableView_Combo.setItems(product_list);
     }
 
     @FXML
     void addToComboList(ActionEvent event){
-        tableView_Combo.setItems(tableView_Producto.getSelectionModel().getSelectedItems());
+        ObservableList productCombo = tableView_Producto.getSelectionModel().getSelectedItems();
+        ObservableList<Product> newObsList = FXCollections.observableArrayList(productCombo);
+
+        //HashMap
+        productQty = new HashMap<>();
+        newObsList.forEach((product) -> {
+            productQty.put(product.getProductID(),1);
+        });
+
+        tableView_Combo.setItems(newObsList);
     }
 
     @FXML
     void removeFromComboList(ActionEvent event){
-        tableView_Combo.setItems(tableView_Producto.getSelectionModel().getSelectedItems());
+        ObservableList<Product> productCombRemove = tableView_Combo.getSelectionModel().getSelectedItems();
+        productCombRemove.forEach((product -> {
+            productQty.remove(product.getProductID());
+        }));
+        tableView_Combo.getItems().removeAll(productCombRemove);
     }
+
 
     @FXML
     void MakeCombo(ActionEvent event) {
-        /*
+
         if(!tableView_Producto.getItems().isEmpty()){
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
-            String orderID;
-            String totalAPagar = Label_TotalCost.getText();
-            if (User.getCurrentUser().getUserType().equals("Empleado")){
-                orderID = ConnectionDB.getInstance().makeOrder(null, dateFormat.format(fecha).toString(), "Local", totalAPagar);
-            }else{
-                orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha).toString(), "Local", totalAPagar);
-            }
-            System.out.print(orderID);
-            ObservableList<ShoppingList_Product> list;
-            list = tablaView_Inventario.getItems();
-            int prize = 0;
-            for (ShoppingList_Product i : list) {
-                prize = i.getProductPrize() * i.getProductQuantity();
-                ConnectionDB.getInstance().buyProduct(i.getProductID(),String.valueOf(i.getProductQuantity()),orderID, String.valueOf(prize));
-            }
-            tablaView_Inventario.getItems().clear();
+            String comboID;
+            Integer discountInteger = (Integer)spinner_descuento.getValue()/100;
+            Double discountDouble = ((Integer) spinner_descuento.getValue()).doubleValue()/100;
+            comboID = ConnectionDB.getInstance().makeCombo("Desc Test", dateFormat.format(fecha).toString(),  discountDouble.toString());
+
+            System.out.println("Discount Double: " + discountDouble);
+
+
+            ObservableList<Product> productList;
+            productList = tableView_Combo.getItems();
+
+            productList.forEach((product -> {
+                ConnectionDB.getInstance().addProductCombo(comboID, product.getProductID(), productQty.get(product.getProductID()).toString());
+                System.out.println(product.getProductName() + " - " + productQty.get(product.getProductID()).toString());
+            }));
+
+            tableView_Combo.getItems().clear();
+            productQty.clear();
+            spinner_descuento.getValueFactory().setValue(0);
+            //btn_crearCombo.setDisable(true);
         }else{
-            Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
+            Main.MessageBox("No hay productos", "Seleccione los productos que desea añadir al combo.");
         }
-        */
+
     }
 
     @FXML
     public void GoBack(ActionEvent event){
         try {
-            FXRouter.loadPreviousRoute();
+            FXRouter.goTo("Adm_ManagePMenu");
         } catch (IOException e) {
             System.out.print(e);
         }
