@@ -39,7 +39,7 @@ public class PedidosPendientesAdm_Controller {
 
     @FXML
     private Label lbl_fechaHora;
-
+/***asdasd*/
     @FXML
     private Label lbl_montoTotal;
 

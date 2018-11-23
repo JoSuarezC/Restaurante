@@ -114,32 +114,30 @@ public class ClientOrder_Controller {
     @FXML
     void RemoveProduct(ActionEvent event) {
         if(!tablaView_Inventario.getItems().isEmpty()){
-            int i = tablaView_Inventario.getSelectionModel().getSelectedIndex();
-            tablaView_Inventario.getItems().remove(i);
+            totalCost = totalCost - tablaView_Inventario.getSelectionModel().getSelectedItem().getProductPrize();
+            int cantidadProducto = tablaView_Inventario.getSelectionModel().getSelectedItem().getProductQuantity();
+            Label_TotalCost.setText(String.valueOf(totalCost));
+            if( cantidadProducto > 1){
+                tablaView_Inventario.getSelectionModel().getSelectedItem().setProductQuantity(cantidadProducto - 1);
+            }else{
+                tablaView_Inventario.getItems().remove(tablaView_Inventario.getSelectionModel().getSelectedItem());
+            }
         }
     }
 
     @FXML
     void SelectProduct(ActionEvent event) {
         if (TextBox_ProductQuantity.getText().matches("-?([1-9][0-9]*)?") && !TextBox_ProductQuantity.getText().equals("")) {
-            if (tablaView_Bebida.getSelectionModel().getSelectedIndex() != -1) {
+            if (!tablaView_Bebida.getSelectionModel().isEmpty()) {
                 checkProduct(tablaView_Bebida.getSelectionModel().getSelectedItem());
-                totalCost = totalCost + (tablaView_Bebida.getSelectionModel().getSelectedItem().getProductPrize() * Integer.parseInt(TextBox_ProductQuantity.getText()));
-                Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
-                tablaView_Bebida.getSelectionModel().clearSelection();
-            } else if (tablaView_Comida.getSelectionModel().getSelectedIndex() != -1) {
+            } else if (!tablaView_Comida.getSelectionModel().isEmpty()) {
                 checkProduct(tablaView_Comida.getSelectionModel().getSelectedItem());
-                totalCost = totalCost + (tablaView_Comida.getSelectionModel().getSelectedItem().getProductPrize() * Integer.parseInt(TextBox_ProductQuantity.getText()));
-                Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
-                tablaView_Comida.getSelectionModel().clearSelection();
-            } else if (tablaView_Dulce.getSelectionModel().getSelectedIndex() != -1) {
+            } else if (!tablaView_Dulce.getSelectionModel().isEmpty()) {
                 checkProduct(tablaView_Dulce.getSelectionModel().getSelectedItem());
-                totalCost = totalCost + (tablaView_Dulce.getSelectionModel().getSelectedItem().getProductPrize() * Integer.parseInt(TextBox_ProductQuantity.getText()));
-                Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
-                tablaView_Dulce.getSelectionModel().clearSelection();
             } else {
                 Main.MessageBox("No se ha seleccionado el producto", "Seleccione el producto que desea agregar a su pedido");
             }
+            TextBox_ProductQuantity.clear();
         }else{
             Main.MessageBox("No se ha indicado la cantidad de producto deseada", "Indique la cantidad de producto que desea agregar a su pedido");
         }
@@ -163,21 +161,25 @@ public class ClientOrder_Controller {
         }
     }
 
-    private void checkProduct(Product selection){
+    private void checkProduct(Product selection) {
         int indice = -1;
-        for (int i = 0; i < tablaView_Inventario.getItems().size(); i ++) {
-            if (tablaView_Inventario.getItems().size() == 0) {
-                break;
-            } else if (tablaView_Inventario.getItems().get(i).getProductID().equals(selection.getProductID())) {
+        for (int i = 0; i < tablaView_Inventario.getItems().size(); i++) {
+            if (tablaView_Inventario.getItems().get(i).getProductID().equals(selection.getProductID())) {
                 indice = i;
                 break;
             }
         }
-        if(indice != -1){
-            tablaView_Inventario.getItems().get(indice).setProductQuantity(tablaView_Inventario.getItems().get(indice).getProductQuantity() + Integer.parseInt(TextBox_ProductQuantity.getText()));
-        }else{
+        if (indice == -1) { // Si no existe en la tabla inventario
             tablaView_Inventario.getItems().add(new ShoppingList_Product(selection.getProductName(), selection.getProductType(), selection.getProductID(), selection.getProductPrize(), selection.getProductDetail(), selection.getProductState(), Integer.parseInt(TextBox_ProductQuantity.getText())));
+        } else { // Si ya existe
+            tablaView_Inventario.getItems().get(indice).setProductQuantity(tablaView_Inventario.getItems().get(indice).getProductQuantity() + Integer.parseInt(TextBox_ProductQuantity.getText()));
         }
+        totalCost = totalCost + (selection.getProductPrize() * Integer.parseInt(TextBox_ProductQuantity.getText()));
+        Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
+        tablaView_Bebida.getSelectionModel().clearSelection();
+        tablaView_Comida.getSelectionModel().clearSelection();
+        tablaView_Dulce.getSelectionModel().clearSelection();
+        // clearSelection(null);
     }
 
     @FXML

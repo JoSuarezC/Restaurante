@@ -7,7 +7,7 @@ public class ShoppingList_Product extends Product{
 
     private IntegerProperty productQuantity;
 
-    public ShoppingList_Product(String productName, String productType, String productID, int productPrize, String productDetail, int productQuantity, int productState) {
+    public ShoppingList_Product(String productName, String productType, String productID, int productPrize, String productDetail, int productState, int productQuantity) {
         super(productName, productType, productID, productPrize, productDetail, productState);
         this.productQuantity = new SimpleIntegerProperty(productQuantity);
     }
