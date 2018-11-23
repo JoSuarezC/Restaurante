@@ -111,22 +111,27 @@ public class ClientLocalPayment_Controller {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
             String totalAPagar = Label_TotalCost.getText();
-            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, Label_Sucursal.getText(), "Orden Local");
+            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, User.getCurrentUser().getSucursalID(), "Orden Local");
             System.out.print(orderID);
-            ObservableList<ShoppingList_Product> list;
-            list = inventoryTable.getItems();
-            int prize;
-            for (ShoppingList_Product i : list) {
-                prize = i.getProductPrize() * i.getProductQuantity();
-                ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
+            if(orderID == null){
+               Main.MessageBox("Error","No se ha completado la transacción");
+            }else{
+                ObservableList<ShoppingList_Product> list;
+                list = inventoryTable.getItems();
+                int prize;
+                for (ShoppingList_Product i : list) {
+                    prize = i.getProductPrize() * i.getProductQuantity();
+                    ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
+                }
+                generateBill(orderID, totalAPagar, getCheckBox());
+                Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
+                try {
+                    FXRouter.goTo("Client");
+                } catch (IOException e) {
+                    System.out.print(e);
+                }
             }
-            generateBill(orderID, totalAPagar, getCheckBox());
-            Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
-            try {
-                FXRouter.goTo("Client");
-            } catch (IOException e) {
-                System.out.print(e);
-            }
+
         } else {
             Main.MessageBox("Espacios vacíos", "Indique el tipo de pago del pedido");
         }

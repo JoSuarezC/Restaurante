@@ -35,6 +35,7 @@ public class ConnectionDB {
     private static final String generateBill = URL_HOST+"RestaurantePHP/Pedido/generateBill.php";
     private static final String is_assigned_PHP = URL_HOST+"RestaurantePHP/Producto/is_assigned_product.php";
     private static final String update_product_PHP = URL_HOST+"RestaurantePHP/Producto/update_product.php";
+    private static final String insertPedidoSucursal = URL_HOST+"RestaurantePHP/Pedido/insertPedidoSucursal.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -150,7 +151,12 @@ public class ConnectionDB {
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
             if (myResponse.getString("status").equals("true")) {
-                return myResponse.getJSONObject("value").getString("orderID");
+                String orderID = myResponse.getJSONObject("value").getString("orderID");
+                System.out.print(orderID);
+                JSONObject myResponse2 = new JSONObject(GETRequest(insertPedidoSucursal+"?sucursal="+Sucursal+"&pedido="+orderID));
+                if (myResponse2.getString("status").equals("true")) {
+                    return orderID; // // insertPedidoSucursal.php?sucursal=3&pedido=1
+                }
             }
         }catch (JSONException e){ e.printStackTrace();}
         return null;
