@@ -215,9 +215,8 @@ public class AdminCreateCombo_Controller {
             String comboID;
             Integer discountInteger = (Integer)spinner_descuento.getValue()/100;
             Double discountDouble = ((Integer) spinner_descuento.getValue()).doubleValue()/100;
-            comboID = ConnectionDB.getInstance().makeCombo("Desc Test", dateFormat.format(fecha).toString(),  discountDouble.toString());
+            comboID = ConnectionDB.getInstance().makeCombo("Es un gran combo :)", dateFormat.format(fecha).toString(),  discountDouble.toString());
 
-            System.out.println("Discount Double: " + discountDouble);
 
 
             ObservableList<Product> productList;
@@ -225,7 +224,6 @@ public class AdminCreateCombo_Controller {
 
             productList.forEach((product -> {
                 ConnectionDB.getInstance().addProductCombo(comboID, product.getProductID(), productQty.get(product.getProductID()).toString());
-                System.out.println(product.getProductName() + " - " + productQty.get(product.getProductID()).toString());
             }));
 
             tableView_Combo.getItems().clear();
