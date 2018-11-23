@@ -111,7 +111,7 @@ public class ClientLocalPayment_Controller {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
             String totalAPagar = Label_TotalCost.getText();
-            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, User.getCurrentUser().getSucursalID(), "Orden Local");
+            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, Label_Sucursal.getText(), "Orden Local", "Entregado");
             System.out.print(orderID);
             if(orderID == null){
                Main.MessageBox("Error","No se ha completado la transacción");

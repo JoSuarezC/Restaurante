@@ -36,6 +36,14 @@ public class AdminMenu_Controller {
         }
     }
 
+    @FXML
+    public void GoToAgregarEmpleado(ActionEvent event) {
+        try {
+            FXRouter.goTo("AgregarEmpleado");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void GoToPedidosPendientes(ActionEvent event) {
