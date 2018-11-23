@@ -32,6 +32,7 @@ public class ConnectionDB {
     private static final String select_productos_por_pedido_PHP= URL_HOST + "RestaurantePHP/Producto/select_productos_por_pedido.php";
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/Pedido/select_pedidos_pendientes.php";
     private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/Pedido/set_pedido_entregado.php";
+    private static final String set_pedido_enviado_PHP = URL_HOST + "RestaurantePHP/Pedido/set_pedido_enviado.php";
     private static final String generateBill = URL_HOST+"RestaurantePHP/Pedido/generateBill.php";
     private static final String is_assigned_PHP = URL_HOST+"RestaurantePHP/Producto/is_assigned_product.php";
     private static final String update_product_PHP = URL_HOST+"RestaurantePHP/Producto/update_product.php";
@@ -146,8 +147,8 @@ public class ConnectionDB {
         return 0;
     }
 
-    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega){
-        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&DireccionEntrega="+DireccionEntrega + "&Estado=Putavida";
+    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega, String Estado){
+        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price +"&Estado="+Estado+ "&IdSucursal" + Sucursal + "&DireccionEntrega="+DireccionEntrega;
         try{
             System.out.print("------------------------------------------------------------------------\n");
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
@@ -333,6 +334,14 @@ public class ConnectionDB {
         return false;
     }
 
+    public boolean SetSend(String IdPedido){
+        try {
+            JSONObject myResponse = new JSONObject(GETRequest(set_pedido_enviado_PHP+"?IdPedido="+IdPedido));
+            return myResponse.getString("status").equals("true");
+        }catch (JSONException e){ e.printStackTrace();}
+        return false;
+    }
+
     public void generateBill(String formapago, String bankCard, String orderID, String total){
         String URLparameters = "IdPedido=" + orderID + "&TarjetaBancaria=" + bankCard + "&FormaPago=" + formapago + "&Total=" + total;
         try{
@@ -340,4 +349,6 @@ public class ConnectionDB {
             System.out.print(myResponse.getString("status"));
         }catch (JSONException e){ e.printStackTrace();}
     }
+
+
 }

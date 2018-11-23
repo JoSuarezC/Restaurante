@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -20,8 +21,14 @@ public class PedidosPendientesAdm_Controller {
     private TableView<Pedido> tbl_pedidos;
 
     @FXML
+    private Button btn_marcarEntregado;
+
+    @FXML
+    private Button btn_marcarEnviado;
+
+    @FXML
     private TableColumn<Pedido,String> clm_pedidos;
-    
+
     @FXML
     private TableView<ShoppingList_Product> tbl_productos;
 
@@ -39,7 +46,7 @@ public class PedidosPendientesAdm_Controller {
 
     @FXML
     private Label lbl_fechaHora;
-/***asdasd*/
+
     @FXML
     private Label lbl_montoTotal;
 
@@ -59,6 +66,14 @@ public class PedidosPendientesAdm_Controller {
 
     @FXML
     private void mostrarInfo(){
+        if(tbl_pedidos.getSelectionModel().getSelectedItem().getEstadoPedido().equals("Pendiente")){
+            btn_marcarEnviado.setVisible(true);
+            btn_marcarEntregado.setVisible(false);
+        }
+        if(tbl_pedidos.getSelectionModel().getSelectedItem().getEstadoPedido().equals("Enviado")){
+            btn_marcarEntregado.setVisible(true);
+            btn_marcarEnviado.setVisible(false);
+        }
         lbl_fechaHora.setText(tbl_pedidos.getSelectionModel().getSelectedItem().getFechaPedido());
         lbl_montoTotal.setText(tbl_pedidos.getSelectionModel().getSelectedItem().getTotalAPagar());
         fillTableProductos();
@@ -86,6 +101,26 @@ public class PedidosPendientesAdm_Controller {
                 lbl_fechaHora.setText("");
                 lbl_montoTotal.setText("");
 
+            } else {
+                Main.MessageBox("Error", "No se ha podido marcar el pedido como entregado.");
+            }
+        }
+        else{
+            Main.MessageBox("Error", "Seleccione un pedido para poder marcarlo como entregado.");
+        }
+    }
+
+    @FXML
+    private void marcarEnviado(){
+        if(tbl_pedidos.getSelectionModel().getSelectedItem()!=null) {
+            boolean response = ConnectionDB.getInstance().SetSend(Integer.toString(tbl_pedidos.getSelectionModel().getSelectedItem().getIdPedido()));
+            if (response){
+                Main.MessageBox("Éxito", "Se ha marcado el pedido como entregado exitosamente.");
+                tbl_pedidos.setItems(null);
+                fillTablePedidos();
+                tbl_productos.setItems(null);
+                lbl_fechaHora.setText("");
+                lbl_montoTotal.setText("");
             } else {
                 Main.MessageBox("Error", "No se ha podido marcar el pedido como entregado.");
             }
