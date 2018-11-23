@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb9b099-56d7-4fef-9ac9-0b65eea70f5b" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Products_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Products_Controller.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientLocalPayment_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientLocalPayment_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientOnlinePayment_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientOnlinePayment_Controller.java" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/src/Model/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ConnectionDB.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../../2030/" />
@@ -90,12 +95,12 @@
     <session id="1284163142">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="264" />
+          <entry key="java" value="398" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="264" />
+          <entry key="JAVA" value="398" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -108,12 +113,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="5" />
+          <entry key="java" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="5" />
+          <entry key="JAVA" value="6" />
         </counts>
       </usages-collector>
     </session>
@@ -121,6 +126,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -137,15 +143,37 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-2329">
               <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="157" column="31" selection-start-line="157" selection-start-column="20" selection-end-line="157" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/ClientLocalPayment_Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="119" column="49" lean-forward="true" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/src/Controller/PedidosPendientesAdm_Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1">
               <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Controller/ClientOnlinePayment_Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="101" column="40" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -245,7 +273,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Controller/Main.java" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/src/Controller/ClientOnlinePayment_Controller.java" />
+=======
+        <option value="$PROJECT_DIR$/src/Controller/Products_Controller.java" />
+>>>>>>> Stashed changes
         <option value="$PROJECT_DIR$/src/Controller/ClientOrderHistory_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/AdminMenu_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/PedidosPendientesAdm_Controller.java" />
@@ -254,11 +286,17 @@
         <option value="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/ClientOrder_Controller.java" />
         <option value="$PROJECT_DIR$/src/Model/Sucursal.java" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/src/Controller/ClientLocalPayment_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/Products_Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller/Products_Controller.java" />
         <option value="$PROJECT_DIR$/src/Model/ConnectionDB.java" />
         <option value="$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java" />
+=======
+        <option value="$PROJECT_DIR$/src/Model/ConnectionDB.java" />
+        <option value="$PROJECT_DIR$/src/Controller/ClientOnlinePayment_Controller.java" />
+        <option value="$PROJECT_DIR$/src/Controller/ClientLocalPayment_Controller.java" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -314,6 +352,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -323,7 +368,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542992466378" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542998229678" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -391,7 +436,11 @@
       <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+<<<<<<< Updated upstream
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.39344263" />
+=======
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.23229462" />
+>>>>>>> Stashed changes
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -542,7 +591,25 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/src/Model/Pedido.java">
+=======
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="157" column="31" selection-start-line="157" selection-start-column="20" selection-end-line="157" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Sucursal.java">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-268">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
@@ -563,24 +630,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Thread.java">
+    <entry file="file://$PROJECT_DIR$/src/Controller/ClientOnlinePayment_Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="747" selection-start-line="747" selection-end-line="747" />
+        <state relative-caret-position="290">
+          <caret line="101" column="40" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/ClientLocalPayment_Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="114" column="36" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
-          <caret line="156" column="56" lean-forward="true" selection-start-line="156" selection-start-column="56" selection-end-line="156" selection-end-column="56" />
+          <caret line="119" column="49" lean-forward="true" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
         </state>
       </provider>
     </entry>

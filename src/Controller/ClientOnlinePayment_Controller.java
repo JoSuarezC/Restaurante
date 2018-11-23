@@ -87,7 +87,7 @@ public class ClientOnlinePayment_Controller {
     @FXML
     void payOrder(ActionEvent event) {
         if(!nameTF.getText().equals("") && !codeTF.getText().equals("") && !creditCardTF.getText().equals("") && !datePicker.equals("") && !choiceBox_Sucursal.getSelectionModel().getSelectedItem().equals(null)) {
-            if (validaciones()) {
+          //  if (validaciones()) {
                 Date fecha = new Date();
                 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
                 String orderID;
@@ -108,7 +108,7 @@ public class ClientOnlinePayment_Controller {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
+          //  }
         }
         else{
             Main.MessageBox("Error", "Rellene todas las casilla necesarias para realizar el pedido.");

@@ -147,13 +147,14 @@ public class ConnectionDB {
     }
 
     public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega){
-        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&IdSucursal" + Sucursal + "&DireccionEntrega="+DireccionEntrega;
+        String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&DireccionEntrega="+DireccionEntrega + "&Estado=Putavida";
         try{
+            System.out.print("------------------------------------------------------------------------\n");
             JSONObject myResponse = new JSONObject(POSTrequest(makeOrder, URLparameters));
             if (myResponse.getString("status").equals("true")) {
                 String orderID = myResponse.getJSONObject("value").getString("orderID");
                 System.out.print(orderID);
-                JSONObject myResponse2 = new JSONObject(GETRequest(insertPedidoSucursal+"?sucursal="+Sucursal+"&pedido="+orderID));
+                JSONObject myResponse2 = new JSONObject(POSTrequest(insertPedidoSucursal, "sucursal="+Sucursal+"&pedido="+orderID));
                 if (myResponse2.getString("status").equals("true")) {
                     return orderID; // // insertPedidoSucursal.php?sucursal=3&pedido=1
                 }
