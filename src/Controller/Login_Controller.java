@@ -39,14 +39,14 @@ public class Login_Controller {
                 }
             }else{
                 try{
-                    FXRouter.goTo("Client");
+                    FXRouter.goTo("Client",0);
                 }catch (IOException e){
                     e.printStackTrace();
                 }
             }
         }else if(userType.equals("Cliente")){
             try{
-                FXRouter.goTo("Client");
+                FXRouter.goTo("Client",0);
             }catch (IOException e){
                 e.printStackTrace();
             }

@@ -48,7 +48,6 @@ public class Products_Controller {
     @FXML
     private TableColumn<Product, String> ClmPrecio_tbl_Monchona;
 
-
     @FXML
     public void AddProduct(ActionEvent event){
         try {

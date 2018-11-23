@@ -67,7 +67,7 @@
       </ImageView>
       <AnchorPane layoutX="75.0" layoutY="132.0" prefHeight="496.0" prefWidth="1077.0" style="-fx-background-color: #ff9900;">
          <children>
-            <Separator layoutX="524.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="14.0" />
+            <Separator layoutX="524.0" layoutY="32.0" orientation="VERTICAL" prefHeight="410.0" prefWidth="14.0" />
             <Label layoutX="61.0" layoutY="22.0" prefHeight="38.0" prefWidth="271.0" text="Productos" textAlignment="CENTER">
                <font>
                   <Font size="29.0" />

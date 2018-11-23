@@ -130,7 +130,7 @@ public class ClientOnlinePayment_Controller {
     @FXML
     void Atras(ActionEvent event) {
         try {
-            FXRouter.goTo("Client");
+            FXRouter.goTo("Client",1);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -54,6 +54,7 @@ public class ClientOrder_Controller {
 
     @FXML
     protected void initialize(){
+
         if(User.getCurrentUser().getUserType().equals("Empleado")){
             id_menuBar.setDisable(true);
             id_menuBar.setVisible(false);
@@ -63,6 +64,11 @@ public class ClientOrder_Controller {
             btn_cancelarPedido.setVisible(false);
         }
         fillTables();
+        if ((int) FXRouter.getData() == 1) {
+            tablaView_Inventario.setItems(ClientOrder_Memento.getMementoInstance().getListaProductosMemento());
+            Label_TotalCost.setText(ClientOrder_Memento.getMementoInstance().getPrecioTotal());
+            totalCost = ClientOrder_Memento.getMementoInstance().getPrecio();
+        }
     }
 
     private void fillTables(){
@@ -98,6 +104,9 @@ public class ClientOrder_Controller {
     void MakeOrder(ActionEvent event) {
         if(!tablaView_Inventario.getItems().isEmpty()){
             Pair<ObservableList,String> tupla = new Pair(tablaView_Inventario.getItems(), Label_TotalCost.getText());
+            ClientOrder_Memento.getMementoInstance().setListaProductosMemento(tablaView_Inventario.getItems());
+            ClientOrder_Memento.getMementoInstance().setPrecioTotal(Label_TotalCost.getText());
+            ClientOrder_Memento.getMementoInstance().setPrecio(totalCost);
             if (User.getCurrentUser().getUserType().equals("Cliente")){
                 try {FXRouter.goTo("OnlinePayment", tupla);}
                 catch (IOException e) {e.printStackTrace();}
@@ -105,7 +114,6 @@ public class ClientOrder_Controller {
                 try {FXRouter.goTo("LocalPayment", tupla);}
                 catch (IOException e) {e.printStackTrace();}
             }
-
         }else{
             Main.MessageBox("Tabla de productos vacía", "Seleccione los productos que desea comprar.");
         }

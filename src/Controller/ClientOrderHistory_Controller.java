@@ -79,7 +79,7 @@ public class ClientOrderHistory_Controller {
     @FXML
     public void RealizarOrden(ActionEvent event) {
         try {
-            FXRouter.goTo("Client");
+            FXRouter.goTo("Client",0);
         } catch (IOException e) {
             e.printStackTrace();
         }

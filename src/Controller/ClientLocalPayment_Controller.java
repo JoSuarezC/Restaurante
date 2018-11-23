@@ -59,7 +59,6 @@ public class ClientLocalPayment_Controller {
         Label_Sucursal.setText(User.getCurrentUser().getSucursalName());
     }
 
-
     @FXML
     void handleCheckBoxCard(ActionEvent event){
         if(creditCardCheck.isSelected()){
@@ -98,7 +97,11 @@ public class ClientLocalPayment_Controller {
 
     @FXML
     void back(ActionEvent event) {
-
+        try {
+            FXRouter.goTo("Client",1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

@@ -48,7 +48,7 @@ public class AdminMenu_Controller {
     @FXML
     public void Cajero(ActionEvent event) {
         try {
-            FXRouter.goTo("Client");
+            FXRouter.goTo("Client",0);
         } catch (IOException e) {
             e.printStackTrace();
         }
