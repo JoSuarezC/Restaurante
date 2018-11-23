@@ -186,7 +186,41 @@ public class DetalleProducto_Controller {
 
     @FXML
     public void guardar(ActionEvent event) {
+        try{
+            if (this.tFileld_Nombre.getText().isEmpty() &&
+                    this.tFileld_Descripcion.getText().isEmpty() &&
+                    this.tFileld_Precio.getText().isEmpty() &&
+                    this.cmbTipo_Producto.getValue().isEmpty()) {
+                Main.MessageBox("Advertencia", "Debe de llenar todos los campos para poder guardar los cambios");
+            }
+            if (this.tFileld_Nombre.getText() == this.producto.getProductName() &&
+                    this.tFileld_Descripcion.getText() == this.producto.getProductDetail() &&
+                    this.tFileld_Precio.getText() == String.valueOf(this.producto.getProductPrize()) &&
+                    this.cmbTipo_Producto.getValue() == this.producto.getProductType()) {
+                Main.MessageBox("Advertencia", "Para poder guardar es necesario cambiar alguno de los datos del producto");
+            }
+            else{
+                ConnectionDB.getInstance().updateProduct(this.tFileld_Nombre.getText(),
+                        this.cmbTipo_Producto.getSelectionModel().getSelectedItem(),
+                        this.tFileld_Descripcion.getText(),
+                        tFileld_Precio.getText());
+                Main.MessageBox("Informacion", "El producto ha sido actualizado correctamente");
+                actualizarDatos();
+                desactivarEspacios();
+                showButtonsOptions();
+                showInfo(this.producto);
+            }
+        }catch (Exception e){
+            Main.MessageBox("Advertencia","Durante la operación se presento un eroror, intentelo de nuevo");
+            System.out.println(e);
+        }
+    }
 
+    public void actualizarDatos(){
+        this.producto.setProductName(this.tFileld_Nombre.getText());
+        this.producto.setProductDetail(this.tFileld_Descripcion.getText());
+        this.producto.setProductPrize(Integer.parseInt(tFileld_Precio.getText()));
+        this.producto.setProductType(this.cmbTipo_Producto.getValue());
     }
 
     @FXML

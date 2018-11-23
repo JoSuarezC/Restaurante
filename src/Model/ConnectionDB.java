@@ -170,12 +170,12 @@ public class ConnectionDB {
     public void addProductCombo(String IdCombo, String IdProducto, String Cantidad){
         String URLparameters = "IdCombo=" + IdCombo + "&IdProducto=" + IdProducto + "&Cantidad=" + Cantidad;
         try{
+            JSONObject myResponse = new JSONObject(POSTrequest(addProductCombo, URLparameters));
             if (myResponse.getString("status").equals("true")) {
                 System.out.print("Producto añadido al combo \n");
             }else{System.out.print("Producto NO añadido al combo \n");}
         }catch (JSONException e){ e.printStackTrace();}
     }
-
 
     public boolean searchProduct(String ProductName){
         try {
@@ -189,6 +189,16 @@ public class ConnectionDB {
         String URLparameters = "Nombre="+pName+"&Tipo="+pType+"&Descripcion="+pDescription+"&Precio="+pPrice;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(add_product_PHP, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            return myResponse.getString("status").equals("true");
+        }catch (JSONException e){ e.printStackTrace();}
+        return false;
+    }
+
+    public boolean updateProduct(String pName, String pType, String pDescription, String pPrice){
+        String URLparameters = "Nombre="+pName+"&Tipo="+pType+"&Descripcion="+pDescription+"&Precio="+pPrice;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(update_product_PHP, URLparameters));
             System.out.print(myResponse.getString("status"));
             return myResponse.getString("status").equals("true");
         }catch (JSONException e){ e.printStackTrace();}

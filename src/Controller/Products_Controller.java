@@ -97,7 +97,7 @@ public class Products_Controller {
                     else{
                         id = this.Tabla_Dulcillo.getSelectionModel().getSelectedIndex();
                         temp = this.dulces_list.get(id);
-                        FXRouter.goTo("DetalleProducto");
+                        FXRouter.goTo("DetalleProducto", temp);
                     }
                     break;
                 case "Monchona":
@@ -107,7 +107,7 @@ public class Products_Controller {
                     else{
                         id = this.Tabla_Monchona.getSelectionModel().getSelectedIndex();
                         temp = this.comida_list.get(id);
-                        FXRouter.goTo("DetalleProducto");
+                        FXRouter.goTo("DetalleProducto", temp);
                     }
                     break;
             }
