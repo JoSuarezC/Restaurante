@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CreateNewEmployee_Controller">
    <children>
       <ImageView fitHeight="862.0" fitWidth="630.0" layoutX="-15.0" layoutY="94.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
@@ -82,22 +81,17 @@
                </font>
             </Label>
             <Separator layoutX="406.0" layoutY="32.0" orientation="VERTICAL" prefHeight="296.0" prefWidth="17.0" />
-            <Label layoutX="449.0" layoutY="143.0" prefHeight="41.0" prefWidth="155.0" text="Nombre de usuario">
+            <Label layoutX="449.0" layoutY="35.0" prefHeight="41.0" prefWidth="155.0" text="Nombre de usuario">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="449.0" layoutY="204.0" prefHeight="41.0" prefWidth="155.0" text="Correo electrónico">
+            <Label layoutX="449.0" layoutY="92.0" prefHeight="41.0" prefWidth="155.0" text="Correo electrónico">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="449.0" layoutY="31.0" prefHeight="41.0" prefWidth="188.0" text="Salario neto">
-               <font>
-                  <Font name="SansSerif Regular" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="449.0" layoutY="88.0" prefHeight="41.0" prefWidth="188.0" text="Salario bruto">
+            <Label layoutX="449.0" layoutY="204.0" prefHeight="41.0" prefWidth="188.0" text="Salario ">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
@@ -123,22 +117,23 @@
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="txt_salarioNeto" layoutX="616.0" layoutY="39.0" prefHeight="25.0" prefWidth="164.0">
+            <TextField fx:id="txt_nombreUsuario" layoutX="616.0" layoutY="39.0" prefHeight="25.0" prefWidth="164.0">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="txt_salarioBruto" layoutX="616.0" layoutY="96.0" prefHeight="25.0" prefWidth="164.0">
+            <TextField fx:id="txt_correo" layoutX="616.0" layoutY="96.0" prefHeight="25.0" prefWidth="164.0">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="txt_nombreUsuario" layoutX="616.0" layoutY="151.0" prefHeight="25.0" prefWidth="164.0">
+            <Label layoutX="449.0" layoutY="143.0" prefHeight="41.0" prefWidth="155.0" text="Sucursal">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
-            </TextField>
-            <TextField fx:id="txt_correo" layoutX="616.0" layoutY="212.0" prefHeight="25.0" prefWidth="164.0">
+            </Label>
+            <ComboBox fx:id="cbx_sucursal" layoutX="616.0" layoutY="155.0" prefHeight="25.0" prefWidth="164.0" />
+            <TextField fx:id="txt_salario" layoutX="616.0" layoutY="208.0" prefHeight="33.0" prefWidth="164.0">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
