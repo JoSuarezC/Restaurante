@@ -10,6 +10,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
@@ -62,7 +64,9 @@ public class AdminReportes_Controller {
         toggleGroup = new ToggleGroup();
         rbtn_Sales.setToggleGroup(toggleGroup);
         rbtn_Sales.setSelected(true);
+        rbtn_Sales.setUserData("ventas");
         rbtn_Earnings.setToggleGroup(toggleGroup);
+        rbtn_Earnings.setUserData("ganancias");
         //Product List
         ObservableList<Product> product_list = FXCollections.observableArrayList();
         product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Comida"));
@@ -121,44 +125,52 @@ public class AdminReportes_Controller {
                     new PieChart.Data("Pears", 22),
                     new PieChart.Data("Apples", 30));
 
-    private XYChart.Series series = new XYChart.Series();
+
 
     public void createChart(){
         if(!hBox_Charts.getChildren().isEmpty()){
             hBox_Charts.getChildren().clear();
         }
-        series.setName("My portfolio");
-        //populating the series with data
-        series.getData().add(new XYChart.Data(1, 23));
-        series.getData().add(new XYChart.Data(2, 14));
-        series.getData().add(new XYChart.Data(3, 15));
-        series.getData().add(new XYChart.Data(4, 24));
-        series.getData().add(new XYChart.Data(5, 34));
-        series.getData().add(new XYChart.Data(6, 36));
-        series.getData().add(new XYChart.Data(7, 22));
-        series.getData().add(new XYChart.Data(8, 45));
-        series.getData().add(new XYChart.Data(9, 43));
-        series.getData().add(new XYChart.Data(10, 17));
-        series.getData().add(new XYChart.Data(11, 29));
-        series.getData().add(new XYChart.Data(12, 25));
-
-
-
         //Acá empieza lo chido
         if (tbtn_Date.isSelected()){
             //Es necesario hacer un LineChart
+            final NumberAxis xAxis = new NumberAxis();
+            final NumberAxis yAxis = new NumberAxis();
+            xAxis.setLabel("Number of Month");
+            //creating the chart
+            final LineChart<Number,Number> lineChart =
+                    new LineChart<Number,Number>(xAxis,yAxis);
+
+            lineChart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
+            XYChart.Series series = new XYChart.Series();
+            series.setName("My portfolio");
+            //populating the series with data
+            series.getData().add(new XYChart.Data(1, 23));
+            series.getData().add(new XYChart.Data(2, 14));
+            series.getData().add(new XYChart.Data(3, 15));
+            series.getData().add(new XYChart.Data(4, 24));
+            series.getData().add(new XYChart.Data(5, 34));
+            series.getData().add(new XYChart.Data(6, 36));
+            series.getData().add(new XYChart.Data(7, 22));
+            series.getData().add(new XYChart.Data(8, 45));
+            series.getData().add(new XYChart.Data(9, 43));
+            series.getData().add(new XYChart.Data(10, 17));
+            series.getData().add(new XYChart.Data(11, 29));
+            series.getData().add(new XYChart.Data(12, 25));
+            lineChart.getData().add(series);
+            hBox_Charts.getChildren().add(lineChart);
         }else{
             //Es necesario hacer un PieChart
             final PieChart chart = new PieChart(pieChartData);
-            chart.setTitle("Imported Fruits");
+            chart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
             chart.setLegendSide(Side.LEFT);
 
             for (final PieChart.Data data : chart.getData()) {
-                data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
+                data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
                         e -> {
                             caption.setTranslateX(e.getSceneX());
                             caption.setTranslateY(e.getSceneY());
-                            caption.setText(data.getPieValue() + "%");
+                            caption.setText(String.valueOf(data.getPieValue()));
                         });
                 data.getNode().addEventHandler(MouseEvent.MOUSE_EXITED,
                         e -> {
