@@ -33,6 +33,8 @@ public class ConnectionDB {
     private static final String select_pedidos_pendientes_PHP = URL_HOST + "RestaurantePHP/Pedido/select_pedidos_pendientes.php";
     private static final String set_pedido_entregado_PHP = URL_HOST + "RestaurantePHP/Pedido/set_pedido_entregado.php";
     private static final String generateBill = URL_HOST+"RestaurantePHP/Pedido/generateBill.php";
+    private static final String is_assigned_PHP = URL_HOST+"RestaurantePHP/Producto/is_assigned_product.php";
+    private static final String update_product_PHP = URL_HOST+"RestaurantePHP/Producto/update_product.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -133,6 +135,15 @@ public class ConnectionDB {
         return arraylistProducto;
     }
 
+    public int is_assigned (int productTd){
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(is_assigned_PHP+"?Id="+productTd));
+            if (myResponse.getString("status").equals("true")){
+                return myResponse.getJSONObject("value").getInt("total");
+            }else{System.out.println("No existe el producto2");}
+        }catch (JSONException e){ System.out.println(e);}
+        return 0;
+    }
 
     public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega){
         String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price + "&IdSucursal" + Sucursal + "&DireccionEntrega="+DireccionEntrega;
@@ -159,7 +170,6 @@ public class ConnectionDB {
     public void addProductCombo(String IdCombo, String IdProducto, String Cantidad){
         String URLparameters = "IdCombo=" + IdCombo + "&IdProducto=" + IdProducto + "&Cantidad=" + Cantidad;
         try{
-            JSONObject myResponse = new JSONObject(POSTrequest(addProductCombo, URLparameters));
             if (myResponse.getString("status").equals("true")) {
                 System.out.print("Producto añadido al combo \n");
             }else{System.out.print("Producto NO añadido al combo \n");}
