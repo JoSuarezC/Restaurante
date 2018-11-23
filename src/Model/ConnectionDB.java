@@ -37,6 +37,7 @@ public class ConnectionDB {
     private static final String is_assigned_PHP = URL_HOST+"RestaurantePHP/Producto/is_assigned_product.php";
     private static final String update_product_PHP = URL_HOST+"RestaurantePHP/Producto/update_product.php";
     private static final String insertPedidoSucursal = URL_HOST+"RestaurantePHP/Pedido/insertPedidoSucursal.php";
+    private static final String insertEvaluacion = URL_HOST+"RestaurantePHP/Pedido/insertEvaluacion.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -157,7 +158,7 @@ public class ConnectionDB {
                 System.out.print(orderID);
                 JSONObject myResponse2 = new JSONObject(POSTrequest(insertPedidoSucursal, "sucursal="+Sucursal+"&pedido="+orderID));
                 if (myResponse2.getString("status").equals("true")) {
-                    return orderID; // // insertPedidoSucursal.php?sucursal=3&pedido=1
+                    return orderID;
                 }
             }
         }catch (JSONException e){ e.printStackTrace();}
@@ -348,6 +349,15 @@ public class ConnectionDB {
             JSONObject myResponse = new JSONObject(POSTrequest(generateBill, URLparameters));
             System.out.print(myResponse.getString("status"));
         }catch (JSONException e){ e.printStackTrace();}
+    }
+
+    public Boolean sendEvaluation(String fecha, String cliente, String pedido, String comentarios, String facilidad, String calidadServicio, String calidadComida){
+        String URLparameters = "fecha=" + fecha + "&cliente=" + cliente + "&pedido=" + pedido + "&comentarios=" + comentarios + "&facilidad=" + facilidad + "&calidadServicio=" + calidadServicio + "&calidadComida=" + calidadComida;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(insertEvaluacion, URLparameters));
+            return myResponse.getString("status").equals("true");
+        }catch (JSONException e){ e.printStackTrace();}
+        return false;
     }
 
 
