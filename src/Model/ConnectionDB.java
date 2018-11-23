@@ -38,6 +38,7 @@ public class ConnectionDB {
     private static final String update_product_PHP = URL_HOST+"RestaurantePHP/Producto/update_product.php";
     private static final String insertPedidoSucursal = URL_HOST+"RestaurantePHP/Pedido/insertPedidoSucursal.php";
     private static final String insertEvaluacion = URL_HOST+"RestaurantePHP/Pedido/insertEvaluacion.php";
+    private static final String select_combos = URL_HOST+"RestaurantePHP/Producto/select_combos.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){

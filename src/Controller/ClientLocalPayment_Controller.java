@@ -110,7 +110,7 @@ public class ClientLocalPayment_Controller {
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
-            String totalAPagar = Label_TotalCost.getText();
+            String totalAPagar = Label_TotalCost.getText();// String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega, String Estado
             orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, User.getCurrentUser().getSucursalName(), "Orden Local", "Entregado");
             System.out.print(orderID);
             if(orderID == null){
