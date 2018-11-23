@@ -25,12 +25,14 @@ public class Evaluation_Controller {
     @FXML
     private ComboBox<String> ComboBox3;
 
+    private int IdPedido;
 
     @FXML
     protected void initialize() {
         ComboBox1.getItems().setAll("1","2","3","4","5","6","7","8","9","10");
         ComboBox2.getItems().setAll("1","2","3","4","5","6","7","8","9","10");
         ComboBox3.getItems().setAll("1","2","3","4","5","6","7","8","9","10");
+        IdPedido = (Integer) FXRouter.getData();
     }
 
     @FXML
@@ -38,7 +40,7 @@ public class Evaluation_Controller {
         if(validaciones()){
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
-            ConnectionDB.getInstance().sendEvaluation(dateFormat.format(fecha), User.getCurrentUser().getUserID(), "", TextAreaOpcional.getText(), ComboBox1.getSelectionModel().getSelectedItem(), ComboBox3.getSelectionModel().getSelectedItem(),  ComboBox2.getSelectionModel().getSelectedItem());
+            ConnectionDB.getInstance().sendEvaluation(dateFormat.format(fecha), User.getCurrentUser().getUserID(), String.valueOf(IdPedido), TextAreaOpcional.getText(), ComboBox1.getSelectionModel().getSelectedItem(), ComboBox3.getSelectionModel().getSelectedItem(),  ComboBox2.getSelectionModel().getSelectedItem());
         }
     }
 
