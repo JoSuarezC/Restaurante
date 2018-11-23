@@ -105,6 +105,7 @@ public class ConnectionDB {
                     User u = new User(EmID,userType,job,sucursalName,sucursalID);
                     User.setCurrentUser(u);
 
+
                 }else if(userType.equals("Cliente")){
                     String ClientID = myResponse.getJSONObject("value").getString("IdCliente");
                     User u = new User(ClientID,userType,"","","");
@@ -149,7 +150,8 @@ public class ConnectionDB {
         return 0;
     }
 
-    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega, String Estado){
+    public String makeOrder(String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String SucursalID, String DireccionEntrega, String Estado){
+
         String URLparameters = "ClientID=" + ClientID + "&Datetime=" + DateTime + "&OrderType=" + OrderType + "&TotalAPagar=" + Price +"&Estado="+Estado+ "&IdSucursal" + Sucursal + "&DireccionEntrega="+DireccionEntrega;
         try{
             System.out.print("------------------------------------------------------------------------\n");
@@ -157,7 +159,7 @@ public class ConnectionDB {
             if (myResponse.getString("status").equals("true")) {
                 String orderID = myResponse.getJSONObject("value").getString("orderID");
                 System.out.print(orderID);
-                JSONObject myResponse2 = new JSONObject(POSTrequest(insertPedidoSucursal, "sucursal="+Sucursal+"&pedido="+orderID));
+                JSONObject myResponse2 = new JSONObject(POSTrequest(insertPedidoSucursal, "IdSucursal="+SucursalID+"&IdPedido="+orderID));
                 if (myResponse2.getString("status").equals("true")) {
                     return orderID;
                 }

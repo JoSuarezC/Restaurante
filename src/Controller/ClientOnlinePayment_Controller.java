@@ -91,7 +91,7 @@ public class ClientOnlinePayment_Controller {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
             String totalAPagar = Label_TotalCost.getText();
-            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), choiceBox_Entrega.getSelectionModel().getSelectedItem(), totalAPagar, choiceBox_Sucursal.getValue().toString(), directionTF.getText(), "Pendiente");
+            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), choiceBox_Entrega.getSelectionModel().getSelectedItem(), totalAPagar, choiceBox_Sucursal.getValue().toString(), String.valueOf(choiceBox_Sucursal.getSelectionModel().getSelectedIndex()+1), directionTF.getText(), "Pendiente");
             System.out.print(orderID);
             ObservableList<ShoppingList_Product> list;
             list = inventoryTable.getItems();
