@@ -99,18 +99,19 @@ public class ConnectionDB {
             JSONObject myResponse = new JSONObject(GETRequest(login_PHP+"?UserId="+user+"&Password="+password));
             if (myResponse.getString("status").equals("true")){
                 userType = myResponse.getJSONObject("value").getString("NombreTipoUsuario");
+                String email = myResponse.getJSONObject("value").getString("Correo");
                 if (userType.equals("Empleado")){
                     String EmID = myResponse.getJSONObject("value").getString("IdEm");
                     String job = myResponse.getJSONObject("value").getString("NombrePuesto");
                     String sucursalID = myResponse.getJSONObject("value").getString("IdSuc");
                     String sucursalName = myResponse.getJSONObject("value").getString("NombreSucursal");
-                    User u = new User(EmID,userType,job,sucursalName,sucursalID);
+                    User u = new User(EmID,userType,job,sucursalName,sucursalID,email);
                     User.setCurrentUser(u);
 
 
                 }else if(userType.equals("Cliente")){
                     String ClientID = myResponse.getJSONObject("value").getString("IdCliente");
-                    User u = new User(ClientID,userType,"","","");
+                    User u = new User(ClientID,userType,"","","",email);
                     User.setCurrentUser(u);
                 }
             }else{

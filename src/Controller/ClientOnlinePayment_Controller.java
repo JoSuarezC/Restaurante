@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Pair;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -101,7 +103,8 @@ public class ClientOnlinePayment_Controller {
                 ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
             }
             generateBill(orderID, totalAPagar);
-            Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
+            Email.createBill(dateFormat.format(fecha),list,totalAPagar,choiceBox_Sucursal.getValue().toString());
+            Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente, la factura se ha enviado al correo electrónico asociado a su cuenta.");
             try {
                 FXRouter.goTo("Client");
             } catch (IOException e) {
