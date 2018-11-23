@@ -7,10 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import Model.Puesto;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ListCell;
-import javafx.util.Callback;
 import java.io.IOException;
 
 public class CreateNewEmployee_Controller {
@@ -65,6 +61,18 @@ public class CreateNewEmployee_Controller {
 
     @FXML
     private void CrearEmpleado(){
+        if(validarEntradas()){
 
+        }else{
+            Main.MessageBox("Error", "Complete todas las casillas para poder crear el empleado.");
+        }
+    }
+
+    private boolean validarEntradas(){
+        if(!txt_nombre.getText().isEmpty() && !txt_apellidos.getText().isEmpty() && !txt_cedula.getText().isEmpty() && !txt_cuentaBanco.getText().isEmpty() &&
+                !txt_salarioNeto.getText().isEmpty() && !txt_salarioBruto.getText().isEmpty() && !txt_nombreUsuario.getText().isEmpty() && !txt_correo.getText().isEmpty()){
+            return true;
+        }
+        return false;
     }
 }
