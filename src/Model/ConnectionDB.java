@@ -201,8 +201,9 @@ public class ConnectionDB {
         return false;
     }
 
-    public boolean updateProduct(String pName, String pType, String pDescription, String pPrice){
-        String URLparameters = "Nombre="+pName+"&Tipo="+pType+"&Descripcion="+pDescription+"&Precio="+pPrice;
+    public boolean updateProduct(String pName, String pType, String pDescription, int pPrice, int pState, int pId){
+        String URLparameters = "Nombre="+pName+"&Tipo="+pType+"&Descripcion="+pDescription+"&Precio="+pPrice+"&Estado="
+                +pState+"&Id="+pId;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(update_product_PHP, URLparameters));
             System.out.print(myResponse.getString("status"));

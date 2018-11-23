@@ -59,9 +59,6 @@ public class DetalleProducto_Controller {
     private TextField tFileld_Precio;
 
     @FXML
-    private ComboBox<String> cmbTipo_Producto;
-
-    @FXML
     protected void initialize(){
         producto = ((Product) FXRouter.getData());
         clearFields();
@@ -79,7 +76,6 @@ public class DetalleProducto_Controller {
         this.tFileld_Nombre.setText(new String(""));
         this.tFileld_Descripcion.setText(new String(""));
         this.tFileld_Precio.setText(new String(""));
-        this.cmbTipo_Producto.setItems(this.options);
     }
 
     protected  void showInfo(Product producto){
@@ -128,17 +124,15 @@ public class DetalleProducto_Controller {
         this.txt_NombreProducto.setVisible(false);
         this.txt_DescripcionProducto.setVisible(false);
         this.txt_PrecioProducto.setVisible(false);
-        this.txt_TipoProducto.setVisible(false);
 
+        this.txt_TipoProducto.setVisible(true);
         this.tFileld_Nombre.setVisible(true);
         this.tFileld_Descripcion.setVisible(true);
         this.tFileld_Precio.setVisible(true);
-        this.cmbTipo_Producto.setVisible(true);
 
         this.tFileld_Nombre.setDisable(false);
         this.tFileld_Descripcion.setDisable(false);
         this.tFileld_Precio.setDisable(false);
-        this.cmbTipo_Producto.setDisable(false);
 
         this.chkBox_Disponible.setDisable(false);
     }
@@ -152,12 +146,10 @@ public class DetalleProducto_Controller {
         this.tFileld_Nombre.setDisable(true);
         this.tFileld_Descripcion.setDisable(true);
         this.tFileld_Precio.setDisable(true);
-        this.cmbTipo_Producto.setDisable(true);
 
         this.tFileld_Nombre.setVisible(false);
         this.tFileld_Descripcion.setVisible(false);
         this.tFileld_Precio.setVisible(false);
-        this.cmbTipo_Producto.setVisible(false);
 
         this.chkBox_Disponible.setDisable(true);
     }
@@ -166,7 +158,6 @@ public class DetalleProducto_Controller {
         this.tFileld_Nombre.setText(this.txt_NombreProducto.getText());
         this.tFileld_Descripcion.setText(this.txt_DescripcionProducto.getText());
         this.tFileld_Precio.setText(this.txt_PrecioProducto.getText());
-        this.cmbTipo_Producto.setValue(this.txt_TipoProducto.getText());
     }
 
     @FXML
@@ -187,23 +178,15 @@ public class DetalleProducto_Controller {
     @FXML
     public void guardar(ActionEvent event) {
         try{
-            if (this.tFileld_Nombre.getText().isEmpty() &&
-                    this.tFileld_Descripcion.getText().isEmpty() &&
-                    this.tFileld_Precio.getText().isEmpty() &&
-                    this.cmbTipo_Producto.getValue().isEmpty()) {
+            if (this.tFileld_Nombre.getText().isEmpty() ||
+                    this.tFileld_Descripcion.getText().isEmpty() ||
+                    this.tFileld_Precio.getText().isEmpty()) {
                 Main.MessageBox("Advertencia", "Debe de llenar todos los campos para poder guardar los cambios");
-            }
-            if (this.tFileld_Nombre.getText() == this.producto.getProductName() &&
-                    this.tFileld_Descripcion.getText() == this.producto.getProductDetail() &&
-                    this.tFileld_Precio.getText() == String.valueOf(this.producto.getProductPrize()) &&
-                    this.cmbTipo_Producto.getValue() == this.producto.getProductType()) {
-                Main.MessageBox("Advertencia", "Para poder guardar es necesario cambiar alguno de los datos del producto");
-            }
-            else{
+            }else{
                 ConnectionDB.getInstance().updateProduct(this.tFileld_Nombre.getText(),
-                        this.cmbTipo_Producto.getSelectionModel().getSelectedItem(),
+                        this.txt_TipoProducto.getText(),
                         this.tFileld_Descripcion.getText(),
-                        tFileld_Precio.getText());
+                        Integer.parseInt(this.tFileld_Precio.getText()), this.chkBox_Disponible.isSelected() ? 1 : 0, Integer.parseInt(producto.getProductID()));
                 Main.MessageBox("Informacion", "El producto ha sido actualizado correctamente");
                 actualizarDatos();
                 desactivarEspacios();
@@ -220,7 +203,7 @@ public class DetalleProducto_Controller {
         this.producto.setProductName(this.tFileld_Nombre.getText());
         this.producto.setProductDetail(this.tFileld_Descripcion.getText());
         this.producto.setProductPrize(Integer.parseInt(tFileld_Precio.getText()));
-        this.producto.setProductType(this.cmbTipo_Producto.getValue());
+        this.producto.setProductType(this.txt_TipoProducto.getText());
     }
 
     @FXML
