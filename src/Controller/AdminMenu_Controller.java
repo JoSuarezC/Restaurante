@@ -19,6 +19,15 @@ public class AdminMenu_Controller {
     }
 
     @FXML
+    public void GoToReportes(ActionEvent event) {
+        try {
+            FXRouter.goTo("Reports");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void GoToManageMenu(ActionEvent event) {
         try {
             FXRouter.goTo("Products");

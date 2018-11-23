@@ -15,6 +15,7 @@ public class Main extends Application {
         FXRouter.when("MenuAdm","/View/Administrator/AdminMenu.fxml","Admin Menu",1204,666);
        // FXRouter.when("Adm_ManagePMenu","/View/Administrator/AdminManageProdMenu.fxml","Menú",1204,666);
         FXRouter.when("Adm_CreateCombo","/View/Administrator/AdminCreateCombo.fxml","Create Combo",1204,666);
+        FXRouter.when("Reports","/View/Administrator/AdminReportes.fxml","Reportes",1204,666);
         FXRouter.when("Products","/View/Products.fxml","Products",1204,666);
         FXRouter.when("AddProduct","/View/NewProduct.fxml","Products",1204,666);
         FXRouter.when("SignIn","/View/Sign_in.fxml","Sign In",1204,666);

@@ -17,6 +17,6 @@ public class Sucursal {
 
     @Override
     public String toString() {
-        return "Sucursal " + nombreSucursal;
+        return nombreSucursal;
     }
 }

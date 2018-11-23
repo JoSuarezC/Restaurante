@@ -16,6 +16,11 @@ public class User {
         this.sucursalID = sucursalID;
     }
 
+    @Override
+    public String toString(){
+        return currentUser.getUserID();
+    }
+
     public String getSucursalName() {
         return sucursalName;
     }

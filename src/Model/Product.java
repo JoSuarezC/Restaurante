@@ -25,6 +25,11 @@ public class Product {
         this.productState = new SimpleIntegerProperty(productState);
     }
 
+    @Override
+    public String toString(){
+        return getProductName();
+    }
+
     public int getProductState() {
         return productState.get();
     }
