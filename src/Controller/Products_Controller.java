@@ -60,7 +60,11 @@ public class Products_Controller {
 
     @FXML
     void CreateCombo(ActionEvent event) {
-
+        try {
+            FXRouter.goTo("Adm_CreateCombo");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

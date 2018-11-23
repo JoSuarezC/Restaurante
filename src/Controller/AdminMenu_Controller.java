@@ -21,7 +21,7 @@ public class AdminMenu_Controller {
     @FXML
     public void GoToManageMenu(ActionEvent event) {
         try {
-            FXRouter.goTo("Adm_ManagePMenu");
+            FXRouter.goTo("Products");
         } catch (IOException e) {
             e.printStackTrace();
         }

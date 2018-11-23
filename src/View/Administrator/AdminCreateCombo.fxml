@@ -6,35 +6,109 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminCreateCombo_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminCreateCombo_Controller">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2910b2" height="666.0" layoutX="21.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1204.0" />
-      <Group layoutX="174.0" layoutY="114.0">
+      <ImageView fitHeight="862.0" fitWidth="630.0" layoutY="90.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="852.0" fitWidth="637.0" layoutX="629.0" layoutY="90.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="90.0" prefWidth="1226.0" style="-fx-background-color: #ffcc00;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="438.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="882.0" />
-            <TableView fx:id="tableView_Producto" layoutX="14.0" layoutY="54.0" prefHeight="200.0" prefWidth="392.0">
-              <columns>
-                <TableColumn fx:id="tableColumn_Producto_Producto" prefWidth="158.00001525878906" text="Producto" />
-                <TableColumn fx:id="tableColumn_Producto_Precio" prefWidth="113.0" text="Precio" />
-                  <TableColumn fx:id="tableColumn_Producto_Ver" prefWidth="119.0" />
-              </columns>
-            </TableView>
-            <Button fx:id="btn_agregarP" layoutX="14.0" layoutY="275.0" mnemonicParsing="false" text="Agregar al combo" />
-            <Button fx:id="btn_quitarP" layoutX="682.0" layoutY="275.0" mnemonicParsing="false" text="Quitar del Combo" />
-            <Button fx:id="btn_crearCombo" layoutX="453.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="341.0" text="Crear Combo" />
-            <Label layoutX="453.0" layoutY="279.0" text="Descuento:" />
-            <Spinner fx:id="spinner_descuento" layoutX="521.0" layoutY="275.0" />
-            <Button layoutX="749.0" layoutY="391.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás" />
-            <TableView fx:id="tableView_Combo" layoutX="453.0" layoutY="54.0" prefHeight="200.0" prefWidth="338.0">
-              <columns>
-                <TableColumn fx:id="tableColumn_Combo_Producto" prefWidth="153.0" text="Producto" />
-                <TableColumn fx:id="tableColumn_Combo_Cantidad" prefWidth="160.0" text="Cantidad" />
-              </columns>
-            </TableView>
+            <Label layoutX="472.0" layoutY="22.0" text="Crear Combazo">
+               <font>
+                  <Font name="SansSerif Regular" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="68.0" fitWidth="66.0" layoutX="772.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/guitar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="68.0" fitWidth="66.0" layoutX="399.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/guitar.png" />
+               </image>
+            </ImageView>
          </children>
-      </Group>
+      </Pane>
+      <Pane layoutX="127.0" layoutY="124.0" prefHeight="462.0" prefWidth="950.0" style="-fx-background-color: #ff9900;">
+         <children>
+            <Group layoutX="95.0" layoutY="19.0">
+               <children>
+                  <TableView fx:id="tableView_Producto" layoutX="-41.0" layoutY="86.0" prefHeight="200.0" prefWidth="406.0">
+                    <columns>
+                      <TableColumn fx:id="tableColumn_Producto_Producto" prefWidth="158.00001525878906" text="Producto" />
+                      <TableColumn fx:id="tableColumn_Producto_Precio" prefWidth="113.0" text="Precio" />
+                        <TableColumn fx:id="tableColumn_Producto_Ver" prefWidth="132.00006103515625" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btn_agregarP" accessibleText="jejejeje" layoutX="-41.0" layoutY="295.0" mnemonicParsing="false" text="Agregar al combo">
+                     <font>
+                        <Font name="SansSerif Regular" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_quitarP" layoutX="637.0" layoutY="296.0" mnemonicParsing="false" text="Quitar del Combo">
+                     <font>
+                        <Font name="SansSerif Regular" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_crearCombo" layoutX="203.0" layoutY="387.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="341.0" text="Crear Combo">
+                     <font>
+                        <Font name="SansSerif Regular" size="17.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="416.0" layoutY="300.0" text="Descuento:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Spinner fx:id="spinner_descuento" layoutX="513.0" layoutY="299.0" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: #ff9900;" />
+                  <Button layoutX="744.0" layoutY="393.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="tableView_Combo" layoutX="416.0" layoutY="86.0" prefHeight="200.0" prefWidth="394.0">
+                    <columns>
+                      <TableColumn fx:id="tableColumn_Combo_Producto" prefWidth="207.199951171875" text="Producto" />
+                      <TableColumn fx:id="tableColumn_Combo_Cantidad" prefWidth="176.0" text="Cantidad" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Group>
+            <Label layoutX="54.0" layoutY="14.0" text="Productos">
+               <font>
+                  <Font name="SansSerif Regular" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="513.0" layoutY="14.0" text="Combazo">
+               <font>
+                  <Font name="SansSerif Regular" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="57.0" text="Seleccione los productos que tendrá el combazo.">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="78.0" text="Presione la techa &quot;CTRL&quot; y marque los que desea.">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
