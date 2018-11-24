@@ -49,7 +49,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/ComboInfo_Controller.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -181,13 +181,19 @@
             <path>
               <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
               <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
               <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
@@ -212,8 +218,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -266,7 +272,11 @@
     <option name="totallyTimeSpent" value="4388000" />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+=======
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+>>>>>>> master
     <layout>
       <window_info id="Designer" />
       <window_info id="UI Designer" />
@@ -292,6 +302,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="0" />
