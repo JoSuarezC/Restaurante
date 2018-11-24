@@ -151,6 +151,8 @@ public class ClientOrder_Controller {
                 checkProduct(tablaView_Comida.getSelectionModel().getSelectedItem());
             } else if (!tablaView_Dulce.getSelectionModel().isEmpty()) {
                 checkProduct(tablaView_Dulce.getSelectionModel().getSelectedItem());
+            } else if (!tablaView_Combos.getSelectionModel().isEmpty()){
+                checkCombo(tablaView_Combos.getSelectionModel().getSelectedItem());
             } else {
                 Main.MessageBox("No se ha seleccionado el producto", "Seleccione el producto que desea agregar a su pedido");
             }
@@ -207,6 +209,30 @@ public class ClientOrder_Controller {
         tablaView_Dulce.getSelectionModel().clearSelection();
     }
 
+    private void checkCombo(Combo pCombo){
+        for(ShoppingList_Product producto : pCombo.getListaProductos()){
+            int indice = -1;
+            for (int i = 0; i < tablaView_Inventario.getItems().size(); i++) {
+                if (tablaView_Inventario.getItems().get(i).getProductID().equals(producto.getProductID())) {
+                    indice = i;
+                    break;
+                }
+            }
+            if (indice == -1) { // Si no existe en la tabla inventario
+                tablaView_Inventario.getItems().add(new ShoppingList_Product(producto.getProductName(), producto.getProductType(), producto.getProductID(), producto.getProductPrize(), producto.getProductDetail(), producto.getProductState(), producto.getProductQuantity()*Integer.parseInt(TextBox_ProductQuantity.getText())));
+            } else { // Si ya existe
+                tablaView_Inventario.getItems().get(indice).setProductQuantity(tablaView_Inventario.getItems().get(indice).getProductQuantity() + producto.getProductQuantity()*Integer.parseInt(TextBox_ProductQuantity.getText()));
+            }
+            tablaView_Bebida.getSelectionModel().clearSelection();
+            tablaView_Comida.getSelectionModel().clearSelection();
+            tablaView_Dulce.getSelectionModel().clearSelection();
+            tablaView_Combos.getSelectionModel().clearSelection();
+        }
+        totalCost = totalCost + (int)pCombo.getPrecioTotal();
+        Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
+
+    }
+
     @FXML
     private void ContactoMessage(){
         Main.MessageBox("Contacto","Para contactar con el restaurante comuniquese al: \r\n +506 8618 4965");
@@ -240,6 +266,9 @@ public class ClientOrder_Controller {
                                 } else {
                                     btn.setOnAction(event -> {
                                         Combo myCombo = getTableView().getItems().get(getIndex());
+                                        ClientOrder_Memento.getMementoInstance().setListaProductosMemento(tablaView_Inventario.getItems());
+                                        ClientOrder_Memento.getMementoInstance().setPrecioTotal(Label_TotalCost.getText());
+                                        ClientOrder_Memento.getMementoInstance().setPrecio(totalCost);
                                         try {
                                             FXRouter.goTo("ComboInfo", myCombo);
                                         } catch (IOException e) {
