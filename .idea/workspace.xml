@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="1e140f09-8c30-4667-a1ab-e55fc23f0cd0" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/Controller/AdminPuestos_Controller.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Controller/AgregarPuesto_Controller.java" afterDir="false" />
@@ -15,26 +16,64 @@
       <change beforePath="$PROJECT_DIR$/src/Model/Puesto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Puesto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Administrator/AdminMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Administrator/AdminMenu.fxml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="9f8f19f8-bc0a-445d-a8b3-8c395d210ca8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/DetalleProducto.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DetalleProducto.fxml" afterDir="false" />
+    </list>
+    <ignored path="$USER_HOME$/Escritorio/2030/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+>>>>>>> master
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
+<<<<<<< HEAD
     <session id="-1069565315">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="4" />
+=======
+    <session id="-546636414">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
+>>>>>>> master
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+<<<<<<< HEAD
+          <entry key="JAVA" value="4" />
+=======
+          <entry key="fxml" value="1" />
+          <entry key="java" value="1" />
+          <entry key="xml" value="1" />
+>>>>>>> master
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="4" />
+<<<<<<< HEAD
+          <entry key="project.closed" value="1" />
+=======
+          <entry key="JAVA" value="1" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
-      <usages-collector id="statistics.lifecycle.project">
+      <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="java" value="148" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="148" />
+>>>>>>> master
         </counts>
       </usages-collector>
     </session>
@@ -42,6 +81,7 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/Controller/ComboInfo_Controller.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -55,6 +95,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-3231">
               <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/View/NewProduct.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2282">
+              <caret line="202" column="74" selection-start-line="202" selection-start-column="74" selection-end-line="202" selection-end-column="74" />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -67,6 +119,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Controller/Main.java" />
         <option value="$PROJECT_DIR$/src/Model/ConnectionDB.java" />
       </list>
@@ -78,6 +131,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+=======
+        <option value="$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java" />
+      </list>
+    </option>
+  </component>
+>>>>>>> master
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -99,8 +158,22 @@
               <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
               <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+<<<<<<< HEAD
+=======
+            <path>
+              <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Restaurante" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Restaurante" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> master
           </expand>
           <select />
         </subPane>
@@ -126,12 +199,20 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="dc6612f2-4ae6-4aa3-aa24-d99cebd172fd" name="Default Changelist" comment="" />
       <created>1543040035391</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543040035391</updated>
       <workItem from="1543040038718" duration="321000" />
+=======
+      <changelist id="9f8f19f8-bc0a-445d-a8b3-8c395d210ca8" name="Default Changelist" comment="" />
+      <created>1543030287734</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1543030287734</updated>
+>>>>>>> master
     </task>
     <servers />
   </component>
@@ -142,6 +223,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
       <window_info id="Designer" />
+<<<<<<< HEAD
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
@@ -154,13 +236,29 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
+=======
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.3295082" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3295082" />
+>>>>>>> master
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Database" />
+=======
+      <window_info anchor="right" id="Palette&#9;" />
+>>>>>>> master
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -168,6 +266,7 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -196,6 +295,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3231">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/View/NewProduct.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/DetalleProducto_Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2282">
+          <caret line="202" column="74" selection-start-line="202" selection-start-column="74" selection-end-line="202" selection-end-column="74" />
+>>>>>>> master
         </state>
       </provider>
     </entry>
