@@ -71,4 +71,13 @@ public class AdminMenu_Controller {
         }
     }
 
+    @FXML
+    public void GoToAgregarPuesto(ActionEvent event) {
+        try {
+            FXRouter.goTo("AgregarPuesto");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminPuestos_Controller">
+   <children>
+      <ImageView fitHeight="862.0" fitWidth="630.0" layoutY="75.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="852.0" fitWidth="637.0" layoutX="629.0" layoutY="75.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="117.0" layoutY="100.0" prefHeight="460.0" prefWidth="1038.0" style="-fx-background-color: #ff9900;">
+         <children>
+            <Label layoutX="53.0" layoutY="28.0" text="Complete la informacion indicada">
+               <font>
+                  <Font name="SansSerif Regular" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="92.0" text="Nombre">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Label layoutX="45.0" layoutY="328.0" text="Salario máximo">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Label layoutX="45.0" layoutY="172.0" text="Descripción">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Label layoutX="46.0" layoutY="263.0" text="Salario minimo">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font></Label>
+            <Button layoutX="64.0" layoutY="387.0" mnemonicParsing="false" onAction="#addJob" text="Agregar">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font></Button>
+            <Button layoutX="919.0" layoutY="420.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
+               <font>
+                  <Font name="SansSerif Regular" size="15.0" />
+               </font></Button>
+            <TextField fx:id="txt_Nombre" layoutX="186.0" layoutY="87.0" prefHeight="26.0" prefWidth="200.0" />
+            <TableView fx:id="tableView_Puestos" layoutX="506.0" layoutY="42.0" prefHeight="364.0" prefWidth="508.0">
+              <columns>
+                <TableColumn fx:id="Column_Puesto" prefWidth="104.0" text="Puesto" />
+                <TableColumn fx:id="Column_Descripcion" prefWidth="126.0" text="Descripcion" />
+                  <TableColumn fx:id="Column_Salario1" prefWidth="133.0" text="Salario Minimo" />
+                  <TableColumn fx:id="Column_Salario2" prefWidth="144.0" text="Salario Maximo" />
+              </columns>
+            </TableView>
+            <TextArea fx:id="txt_Descripcion" layoutX="186.0" layoutY="153.0" prefHeight="60.0" prefWidth="200.0" />
+            <TextField fx:id="txt_SalarioMaximo" layoutX="186.0" layoutY="324.0" prefHeight="31.0" prefWidth="200.0" />
+            <TextField fx:id="txt_SalarioMinimo" layoutX="186.0" layoutY="258.0" prefHeight="31.0" prefWidth="200.0" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane prefHeight="75.0" prefWidth="1227.0" style="-fx-background-color: #ffcc00;">
+         <children>
+            <Label layoutX="424.0" layoutY="8.0" prefHeight="60.0" prefWidth="379.0" text="Agregar nuevo puesto" textAlignment="CENTER">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="322.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/guitar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="821.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/guitar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
