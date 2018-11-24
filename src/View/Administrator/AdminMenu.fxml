@@ -10,57 +10,57 @@
 
 <AnchorPane id="pnlVistaGerente" fx:id="AnchorPaneMain" prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #ff9900;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminMenu_Controller">
    <children>
-      <AnchorPane prefHeight="175.0" prefWidth="1211.0" style="-fx-background-color: #ffcc00;">
+      <AnchorPane prefHeight="142.0" prefWidth="1211.0" style="-fx-background-color: #ffcc00;">
          <children>
-            <ImageView fitHeight="82.0" fitWidth="85.0" layoutX="912.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="85.0" layoutX="910.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/guitar.png" />
                </image>
             </ImageView>
-            <Label layoutX="327.0" layoutY="32.0" prefHeight="110.0" prefWidth="573.0" text="Restaurante AK7">
+            <Label layoutX="327.0" layoutY="18.0" prefHeight="110.0" prefWidth="573.0" text="Restaurante AK7">
                <font>
                   <Font name="SansSerif Regular" size="75.0" />
                </font>
             </Label>
-            <ImageView fitHeight="82.0" fitWidth="85.0" layoutX="245.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="85.0" layoutX="245.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/guitar.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="862.0" fitWidth="630.0" layoutY="175.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="862.0" fitWidth="630.0" layoutY="142.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/fondoMenuAdm.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="829.0" fitWidth="604.0" layoutX="629.0" layoutY="175.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="829.0" fitWidth="604.0" layoutX="629.0" layoutY="142.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/fondoMenuAdm.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="417.0" layoutY="190.0" prefHeight="453.0" prefWidth="426.0" style="-fx-background-color: #ff9900;">
+      <AnchorPane layoutX="417.0" layoutY="162.0" prefHeight="482.0" prefWidth="426.0" style="-fx-background-color: #ff9900;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <Button fx:id="btn_Productos" layoutX="115.0" layoutY="100.0" mnemonicParsing="false" onAction="#GoToManageMenu" prefHeight="36.0" prefWidth="195.0" text="Productos">
+            <Button fx:id="btn_Productos" layoutX="115.0" layoutY="86.0" mnemonicParsing="false" onAction="#GoToManageMenu" prefHeight="36.0" prefWidth="195.0" text="Productos">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>
-            <Button fx:id="btn_Cajero" layoutX="113.0" layoutY="170.0" mnemonicParsing="false" onAction="#Cajero" prefHeight="36.0" prefWidth="195.0" text="Cajero">
+            <Button fx:id="btn_Cajero" layoutX="115.0" layoutY="148.0" mnemonicParsing="false" onAction="#Cajero" prefHeight="36.0" prefWidth="195.0" text="Cajero">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>
-            <Button fx:id="btn_Reportes" layoutX="113.0" layoutY="243.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="195.0" text="Reportes">
+            <Button fx:id="btn_Reportes" layoutX="115.0" layoutY="215.0" mnemonicParsing="false" onAction="#GoToReportes" prefHeight="36.0" prefWidth="195.0" text="Reportes">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>
-            <Button fx:id="btn_PedidosPendientes" layoutX="115.0" layoutY="319.0" mnemonicParsing="false" onAction="#GoToPedidosPendientes" text="Pedidos Pendientes">
+            <Button fx:id="btn_PedidosPendientes" layoutX="115.0" layoutY="276.0" mnemonicParsing="false" onAction="#GoToPedidosPendientes" text="Pedidos Pendientes">
                <font>
                   <Font name="SansSerif Regular" size="19.0" />
                </font></Button>
-            <Button fx:id="btn_Salir" layoutX="345.0" layoutY="406.0" mnemonicParsing="false" onAction="#GoOutApplication" text="Salir">
+            <Button fx:id="btn_Salir" layoutX="345.0" layoutY="425.0" mnemonicParsing="false" onAction="#GoOutApplication" text="Salir">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font></Button>
@@ -69,6 +69,11 @@
                   <Font name="SansSerif Regular" size="35.0" />
                </font>
             </Label>
+            <Button layoutX="115.0" layoutY="334.0" mnemonicParsing="false" onAction="#GoToAgregarEmpleado" prefHeight="26.0" prefWidth="195.0" text="Agregar empleado">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

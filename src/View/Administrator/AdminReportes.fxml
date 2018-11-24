@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminReportes_Controller">
+    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fcbff" height="544.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1204.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="130.0" stroke="BLACK" strokeType="INSIDE" width="1204.0" />
+      <Group layoutX="14.0" layoutY="27.0">
+         <children>
+            <RadioButton id="rbtn_Sales" fx:id="rbtn_Sales" layoutY="37.0" mnemonicParsing="false" text="Ventas" />
+            <RadioButton id="rbtn_Earnings" fx:id="rbtn_Earnings" layoutY="65.0" mnemonicParsing="false" text="Ganancias" />
+            <ComboBox id="comboBox_Producto" fx:id="comboBox_Producto" layoutX="107.0" layoutY="33.0" prefWidth="150.0" />
+            <DatePicker id="comboBox_FechaI" fx:id="datePicker_FechaI" layoutX="280.0" layoutY="33.0" />
+            <DatePicker id="comboBox_FechaF" fx:id="datePicker_FechaF" layoutX="482.0" layoutY="33.0" />
+            <ComboBox id="comboBox_Subsidiary" fx:id="comboBox_Subsidiary" layoutX="685.0" layoutY="33.0" prefWidth="150.0" />
+            <ComboBox id="comboBox_Manager" fx:id="comboBox_Manager" layoutX="895.0" layoutY="33.0" prefWidth="150.0" />
+            <ToggleButton id="tbtn_Producto" fx:id="tbtn_Producto" layoutX="152.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+             <ToggleButton id="tbtn_Date" fx:id="tbtn_Date" layoutX="439.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+             <ToggleButton id="tbtn_Subsidiary" fx:id="tbtn_Subsidiary" layoutX="730.0" layoutY="65.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+             <ToggleButton id="tbtn_Manager" fx:id="tbtn_Manager" layoutX="940.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+            <Label text="Reporte" />
+            <Label layoutX="107.0" text="Producto" />
+            <Label layoutX="280.0" text="Fecha Inicial" />
+            <Label layoutX="491.0" text="Fecha Final" />
+            <Label layoutX="685.0" text="Sucursal" />
+            <Label layoutX="895.0" text="Gerente" />
+         </children>
+      </Group>
+      <Button id="btn_GenerarReporte" layoutX="1086.0" layoutY="61.0" mnemonicParsing="false" onAction="#createChart" text="Generar Reporte" />
+      <Pane layoutY="130.0" prefHeight="538.0" prefWidth="1204.0">
+         <children>
+            <HBox fx:id="hBox_Charts" prefHeight="538.0" prefWidth="1204.0" />
+         </children></Pane>
+      <Label fx:id="caption" />
+   </children>
+</AnchorPane>

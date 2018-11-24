@@ -120,7 +120,7 @@ public class DetalleProducto_Controller {
         this.btnModficar.setDisable(true);
     }
 
-    protected void activarEspacios(){
+    private void activarEspacios(){
         this.txt_NombreProducto.setVisible(false);
         this.txt_DescripcionProducto.setVisible(false);
         this.txt_PrecioProducto.setVisible(false);

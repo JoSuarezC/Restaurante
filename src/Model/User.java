@@ -6,14 +6,29 @@ public class User {
     private String job;
     private String sucursalName;
     private String sucursalID;
+    private String user_Email;
     private static User currentUser;
 
-    public User(String userID, String userType, String job, String sucursalName, String sucursalID) {
+    public User(String userID, String userType, String job, String sucursalName, String sucursalID, String user_Email) {
         this.userID = userID;
         this.userType = userType;
         this.job = job;
         this.sucursalName = sucursalName;
         this.sucursalID = sucursalID;
+        this.user_Email=user_Email;
+    }
+
+    public String getUser_Email() {
+        return user_Email;
+    }
+
+    public void setUser_Email(String user_Email) {
+        this.user_Email = user_Email;
+    }
+
+    @Override
+    public String toString(){
+        return currentUser.getUserID();
     }
 
     public String getSucursalName() {

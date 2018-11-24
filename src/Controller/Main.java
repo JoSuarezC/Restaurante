@@ -13,8 +13,9 @@ public class Main extends Application {
         FXRouter.when("Login", "/View/Login.fxml", "Login", 1204, 666);
         FXRouter.when("Client", "/View/Client/ClientOrder.fxml", "Client Order", 1204, 666);
         FXRouter.when("MenuAdm","/View/Administrator/AdminMenu.fxml","Admin Menu",1204,666);
-       // FXRouter.when("Adm_ManagePMenu","/View/Administrator/AdminManageProdMenu.fxml","Menú",1204,666);
+        FXRouter.when("AgregarEmpleado","/View/Administrator/CreateNewEmployee.fxml","Crear Empleado",1204,666);
         FXRouter.when("Adm_CreateCombo","/View/Administrator/AdminCreateCombo.fxml","Create Combo",1204,666);
+        FXRouter.when("Reports","/View/Administrator/AdminReportes.fxml","Reportes",1204,666);
         FXRouter.when("Products","/View/Products.fxml","Products",1204,666);
         FXRouter.when("AddProduct","/View/NewProduct.fxml","Products",1204,666);
         FXRouter.when("SignIn","/View/Sign_in.fxml","Sign In",1204,666);
@@ -24,6 +25,7 @@ public class Main extends Application {
         FXRouter.when("PedidosPendientesAdm","/View/Administrator/PedidosPendientesAdm.fxml","Pedidos Pendientes",1204,666);
         FXRouter.when("DetalleProducto","/View/DetalleProducto.fxml","Detalle Producto",1204,666);
         FXRouter.when("Cajero","/View/Client/ClientLocalPayment.fxml","Cajero",1204,666);
+        FXRouter.when("evaluar","/View/Client/Evaluation.fxml","Calificar servicio",1204,666);
         FXRouter.goTo("Login");
     }
 

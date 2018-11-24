@@ -108,9 +108,11 @@ public class ClientOrder_Controller {
             ClientOrder_Memento.getMementoInstance().setPrecioTotal(Label_TotalCost.getText());
             ClientOrder_Memento.getMementoInstance().setPrecio(totalCost);
             if (User.getCurrentUser().getUserType().equals("Cliente")){
+                System.out.println("Compra en Linea");
                 try {FXRouter.goTo("OnlinePayment", tupla);}
                 catch (IOException e) {e.printStackTrace();}
             }else{
+                System.out.println("Compra Local");
                 try {FXRouter.goTo("LocalPayment", tupla);}
                 catch (IOException e) {e.printStackTrace();}
             }

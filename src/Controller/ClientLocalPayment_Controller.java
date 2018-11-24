@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.ConnectionDB;
+import Model.Email;
 import Model.ShoppingList_Product;
 import Model.User;
 import javafx.collections.ObservableList;
@@ -12,6 +13,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.util.Pair;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -110,8 +113,8 @@ public class ClientLocalPayment_Controller {
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
-            String totalAPagar = Label_TotalCost.getText();
-            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, User.getCurrentUser().getSucursalID(), "Orden Local");
+            String totalAPagar = Label_TotalCost.getText();// String ClientID, String DateTime, String OrderType, String Price, String Sucursal, String DireccionEntrega, String Estado
+            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), "Orden Local", totalAPagar, User.getCurrentUser().getSucursalName(), User.getCurrentUser().getSucursalID(),"Orden Local", "Entregado");
             System.out.print(orderID);
             if(orderID == null){
                Main.MessageBox("Error","No se ha completado la transacción");
@@ -124,7 +127,7 @@ public class ClientLocalPayment_Controller {
                     ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
                 }
                 generateBill(orderID, totalAPagar, getCheckBox());
-                Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
+                Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente.");
                 try {
                     FXRouter.goTo("Client");
                 } catch (IOException e) {

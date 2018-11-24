@@ -93,6 +93,11 @@
                         <Font size="19.0" />
                      </font>
                   </Label>
+                  <Button fx:id="btn_marcarEnviado" layoutX="49.0" layoutY="336.0" mnemonicParsing="false" onAction="#marcarEnviado" onMouseClicked="#marcarEntregado" text="Marcar como enviado">
+                     <font>
+                        <Font name="SansSerif Regular" size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <Button layoutX="752.0" layoutY="433.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="26.0" prefWidth="66.0" text="Atrás">
