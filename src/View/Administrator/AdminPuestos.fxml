@@ -30,49 +30,25 @@
             <Image url="@../img/fondoMenuAdm.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="117.0" layoutY="100.0" prefHeight="460.0" prefWidth="1038.0" style="-fx-background-color: #ff9900;">
+      <AnchorPane layoutX="174.0" layoutY="104.0" prefHeight="546.0" prefWidth="906.0" style="-fx-background-color: #ff9900;">
          <children>
-            <Label layoutX="53.0" layoutY="28.0" text="Complete la informacion indicada">
-               <font>
-                  <Font name="SansSerif Regular" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="45.0" layoutY="92.0" text="Nombre">
-               <font>
-                  <Font name="SansSerif Regular" size="19.0" />
-               </font></Label>
-            <Label layoutX="45.0" layoutY="328.0" text="Salario máximo">
-               <font>
-                  <Font name="SansSerif Regular" size="19.0" />
-               </font></Label>
-            <Label layoutX="45.0" layoutY="172.0" text="Descripción">
-               <font>
-                  <Font name="SansSerif Regular" size="19.0" />
-               </font></Label>
-            <Label layoutX="46.0" layoutY="263.0" text="Salario minimo">
-               <font>
-                  <Font name="SansSerif Regular" size="19.0" />
-               </font></Label>
-            <Button layoutX="64.0" layoutY="387.0" mnemonicParsing="false" onAction="#addJob" text="Agregar">
+            <Button layoutX="169.0" layoutY="483.0" mnemonicParsing="false" onAction="#addJob" text="Agregar">
                <font>
                   <Font name="SansSerif Regular" size="18.0" />
                </font></Button>
-            <Button layoutX="919.0" layoutY="420.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
+            <Button layoutX="632.0" layoutY="486.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
                <font>
                   <Font name="SansSerif Regular" size="15.0" />
                </font></Button>
-            <TextField fx:id="txt_Nombre" layoutX="186.0" layoutY="87.0" prefHeight="26.0" prefWidth="200.0" />
-            <TableView fx:id="tableView_Puestos" layoutX="506.0" layoutY="42.0" prefHeight="364.0" prefWidth="508.0">
+            <TableView fx:id="tableView_Puestos" layoutX="95.0" layoutY="91.0" prefHeight="364.0" prefWidth="713.0">
               <columns>
-                <TableColumn fx:id="Column_Puesto" prefWidth="104.0" text="Puesto" />
-                <TableColumn fx:id="Column_Descripcion" prefWidth="126.0" text="Descripcion" />
-                  <TableColumn fx:id="Column_Salario1" prefWidth="133.0" text="Salario Minimo" />
-                  <TableColumn fx:id="Column_Salario2" prefWidth="144.0" text="Salario Maximo" />
+                <TableColumn fx:id="Column_Puesto" prefWidth="136.0" text="Puesto" />
+                <TableColumn fx:id="Column_Descripcion" prefWidth="136.0" text="Descripcion" />
+                  <TableColumn fx:id="Column_Salario1" prefWidth="134.0" text="Salario Minimo" />
+                  <TableColumn fx:id="Column_Salario2" prefWidth="224.0" text="Salario Maximo" />
+                  <TableColumn fx:id="Column_Comision" prefWidth="82.0" text="Comision" />
               </columns>
             </TableView>
-            <TextArea fx:id="txt_Descripcion" layoutX="186.0" layoutY="153.0" prefHeight="60.0" prefWidth="200.0" />
-            <TextField fx:id="txt_SalarioMaximo" layoutX="186.0" layoutY="324.0" prefHeight="31.0" prefWidth="200.0" />
-            <TextField fx:id="txt_SalarioMinimo" layoutX="186.0" layoutY="258.0" prefHeight="31.0" prefWidth="200.0" />
          </children>
          <effect>
             <DropShadow />

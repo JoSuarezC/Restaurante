@@ -381,7 +381,8 @@ public class ConnectionDB {
                     String Detalle = results.getJSONObject(i).getString("Detalle");
                     String InicioRangoSalarial = results.getJSONObject(i).getString("InicioRangoSalarial");
                     String FinalRangoSalarial = results.getJSONObject(i).getString("FinalRangoSalarial");
-                    Puesto p = new Puesto(IdPuesto, NombrePuesto, InicioRangoSalarial, FinalRangoSalarial, Detalle);
+                    String Comision = results.getJSONObject(i).getString("PorcentajeComision");
+                    Puesto p = new Puesto(IdPuesto, NombrePuesto, InicioRangoSalarial, FinalRangoSalarial, Detalle, Comision);
                     arraylistPuestos.add(p);
                 }
             }else{System.out.print("No existe el pedido");}
@@ -401,8 +402,8 @@ public class ConnectionDB {
         return null;
     }
 
-    public Boolean createJob(String nombre, String descripcion, String salarioMinimo, String salarioMaximo){
-        String URLparameters = "NombrePuesto=" + nombre + "&Detalle=" + descripcion + "&RangoSalarial1=" + salarioMinimo + "&RangoSalarial2=" + salarioMaximo ;
+    public Boolean createJob(String nombre, String descripcion, String salarioMinimo, String salarioMaximo, String comision){
+        String URLparameters = "NombrePuesto=" + nombre + "&Detalle=" + descripcion + "&RangoSalarial1=" + salarioMinimo + "&RangoSalarial2=" + salarioMaximo +"&Comision=" + comision ;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(insertJob, URLparameters));
             System.out.print(myResponse.getString("status"));

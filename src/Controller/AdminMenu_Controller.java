@@ -74,7 +74,7 @@ public class AdminMenu_Controller {
     @FXML
     public void GoToAgregarPuesto(ActionEvent event) {
         try {
-            FXRouter.goTo("AgregarPuesto");
+            FXRouter.goTo("AdmPuestos");
         } catch (IOException e) {
             e.printStackTrace();
         }

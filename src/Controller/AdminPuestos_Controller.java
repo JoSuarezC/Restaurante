@@ -12,6 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class AdminPuestos_Controller {
 
     @FXML
@@ -21,19 +23,7 @@ public class AdminPuestos_Controller {
     private TableColumn<Puesto, String> Column_Descripcion;
 
     @FXML
-    private TextField txt_Nombre;
-
-    @FXML
-    private TextField txt_SalarioMaximo;
-
-    @FXML
     private TableView<Puesto> tableView_Puestos;
-
-    @FXML
-    private TextField txt_SalarioMinimo;
-
-    @FXML
-    private TextArea txt_Descripcion;
 
     @FXML
     private TableColumn<Puesto, String> Column_Salario1;
@@ -41,13 +31,11 @@ public class AdminPuestos_Controller {
     @FXML
     private TableColumn<Puesto, String> Column_Salario2;
 
+    @FXML
+    private TableColumn<Puesto, String> Column_Comision;
 
     @FXML
     void initialize(){
-        txt_Nombre.clear();
-        txt_SalarioMaximo.clear();
-        txt_SalarioMinimo.clear();
-        txt_Descripcion.clear();
         fillTables();
     }
 
@@ -56,24 +44,20 @@ public class AdminPuestos_Controller {
         Column_Salario1.setCellValueFactory(cellData -> cellData.getValue().salarioMinimoProperty());
         Column_Descripcion.setCellValueFactory(cellData -> cellData.getValue().detalleProperty());
         Column_Puesto.setCellValueFactory(cellData -> cellData.getValue().nombrePuestoProperty());
+        Column_Comision.setCellValueFactory(cellData -> cellData.getValue().comisionProperty());
         ObservableList<Puesto> puesto_list = FXCollections.observableArrayList();
         puesto_list.addAll(ConnectionDB.getInstance().select_puestos());
         tableView_Puestos.setItems(puesto_list);
     }
+
+
     @FXML
     void addJob(ActionEvent event) {
-        if(validaciones()){
-            if(ConnectionDB.getInstance().createJob(txt_Nombre.getText(), txt_Descripcion.getText(), txt_SalarioMinimo.getText(), txt_SalarioMaximo.getText())){
-                Main.MessageBox("Éxito","El puesto se ha agregado con éxito");
-                initialize();
-            }else{
-                Main.MessageBox("Error","Ha ocurrido un error al ingresar el puesto.");
-            }
+        try {
+            FXRouter.goTo("AgregarPuesto");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
-
-    private Boolean validaciones(){
-        return !txt_Nombre.getText().isEmpty() && !txt_Descripcion.getText().isEmpty() && !txt_SalarioMinimo.getText().isEmpty() && !txt_SalarioMaximo.getText().isEmpty();
     }
 
     @FXML

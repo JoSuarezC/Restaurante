@@ -9,13 +9,15 @@ public class Puesto {
     private StringProperty SalarioMinimo;
     private StringProperty SalarioMaximo;
     private StringProperty Detalle;
+    private StringProperty Comision;
 
-    public Puesto(String idPuesto, String nombrePuesto, String salarioMin, String salarioMax, String detalle) {
+    public Puesto(String idPuesto, String nombrePuesto, String salarioMin, String salarioMax, String detalle, String comision) {
         IdPuesto = new SimpleStringProperty(idPuesto);
         NombrePuesto = new SimpleStringProperty(nombrePuesto);
         SalarioMinimo = new SimpleStringProperty(salarioMin);
         SalarioMaximo = new SimpleStringProperty(salarioMax);
         Detalle = new SimpleStringProperty(detalle);
+        Comision = new SimpleStringProperty(comision);
     }
 
     public String getIdPuesto() {
@@ -66,6 +68,7 @@ public class Puesto {
         this.SalarioMaximo.set(salarioMaximo);
     }
 
+
     public String getDetalle() {
         return Detalle.get();
     }
@@ -76,6 +79,18 @@ public class Puesto {
 
     public void setDetalle(String detalle) {
         this.Detalle.set(detalle);
+    }
+
+    public String getComision() {
+        return Comision.get();
+    }
+
+    public StringProperty comisionProperty() {
+        return Comision;
+    }
+
+    public void setComision(String comision) {
+        this.Comision.set(comision);
     }
 
     @Override
