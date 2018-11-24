@@ -41,6 +41,8 @@ public class ConnectionDB {
     private static final String select_combos = URL_HOST+"RestaurantePHP/Producto/select_combos.php";
     private static final String select_puestos= URL_HOST + "RestaurantePHP/Usuario/select_puestos.php";
     private static final String insert_empleado = URL_HOST + "RestaurantePHP/Usuario/insert_empleado.php";
+    private static final String insertJob = URL_HOST + "RestaurantePHP/Usuario/insert_puesto.php";
+    private static final String updateJob = URL_HOST + "RestaurantePHP/Usuario/updateJob.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -376,7 +378,11 @@ public class ConnectionDB {
                 for (int i = 0; i < results.length(); i++) {
                     String IdPuesto = results.getJSONObject(i).getString("IdPuesto");
                     String NombrePuesto = results.getJSONObject(i).getString("NombrePuesto");
-                    Puesto p = new Puesto(IdPuesto, NombrePuesto);
+                    String Detalle = results.getJSONObject(i).getString("Detalle");
+                    String InicioRangoSalarial = results.getJSONObject(i).getString("InicioRangoSalarial");
+                    String FinalRangoSalarial = results.getJSONObject(i).getString("FinalRangoSalarial");
+                    String Comision = results.getJSONObject(i).getString("PorcentajeComision");
+                    Puesto p = new Puesto(IdPuesto, NombrePuesto, InicioRangoSalarial, FinalRangoSalarial, Detalle, Comision);
                     arraylistPuestos.add(p);
                 }
             }else{System.out.print("No existe el pedido");}
@@ -396,5 +402,30 @@ public class ConnectionDB {
         return null;
     }
 
+    public Boolean createJob(String nombre, String descripcion, String salarioMinimo, String salarioMaximo, String comision){
+        String URLparameters = "NombrePuesto=" + nombre + "&Detalle=" + descripcion + "&RangoSalarial1=" + salarioMinimo + "&RangoSalarial2=" + salarioMaximo +"&Comision=" + comision ;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(insertJob, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            if (myResponse.getString("status").equals("true")){
+                return true;
+            }
+        }catch (JSONException e){ e.printStackTrace();}
+        return false;
+    }
 
-}
+    public Boolean modifyJob(String nombre, String descripcion, String salarioMinimo, String salarioMaximo){
+        String URLparameters = "NombrePuesto=" + nombre + "&Detalle=" + descripcion + "&RangoSalarial1=" + salarioMinimo + "&RangoSalarial2=" + salarioMaximo ;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(updateJob, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            if (myResponse.getString("status").equals("true")){
+                return true;
+            }
+        }catch (JSONException e){ e.printStackTrace();}
+        return false;
+
+    }
+
+
+    }
