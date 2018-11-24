@@ -25,6 +25,15 @@ public class Product {
         this.productState = new SimpleIntegerProperty(productState);
     }
 
+    public Product(String productName) {
+        this.productName = new SimpleStringProperty(productName);
+        this.productType = new SimpleStringProperty("");
+        this.productID = new SimpleStringProperty("");
+        this.productPrize = new SimpleIntegerProperty(0);
+        this.productDetail = new SimpleStringProperty("");
+        this.productState = new SimpleIntegerProperty(0);
+    }
+
     @Override
     public String toString(){
         return getProductName();

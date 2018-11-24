@@ -1,6 +1,9 @@
 package Model;
 
 import Controller.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +42,10 @@ public class ConnectionDB {
     private static final String insertPedidoSucursal = URL_HOST+"RestaurantePHP/Pedido/insertPedidoSucursal.php";
     private static final String insertEvaluacion = URL_HOST+"RestaurantePHP/Pedido/insertEvaluacion.php";
     private static final String select_combos = URL_HOST+"RestaurantePHP/Producto/select_combos.php";
+    //Reportes
+    private static final String reporte_por_productoPHP = URL_HOST+"RestaurantePHP/Reporte/reporte_por_producto.php";
+    private static final String reporte_por_producto_por_sucursalPHP = URL_HOST+"RestaurantePHP/Reporte/reporte_por_producto_por_sucursal.php";
+    private static final String reporte_por_sucursalPHP = URL_HOST+"RestaurantePHP/Reporte/reporte_por_sucursal.php";
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -362,6 +369,113 @@ public class ConnectionDB {
         }catch (JSONException e){ e.printStackTrace();}
         return false;
     }
+
+    public ObservableList<PieChart.Data> reporte_por_producto(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+        String URLparameters;
+        if(producto.isEmpty()){
+            URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente + "&Sucursal=" + sucursal;
+        }else{
+            URLparameters = "Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente + "&Sucursal=" + sucursal;
+        }
+
+        ObservableList<PieChart.Data> listaRetorno = FXCollections.observableArrayList();
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_productoPHP, URLparameters));
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("Nombre");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+                    listaRetorno.add(new PieChart.Data(nombre,ventas));
+                }
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ObservableList<PieChart.Data> reporte_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+        String URLparameters;
+        if(sucursal.isEmpty()){
+            URLparameters = "Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente;
+        }else{
+            URLparameters = "Sucursal=" + sucursal + "&Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente;
+        }
+
+        ObservableList<PieChart.Data> listaRetorno = FXCollections.observableArrayList();
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_sucursalPHP, URLparameters));
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("NombreSuc");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+                    listaRetorno.add(new PieChart.Data(nombre,ventas));
+                }
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+
+    public ArrayList<Multiple_PieChart> reporte_por_producto_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+        String URLparameters = "";
+        if(!producto.isEmpty()){
+            URLparameters = "&Producto=" + producto;
+        }
+        if(!sucursal.isEmpty()){
+            URLparameters = URLparameters + "&Sucursal=" + sucursal;
+        }
+
+        URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente + URLparameters;
+
+        ArrayList<Multiple_PieChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_sucursalPHP, URLparameters));
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                String currentSucursal = "";
+                String prevSucursal = "";
+                Multiple_PieChart mPieChar = new Multiple_PieChart();
+                boolean firstProduct = true;
+                ObservableList<PieChart.Data> dataList = FXCollections.observableArrayList();
+
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("Nombre");
+                    String nombreSuc = results.getJSONObject(i).getString("NombreSuc");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstProduct){//Primera vez se añade
+                        dataList = FXCollections.observableArrayList();
+                        dataList.add(new PieChart.Data(nombre,ventas));
+                        mPieChar.setName(nombreSuc);
+                        currentSucursal = nombreSuc;
+                        firstProduct = false;
+                    }
+                    else if(!currentSucursal.equals(nombreSuc)){//Es una nueva sucursal
+                        mPieChar.setPieChartDataList(dataList);
+                        listaRetorno.add(mPieChar);
+                        mPieChar = new Multiple_PieChart();
+                        dataList = FXCollections.observableArrayList();
+                        dataList.add(new PieChart.Data(nombre,ventas));
+                        mPieChar.setName(nombreSuc);
+                        currentSucursal = nombreSuc;
+                    }else{
+                        //Es la misma sucursal
+                        dataList.add(new PieChart.Data(nombre,ventas));
+                    }
+                }
+                //Se añade la última sucursal
+                mPieChar.setPieChartDataList(dataList);
+                listaRetorno.add(mPieChar);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    //
+
 
 
 }

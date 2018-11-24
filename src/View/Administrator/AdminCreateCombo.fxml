@@ -54,7 +54,7 @@
                         <TableColumn fx:id="tableColumn_Producto_Ver" prefWidth="132.00006103515625" />
                      </columns>
                   </TableView>
-                  <Button fx:id="btn_agregarP" onAction="#" accessibleText="jejejeje" layoutX="-41.0" layoutY="295.0" mnemonicParsing="false" text="Agregar al combo">
+                  <Button fx:id="btn_agregarP" onAction="#addToComboList" accessibleText="jejejeje" layoutX="-41.0" layoutY="295.0" mnemonicParsing="false" text="Agregar al combo">
                      <font>
                         <Font name="SansSerif Regular" size="16.0" />
                      </font>

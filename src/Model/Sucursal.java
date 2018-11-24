@@ -15,8 +15,20 @@ public class Sucursal {
         this.telfPedidos = telfPedidos;
     }
 
+    public Sucursal(String nombreSucursal) {
+        this.idSucursal = "";
+        this.nombreSucursal = nombreSucursal;
+        this.direccion = "";
+        this.telfSucursal = "";
+        this.telfPedidos = "";
+    }
+
     @Override
     public String toString() {
         return nombreSucursal;
+    }
+
+    public String getID(){
+        return idSucursal;
     }
 }
