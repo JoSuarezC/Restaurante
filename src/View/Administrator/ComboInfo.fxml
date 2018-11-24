@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ComboInfo_Controller">
    <children>
       <ImageView fitHeight="862.0" fitWidth="630.0" layoutX="-6.0" layoutY="86.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
@@ -59,7 +58,7 @@
                   <TableColumn fx:id="clm_precioTotal" prefWidth="89.5999755859375" text="Precio total" />
               </columns>
             </TableView>
-            <Button layoutX="554.0" layoutY="348.0" mnemonicParsing="false" text="Atrás">
+            <Button layoutX="554.0" layoutY="348.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
                <font>
                   <Font name="SansSerif Regular" size="16.0" />
                </font>

@@ -29,6 +29,7 @@ public class Main extends Application {
         FXRouter.when("ComboInfo","/View/Administrator/ComboInfo.fxml","Información del combo",1204,666);
         FXRouter.when("AdmPuestos", "/View/Administrator/AdminPuestos.fxml","Administrar puestos",1204,666);
         FXRouter.when("AgregarPuesto", "/View/Administrator/AgregarPuesto.fxml","Administrar puestos",1204,666);
+        FXRouter.when("Profile","/View/Client/UserProfile.fxml","Perfil del usuario",1204,666);
         FXRouter.goTo("Login");
     }
 

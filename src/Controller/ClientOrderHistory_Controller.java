@@ -64,9 +64,9 @@ public class ClientOrderHistory_Controller {
     }
     @FXML
     private void mostrarInfo(){
-        btn_calificar.setVisible(true);
+        btn_calificar.setVisible(false);
         if(!tbl_pedidos.getSelectionModel().getSelectedItem().getEstadoPedido().equals("Pendiente")){
-            btn_calificar.setVisible(false);
+            btn_calificar.setVisible(true);
         }
         lbl_fechaHora.setText(tbl_pedidos.getSelectionModel().getSelectedItem().getFechaPedido());
         lbl_estado.setText(tbl_pedidos.getSelectionModel().getSelectedItem().getEstadoPedido());

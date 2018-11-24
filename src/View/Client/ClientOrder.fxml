@@ -45,6 +45,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#mostrarHistorialPedidos" text="Historial Pedidos" />
                   <MenuItem mnemonicParsing="false" text="Realizar Pedido" />
               <MenuItem fx:id="MenuItem_Cerrar" mnemonicParsing="false" onAction="#LogOut" text="Cerrar Sesión" />
+               <MenuItem fx:id="MenuItem_Perfil" mnemonicParsing="false" onAction="#verPerfil" text="Ver pefil" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ayuda">

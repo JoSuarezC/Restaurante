@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class ConnectionDB {
 
@@ -44,6 +45,7 @@ public class ConnectionDB {
     private static final String insert_empleado = URL_HOST + "RestaurantePHP/Usuario/insert_empleado.php";
     private static final String insertJob = URL_HOST + "RestaurantePHP/Usuario/insert_puesto.php";
     private static final String updateJob = URL_HOST + "RestaurantePHP/Usuario/updateJob.php";
+    private static final String select_client = URL_HOST + "RestaurantePHP/Usuario/select_client.php";
 
 
     public static ConnectionDB getInstance(){
@@ -472,5 +474,23 @@ public class ConnectionDB {
 
     }
 
-
+    public Hashtable<String,String> selectClient(String Id){
+        Hashtable<String,String> cliente = new Hashtable<>();
+        try {
+            JSONObject myResponse = new JSONObject(POSTrequest(search_product_PHP, "Id="+Id));
+            if (myResponse.getString("status").equals("true")){
+                cliente.put("Nombre",myResponse.getJSONObject("value").getString("Nombre"));
+                cliente.put("Apellidos",myResponse.getJSONObject("value").getString("Apellidos"));
+                cliente.put("Cedula",myResponse.getJSONObject("value").getString("Cedula"));
+                cliente.put("Correo",myResponse.getJSONObject("value").getString("Correo"));
+                cliente.put("Celular",myResponse.getJSONObject("value").getString("Telefono1"));
+                cliente.put("Auxilar",myResponse.getJSONObject("value").getString("Telefono2"));
+                cliente.put("User",myResponse.getJSONObject("value").getString("IdUsuario"));
+                cliente.put("Password",myResponse.getJSONObject("value").getString("Contraseña"));
+            }else{System.out.println("No existe el producto2");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return cliente;
     }
+
+
+}
