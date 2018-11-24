@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrderHistory_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClientOrderHistory_Controller">
    <children>
       <ImageView fitHeight="862.0" fitWidth="630.0" layoutX="-13.0" layoutY="123.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -126,7 +126,10 @@
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <Button layoutX="293.0" layoutY="46.0" mnemonicParsing="false" onAction="#calificar" text="Calificar" />
+                        <Button fx:id="btn_calificar" layoutX="401.0" layoutY="350.0" mnemonicParsing="false" onAction="#calificar" prefHeight="32.0" prefWidth="100.0" text="Calificar">
+                           <font>
+                              <Font name="SansSerif Regular" size="16.0" />
+                           </font></Button>
                      </children>
                   </AnchorPane>
                </children>

@@ -1,11 +1,14 @@
 package Controller;
 
 import Model.*;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import javafx.util.Pair;
 import java.io.IOException;
 
@@ -21,9 +24,10 @@ public class ClientOrder_Controller {
     private MenuBar id_menuBar;
 
     // Combos //
-    @FXML private TableView<Product> tablaView_Combos;
-    @FXML private TableColumn<Product, String> tableColumn_Producto_Combos;
-    @FXML private TableColumn<Product, String> tableColumn_Precio_Combos;
+    @FXML private TableView<Combo> tablaView_Combos;
+    @FXML private TableColumn<Combo, String> tableColumn_Combos;
+    @FXML private TableColumn<Combo, String> tableColumn_Precio_Combos;
+    @FXML private TableColumn<Combo, String> tableColumn_infoCombo;
 
     // Postre //
     @FXML private TableView<Product> tablaView_Dulce;
@@ -98,6 +102,9 @@ public class ClientOrder_Controller {
         ObservableList<Product> dulces_list = FXCollections.observableArrayList();
         dulces_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Postre"));
         tablaView_Dulce.setItems(dulces_list);
+
+        //Combos
+        fillTableCombos();
     }
 
     @FXML
@@ -189,7 +196,6 @@ public class ClientOrder_Controller {
         tablaView_Bebida.getSelectionModel().clearSelection();
         tablaView_Comida.getSelectionModel().clearSelection();
         tablaView_Dulce.getSelectionModel().clearSelection();
-        // clearSelection(null);
     }
 
     @FXML
@@ -204,5 +210,44 @@ public class ClientOrder_Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void fillTableCombos(){
+        tableColumn_Combos.setCellValueFactory((cellData-> cellData.getValue().descripcionProperty()));
+        tableColumn_Precio_Combos.setCellValueFactory((cellData-> new SimpleStringProperty(Double.toString(cellData.getValue().getPrecioTotal()))));
+        tableColumn_infoCombo.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
+        Callback<TableColumn<Combo, String>, TableCell<Combo, String>> cellFactory=
+                new Callback<TableColumn<Combo, String>, TableCell<Combo, String>>() {
+                    @Override
+                    public TableCell call(final TableColumn<Combo, String> param) {
+                        final TableCell<Combo, String> cell = new TableCell<Combo, String>() {
+                            final Button btn = new Button("Ver Combo");
+                            @Override
+                            public void updateItem(String item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                    setText(null);
+                                } else {
+                                    btn.setOnAction(event -> {
+                                        Combo myCombo = getTableView().getItems().get(getIndex());
+                                        try {
+                                            FXRouter.goTo("ComboInfo", myCombo);
+                                        } catch (IOException e) {
+                                            System.out.print(e);
+                                        }
+                                    });
+                                    setGraphic(btn);
+                                    setText(null);
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        tableColumn_infoCombo.setCellFactory(cellFactory);
+        ObservableList<Combo> combosList = FXCollections.observableArrayList();
+        combosList.addAll(ConnectionDB.getInstance().selectCombos());
+        tablaView_Combos.setItems(combosList);
     }
 }

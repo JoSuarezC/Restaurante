@@ -26,6 +26,7 @@ public class Main extends Application {
         FXRouter.when("DetalleProducto","/View/DetalleProducto.fxml","Detalle Producto",1204,666);
         FXRouter.when("Cajero","/View/Client/ClientLocalPayment.fxml","Cajero",1204,666);
         FXRouter.when("evaluar","/View/Client/Evaluation.fxml","Calificar servicio",1204,666);
+        FXRouter.when("ComboInfo","/View/Administrator/ComboInfo.fxml","Información del combo",1204,666);
         FXRouter.goTo("Login");
     }
 

@@ -40,15 +40,10 @@ public class AdminCreateCombo_Controller {
 
     @FXML
     protected void initialize(){
-        //ObservableList<String> brachOffice_list = FXCollections.observableArrayList();
-        //brachOffice_list.addAll(ConnectionDB.getInstance().selectSucursales());
-        //choiceBox_Sucursal.setItems(brachOffice_list);
         fillTable();
     }
 
     private void fillTable(){
-
-        //btn_crearCombo.setDisable(true);
 
         SpinnerValueFactory discountValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0, 1);
         discountValueFactory.setConverter(new StringConverter<Integer>() {
@@ -73,26 +68,18 @@ public class AdminCreateCombo_Controller {
 
         spinner_descuento.setValueFactory(discountValueFactory);
         spinner_descuento.setEditable(true);
-        /*
-        spinner_descuento.valueProperty().addListener((obs) -> {
-            btn_crearCombo.setDisable(false);
-        });*/
-        //
 
         // Tabla de Productos
         tableColumn_Producto_Producto.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
         tableColumn_Producto_Precio.setCellValueFactory(cellData -> cellData.getValue().productPrizeProperty().asString());
         tableColumn_Producto_Ver.setCellValueFactory(new PropertyValueFactory<>("DUMMY"));
-
         Callback<TableColumn<Product, String>, TableCell<Product, String>> cellFactory
                 =
                 new Callback<TableColumn<Product, String>, TableCell<Product, String>>() {
                     @Override
                     public TableCell call(final TableColumn<Product, String> param) {
                         final TableCell<Product, String> cell = new TableCell<Product, String>() {
-
                             final Button btn = new Button("Ver Producto");
-
                             @Override
                             public void updateItem(String item, boolean empty) {
                                 super.updateItem(item, empty);
@@ -107,7 +94,6 @@ public class AdminCreateCombo_Controller {
                                         } catch (IOException e) {
                                             System.out.print(e);
                                         }
-
                                     });
                                     setGraphic(btn);
                                     setText(null);
@@ -186,13 +172,11 @@ public class AdminCreateCombo_Controller {
     void addToComboList(ActionEvent event){
         ObservableList productCombo = tableView_Producto.getSelectionModel().getSelectedItems();
         ObservableList<Product> newObsList = FXCollections.observableArrayList(productCombo);
-
         //HashMap
         productQty = new HashMap<>();
         newObsList.forEach((product) -> {
             productQty.put(product.getProductID(),1);
         });
-
         tableView_Combo.setItems(newObsList);
     }
 
@@ -216,16 +200,11 @@ public class AdminCreateCombo_Controller {
             Integer discountInteger = (Integer)spinner_descuento.getValue()/100;
             Double discountDouble = ((Integer) spinner_descuento.getValue()).doubleValue()/100;
             comboID = ConnectionDB.getInstance().makeCombo("Es un gran combo :)", dateFormat.format(fecha).toString(),  discountDouble.toString());
-
-
-
             ObservableList<Product> productList;
             productList = tableView_Combo.getItems();
-
             productList.forEach((product -> {
                 ConnectionDB.getInstance().addProductCombo(comboID, product.getProductID(), productQty.get(product.getProductID()).toString());
             }));
-
             tableView_Combo.getItems().clear();
             productQty.clear();
             spinner_descuento.getValueFactory().setValue(0);
@@ -239,10 +218,9 @@ public class AdminCreateCombo_Controller {
     @FXML
     public void GoBack(ActionEvent event){
         try {
-            FXRouter.goTo("Adm_ManagePMenu");
+            FXRouter.goTo("Products");
         } catch (IOException e) {
             System.out.print(e);
         }
     }
-
 }

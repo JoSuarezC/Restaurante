@@ -39,8 +39,10 @@ public class ConnectionDB {
     private static final String insertPedidoSucursal = URL_HOST+"RestaurantePHP/Pedido/insertPedidoSucursal.php";
     private static final String insertEvaluacion = URL_HOST+"RestaurantePHP/Pedido/insertEvaluacion.php";
     private static final String select_combos = URL_HOST+"RestaurantePHP/Producto/select_combos.php";
+    private static final String select_productos_combo = URL_HOST+"RestaurantePHP/Producto/select_productos_combo.php";
     private static final String select_puestos= URL_HOST + "RestaurantePHP/Usuario/select_puestos.php";
     private static final String insert_empleado = URL_HOST + "RestaurantePHP/Usuario/insert_empleado.php";
+
 
     public static ConnectionDB getInstance(){
         if (instance == null){
@@ -394,6 +396,49 @@ public class ConnectionDB {
             }
         }catch (JSONException e){ e.printStackTrace();}
         return null;
+    }
+
+    public ArrayList<Combo> selectCombos(){
+        ArrayList<Combo> arrayCombos = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_combos));
+            if (myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String idCombo = results.getJSONObject(i).getString("IdCombo");
+                    String descripcion = results.getJSONObject(i).getString("Descripcion");
+                    String fecha = results.getJSONObject(i).getString("Fecha");
+                    String descuento = results.getJSONObject(i).getString("Descuento");
+
+                    ArrayList<ShoppingList_Product> listaProdcutosCombo=selectProductosCombo(idCombo);
+                    Combo c = new Combo(idCombo,descripcion,fecha,descuento,listaProdcutosCombo);
+                    arrayCombos.add(c);
+                }
+            }else{System.out.print("No existe el pedido");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return arrayCombos;
+    }
+
+    public ArrayList<ShoppingList_Product> selectProductosCombo(String idCombo){
+        ArrayList<ShoppingList_Product> listaProductosCombo = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(select_productos_combo+"?IdCombo="+idCombo));
+            if (myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("Nombre");
+                    String tipoProducto = results.getJSONObject(i).getString("TipoProducto");
+                    String idPoducto = results.getJSONObject(i).getString("IdProd");
+                    int precio = results.getJSONObject(i).getInt("PrecioUnitario");
+                    String detalle = results.getJSONObject(i).getString("Detalle");
+                    int estado = results.getJSONObject(i).getInt("Estado");
+                    int cantidad = results.getJSONObject(i).getInt("Cantidad");
+                    ShoppingList_Product nuevoProducto = new ShoppingList_Product(nombre,tipoProducto,idPoducto,precio,detalle,estado,cantidad);
+                    listaProductosCombo.add(nuevoProducto);
+                }
+            }else{System.out.print("Error, no existen productos para el combo.");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaProductosCombo;
     }
 
 
