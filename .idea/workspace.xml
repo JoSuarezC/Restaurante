@@ -6,22 +6,18 @@
       <change beforePath="$PROJECT_DIR$/src/Model/ConnectionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ConnectionDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/DetalleProducto.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/DetalleProducto.fxml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-<<<<<<< Updated upstream
-    <session id="-1069565315">
-      <usages-collector id="statistics.file.extensions.edit">
+    <session id="1284163142">
+      <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="java" value="934" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="934" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -72,11 +68,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-<<<<<<< Updated upstream
-          <entry key="JAVA" value="5" />
-          <entry key="XML" value="1" />
-=======
-          <entry key="JAVA" value="6" />
+          <entry key="JAVA" value="3" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
@@ -164,34 +156,6 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
-=======
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/View/Client/ClientOrderHistory.fxml" />
-        <option value="$PROJECT_DIR$/src/Controller/Main.java" />
-        <option value="$PROJECT_DIR$/src/Controller/ClientOrderHistory_Controller.java" />
-        <option value="$PROJECT_DIR$/src/Controller/Evaluation_Controller.java" />
-        <option value="$PROJECT_DIR$/src/Model/Sucursal.java" />
-        <option value="$PROJECT_DIR$/src/Controller/ClientOnlinePayment_Controller.java" />
-      </list>
-    </option>
->>>>>>> Stashed changes
-  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -235,12 +199,13 @@
       <pane id="PackagesPane" />
     </panes>
   </component>
-<<<<<<< Updated upstream
-=======
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543017361322" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543022806463" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/java-json.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15527344" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
->>>>>>> Stashed changes
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -278,21 +243,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b9529f30-a284-4988-86fc-bdd10383f89a" name="Default Changelist" comment="" />
-      <created>1542986187851</created>
+      <changelist id="94b535f0-2388-47b7-8c11-3f7b2f2c6c8b" name="Default Changelist" comment="" />
+      <created>1543022087887</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1542986187851</updated>
-      <workItem from="1542986190946" duration="23291000" />
+      <updated>1543022087887</updated>
     </task>
     <servers />
   </component>
-<<<<<<< Updated upstream
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13607000" />
-  </component>
-=======
->>>>>>> Stashed changes
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
@@ -306,30 +264,24 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="simpleUML" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.10481586" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50067115" side_tool="true" weight="0.16028368" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32765958" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
->>>>>>> Stashed changes
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminMenu_Controller.java">
@@ -489,6 +441,7 @@
           <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/ConnectionDB.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -515,5 +468,81 @@
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Restaurante</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>java-json</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
