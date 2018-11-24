@@ -1,7 +1,12 @@
 package Controller;
 
 import Model.Combo;
+import Model.ConnectionDB;
+import Model.Product;
 import Model.ShoppingList_Product;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -11,7 +16,8 @@ import java.io.IOException;
 
 public class ComboInfo_Controller {
 
-    Combo comboInfo = null;
+    ObservableList<ShoppingList_Product> listaProductosCombo = FXCollections.observableArrayList();
+    private Combo comboInfo = null;
 
     @FXML
     private TableView<ShoppingList_Product> tbl_infoCombo;
@@ -33,7 +39,18 @@ public class ComboInfo_Controller {
 
     @FXML
     protected void initialize(){
-        //comboInfo = FXRouter.getData();
+        comboInfo = (Combo)FXRouter.getData();
+        fillTable();
+    }
+
+    private void fillTable(){
+        clm_producto.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
+        clm_detalle.setCellValueFactory(cellData -> cellData.getValue().productDetailProperty());
+        clm_cantidad.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().getProductQuantity())));
+        clm_precioUnit.setCellValueFactory(cellData -> cellData.getValue().productPrizeProperty().asString());
+        clm_precioTotal.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().getProductPrize()*cellData.getValue().getProductQuantity())));
+        listaProductosCombo.addAll(comboInfo.getListaProductos());
+        tbl_infoCombo.setItems(listaProductosCombo);
     }
 
     public void GoBack(ActionEvent event){

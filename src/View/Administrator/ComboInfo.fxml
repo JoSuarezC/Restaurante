@@ -42,25 +42,25 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="286.0" layoutY="143.0" prefHeight="402.0" prefWidth="631.0" style="-fx-background-color: #ff9900;">
+      <Pane layoutX="235.0" layoutY="144.0" prefHeight="402.0" prefWidth="775.0" style="-fx-background-color: #ff9900;">
          <children>
-            <Label layoutX="201.0" layoutY="14.0" text="Productos del combo">
+            <Label layoutX="270.0" layoutY="14.0" text="Productos del combo">
                <font>
                   <Font name="SansSerif Regular" size="25.0" />
                </font>
             </Label>
-            <TableView fx:id="tbl_infoCombo" layoutX="53.0" layoutY="61.0" prefHeight="265.0" prefWidth="531.0">
+            <TableView fx:id="tbl_infoCombo" layoutX="53.0" layoutY="61.0" prefHeight="265.0" prefWidth="677.0">
               <columns>
-                <TableColumn fx:id="clm_producto" prefWidth="100.800048828125" text="Producto" />
-                <TableColumn fx:id="clm_detalle" prefWidth="182.39996337890625" text="Detalle" />
-                  <TableColumn fx:id="clm_cantidad" minWidth="1.60009765625" prefWidth="64.0" text="Cantidad" />
-                  <TableColumn fx:id="clm_precioUnit" prefWidth="92.800048828125" text="Precio unitario" />
-                  <TableColumn fx:id="clm_precioTotal" prefWidth="89.5999755859375" text="Precio total" />
+                <TableColumn fx:id="clm_producto" prefWidth="121.5999755859375" text="Producto" />
+                <TableColumn fx:id="clm_detalle" prefWidth="190.39999389648438" text="Detalle" />
+                  <TableColumn fx:id="clm_cantidad" minWidth="1.60009765625" prefWidth="108.800048828125" text="Cantidad" />
+                  <TableColumn fx:id="clm_precioUnit" prefWidth="137.5999755859375" text="Precio unitario" />
+                  <TableColumn fx:id="clm_precioTotal" prefWidth="119.99993896484375" text="Precio total" />
               </columns>
             </TableView>
-            <Button layoutX="554.0" layoutY="348.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
+            <Button layoutX="705.0" layoutY="361.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
                <font>
-                  <Font name="SansSerif Regular" size="16.0" />
+                  <Font name="SansSerif Regular" size="15.0" />
                </font>
             </Button>
          </children>

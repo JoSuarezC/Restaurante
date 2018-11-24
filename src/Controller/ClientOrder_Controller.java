@@ -170,6 +170,15 @@ public class ClientOrder_Controller {
     }
 
     @FXML
+    void verPerfil(ActionEvent event) {
+        try {
+            FXRouter.goTo("Profile");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void LogOut(ActionEvent event) {
         try {
             FXRouter.goTo("Login");
