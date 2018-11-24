@@ -25,6 +25,10 @@ public class Main extends Application {
         FXRouter.when("PedidosPendientesAdm","/View/Administrator/PedidosPendientesAdm.fxml","Pedidos Pendientes",1204,666);
         FXRouter.when("DetalleProducto","/View/DetalleProducto.fxml","Detalle Producto",1204,666);
         FXRouter.when("Cajero","/View/Client/ClientLocalPayment.fxml","Cajero",1204,666);
+        FXRouter.when("evaluar","/View/Client/Evaluation.fxml","Calificar servicio",1204,666);
+        FXRouter.when("AdmPuestos", "/View/Administrator/AdminPuestos.fxml","Administrar puestos",1204,666);
+        FXRouter.when("AgregarPuesto", "/View/Administrator/AgregarPuesto.fxml","Administrar puestos",1204,666);
+
         FXRouter.goTo("Login");
     }
 

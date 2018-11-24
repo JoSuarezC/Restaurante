@@ -84,11 +84,20 @@ public class ClientOrderHistory_Controller {
             e.printStackTrace();
         }
     }
-    @FXML
 
+    @FXML
     public void LogOut(ActionEvent event) {
         try {
             FXRouter.goTo("Login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void calificar(ActionEvent event){
+        try {
+            FXRouter.goTo("evaluar", tbl_pedidos.getSelectionModel().getSelectedItem().getIdPedido());
         } catch (IOException e) {
             e.printStackTrace();
         }

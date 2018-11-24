@@ -1,5 +1,7 @@
 package Model;
 
+import javafx.collections.ObservableList;
+
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -30,6 +32,29 @@ public class Email {
         }
         catch (MessagingException me) {
             me.printStackTrace();   //Si se produce un error
+        }
+    }
+
+    public static void createBill(String fecha, ObservableList<ShoppingList_Product> listaProductos, String montoTotal, String sucursal){
+        String factura = "";
+        factura += "Fecha: "+fecha+"\r\n";
+        factura+= "\r\n";
+        factura += "Sucursal: "+ sucursal+"\r\n";
+        factura+= "\r\n";
+        String productos="Productos: \n";
+        for(ShoppingList_Product producto : listaProductos){
+            productos+=producto.getProductName()+"    Cantidad:"+ producto.getProductQuantity()+"    Precio unitario:"+producto.getProductPrize()+"\r\n";
+        }
+        factura+= productos+"\r\n";
+        factura+= "\r\n";
+        factura+= "Monto total: "+montoTotal+"\r\n";
+        factura+= "\r\n";
+        factura+= "¡Muchas gracias por su compra!";
+
+        try {
+            sendEmail(new InternetAddress(User.getCurrentUser().getUser_Email()),"Factura de compra",factura);
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
     }
 

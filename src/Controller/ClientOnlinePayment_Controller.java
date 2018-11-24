@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Pair;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -91,7 +93,7 @@ public class ClientOnlinePayment_Controller {
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             String orderID;
             String totalAPagar = Label_TotalCost.getText();
-            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), choiceBox_Entrega.getSelectionModel().getSelectedItem(), totalAPagar, choiceBox_Sucursal.getValue().toString(), String.valueOf(choiceBox_Sucursal.getSelectionModel().getSelectedIndex()+1), directionTF.getText(), "Pendiente");
+            orderID = ConnectionDB.getInstance().makeOrder(User.getCurrentUser().getUserID(), dateFormat.format(fecha), choiceBox_Entrega.getSelectionModel().getSelectedItem(), totalAPagar, choiceBox_Sucursal.getValue().toString(), choiceBox_Sucursal.getSelectionModel().getSelectedItem().getIdSucursal(), directionTF.getText(), "Pendiente");
             System.out.print(orderID);
             ObservableList<ShoppingList_Product> list;
             list = inventoryTable.getItems();
@@ -101,7 +103,8 @@ public class ClientOnlinePayment_Controller {
                 ConnectionDB.getInstance().buyProduct(i.getProductID(), String.valueOf(i.getProductQuantity()), orderID, String.valueOf(prize));
             }
             generateBill(orderID, totalAPagar);
-            Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente");
+            Email.createBill(dateFormat.format(fecha),list,totalAPagar,choiceBox_Sucursal.getValue().toString());
+            Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente, la factura se ha enviado al correo electrónico asociado a su cuenta.");
             try {
                 FXRouter.goTo("Client");
             } catch (IOException e) {
