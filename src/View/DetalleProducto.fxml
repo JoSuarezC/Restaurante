@@ -1,94 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #e68a00;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetalleProducto_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" style="-fx-background-color: #ff0000;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetalleProducto_Controller">
    <children>
-      <ImageView fitHeight="862.0" fitWidth="630.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
+      <AnchorPane prefHeight="75.0" prefWidth="1259.0" style="-fx-background-color: #ffcc00;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="424.0" layoutY="8.0" prefHeight="60.0" prefWidth="379.0" text="Detalle Producto" textAlignment="CENTER">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="322.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/guitar.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="821.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/guitar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="862.0" fitWidth="630.0" layoutY="75.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/fondoMenuAdm.jpg" />
          </image>
       </ImageView>
-      <Group layoutX="380.0" layoutY="51.0">
+      <ImageView fitHeight="862.0" fitWidth="630.0" layoutX="629.0" layoutY="75.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/fondoMenuAdm.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="400.0" layoutY="158.0" prefHeight="447.0" prefWidth="460.0" style="-fx-background-color: #ff9900;">
          <children>
-            <ImageView fitHeight="862.0" fitWidth="630.0" layoutX="249.0" layoutY="-51.0" opacity="0.4" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/fondoMenuAdm.jpg" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff9900" height="540.0" stroke="BLACK" strokeType="INSIDE" width="445.0" />
-            <Group layoutX="18.0" layoutY="11.0">
-               <children>
-                  <Label layoutX="1.0" text="Nombre del producto">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Group layoutX="18.0" layoutY="50.0">
-                     <children>
-                        <Text fx:id="txt_NombreProducto" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="SansSerif Regular" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txt_DescripcionProducto" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="SansSerif Regular" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txt_PrecioProducto" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="SansSerif Regular" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="txt_TipoProducto" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0">
-                           <font>
-                              <Font name="SansSerif Regular" size="18.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Group>
-                  <Label layoutX="1.0" layoutY="77.0" text="Descripcion del producto">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="1.0" layoutY="159.0" text="Precio del producto">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="1.0" layoutY="242.0" text="Tipo del producto">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutY="347.0" text="Estado">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
-                  </Label>
-                  <CheckBox fx:id="chkBox_Disponible" layoutX="1.0" layoutY="385.0" mnemonicParsing="false" text="Disponible" />
-                  <TextField fx:id="tFileld_Nombre" layoutX="2.0" layoutY="34.0" prefHeight="25.0" prefWidth="326.0" />
-                  <TextField fx:id="tFileld_Descripcion" layoutX="2.0" layoutY="111.0" prefHeight="25.0" prefWidth="326.0" />
-                  <TextField fx:id="tFileld_Precio" layoutX="2.0" layoutY="195.0" prefHeight="25.0" prefWidth="326.0" />
-               </children>
-            </Group>
+            <Label layoutX="66.0" layoutY="89.0" text="Nombre">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="139.0" text="Tipo">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="195.0" text="Descripción">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="66.0" layoutY="280.0" text="Precio">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnAtras" layoutX="390.0" layoutY="406.0" mnemonicParsing="false" onAction="#atras" text="Atrás">
+               <font>
+                  <Font name="SansSerif Regular" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="tField_Nombre" layoutX="186.0" layoutY="87.0" prefHeight="26.0" prefWidth="200.0" />
+            <TextArea fx:id="tArea_Descripcion" layoutX="186.0" layoutY="195.0" prefHeight="65.0" prefWidth="200.0" />
+            <TextField fx:id="tField_Precio" layoutX="186.0" layoutY="278.0" prefHeight="26.0" prefWidth="200.0" />
+            <Button fx:id="btnGuardar" layoutX="139.0" layoutY="377.0" mnemonicParsing="false" onAction="#guardar" prefHeight="25.0" prefWidth="78.0" text="Guardar" />
+            <Button fx:id="btnCancelar" layoutX="244.0" layoutY="377.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="78.0" text="Cancelar" />
+            <Button fx:id="btnModficar" layoutX="181.0" layoutY="373.0" mnemonicParsing="false" onAction="#modificar" text="Modificar">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font>
+            </Button>
+            <Text fx:id="txtNombre" layoutX="176.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtTipo" layoutX="176.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtDescripcion" layoutX="176.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtPrecio" layoutX="176.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="SansSerif Regular" size="18.0" />
+               </font>
+            </Text>
+            <Label layoutX="76.0" layoutY="328.0" text="Estado">
+               <font>
+                  <Font name="SansSerif Regular" size="19.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="chkBoxEstado" layoutX="185.0" layoutY="330.0" mnemonicParsing="false" text="Disponible">
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font>
+            </CheckBox>
          </children>
-      </Group>
-      <Button fx:id="btnAtras" layoutX="1117.0" layoutY="608.0" mnemonicParsing="false" onAction="#atras" text="Atras" />
-      <Button fx:id="btnModficar" layoutX="1012.0" layoutY="608.0" mnemonicParsing="false" onAction="#modificar" text="Modificar" />
-      <Button fx:id="btnGuardar" layoutX="47.0" layoutY="608.0" mnemonicParsing="false" onAction="#guardar" prefHeight="25.0" prefWidth="78.0" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="152.0" layoutY="608.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="78.0" text="Cancelar" />
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
    </children>
 </AnchorPane>

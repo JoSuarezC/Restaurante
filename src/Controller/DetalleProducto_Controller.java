@@ -15,33 +15,17 @@ public class DetalleProducto_Controller {
 
     Product producto = null;
 
-    ObservableList<String> options =
-            FXCollections.observableArrayList(
-                    "Bebida",
-                    "Comida",
-                    "Postre"
-            );
-
-    @FXML
-    private Text txt_NombreProducto;
-
-    @FXML
-    private Text txt_DescripcionProducto;
-
-    @FXML
-    private Text txt_PrecioProducto;
-
-    @FXML
-    private Text txt_TipoProducto;
-
-    @FXML
-    private CheckBox chkBox_Disponible;
-
     @FXML
     private Button btnAtras;
 
     @FXML
-    private Button btnModficar;
+    private TextField tField_Nombre;
+
+    @FXML
+    private TextArea tArea_Descripcion;
+
+    @FXML
+    private TextField tField_Precio;
 
     @FXML
     private Button btnGuardar;
@@ -50,13 +34,22 @@ public class DetalleProducto_Controller {
     private Button btnCancelar;
 
     @FXML
-    private TextField tFileld_Nombre;
+    private Button btnModficar;
 
     @FXML
-    private TextField tFileld_Descripcion;
+    private Text txtNombre;
 
     @FXML
-    private TextField tFileld_Precio;
+    private Text txtTipo;
+
+    @FXML
+    private Text txtDescripcion;
+
+    @FXML
+    private Text txtPrecio;
+
+    @FXML
+    private CheckBox chkBoxEstado;
 
     @FXML
     protected void initialize(){
@@ -68,28 +61,29 @@ public class DetalleProducto_Controller {
     }
 
     protected void clearFields(){
-        this.txt_NombreProducto.setText(new String(""));
-        this.txt_DescripcionProducto.setText(new String(""));
-        this.txt_PrecioProducto.setText(new String(""));
-        this.chkBox_Disponible.setSelected(false);
+        this.txtNombre.setText(new String(""));
+        this.txtDescripcion.setText(new String(""));
+        this.txtPrecio.setText(new String(""));
+        this.txtTipo.setText(new String(""));
+        this.chkBoxEstado.setSelected(false);
 
-        this.tFileld_Nombre.setText(new String(""));
-        this.tFileld_Descripcion.setText(new String(""));
-        this.tFileld_Precio.setText(new String(""));
+        this.tField_Nombre.setText(new String(""));
+        this.tArea_Descripcion.setText(new String(""));
+        this.tField_Precio.setText(new String(""));
     }
 
     protected  void showInfo(Product producto){
-        this.txt_NombreProducto.setText(producto.getProductName());
-        this.txt_DescripcionProducto.setText(producto.getProductDetail());
-        this.txt_PrecioProducto.setText(String.format ("%d", producto.getProductPrize()));
-        this.txt_TipoProducto.setText(producto.getProductType());
+        this.txtNombre.setText(producto.getProductName());
+        this.txtDescripcion.setText(producto.getProductDetail());
+        this.txtPrecio.setText(String.format ("%d", producto.getProductPrize()));
+        this.txtTipo.setText(producto.getProductType());
         if(producto.getProductState()==1){
-            this.chkBox_Disponible.setSelected(true);
+            this.chkBoxEstado.setSelected(true);
         }
         else{
-            this.chkBox_Disponible.setSelected(false);
+            this.chkBoxEstado.setSelected(false);
         }
-        this.chkBox_Disponible.setDisable(true);
+        this.chkBoxEstado.setDisable(true);
     }
 
     protected void showButtonsOptions(){
@@ -103,9 +97,9 @@ public class DetalleProducto_Controller {
         this.btnCancelar.setDisable(true);
         this.btnGuardar.setDisable(true);
 
-        this.tFileld_Nombre.setVisible(false);
-        this.tFileld_Nombre.setVisible(false);
-        this.tFileld_Nombre.setVisible(false);
+        this.tField_Nombre.setVisible(false);
+        this.tArea_Descripcion.setVisible(false);
+        this.tField_Precio.setVisible(false);
     }
 
     private void showButtonsState(){
@@ -121,43 +115,45 @@ public class DetalleProducto_Controller {
     }
 
     private void activarEspacios(){
-        this.txt_NombreProducto.setVisible(false);
-        this.txt_DescripcionProducto.setVisible(false);
-        this.txt_PrecioProducto.setVisible(false);
+        this.txtNombre.setVisible(false);
+        this.txtDescripcion.setVisible(false);
+        this.txtPrecio.setVisible(false);
 
-        this.txt_TipoProducto.setVisible(true);
-        this.tFileld_Nombre.setVisible(true);
-        this.tFileld_Descripcion.setVisible(true);
-        this.tFileld_Precio.setVisible(true);
+        this.txtTipo.setVisible(true);
 
-        this.tFileld_Nombre.setDisable(false);
-        this.tFileld_Descripcion.setDisable(false);
-        this.tFileld_Precio.setDisable(false);
+        this.tField_Nombre.setVisible(true);
+        this.tArea_Descripcion.setVisible(true);
+        this.tField_Precio.setVisible(true);
 
-        this.chkBox_Disponible.setDisable(false);
+        this.tField_Nombre.setDisable(false);
+        this.tArea_Descripcion.setDisable(false);
+        this.tField_Precio.setDisable(false);
+
+        this.chkBoxEstado.setDisable(false);
     }
 
     protected void desactivarEspacios(){
-        this.txt_NombreProducto.setVisible(true);
-        this.txt_DescripcionProducto.setVisible(true);
-        this.txt_PrecioProducto.setVisible(true);
-        this.txt_TipoProducto.setVisible(true);
+        this.txtNombre.setVisible(true);
+        this.txtDescripcion.setVisible(true);
+        this.txtPrecio.setVisible(true);
 
-        this.tFileld_Nombre.setDisable(true);
-        this.tFileld_Descripcion.setDisable(true);
-        this.tFileld_Precio.setDisable(true);
+        this.txtTipo.setVisible(true);
 
-        this.tFileld_Nombre.setVisible(false);
-        this.tFileld_Descripcion.setVisible(false);
-        this.tFileld_Precio.setVisible(false);
+        this.tField_Nombre.setDisable(true);
+        this.tArea_Descripcion.setDisable(true);
+        this.tField_Precio.setDisable(true);
 
-        this.chkBox_Disponible.setDisable(true);
+        this.tField_Nombre.setVisible(false);
+        this.tArea_Descripcion.setVisible(false);
+        this.tField_Precio.setVisible(false);
+
+        this.chkBoxEstado.setDisable(true);
     }
 
     protected void ponerValores(){
-        this.tFileld_Nombre.setText(this.txt_NombreProducto.getText());
-        this.tFileld_Descripcion.setText(this.txt_DescripcionProducto.getText());
-        this.tFileld_Precio.setText(this.txt_PrecioProducto.getText());
+        this.tField_Nombre.setText(this.txtNombre.getText());
+        this.tArea_Descripcion.setText(this.txtDescripcion.getText());
+        this.tField_Precio.setText(this.txtPrecio.getText());
     }
 
     @FXML
@@ -178,15 +174,15 @@ public class DetalleProducto_Controller {
     @FXML
     public void guardar(ActionEvent event) {
         try{
-            if (this.tFileld_Nombre.getText().isEmpty() ||
-                    this.tFileld_Descripcion.getText().isEmpty() ||
-                    this.tFileld_Precio.getText().isEmpty()) {
+            if (this.tField_Nombre.getText().isEmpty() ||
+                    this.tArea_Descripcion.getText().isEmpty() ||
+                    this.tField_Precio.getText().isEmpty()) {
                 Main.MessageBox("Advertencia", "Debe de llenar todos los campos para poder guardar los cambios");
             }else{
-                ConnectionDB.getInstance().updateProduct(this.tFileld_Nombre.getText(),
-                        this.txt_TipoProducto.getText(),
-                        this.tFileld_Descripcion.getText(),
-                        Integer.parseInt(this.tFileld_Precio.getText()), this.chkBox_Disponible.isSelected() ? 1 : 0, Integer.parseInt(producto.getProductID()));
+                ConnectionDB.getInstance().updateProduct(this.tField_Nombre.getText(),
+                        this.txtTipo.getText(),
+                        this.tArea_Descripcion.getText(),
+                        Integer.parseInt(this.tField_Precio.getText()), this.chkBoxEstado.isSelected() ? 1 : 0, Integer.parseInt(producto.getProductID()));
                 Main.MessageBox("Informacion", "El producto ha sido actualizado correctamente");
                 actualizarDatos();
                 desactivarEspacios();
@@ -200,10 +196,11 @@ public class DetalleProducto_Controller {
     }
 
     public void actualizarDatos(){
-        this.producto.setProductName(this.tFileld_Nombre.getText());
-        this.producto.setProductDetail(this.tFileld_Descripcion.getText());
-        this.producto.setProductPrize(Integer.parseInt(tFileld_Precio.getText()));
-        this.producto.setProductType(this.txt_TipoProducto.getText());
+        this.producto.setProductName(this.tField_Nombre.getText());
+        this.producto.setProductDetail(this.tArea_Descripcion.getText());
+        this.producto.setProductPrize(Integer.parseInt(tField_Precio.getText()));
+        this.producto.setProductType(this.txtTipo.getText());
+        this.producto.setProductState(this.chkBoxEstado.isSelected()?1:0);
     }
 
     @FXML
