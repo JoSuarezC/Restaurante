@@ -44,7 +44,8 @@
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#mostrarHistorialPedidos" text="Historial Pedidos" />
                   <MenuItem mnemonicParsing="false" text="Realizar Pedido" />
-              <MenuItem fx:id="MenuItem_Cerrar" mnemonicParsing="false" onAction="#LogOut" text="Cerrar Sesión" />
+                  <MenuItem fx:id="MenuItem_Cerrar" mnemonicParsing="false" onAction="#LogOut" text="Cerrar Sesión" />
+                  <MenuItem fx:id="MenuItem_Perfil" mnemonicParsing="false" onAction="#verPerfil" text="Ver pefil" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ayuda">
@@ -133,8 +134,9 @@
                            <children>
                               <TableView fx:id="tablaView_Combos" prefHeight="261.0" prefWidth="387.0">
                                  <columns>
-                                    <TableColumn fx:id="tableColumn_Producto_Combos" prefWidth="205.0" text="Producto" />
-                                    <TableColumn fx:id="tableColumn_Precio_Combos" prefWidth="180.79998779296875" text="Precio" />
+                                    <TableColumn fx:id="tableColumn_Combos" prefWidth="119.19998168945312" text="Combo" />
+                                    <TableColumn fx:id="tableColumn_Precio_Combos" prefWidth="134.39999389648438" text="Precio" />
+                                    <TableColumn fx:id="tableColumn_infoCombo" prefWidth="132.80001831054688" text="Información" />
                                  </columns>
                               </TableView>
                            </children>

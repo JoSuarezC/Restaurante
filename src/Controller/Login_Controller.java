@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 
 public class Login_Controller {
@@ -65,14 +64,5 @@ public class Login_Controller {
 
     }
 
-    /*@FXML
-    protected void initialize(){
-        try {
-            Email.sendEmail(new InternetAddress("jco3553@hotmail.com"),"Prueba","Prueba de body");
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-
-    }*/
 
 }

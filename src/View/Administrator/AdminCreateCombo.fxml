@@ -54,17 +54,17 @@
                         <TableColumn fx:id="tableColumn_Producto_Ver" prefWidth="132.00006103515625" />
                      </columns>
                   </TableView>
-                  <Button fx:id="btn_agregarP" onAction="#addToComboList" accessibleText="jejejeje" layoutX="-41.0" layoutY="295.0" mnemonicParsing="false" text="Agregar al combo">
+                  <Button fx:id="btn_agregarP" accessibleText="jejejeje" layoutX="-41.0" layoutY="295.0" mnemonicParsing="false" onAction="#addToComboList" text="Agregar al combo">
                      <font>
                         <Font name="SansSerif Regular" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn_quitarP" onAction="#removeFromComboList" layoutX="637.0" layoutY="296.0" mnemonicParsing="false" text="Quitar del Combo">
+                  <Button fx:id="btn_quitarP" layoutX="637.0" layoutY="296.0" mnemonicParsing="false" onAction="#removeFromComboList" text="Quitar del Combo">
                      <font>
                         <Font name="SansSerif Regular" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn_crearCombo" onAction="#MakeCombo" layoutX="203.0" layoutY="387.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="341.0" text="Crear Combo">
+                  <Button fx:id="btn_crearCombo" layoutX="203.0" layoutY="387.0" mnemonicParsing="false" onAction="#MakeCombo" prefHeight="25.0" prefWidth="341.0" text="Crear Combo">
                      <font>
                         <Font name="SansSerif Regular" size="17.0" />
                      </font>

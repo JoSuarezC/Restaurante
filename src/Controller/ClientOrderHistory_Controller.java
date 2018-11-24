@@ -4,6 +4,7 @@ import Model.ConnectionDB;
 import Model.ShoppingList_Product;
 import javafx.beans.property.SimpleStringProperty;;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,6 +47,9 @@ public class ClientOrderHistory_Controller {
     private TableColumn<ShoppingList_Product, String> clm_precioTotalProducto;
 
     @FXML
+    private Button btn_calificar;
+
+    @FXML
     protected void initialize(){
         fillTablePedidos();
         tbl_pedidos.getSelectionModel().selectedItemProperty().addListener(
@@ -60,6 +64,10 @@ public class ClientOrderHistory_Controller {
     }
     @FXML
     private void mostrarInfo(){
+        btn_calificar.setVisible(false);
+        if(!tbl_pedidos.getSelectionModel().getSelectedItem().getEstadoPedido().equals("Pendiente")){
+            btn_calificar.setVisible(true);
+        }
         lbl_fechaHora.setText(tbl_pedidos.getSelectionModel().getSelectedItem().getFechaPedido());
         lbl_estado.setText(tbl_pedidos.getSelectionModel().getSelectedItem().getEstadoPedido());
         lbl_montoTotal.setText(tbl_pedidos.getSelectionModel().getSelectedItem().getTotalAPagar());
