@@ -516,12 +516,6 @@ public class ConnectionDB {
         return listaRetorno;
     }
 
-    //
-
-
-
-}
-
     public ArrayList<Combo> selectCombos(){
         ArrayList<Combo> arrayCombos = new ArrayList<>();
         try{
