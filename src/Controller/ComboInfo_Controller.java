@@ -41,6 +41,7 @@ public class ComboInfo_Controller {
     protected void initialize(){
         comboInfo = (Combo)FXRouter.getData();
         fillTable();
+        tbl_infoCombo.setEditable(false);
     }
 
     private void fillTable(){
@@ -55,7 +56,7 @@ public class ComboInfo_Controller {
 
     public void GoBack(ActionEvent event){
         try {
-            FXRouter.loadPreviousRoute();
+            FXRouter.goTo("Client",1);
         } catch (IOException e) {
             e.printStackTrace();
         }

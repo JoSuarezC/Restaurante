@@ -72,10 +72,10 @@ public class Combo {
 
     private double calcularPrecio(){
         double retorno=0;
-        for(ShoppingList_Product producto : this.getListaProductos()){
-            retorno+=producto.getProductPrize();
+        for(ShoppingList_Product producto : getListaProductos()){
+            retorno+=producto.getProductPrize()*producto.getProductQuantity();
         }
-        retorno -= retorno*Double.parseDouble(this.getDescuento());
+        retorno = retorno - (retorno * Double.parseDouble(this.getDescuento()));
         return retorno;
     }
 
