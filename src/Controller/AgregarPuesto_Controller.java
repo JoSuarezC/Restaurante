@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class AgregarPuesto_Controller {
 
     @FXML
@@ -28,7 +30,11 @@ public class AgregarPuesto_Controller {
         if(validaciones()){
             if(ConnectionDB.getInstance().createJob(txt_Nombre.getText(), txt_Descripcion.getText(), txt_SalarioMinimo.getText(), txt_SalarioMaximo.getText(), txtPorcentaje.getText())){
                 Main.MessageBox("Éxito","El puesto se ha agregado con éxito");
-                GoBack(null);
+                try{
+                    FXRouter.goTo("AdmPuestos");
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
             }else{
                 Main.MessageBox("Error","Ha ocurrido un error al ingresar el puesto.");
             }
@@ -41,7 +47,11 @@ public class AgregarPuesto_Controller {
 
     @FXML
     void GoBack(ActionEvent event) {
-
+        try{
+            FXRouter.goTo("AdmPuestos");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 }

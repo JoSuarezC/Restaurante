@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,11 +42,27 @@ public class Evaluation_Controller {
             Date fecha = new Date();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd H:m");
             ConnectionDB.getInstance().sendEvaluation(dateFormat.format(fecha), User.getCurrentUser().getUserID(), String.valueOf(IdPedido), TextAreaOpcional.getText(), ComboBox1.getSelectionModel().getSelectedItem(), ComboBox3.getSelectionModel().getSelectedItem(),  ComboBox2.getSelectionModel().getSelectedItem());
+            Main.MessageBox("¡Muchas gracias!","Tu evaluación es de mucha ayuda para mejorar el servicio brindado.");
+            try{
+                FXRouter.goTo("ClientOrderHistory");
+            }catch (IOException e){
+                e.printStackTrace();
+            }
         }
+
     }
 
 
     private Boolean validaciones(){
         return !ComboBox1.getSelectionModel().isEmpty() && !ComboBox2.getSelectionModel().isEmpty() && !ComboBox3.getSelectionModel().isEmpty();
+    }
+
+    @FXML
+    void GoBack(ActionEvent event){
+        try{
+            FXRouter.goTo("ClientOrderHistory");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

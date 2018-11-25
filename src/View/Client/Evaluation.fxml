@@ -75,9 +75,9 @@
                   <Font name="SansSerif Regular" size="18.0" />
                </font>
             </Label>
-            <Button layoutX="641.0" layoutY="468.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Atras">
+            <Button layoutX="654.0" layoutY="468.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="32.0" prefWidth="70.0" text="Atras">
                <font>
-                  <Font size="16.0" />
+                  <Font name="SansSerif Regular" size="16.0" />
                </font>
             </Button>
             <Button layoutX="329.0" layoutY="436.0" mnemonicParsing="false" onAction="#sendEvaluation" prefHeight="31.0" prefWidth="124.0" text="Enviar">

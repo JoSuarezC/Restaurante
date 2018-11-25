@@ -62,6 +62,10 @@ public class AdminPuestos_Controller {
 
     @FXML
     void GoBack(ActionEvent event) {
-
+        try{
+            FXRouter.goTo("MenuAdm");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

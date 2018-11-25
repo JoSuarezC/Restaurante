@@ -104,7 +104,7 @@ public class ConnectionDB {
                     response.append(readLine);
                 } in .close();
             } else {
-                Main.MessageBox("Error de conexión", "No se ha podido conectar con el servidor.");}
+                Main.MessageBox("Error de conexión", "No se ha podido conectar con el servidor asd.");}
         }catch(IOException e){e.printStackTrace();}
         return response.toString();
     }
@@ -324,7 +324,7 @@ public class ConnectionDB {
                     String sucursalID   = results.getJSONObject(i).getString("IdEm");
                     String user_Email   = results.getJSONObject(i).getString("IdEm");
                     String userName     = results.getJSONObject(i).getString("Nombre");
-                    User u = new User (userID, userType, job, sucursalName, sucursalID, user_Email, userName);
+                    User u = new User (userID, userType, job, sucursalName, sucursalID, user_Email);
                     arraylistGerentes.add(u);
                 }
             }else{System.out.print("No hay gerentes en la base de datos");}

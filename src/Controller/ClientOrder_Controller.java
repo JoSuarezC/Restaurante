@@ -167,17 +167,11 @@ public class ClientOrder_Controller {
 
     @FXML
     void mostrarHistorialPedidos(ActionEvent event) {
+        ClientOrder_Memento.getMementoInstance().setListaProductosMemento(tablaView_Inventario.getItems());
+        ClientOrder_Memento.getMementoInstance().setPrecioTotal(Label_TotalCost.getText());
+        ClientOrder_Memento.getMementoInstance().setPrecio(totalCost);
         try {
             FXRouter.goTo("ClientOrderHistory");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    void verPerfil(ActionEvent event) {
-        try {
-            FXRouter.goTo("Profile");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -231,9 +225,8 @@ public class ClientOrder_Controller {
             tablaView_Dulce.getSelectionModel().clearSelection();
             tablaView_Combos.getSelectionModel().clearSelection();
         }
-        totalCost = totalCost + (int)pCombo.getPrecioTotal();
+        totalCost = totalCost + ((int)pCombo.getPrecioTotal()*Integer.parseInt(TextBox_ProductQuantity.getText()));
         Label_TotalCost.setText(String.valueOf(totalCost) + " colones");
-
     }
 
     @FXML
@@ -292,6 +285,7 @@ public class ClientOrder_Controller {
         tablaView_Combos.setItems(combosList);
     }
 
+    @FXML
     public void verPerfil(ActionEvent actionEvent) {
         Hashtable<String,String> user = new Hashtable<>();
         user.put("Nombre",User.getCurrentUser().getName());
@@ -302,6 +296,9 @@ public class ClientOrder_Controller {
         user.put("Auxiliar",User.getCurrentUser().getTelefono());
         user.put("User", User.getCurrentUser().getUsername());
         user.put("Password",User.getCurrentUser().getPassword());
+        ClientOrder_Memento.getMementoInstance().setListaProductosMemento(tablaView_Inventario.getItems());
+        ClientOrder_Memento.getMementoInstance().setPrecioTotal(Label_TotalCost.getText());
+        ClientOrder_Memento.getMementoInstance().setPrecio(totalCost);
         try {
             FXRouter.goTo("Profile", user);
         } catch (IOException e) {

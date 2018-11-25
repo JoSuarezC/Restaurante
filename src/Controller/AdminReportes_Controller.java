@@ -3,6 +3,7 @@ package Controller;
 import Model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -19,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AdminReportes_Controller {
@@ -72,6 +74,7 @@ public class AdminReportes_Controller {
         product_list.add(new Product("Todos"));
         product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Comida"));
         product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Bebida"));
+        product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Postre"));
         //Product ComboBox
         Callback<ListView<Product>,ListCell<Product>> cellFactoryProduct = new Callback<ListView<Product>, ListCell<Product>>() {
             @Override
@@ -140,7 +143,7 @@ public class AdminReportes_Controller {
                         if (item == null || empty) {
                             setGraphic(null);
                         } else {
-                            setText(item.getUserName());
+                            setText(item.getUsername());
                         }
                     }
                 };
@@ -148,7 +151,7 @@ public class AdminReportes_Controller {
 
         };
         setComboBox(comboBox_Manager,cellFactoryManager,manager_list);
-        FXComboAutoComplete.autoCompleteComboBoxPlus(comboBox_Manager, (typedText, itemToCompare) -> itemToCompare.getUserName().toLowerCase().contains(typedText.toLowerCase()));
+        FXComboAutoComplete.autoCompleteComboBoxPlus(comboBox_Manager, (typedText, itemToCompare) -> itemToCompare.getUsername().toLowerCase().contains(typedText.toLowerCase()));
         comboBox_Manager.getSelectionModel().selectFirst();
 
         //ToogleButtons
@@ -364,6 +367,15 @@ public class AdminReportes_Controller {
             tbtn.setStyle("-fx-base: green");
         }else{
             tbtn.setStyle("-fx-base: red");
+        }
+    }
+
+    @FXML
+    void GoBack(ActionEvent event) {
+        try{
+            FXRouter.goTo("MenuAdm");
+        }catch (IOException e){
+            e.printStackTrace();
         }
     }
 }

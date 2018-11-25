@@ -79,6 +79,11 @@ public class CreateNewEmployee_Controller {
                             Email.sendEmail(new InternetAddress(txt_correo.getText()),"Cuenta Restaurante AK7","Su cuenta para ingresar al Restaurante AK7 se ha geneado con éxito. \r\n Los credenciales a ingresar son: \r\n Usuario: "+txt_nombreUsuario.getText() + "\r\n Contraseña: " + "25916319" + "\r\n Recuerde cambiar su contraseña cuando inicie sesión.");
                         }catch (Exception e){e.printStackTrace();}
                         Main.MessageBox("Se ha creado el usuario", "El usuario se ha creado con éxito.");
+                        try {
+                            FXRouter.goTo("MenuAdm");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }else{
                         Main.MessageBox("Error","El usuario indicado ya existe en la base de datos");
                     }

@@ -11,36 +11,82 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminReportes_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminReportes_Controller">
     <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fcbff" height="544.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1204.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="130.0" stroke="BLACK" strokeType="INSIDE" width="1204.0" />
-      <Group layoutX="14.0" layoutY="27.0">
+      <Pane prefHeight="183.0" prefWidth="1204.0" style="-fx-background-color: #ffcc00;">
          <children>
-            <RadioButton id="rbtn_Sales" fx:id="rbtn_Sales" layoutY="37.0" mnemonicParsing="false" text="Ventas" />
-            <RadioButton id="rbtn_Earnings" fx:id="rbtn_Earnings" layoutY="65.0" mnemonicParsing="false" text="Ganancias" />
-            <ComboBox id="comboBox_Producto" fx:id="comboBox_Producto" layoutX="107.0" layoutY="33.0" prefWidth="150.0" />
-            <DatePicker id="comboBox_FechaI" fx:id="datePicker_FechaI" layoutX="280.0" layoutY="33.0" />
-            <DatePicker id="comboBox_FechaF" fx:id="datePicker_FechaF" layoutX="482.0" layoutY="33.0" />
-            <ComboBox id="comboBox_Subsidiary" fx:id="comboBox_Subsidiary" layoutX="685.0" layoutY="33.0" prefWidth="150.0" />
-            <ComboBox id="comboBox_Manager" fx:id="comboBox_Manager" layoutX="895.0" layoutY="33.0" prefWidth="150.0" />
-            <ToggleButton id="tbtn_Producto" fx:id="tbtn_Producto" layoutX="152.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
-             <ToggleButton id="tbtn_Date" fx:id="tbtn_Date" layoutX="439.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
-             <ToggleButton id="tbtn_Subsidiary" fx:id="tbtn_Subsidiary" layoutX="730.0" layoutY="65.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
-             <ToggleButton id="tbtn_Manager" fx:id="tbtn_Manager" layoutX="940.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
-            <Label text="Reporte" />
-            <Label layoutX="107.0" text="Producto" />
-            <Label layoutX="280.0" text="Fecha Inicial" />
-            <Label layoutX="491.0" text="Fecha Final" />
-            <Label layoutX="685.0" text="Sucursal" />
-            <Label layoutX="895.0" text="Gerente" />
+            <Label layoutX="563.0" layoutY="22.0" text="Reportes">
+               <font>
+                  <Font name="SansSerif Regular" size="32.0" />
+               </font>
+            </Label>
+            <Group layoutX="6.0" layoutY="71.0">
+               <children>
+                  <RadioButton id="rbtn_Sales" fx:id="rbtn_Sales" layoutY="37.0" mnemonicParsing="false" text="Ventas">
+                     <font>
+                        <Font name="SansSerif Regular" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton id="rbtn_Earnings" fx:id="rbtn_Earnings" layoutY="65.0" mnemonicParsing="false" text="Ganancias">
+                     <font>
+                        <Font name="SansSerif Regular" size="14.0" />
+                     </font>
+                  </RadioButton>
+                  <ComboBox id="comboBox_Producto" fx:id="comboBox_Producto" layoutX="107.0" layoutY="33.0" prefWidth="150.0" />
+                  <DatePicker id="comboBox_FechaI" fx:id="datePicker_FechaI" layoutX="280.0" layoutY="33.0" prefHeight="25.0" prefWidth="142.0" />
+                  <DatePicker id="comboBox_FechaF" fx:id="datePicker_FechaF" layoutX="482.0" layoutY="33.0" prefHeight="25.0" prefWidth="140.0" />
+                  <ComboBox id="comboBox_Subsidiary" fx:id="comboBox_Subsidiary" layoutX="685.0" layoutY="33.0" prefWidth="150.0" />
+                  <ComboBox id="comboBox_Manager" fx:id="comboBox_Manager" layoutX="868.0" layoutY="34.0" prefWidth="150.0" />
+                  <ToggleButton id="tbtn_Producto" fx:id="tbtn_Producto" layoutX="152.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+                   <ToggleButton id="tbtn_Date" fx:id="tbtn_Date" layoutX="422.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+                   <ToggleButton id="tbtn_Subsidiary" fx:id="tbtn_Subsidiary" layoutX="730.0" layoutY="65.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+                   <ToggleButton id="tbtn_Manager" fx:id="tbtn_Manager" layoutX="913.0" layoutY="66.0" mnemonicParsing="false" style="-fx-base: red;" text="Habilitar" />
+                  <Label text="Reporte">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="107.0" text="Producto">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="280.0" text="Fecha Inicial">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="491.0" text="Fecha Final">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="685.0" text="Sucursal">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="868.0" text="Gerente">
+                     <font>
+                        <Font name="SansSerif Regular" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <Button id="btn_GenerarReporte" layoutX="1047.0" layoutY="105.0" mnemonicParsing="false" onAction="#createChart" text="Generar Reporte" />
          </children>
-      </Group>
-      <Button id="btn_GenerarReporte" layoutX="1086.0" layoutY="61.0" mnemonicParsing="false" onAction="#createChart" text="Generar Reporte" />
-      <Pane layoutY="130.0" prefHeight="538.0" prefWidth="1204.0">
+      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fcbff" height="476.0" layoutY="192.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1204.0" />
+      <Pane layoutY="181.0" prefHeight="488.0" prefWidth="1204.0" style="-fx-background-color: #ffb03d;">
          <children>
-            <HBox fx:id="hBox_Charts" prefHeight="538.0" prefWidth="1204.0" />
+            <HBox fx:id="hBox_Charts" layoutY="-6.0" prefHeight="435.0" prefWidth="1204.0" />
+            <Button layoutX="1068.0" layoutY="429.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font>
+            </Button>
          </children></Pane>
       <Label fx:id="caption" />
    </children>

@@ -110,6 +110,7 @@ public class AdminCreateCombo_Controller {
         ObservableList<Product> product_list = FXCollections.observableArrayList();
         product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Comida"));
         product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Bebida"));
+        product_list.addAll(ConnectionDB.getInstance().selectProductInventory_byType("Postre"));
 
         tableView_Producto.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -165,7 +166,6 @@ public class AdminCreateCombo_Controller {
 
         tableView_Combo.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        //tableView_Combo.setItems(product_list);
     }
 
     @FXML
@@ -208,10 +208,12 @@ public class AdminCreateCombo_Controller {
             tableView_Combo.getItems().clear();
             productQty.clear();
             spinner_descuento.getValueFactory().setValue(0);
-            //btn_crearCombo.setDisable(true);
+            Main.MessageBox("Éxito","El combo ha sido creado exitosamente.");
         }else{
             Main.MessageBox("No hay productos", "Seleccione los productos que desea añadir al combo.");
         }
+
+
 
     }
 

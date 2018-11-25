@@ -23,7 +23,7 @@ public class User {
         this.sucursalName = "";
         this.sucursalID = "";
         this.user_Email="";
-        this.userName = userName;
+        this.username = userName;
     }
 
     public User(String userID, String userType, String job, String sucursalName, String sucursalID, String user_Email) {
@@ -33,7 +33,7 @@ public class User {
         this.sucursalName = sucursalName;
         this.sucursalID = sucursalID;
         this.user_Email=user_Email;
-        this.userName = "";
+        this.username = "";
     }
 
     public User(String userID, String userType, String job, String sucursalName, String sucursalID, String user_Email,

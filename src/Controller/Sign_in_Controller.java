@@ -42,6 +42,11 @@ public class Sign_in_Controller {
                 boolean response = ConnectionDB.getInstance().createUser(txt_userName.getText(),txt_password.getText(),txt_correo.getText(), Integer.toString(result));
                 if(response){
                     Main.MessageBox("Éxito","Se ha registrado correctamente");
+                    try {
+                        FXRouter.goTo("Login");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 else{
                     Main.MessageBox("Error","No se ha podido realizar el registro correctamente (usuario)");

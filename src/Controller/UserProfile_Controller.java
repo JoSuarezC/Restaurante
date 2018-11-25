@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 import java.util.Hashtable;
 
 public class UserProfile_Controller {
@@ -228,10 +230,10 @@ public class UserProfile_Controller {
 
     @FXML
     private void GoBack(ActionEvent event) {
-        try{
-            FXRouter.loadPreviousRoute();
-        }catch (Exception e){
-            System.out.println(e);
+        try {
+            FXRouter.goTo("Client",1);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -262,7 +264,7 @@ public class UserProfile_Controller {
                         this.textField_Telefono.getText(),
                         this.textField_Pass.getText(),
                         User.getCurrentUser().getUserID());
-                Main.MessageBox("Informacion", "El producto ha sido actualizado correctamente");
+                Main.MessageBox("Información", "La información ha sido actualizada correctamente");
                 actualizarCurrentUser();
                 actualizarDatos();
                 desactivarEspacios();

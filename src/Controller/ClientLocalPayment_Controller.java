@@ -129,7 +129,7 @@ public class ClientLocalPayment_Controller {
                 generateBill(orderID, totalAPagar, getCheckBox());
                 Main.MessageBox("Éxito", "Su orden ha sido creada exitosamente.");
                 try {
-                    FXRouter.goTo("Client");
+                    FXRouter.goTo("Client",0);
                 } catch (IOException e) {
                     System.out.print(e);
                 }
