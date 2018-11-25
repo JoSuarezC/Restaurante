@@ -52,6 +52,7 @@ public class AdminReportes_Controller {
     @FXML
     private Label caption;
 
+    @SuppressWarnings("Duplicates")
     @FXML
     protected void initialize(){
         //HBox for Charts
@@ -121,7 +122,34 @@ public class AdminReportes_Controller {
         setComboBox(comboBox_Subsidiary,cellFactorySubsidiary,subsidiary_list);
         FXComboAutoComplete.autoCompleteComboBoxPlus(comboBox_Subsidiary, (typedText, itemToCompare) -> itemToCompare.toString().toLowerCase().contains(typedText.toLowerCase()));
         comboBox_Subsidiary.getSelectionModel().selectFirst();
+
+        //Manager List
+        ObservableList<User> manager_list = FXCollections.observableArrayList();
+        manager_list.add(new User("Todos"));
+        manager_list.addAll(ConnectionDB.getInstance().selectAll_Gerentes());
         //Manager ComboBox
+        Callback<ListView<User>,ListCell<User>> cellFactoryManager = new Callback<ListView<User>, ListCell<User>>() {
+            @Override
+            public ListCell<User> call(ListView<User> p) {
+                return new ListCell<User>() {
+
+                    @Override
+                    protected void updateItem(User item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || empty) {
+                            setGraphic(null);
+                        } else {
+                            setText(item.getUserName());
+                        }
+                    }
+                };
+            }
+
+        };
+        setComboBox(comboBox_Manager,cellFactoryManager,manager_list);
+        FXComboAutoComplete.autoCompleteComboBoxPlus(comboBox_Manager, (typedText, itemToCompare) -> itemToCompare.getUserName().toLowerCase().contains(typedText.toLowerCase()));
+        comboBox_Manager.getSelectionModel().selectFirst();
 
         //ToogleButtons
         tbtn_Producto.setOnAction(event -> {
@@ -134,10 +162,13 @@ public class AdminReportes_Controller {
 
         tbtn_Subsidiary.setOnAction(event -> {
             changeTbtnColor(tbtn_Subsidiary);
+            tbtn_Manager.setDisable(tbtn_Subsidiary.isSelected());
         });
 
         tbtn_Manager.setOnAction(event -> {
             changeTbtnColor(tbtn_Manager);
+            tbtn_Subsidiary.setDisable(tbtn_Manager.isSelected());
+
         });
     }
 
@@ -238,7 +269,27 @@ public class AdminReportes_Controller {
 
                 }else if(tbtn_Manager.isSelected()){
                     //Se desea hacer por producto por gerente [Varios Charts]
+                    ArrayList<Multiple_PieChart> multiplePieChart = ConnectionDB.getInstance().reporte_por_producto_por_gerente(
+                            comboBox_Producto.getItems().get(comboBox_Producto.getSelectionModel().getSelectedIndex()).getProductID(),
+                            "","","",
+                            comboBox_Manager.getItems().get(comboBox_Manager.getSelectionModel().getSelectedIndex()).getUserID());
+                    multiplePieChart.forEach(multiple_pieChart -> {
+                        //Genero un chart para cada sucursal
+                        System.out.println(multiple_pieChart.getName());
+                        PieChart chart = new PieChart(multiple_pieChart.getPieChartDataList());
+                        chart.setTitle("Gerente: " + multiple_pieChart.getName());
+                        chart.setLegendSide(Side.LEFT);
 
+                        for (final PieChart.Data data : chart.getData()) {
+                            data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
+                                    e -> {
+                                        caption.setTranslateX(e.getSceneX());
+                                        caption.setTranslateY(e.getSceneY());
+                                        caption.setText(String.valueOf(data.getPieValue()));
+                                    });
+                        }
+                        hBox_Charts.getChildren().add(chart);
+                    });
                 }else{
                     //Se desea hacer un chart por productos solamente
                     ObservableList<PieChart.Data> pieChartData;
@@ -281,7 +332,23 @@ public class AdminReportes_Controller {
                     hBox_Charts.getChildren().add(chart);
                 }else if(tbtn_Manager.isSelected()){
                     //Se desea hacer por gerente
+                    ObservableList<PieChart.Data> pieChartData;
+                    pieChartData = ConnectionDB.getInstance().reporte_por_gerente("", "","",
+                            comboBox_Manager.getItems().get(comboBox_Manager.getSelectionModel().getSelectedIndex()).getUserID()
+                            , "");
+                    PieChart chart = new PieChart(pieChartData);
+                    chart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
+                    chart.setLegendSide(Side.LEFT);
 
+                    for (final PieChart.Data data : chart.getData()) {
+                        data.getNode().addEventHandler(MouseEvent.MOUSE_CLICKED,
+                                e -> {
+                                    caption.setTranslateX(e.getSceneX());
+                                    caption.setTranslateY(e.getSceneY());
+                                    caption.setText(String.valueOf(data.getPieValue()));
+                                });
+                    }
+                    hBox_Charts.getChildren().add(chart);
                 }else {
                     //Se desea hacer un chart por las ventas totales - Es un solo número
 

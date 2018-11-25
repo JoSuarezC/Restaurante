@@ -48,11 +48,13 @@ public class ConnectionDB {
     private static final String insert_empleado = URL_HOST + "RestaurantePHP/Usuario/insert_empleado.php";
     private static final String insertJob = URL_HOST + "RestaurantePHP/Usuario/insert_puesto.php";
     private static final String updateJob = URL_HOST + "RestaurantePHP/Usuario/updateJob.php";
+    private static final String selectAll_GerentesPHP = URL_HOST + "RestaurantePHP/Usuario/selectAll_Gerentes.php";
     //Reportes
-    private static final String reporte_por_productoPHP = URL_HOST+"RestaurantePHP/Reporte/reporte_por_producto.php";
-    private static final String reporte_por_producto_por_sucursalPHP = URL_HOST+"RestaurantePHP/Reporte/reporte_por_producto_por_sucursal.php";
-    private static final String reporte_por_sucursalPHP = URL_HOST+"RestaurantePHP/Reporte/reporte_por_sucursal.php";
-    private static final String select_client = URL_HOST + "RestaurantePHP/Usuario/select_client.php";
+    private static final String reporte_por_productoPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_producto.php";
+    private static final String reporte_por_producto_por_sucursalPHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_sucursal.php";
+    private static final String reporte_por_producto_por_gerentePHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_gerente.php";
+    private static final String reporte_por_sucursalPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_sucursal.php";
+    private static final String reporte_por_gerentePHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_gerente.php";
 
 
     public static ConnectionDB getInstance(){
@@ -289,6 +291,29 @@ public class ConnectionDB {
         return arraylistSucursal;
     }
 
+    @SuppressWarnings("Duplicates")
+    public ArrayList<User> selectAll_Gerentes (){
+        ArrayList<User> arraylistGerentes = new ArrayList<>();
+        try{
+            JSONObject myResponse = new JSONObject(GETRequest(selectAll_GerentesPHP));
+            if (myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String userID       = results.getJSONObject(i).getString("IdEm");
+                    String userType     = results.getJSONObject(i).getString("IdEm");
+                    String job          = results.getJSONObject(i).getString("IdEm");
+                    String sucursalName = results.getJSONObject(i).getString("IdEm");
+                    String sucursalID   = results.getJSONObject(i).getString("IdEm");
+                    String user_Email   = results.getJSONObject(i).getString("IdEm");
+                    String userName     = results.getJSONObject(i).getString("Nombre");
+                    User u = new User (userID, userType, job, sucursalName, sucursalID, user_Email, userName);
+                    arraylistGerentes.add(u);
+                }
+            }else{System.out.print("No hay gerentes en la base de datos");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return arraylistGerentes;
+    }
+
     public ArrayList<Pedido> selectPedidos_porCliente(){
         ArrayList<Pedido> arraylistPedidos = new ArrayList<>();
         try{
@@ -459,6 +484,30 @@ public class ConnectionDB {
         return listaRetorno;
     }
 
+    @SuppressWarnings("Duplicates")
+    public ObservableList<PieChart.Data> reporte_por_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+        String URLparameters;
+        if(gerente.isEmpty()){
+            URLparameters = "Sucursal=" + sucursal + "&Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2;
+        }else{
+            URLparameters = "Gerente=" + gerente + "&Sucursal=" + sucursal + "&Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2;
+        }
+
+        ObservableList<PieChart.Data> listaRetorno = FXCollections.observableArrayList();
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_gerentePHP, URLparameters));
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("NombreEmp");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+                    listaRetorno.add(new PieChart.Data(nombre,ventas));
+                }
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
 
     public ArrayList<Multiple_PieChart> reporte_por_producto_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal){
         String URLparameters = "";
@@ -505,6 +554,62 @@ public class ConnectionDB {
                         currentSucursal = nombreSuc;
                     }else{
                         //Es la misma sucursal
+                        dataList.add(new PieChart.Data(nombre,ventas));
+                    }
+                }
+                //Se añade la última sucursal
+                mPieChar.setPieChartDataList(dataList);
+                listaRetorno.add(mPieChar);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ArrayList<Multiple_PieChart> reporte_por_producto_por_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+        String URLparameters = "";
+        if(!producto.isEmpty()){
+            URLparameters = "&Producto=" + producto;
+        }
+        if(!gerente.isEmpty()){
+            URLparameters = URLparameters + "&Gerente=" + gerente ;
+        }
+
+        URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Sucursal=" + sucursal + URLparameters;
+
+        ArrayList<Multiple_PieChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_gerentePHP, URLparameters));
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                String currentManager = "";
+                Multiple_PieChart mPieChar = new Multiple_PieChart();
+                boolean firstProduct = true;
+                ObservableList<PieChart.Data> dataList = FXCollections.observableArrayList();
+
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("Nombre");
+                    String nombreEmp = results.getJSONObject(i).getString("NombreEmp");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstProduct){//Primera vez se añade
+                        dataList = FXCollections.observableArrayList();
+                        dataList.add(new PieChart.Data(nombre,ventas));
+                        mPieChar.setName(nombreEmp);
+                        currentManager = nombreEmp;
+                        firstProduct = false;
+                    }
+                    else if(!currentManager.equals(nombreEmp)){//Es un nuevo gerente
+                        mPieChar.setPieChartDataList(dataList);
+                        listaRetorno.add(mPieChar);
+                        mPieChar = new Multiple_PieChart();
+                        dataList = FXCollections.observableArrayList();
+                        dataList.add(new PieChart.Data(nombre,ventas));
+                        mPieChar.setName(nombreEmp);
+                        currentManager = nombreEmp;
+                    }else{
+                        //Es el mismo gerente
                         dataList.add(new PieChart.Data(nombre,ventas));
                     }
                 }
