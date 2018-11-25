@@ -55,6 +55,7 @@ public class ConnectionDB {
     private static final String reporte_por_producto_por_gerentePHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_gerente.php";
     private static final String reporte_por_sucursalPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_sucursal.php";
     private static final String reporte_por_gerentePHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_gerente.php";
+    private static final String update_user_PHP = URL_HOST + "RestaurantePHP/Usuario/update_client.php";
 
 
     public static ConnectionDB getInstance(){
@@ -126,7 +127,12 @@ public class ConnectionDB {
 
                 }else if(userType.equals("Cliente")){
                     String ClientID = myResponse.getJSONObject("value").getString("IdCliente");
-                    User u = new User(ClientID,userType,"","","",email);
+                    String nombre = myResponse.getJSONObject("value").getString("Nombre");
+                    String apellidos = myResponse.getJSONObject("value").getString("Apellidos");
+                    String cedula = myResponse.getJSONObject("value").getString("Cedula");
+                    String celular = myResponse.getJSONObject("value").getString("Telefono1");
+                    String telefono = myResponse.getJSONObject("value").getString("Telefono2");
+                    User u = new User(ClientID,userType,"","","",email,nombre,apellidos,cedula,celular,telefono,user,password);
                     User.setCurrentUser(u);
                 }
             }else{
@@ -230,6 +236,18 @@ public class ConnectionDB {
                 +pState+"&Id="+pId;
         try{
             JSONObject myResponse = new JSONObject(POSTrequest(update_product_PHP, URLparameters));
+            System.out.print(myResponse.getString("status"));
+            return myResponse.getString("status").equals("true");
+        }catch (JSONException e){ e.printStackTrace();}
+        return false;
+    }
+
+    public boolean updateUser(String pName, String pApellidos, String pCedula, String pCorreo, String pCelular,
+                              String pTelefono, String pPass, String pId){
+        String URLparameters = "Nombre="+pName+"&Apellidos="+pApellidos+"&Identificacion="+pCedula+"&Correo="+pCorreo+
+                "&Celular="+pCelular+"&Telefono="+pTelefono+"&Pass="+pPass+"&Id="+pId;
+        try{
+            JSONObject myResponse = new JSONObject(POSTrequest(update_user_PHP, URLparameters));
             System.out.print(myResponse.getString("status"));
             return myResponse.getString("status").equals("true");
         }catch (JSONException e){ e.printStackTrace();}
@@ -688,24 +706,5 @@ public class ConnectionDB {
         return false;
 
     }
-
-    public Hashtable<String,String> selectClient(String Id){
-        Hashtable<String,String> cliente = new Hashtable<>();
-        try {
-            JSONObject myResponse = new JSONObject(POSTrequest(search_product_PHP, "Id="+Id));
-            if (myResponse.getString("status").equals("true")){
-                cliente.put("Nombre",myResponse.getJSONObject("value").getString("Nombre"));
-                cliente.put("Apellidos",myResponse.getJSONObject("value").getString("Apellidos"));
-                cliente.put("Cedula",myResponse.getJSONObject("value").getString("Cedula"));
-                cliente.put("Correo",myResponse.getJSONObject("value").getString("Correo"));
-                cliente.put("Celular",myResponse.getJSONObject("value").getString("Telefono1"));
-                cliente.put("Auxilar",myResponse.getJSONObject("value").getString("Telefono2"));
-                cliente.put("User",myResponse.getJSONObject("value").getString("IdUsuario"));
-                cliente.put("Password",myResponse.getJSONObject("value").getString("Contraseña"));
-            }else{System.out.println("No existe el producto2");}
-        }catch (JSONException e){ e.printStackTrace();}
-        return cliente;
-    }
-
 
 }

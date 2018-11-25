@@ -10,7 +10,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import javafx.util.Pair;
+
+import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
+import java.util.Hashtable;
 
 public class ClientOrder_Controller {
 
@@ -287,5 +290,22 @@ public class ClientOrder_Controller {
         ObservableList<Combo> combosList = FXCollections.observableArrayList();
         combosList.addAll(ConnectionDB.getInstance().selectCombos());
         tablaView_Combos.setItems(combosList);
+    }
+
+    public void verPerfil(ActionEvent actionEvent) {
+        Hashtable<String,String> user = new Hashtable<>();
+        user.put("Nombre",User.getCurrentUser().getName());
+        user.put("Apellidos",User.getCurrentUser().getLastnames());
+        user.put("Cedula",User.getCurrentUser().getCedula());
+        user.put("Correo",User.getCurrentUser().getUser_Email());
+        user.put("Celular",User.getCurrentUser().getCelular());
+        user.put("Auxiliar",User.getCurrentUser().getTelefono());
+        user.put("User", User.getCurrentUser().getUsername());
+        user.put("Password",User.getCurrentUser().getPassword());
+        try {
+            FXRouter.goTo("Profile", user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

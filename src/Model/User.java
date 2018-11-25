@@ -7,7 +7,13 @@ public class User {
     private String sucursalName;
     private String sucursalID;
     private String user_Email;
-    private String userName;
+    private String name;
+    private String lastnames;
+    private String cedula;
+    private String celular;
+    private String telefono;
+    private String username;
+    private String password;
     private static User currentUser;
 
     public User(String userName) {
@@ -30,17 +36,22 @@ public class User {
         this.userName = "";
     }
 
-    public User(String userID, String userType, String job, String sucursalName, String sucursalID, String user_Email, String userName) {
+    public User(String userID, String userType, String job, String sucursalName, String sucursalID, String user_Email,
+                String name, String lastnames, String cedula, String celular, String telefono, String username, String password) {
         this.userID = userID;
         this.userType = userType;
         this.job = job;
         this.sucursalName = sucursalName;
         this.sucursalID = sucursalID;
-        this.user_Email=user_Email;
-        this.userName = userName;
+        this.user_Email = user_Email;
+        this.name = name;
+        this.lastnames = lastnames;
+        this.cedula = cedula;
+        this.celular = celular;
+        this.telefono = telefono;
+        this.username = username;
+        this.password = password;
     }
-
-    public String getUserName(){return userName;}
 
     public String getUser_Email() {
         return user_Email;
@@ -101,5 +112,61 @@ public class User {
 
     public static User getCurrentUser(){
         return currentUser;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastnames() {
+        return lastnames;
+    }
+
+    public void setLastnames(String lastnames) {
+        this.lastnames = lastnames;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
