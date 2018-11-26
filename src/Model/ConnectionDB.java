@@ -4,6 +4,7 @@ import Controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +16,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
+
+import static Controller.AdminReportes_Controller.theMonth;
 
 public class ConnectionDB {
 
@@ -49,13 +52,30 @@ public class ConnectionDB {
     private static final String insertJob = URL_HOST + "RestaurantePHP/Usuario/insert_puesto.php";
     private static final String updateJob = URL_HOST + "RestaurantePHP/Usuario/updateJob.php";
     private static final String selectAll_GerentesPHP = URL_HOST + "RestaurantePHP/Usuario/selectAll_Gerentes.php";
-    //Reportes
+    private static final String update_user_PHP = URL_HOST + "RestaurantePHP/Usuario/update_client.php";
+    //Reportes Ganancias
+    private static final String reporte_totalPHP = URL_HOST +                     "RestaurantePHP/Reporte/reporte_total.php";
     private static final String reporte_por_productoPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_producto.php";
     private static final String reporte_por_producto_por_sucursalPHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_sucursal.php";
-    private static final String reporte_por_producto_por_gerentePHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_gerente.php";
+    private static final String reporte_por_producto_por_gerentePHP = URL_HOST +  "RestaurantePHP/Reporte/reporte_por_producto_por_gerente.php";
     private static final String reporte_por_sucursalPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_sucursal.php";
     private static final String reporte_por_gerentePHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_gerente.php";
-    private static final String update_user_PHP = URL_HOST + "RestaurantePHP/Usuario/update_client.php";
+    private static final String reporte_por_fechaPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha.php";
+    private static final String reporte_por_fecha_por_productoPHP = URL_HOST +    "RestaurantePHP/Reporte/reporte_por_fecha_por_producto.php";
+    private static final String reporte_por_fecha_por_gerentePHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_gerente.php";
+    private static final String reporte_por_fecha_por_sucursalPHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_sucursal.php";
+    //Reportes Ventas
+    private static final String reporte_total_ventasPHP = URL_HOST +                     "RestaurantePHP/Reporte/reporte_total_ventas.php";
+    private static final String reporte_por_producto_ventasPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_producto_ventas.php";
+    private static final String reporte_por_producto_por_sucursal_ventasPHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_sucursal_ventas.php";
+    private static final String reporte_por_producto_por_gerente_ventasPHP = URL_HOST +  "RestaurantePHP/Reporte/reporte_por_producto_por_gerente_ventas.php";
+    private static final String reporte_por_sucursal_ventasPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_sucursal_ventas.php";
+    private static final String reporte_por_gerente_ventasPHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_gerente_ventas.php";
+    private static final String reporte_por_fecha_ventasPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha_ventas.php";
+    private static final String reporte_por_fecha_por_producto_ventasPHP = URL_HOST +    "RestaurantePHP/Reporte/reporte_por_fecha_por_producto_ventas.php";
+    private static final String reporte_por_fecha_por_gerente_ventasPHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_gerente_ventas.php";
+    private static final String reporte_por_fecha_por_sucursal_ventasPHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_sucursal_ventas.php";
+
 
 
     public static ConnectionDB getInstance(){
@@ -456,7 +476,33 @@ public class ConnectionDB {
         }catch (JSONException e){ e.printStackTrace();}
         return null;
     }
-    public ObservableList<PieChart.Data> reporte_por_producto(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+
+    @SuppressWarnings("Duplicates")
+    public ObservableList<PieChart.Data> reporte_total(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
+        String URLparameters = "Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente + "&Sucursal=" + sucursal;
+
+        ObservableList<PieChart.Data> listaRetorno = FXCollections.observableArrayList();
+        try{
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_totalPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_total_ventasPHP, URLparameters));
+            }
+
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                for (int i = 0; i < results.length(); i++) {
+                    String mes = theMonth(results.getJSONObject(i).getInt("Mes"));
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+                    listaRetorno.add(new PieChart.Data(mes,ventas));
+                }
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    public ObservableList<PieChart.Data> reporte_por_producto(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
         String URLparameters;
         if(producto.isEmpty()){
             URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente + "&Sucursal=" + sucursal;
@@ -465,7 +511,12 @@ public class ConnectionDB {
         }
         ObservableList<PieChart.Data> listaRetorno = FXCollections.observableArrayList();
         try{
-            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_productoPHP, URLparameters));
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_productoPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_producto_ventasPHP, URLparameters));
+            }
             if(myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");
                 for (int i = 0; i < results.length(); i++) {
@@ -479,7 +530,7 @@ public class ConnectionDB {
     }
 
     @SuppressWarnings("Duplicates")
-    public ObservableList<PieChart.Data> reporte_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+    public ObservableList<PieChart.Data> reporte_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
         String URLparameters;
         if(sucursal.isEmpty()){
             URLparameters = "Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente;
@@ -489,7 +540,12 @@ public class ConnectionDB {
 
         ObservableList<PieChart.Data> listaRetorno = FXCollections.observableArrayList();
         try{
-            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_sucursalPHP, URLparameters));
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_sucursalPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_sucursal_ventasPHP, URLparameters));
+            }
             if(myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");
                 for (int i = 0; i < results.length(); i++) {
@@ -503,7 +559,7 @@ public class ConnectionDB {
     }
 
     @SuppressWarnings("Duplicates")
-    public ObservableList<PieChart.Data> reporte_por_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+    public ObservableList<PieChart.Data> reporte_por_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
         String URLparameters;
         if(gerente.isEmpty()){
             URLparameters = "Sucursal=" + sucursal + "&Producto=" + producto + "&Fecha1=" + fecha1 + "&Fecha2=" + fecha2;
@@ -513,7 +569,12 @@ public class ConnectionDB {
 
         ObservableList<PieChart.Data> listaRetorno = FXCollections.observableArrayList();
         try{
-            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_gerentePHP, URLparameters));
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_gerentePHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_gerente_ventasPHP, URLparameters));
+            }
             if(myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");
                 for (int i = 0; i < results.length(); i++) {
@@ -527,7 +588,7 @@ public class ConnectionDB {
     }
 
 
-    public ArrayList<Multiple_PieChart> reporte_por_producto_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+    public ArrayList<Multiple_PieChart> reporte_por_producto_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
         String URLparameters = "";
         if(!producto.isEmpty()){
             URLparameters = "&Producto=" + producto;
@@ -541,7 +602,12 @@ public class ConnectionDB {
         ArrayList<Multiple_PieChart> listaRetorno = new ArrayList<>();
 
         try{
-            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_sucursalPHP, URLparameters));
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_sucursalPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_sucursal_ventasPHP, URLparameters));
+            }
             if(myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");
                 String currentSucursal = "";
@@ -584,7 +650,7 @@ public class ConnectionDB {
     }
 
     @SuppressWarnings("Duplicates")
-    public ArrayList<Multiple_PieChart> reporte_por_producto_por_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal){
+    public ArrayList<Multiple_PieChart> reporte_por_producto_por_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
         String URLparameters = "";
         if(!producto.isEmpty()){
             URLparameters = "&Producto=" + producto;
@@ -598,7 +664,12 @@ public class ConnectionDB {
         ArrayList<Multiple_PieChart> listaRetorno = new ArrayList<>();
 
         try{
-            JSONObject myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_gerentePHP, URLparameters));
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_gerentePHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_producto_por_gerente_ventasPHP, URLparameters));
+            }
             if(myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");
                 String currentManager = "";
@@ -639,9 +710,282 @@ public class ConnectionDB {
         return listaRetorno;
     }
 
+    @SuppressWarnings("Duplicates")
+    public ArrayList<Multiple_XYChart> reporte_por_fecha_producto(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
+        String URLparameters = "";
+        if(!producto.isEmpty()){
+            URLparameters = "&Producto=" + producto;
+        }
+
+        URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Sucursal=" + sucursal + "&Gerente=" + gerente + URLparameters;
+
+        ArrayList<Multiple_XYChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_productoPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_producto_ventasPHP, URLparameters));
+            }
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                int initialDate = 0;
+                Multiple_XYChart mXYChart = new Multiple_XYChart();
+                boolean firstDate = true;
+                String currentProduct = "";
+                int currentMonth = 0;
+
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("Nombre");
+                    int dia = results.getJSONObject(i).getInt("Dia");
+                    int mes = results.getJSONObject(i).getInt("Mes");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstDate){//Primera vez se añade la fecha
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        firstDate = false;
+                        currentProduct = nombre;
+                        currentMonth = mes;
+                    }
+                    else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        currentProduct = nombre;
+                        currentMonth = mes;
+                    }
+                    else if(!currentProduct.equals(nombre)){//Es la mismo producto entonces debo hacer una nueva serie 22 initialDate == fecha ||
+                        mXYChart.addSeries();
+                        mXYChart.createNewSeries();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        currentProduct = nombre;
+                    }
+                    else{
+                        //Es una fecha distinta, agrego al mismo XYChart
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                    }
+                }
+                //Añado la serie a la lista de series
+                mXYChart.addSeries();
+                listaRetorno.add(mXYChart);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ArrayList<Multiple_XYChart> reporte_por_fecha_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
+        String URLparameters = "";
+        if(!gerente.isEmpty()){
+            URLparameters = "&Gerente=" + gerente;
+        }
+
+        URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Sucursal=" + sucursal + "&Producto=" + producto + URLparameters;
+
+        ArrayList<Multiple_XYChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_gerentePHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_gerente_ventasPHP, URLparameters));
+            }
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                int initialDate = 0;
+                Multiple_XYChart mXYChart = new Multiple_XYChart();
+                boolean firstDate = true;
+                String currentEmp = "";
+                int currentMonth = 0;
+
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("NombreEmp");
+                    int dia = results.getJSONObject(i).getInt("Dia");
+                    int mes = results.getJSONObject(i).getInt("Mes");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstDate){//Primera vez se añade la fecha
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        firstDate = false;
+                        currentEmp = nombre;
+                        currentMonth = mes;
+                    }
+
+                    else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        currentEmp = nombre;
+                        currentMonth = mes;
+                    }
+                    else if(!currentEmp.equals(nombre)){//Es la mismo gerente entonces debo hacer una nueva serie 22 initialDate == fecha ||
+                        mXYChart.addSeries();
+                        mXYChart.createNewSeries();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        currentEmp = nombre;
+                    }
+                    else{
+                        //Es una fecha distinta, agrego al mismo XYChart
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                    }
+                }
+                //Añado la serie a la lista de series
+                mXYChart.addSeries();
+                listaRetorno.add(mXYChart);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ArrayList<Multiple_XYChart> reporte_por_fecha_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
+        String URLparameters = "";
+        if(!sucursal.isEmpty()){
+            URLparameters = "&Sucursal=" + sucursal;
+        }
+
+        URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Producto=" + producto + "&Gerente=" + gerente + URLparameters;
+
+        ArrayList<Multiple_XYChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_sucursalPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_sucursal_ventasPHP, URLparameters));
+            }
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                int initialDate = 0;
+                Multiple_XYChart mXYChart = new Multiple_XYChart();
+                boolean firstDate = true;
+                String currentSuc = "";
+                int currentMonth = 0;
+
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("NombreSuc");
+                    int dia = results.getJSONObject(i).getInt("Dia");
+                    int mes = results.getJSONObject(i).getInt("Mes");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstDate){//Primera vez se añade la fecha
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        firstDate = false;
+                        currentSuc = nombre;
+                        currentMonth = mes;
+                    }
+
+                    else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        currentSuc = nombre;
+                        currentMonth = mes;
+                    }
+                    else if(!currentSuc.equals(nombre)){//Es la mismo gerente entonces debo hacer una nueva serie 22 initialDate == fecha ||
+                        mXYChart.addSeries();
+                        mXYChart.createNewSeries();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        currentSuc = nombre;
+                    }
+                    else{
+                        //Es una fecha distinta, agrego al mismo XYChart
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                    }
+                }
+                //Añado la serie a la lista de series
+                mXYChart.addSeries();
+                listaRetorno.add(mXYChart);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ArrayList<Multiple_XYChart> reporte_por_fecha(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
+        String URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Producto=" + producto + "&Gerente=" + gerente + "&Sucursal=" + sucursal;
+
+        ArrayList<Multiple_XYChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_fechaPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_ventasPHP, URLparameters));
+            }
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                int initialDate = 0;
+                Multiple_XYChart mXYChart = new Multiple_XYChart();
+                boolean firstDate = true;
+                String currentSuc = "";
+                int currentMonth = 0;
+
+                for (int i = 0; i < results.length(); i++) {
+                    int mes = results.getJSONObject(i).getInt("Mes");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstDate){//Primera vez se añade la fecha
+                        mXYChart.addXYChartData(new XYChart.Data(mes, ventas));
+                        mXYChart.setSeriesName("2018");
+                        mXYChart.setMonth(mes);
+                        firstDate = false;
+                        //currentSuc = nombre;
+                        currentMonth = mes;
+                    }
+
+                    else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(mes, ventas));
+                        mXYChart.setSeriesName("2018");
+                        mXYChart.setMonth(mes);
+                        //currentSuc = nombre;
+                        currentMonth = mes;
+                    }
+                    else if(!currentSuc.equals("2018")){
+                        mXYChart.addSeries();
+                        mXYChart.createNewSeries();
+                        mXYChart.addXYChartData(new XYChart.Data(mes, ventas));
+                        mXYChart.setSeriesName("2018");
+                        //currentSuc = nombre;
+                    }
+                    else{
+                        //Es una fecha distinta, agrego al mismo XYChart
+                        mXYChart.addXYChartData(new XYChart.Data(mes, ventas));
+                    }
+                }
+                //Añado la serie a la lista de series
+                mXYChart.addSeries();
+                listaRetorno.add(mXYChart);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
     public ArrayList<Combo> selectCombos(){
         ArrayList<Combo> arrayCombos = new ArrayList<>();
         try{
+
             JSONObject myResponse = new JSONObject(GETRequest(select_combos));
             if (myResponse.getString("status").equals("true")){
                 JSONArray results = myResponse.getJSONArray("value");

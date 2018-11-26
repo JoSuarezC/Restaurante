@@ -23,6 +23,14 @@ public class Sucursal {
         this.telfPedidos = "";
     }
 
+    public Sucursal(String nombreSucursal, String idSucursal) {
+        this.idSucursal = idSucursal;
+        this.nombreSucursal = nombreSucursal;
+        this.direccion = "";
+        this.telfSucursal = "";
+        this.telfPedidos = "";
+    }
+
     public String getIdSucursal() {
         return idSucursal;
     }

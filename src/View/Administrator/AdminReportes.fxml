@@ -6,6 +6,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminReportes_Controller">
+<AnchorPane prefHeight="666.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminReportes_Controller">
     <children>
       <Pane prefHeight="183.0" prefWidth="1204.0" style="-fx-background-color: #ffcc00;">
          <children>
@@ -35,7 +36,7 @@
                      </font>
                   </RadioButton>
                   <ComboBox id="comboBox_Producto" fx:id="comboBox_Producto" layoutX="107.0" layoutY="33.0" prefWidth="150.0" />
-                  <DatePicker id="comboBox_FechaI" fx:id="datePicker_FechaI" layoutX="280.0" layoutY="33.0" prefHeight="25.0" prefWidth="142.0" />
+                  <DatePicker id="comboBox_FechaI" fx:id="datePicker_FechaI" layoutX="280.0" layoutY="33.0" prefHeight="25.0" prefWidth="142.0" showWeekNumbers="true" />
                   <DatePicker id="comboBox_FechaF" fx:id="datePicker_FechaF" layoutX="482.0" layoutY="33.0" prefHeight="25.0" prefWidth="140.0" />
                   <ComboBox id="comboBox_Subsidiary" fx:id="comboBox_Subsidiary" layoutX="685.0" layoutY="33.0" prefWidth="150.0" />
                   <ComboBox id="comboBox_Manager" fx:id="comboBox_Manager" layoutX="868.0" layoutY="34.0" prefWidth="150.0" />
@@ -81,13 +82,21 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fcbff" height="476.0" layoutY="192.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1204.0" />
       <Pane layoutY="181.0" prefHeight="488.0" prefWidth="1204.0" style="-fx-background-color: #ffb03d;">
          <children>
-            <HBox fx:id="hBox_Charts" layoutY="-6.0" prefHeight="435.0" prefWidth="1204.0" />
+            <ScrollPane prefHeight="401.0" prefWidth="1204.0" style="-fx-background-color: #ffb03d;">
+               <content>
+                  <HBox fx:id="hBox_Charts" prefHeight="388.0" prefWidth="1204.0" style="-fx-background-color: #ffb03d;" />
+               </content>
+            </ScrollPane>
             <Button layoutX="1068.0" layoutY="429.0" mnemonicParsing="false" onAction="#GoBack" text="Atrás">
                <font>
                   <Font name="SansSerif Regular" size="14.0" />
                </font>
             </Button>
+            <Label fx:id="caption" alignment="CENTER" contentDisplay="CENTER" layoutX="111.0" layoutY="434.0" prefHeight="27.0" prefWidth="927.0" text="Para ver las ventas o ganacias realice un &quot;click&quot; sobre el área de ínteres" textAlignment="CENTER">
+               <font>
+                  <Font name="SansSerif Regular" size="24.0" />
+               </font>
+            </Label>
          </children></Pane>
-      <Label fx:id="caption" />
    </children>
 </AnchorPane>
