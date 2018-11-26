@@ -50,7 +50,7 @@ public class Login_Controller {
                 e.printStackTrace();
             }
         }else{
-            System.out.print("no sirve ??");
+            Main.MessageBox("Credenciales Erróneas", "El usuario y/o la contraseñan son erróneos");
         }
     }
 

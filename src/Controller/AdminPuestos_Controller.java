@@ -66,6 +66,7 @@ public class AdminPuestos_Controller {
             FXRouter.goTo("MenuAdm");
         }catch (IOException e){
             e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

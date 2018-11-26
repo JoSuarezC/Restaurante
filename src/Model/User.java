@@ -26,6 +26,16 @@ public class User {
         this.username = userName;
     }
 
+    public User(String userId, String userName) {
+        this.userID = userId;
+        this.userType = "";
+        this.job = "";
+        this.sucursalName = "";
+        this.sucursalID = "";
+        this.user_Email="";
+        this.username = userName;
+    }
+
     public User(String userID, String userType, String job, String sucursalName, String sucursalID, String user_Email) {
         this.userID = userID;
         this.userType = userType;
@@ -63,7 +73,10 @@ public class User {
 
     @Override
     public String toString(){
-        return currentUser.getUserID();
+        if(userID.isEmpty())
+            return username;
+        else
+            return userID + ") " + username;
     }
 
     public String getSucursalName() {

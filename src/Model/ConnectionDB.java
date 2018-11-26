@@ -54,27 +54,32 @@ public class ConnectionDB {
     private static final String selectAll_GerentesPHP = URL_HOST + "RestaurantePHP/Usuario/selectAll_Gerentes.php";
     private static final String update_user_PHP = URL_HOST + "RestaurantePHP/Usuario/update_client.php";
     //Reportes Ganancias
-    private static final String reporte_totalPHP = URL_HOST +                     "RestaurantePHP/Reporte/reporte_total.php";
-    private static final String reporte_por_productoPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_producto.php";
-    private static final String reporte_por_producto_por_sucursalPHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_sucursal.php";
-    private static final String reporte_por_producto_por_gerentePHP = URL_HOST +  "RestaurantePHP/Reporte/reporte_por_producto_por_gerente.php";
-    private static final String reporte_por_sucursalPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_sucursal.php";
-    private static final String reporte_por_gerentePHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_gerente.php";
-    private static final String reporte_por_fechaPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha.php";
-    private static final String reporte_por_fecha_por_productoPHP = URL_HOST +    "RestaurantePHP/Reporte/reporte_por_fecha_por_producto.php";
-    private static final String reporte_por_fecha_por_gerentePHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_gerente.php";
-    private static final String reporte_por_fecha_por_sucursalPHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_sucursal.php";
+    private static final String reporte_totalPHP = URL_HOST +                                  "RestaurantePHP/Reporte/reporte_total.php";
+    private static final String reporte_por_productoPHP = URL_HOST +                           "RestaurantePHP/Reporte/reporte_por_producto.php";
+    private static final String reporte_por_producto_por_sucursalPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_producto_por_sucursal.php";
+    private static final String reporte_por_producto_por_gerentePHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_producto_por_gerente.php";
+    private static final String reporte_por_sucursalPHP = URL_HOST +                           "RestaurantePHP/Reporte/reporte_por_sucursal.php";
+    private static final String reporte_por_gerentePHP = URL_HOST +                            "RestaurantePHP/Reporte/reporte_por_gerente.php";
+    private static final String reporte_por_fechaPHP = URL_HOST +                              "RestaurantePHP/Reporte/reporte_por_fecha.php";
+    private static final String reporte_por_fecha_por_productoPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha_por_producto.php";
+    private static final String reporte_por_fecha_por_gerentePHP = URL_HOST +                  "RestaurantePHP/Reporte/reporte_por_fecha_por_gerente.php";
+    private static final String reporte_por_fecha_por_sucursalPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha_por_sucursal.php";
+    private static final String reporte_por_fecha_por_producto_por_gerentePHP = URL_HOST +     "RestaurantePHP/Reporte/reporte_por_fecha_por_producto_por_gerente.php";
+    private static final String reporte_por_fecha_por_producto_por_sucursalPHP = URL_HOST +    "RestaurantePHP/Reporte/reporte_por_fecha_por_producto_por_sucursal.php";
     //Reportes Ventas
-    private static final String reporte_total_ventasPHP = URL_HOST +                     "RestaurantePHP/Reporte/reporte_total_ventas.php";
-    private static final String reporte_por_producto_ventasPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_producto_ventas.php";
-    private static final String reporte_por_producto_por_sucursal_ventasPHP = URL_HOST + "RestaurantePHP/Reporte/reporte_por_producto_por_sucursal_ventas.php";
-    private static final String reporte_por_producto_por_gerente_ventasPHP = URL_HOST +  "RestaurantePHP/Reporte/reporte_por_producto_por_gerente_ventas.php";
-    private static final String reporte_por_sucursal_ventasPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_sucursal_ventas.php";
-    private static final String reporte_por_gerente_ventasPHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_gerente_ventas.php";
-    private static final String reporte_por_fecha_ventasPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha_ventas.php";
-    private static final String reporte_por_fecha_por_producto_ventasPHP = URL_HOST +    "RestaurantePHP/Reporte/reporte_por_fecha_por_producto_ventas.php";
-    private static final String reporte_por_fecha_por_gerente_ventasPHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_gerente_ventas.php";
-    private static final String reporte_por_fecha_por_sucursal_ventasPHP = URL_HOST +         "RestaurantePHP/Reporte/reporte_por_fecha_por_sucursal_ventas.php";
+    private static final String reporte_total_ventasPHP = URL_HOST +                                  "RestaurantePHP/Reporte/reporte_total_ventas.php";
+    private static final String reporte_por_producto_ventasPHP = URL_HOST +                           "RestaurantePHP/Reporte/reporte_por_producto_ventas.php";
+    private static final String reporte_por_producto_por_sucursal_ventasPHP = URL_HOST +              "RestaurantePHP/Reporte/reporte_por_producto_por_sucursal_ventas.php";
+    private static final String reporte_por_producto_por_gerente_ventasPHP = URL_HOST +               "RestaurantePHP/Reporte/reporte_por_producto_por_gerente_ventas.php";
+    private static final String reporte_por_sucursal_ventasPHP = URL_HOST +                           "RestaurantePHP/Reporte/reporte_por_sucursal_ventas.php";
+    private static final String reporte_por_gerente_ventasPHP = URL_HOST +                            "RestaurantePHP/Reporte/reporte_por_gerente_ventas.php";
+    private static final String reporte_por_fecha_ventasPHP = URL_HOST +                              "RestaurantePHP/Reporte/reporte_por_fecha_ventas.php";
+    private static final String reporte_por_fecha_por_producto_ventasPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha_por_producto_ventas.php";
+    private static final String reporte_por_fecha_por_gerente_ventasPHP = URL_HOST +                  "RestaurantePHP/Reporte/reporte_por_fecha_por_gerente_ventas.php";
+    private static final String reporte_por_fecha_por_sucursal_ventasPHP = URL_HOST +                 "RestaurantePHP/Reporte/reporte_por_fecha_por_sucursal_ventas.php";
+    private static final String reporte_por_fecha_por_producto_por_gerente_ventasPHP = URL_HOST +     "RestaurantePHP/Reporte/reporte_por_fecha_por_producto_por_gerente_ventas.php";
+    private static final String reporte_por_fecha_por_producto_por_sucursal_ventasPHP = URL_HOST +    "RestaurantePHP/Reporte/reporte_por_fecha_por_producto_por_sucursal_ventas.php";
+
 
 
 
@@ -338,17 +343,13 @@ public class ConnectionDB {
                 JSONArray results = myResponse.getJSONArray("value");
                 for (int i = 0; i < results.length(); i++) {
                     String userID       = results.getJSONObject(i).getString("IdEm");
-                    String userType     = results.getJSONObject(i).getString("IdEm");
-                    String job          = results.getJSONObject(i).getString("IdEm");
-                    String sucursalName = results.getJSONObject(i).getString("IdEm");
-                    String sucursalID   = results.getJSONObject(i).getString("IdEm");
-                    String user_Email   = results.getJSONObject(i).getString("IdEm");
                     String userName     = results.getJSONObject(i).getString("Nombre");
-                    User u = new User (userID, userType, job, sucursalName, sucursalID, user_Email);
+                    User u = new User (userID, userName);
                     arraylistGerentes.add(u);
                 }
             }else{System.out.print("No hay gerentes en la base de datos");}
         }catch (JSONException e){ e.printStackTrace();}
+
         return arraylistGerentes;
     }
 
@@ -705,6 +706,182 @@ public class ConnectionDB {
                 //Se añade la última sucursal
                 mPieChar.setPieChartDataList(dataList);
                 listaRetorno.add(mPieChar);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ArrayList<Multiple_XYChart> reporte_por_fecha_por_producto_por_gerente(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
+        String URLparameters = "";
+        if(!producto.isEmpty()){
+            URLparameters = "&Producto=" + producto;
+        }
+        if(!gerente.isEmpty()){
+            URLparameters = "&Gerente=" + gerente;
+        }
+
+        URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Sucursal=" + sucursal + URLparameters;
+
+        ArrayList<Multiple_XYChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_producto_por_gerentePHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_producto_por_gerente_ventasPHP, URLparameters));
+            }
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                int initialDate = 0;
+                Multiple_XYChart mXYChart = new Multiple_XYChart();
+                boolean firstDate = true;
+                String currentProduct = "";
+                String currentEmp = "";
+                int currentMonth = 0;
+
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("Nombre");
+                    String nombreEmp = results.getJSONObject(i).getString("NombreEmp");
+                    int dia = results.getJSONObject(i).getInt("Dia");
+                    int mes = results.getJSONObject(i).getInt("Mes");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstDate){//Primera vez se añade la fecha
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        mXYChart.setName(nombreEmp);
+                        firstDate = false;
+                        currentProduct = nombre;
+                        currentEmp = nombreEmp;
+                        currentMonth = mes;
+                    }
+                    else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        mXYChart.setName(nombreEmp);
+                        currentProduct = nombre;
+                        currentEmp = nombreEmp;
+                        currentMonth = mes;
+                    }else if(!currentEmp.equals(nombreEmp)){//Es un empleado distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        mXYChart.setName(nombreEmp);
+                        currentProduct = nombre;
+                        currentEmp = nombreEmp;
+                        currentMonth = mes;
+                    }
+                    else if(!currentProduct.equals(nombre)){//Es un producto distinto, nueva serie
+                        mXYChart.addSeries();
+                        mXYChart.createNewSeries();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        currentProduct = nombre;
+                    }
+                    else{
+                        //Es una fecha distinta, agrego al mismo XYChart
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                    }
+                }
+                //Añado la serie a la lista de series
+                mXYChart.addSeries();
+                listaRetorno.add(mXYChart);
+            }else{System.out.print("No sirvo");}
+        }catch (JSONException e){ e.printStackTrace();}
+        return listaRetorno;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public ArrayList<Multiple_XYChart> reporte_por_fecha_por_producto_por_sucursal(String producto, String fecha1, String fecha2, String gerente, String sucursal, boolean isGanancia){
+        String URLparameters = "";
+        if(!producto.isEmpty()){
+            URLparameters = "&Producto=" + producto;
+        }
+        if(!gerente.isEmpty()){
+            URLparameters = "&Sucursal=" + sucursal;
+        }
+
+        URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente+ URLparameters;
+
+        ArrayList<Multiple_XYChart> listaRetorno = new ArrayList<>();
+
+        try{
+            JSONObject myResponse;
+            if(isGanancia){
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_producto_por_sucursalPHP, URLparameters));
+            }else {
+                myResponse = new JSONObject(POSTrequest(reporte_por_fecha_por_producto_por_sucursal_ventasPHP, URLparameters));
+            }
+            if(myResponse.getString("status").equals("true")){
+                JSONArray results = myResponse.getJSONArray("value");
+                int initialDate = 0;
+                Multiple_XYChart mXYChart = new Multiple_XYChart();
+                boolean firstDate = true;
+                String currentProduct = "";
+                String currentEmp = "";
+                int currentMonth = 0;
+
+                for (int i = 0; i < results.length(); i++) {
+                    String nombre = results.getJSONObject(i).getString("Nombre");
+                    String nombreSuc = results.getJSONObject(i).getString("NombreSuc");
+                    int dia = results.getJSONObject(i).getInt("Dia");
+                    int mes = results.getJSONObject(i).getInt("Mes");
+                    int ventas = results.getJSONObject(i).getInt("Ventas");
+
+                    if(firstDate){//Primera vez se añade la fecha
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        mXYChart.setName(nombreSuc);
+                        firstDate = false;
+                        currentProduct = nombre;
+                        currentEmp = nombreSuc;
+                        currentMonth = mes;
+                    }
+                    else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        mXYChart.setName(nombreSuc);
+                        currentProduct = nombre;
+                        currentEmp = nombreSuc;
+                        currentMonth = mes;
+                    }else if(!currentEmp.equals(nombreSuc)){//Es un empleado distinto, hago un chart nuevo
+                        listaRetorno.add(mXYChart);
+                        mXYChart = new Multiple_XYChart();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        mXYChart.setMonth(mes);
+                        mXYChart.setName(nombreSuc);
+                        currentProduct = nombre;
+                        currentEmp = nombreSuc;
+                        currentMonth = mes;
+                    }
+                    else if(!currentProduct.equals(nombre)){//Es un producto distinto, nueva serie
+                        mXYChart.addSeries();
+                        mXYChart.createNewSeries();
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                        mXYChart.setSeriesName(nombre);
+                        currentProduct = nombre;
+                    }
+                    else{
+                        //Es una fecha distinta, agrego al mismo XYChart
+                        mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
+                    }
+                }
+                //Añado la serie a la lista de series
+                mXYChart.addSeries();
+                listaRetorno.add(mXYChart);
             }else{System.out.print("No sirvo");}
         }catch (JSONException e){ e.printStackTrace();}
         return listaRetorno;

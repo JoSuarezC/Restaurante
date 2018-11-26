@@ -146,6 +146,7 @@ public class AdminReportes_Controller {
         ObservableList<User> manager_list = FXCollections.observableArrayList();
         manager_list.add(new User("Todos"));
         manager_list.addAll(ConnectionDB.getInstance().selectAll_Gerentes());
+
         //Manager ComboBox
         Callback<ListView<User>,ListCell<User>> cellFactoryManager = new Callback<ListView<User>, ListCell<User>>() {
             @Override
@@ -226,11 +227,68 @@ public class AdminReportes_Controller {
                 if(tbtn_Producto.isSelected()){
                     if (tbtn_Subsidiary.isSelected()){
                         //Se desea hacer por producto por sucursal por fecha [Varios Charts] [NO SE PUEDE TODOS PRODUCTOS]
-                        Main.MessageBox("Reportes Individuales", "Realice los reportes individuales de cada uno.\n\n<Producto> y <Sucursal>");
+                        ArrayList<Multiple_XYChart> multipleXYChart = ConnectionDB.getInstance().reporte_por_fecha_por_producto_por_sucursal(
+                                comboBox_Producto.getItems().get(comboBox_Producto.getSelectionModel().getSelectedIndex()).getProductID(),
+                                datePicker_FechaI.getValue().toString() +" 00:00:00",
+                                datePicker_FechaF.getValue().toString() +" 23:59:59", "",
+                                comboBox_Subsidiary.getItems().get(comboBox_Subsidiary.getSelectionModel().getSelectedIndex()).getIdSucursal(), isEarningsReport);
+                        multipleXYChart.forEach(multiple_xyChart -> {
+                            //Genero un chart para cada sucursal
+                            final NumberAxis xAxis = new NumberAxis();
+                            final NumberAxis yAxis = new NumberAxis();
+                            xAxis.setLabel("Día");
+
+                            xAxis.setAutoRanging(false);
+                            xAxis.setLowerBound(multiple_xyChart.getMinValue());
+                            xAxis.setUpperBound(multiple_xyChart.getMaxValue());
+                            xAxis.setTickUnit(1);
+                            xAxis.setMinorTickVisible(false);
+
+                            yAxis.setLabel((String)toggleGroup.getSelectedToggle().getUserData());
+                            final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
+                            lineChart.setMinWidth(800);
+                            lineChart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData() + ": " + theMonth(multiple_xyChart.getMonth())+"\n"+multiple_xyChart.getName());
+                            //Por cada serie
+                            multiple_xyChart.getSeriesList().forEach(series -> {
+                                lineChart.getData().add(series);
+                            });
+
+                            hBox_Charts.getChildren().add(lineChart);
+
+                        });
 
                     }else if(tbtn_Manager.isSelected()){
                         //Se desea hacer por producto por gerente por fecha [Varios Charts] [NO SE PUEDE TODOS PRODUCTOS]
-                        Main.MessageBox("Reportes Individuales", "Realice los reportes individuales de cada uno.\n\n<Producto> y <Gerente>");
+                        ArrayList<Multiple_XYChart> multipleXYChart = ConnectionDB.getInstance().reporte_por_fecha_por_producto_por_gerente(
+                                comboBox_Producto.getItems().get(comboBox_Producto.getSelectionModel().getSelectedIndex()).getProductID(),
+                                datePicker_FechaI.getValue().toString() +" 00:00:00",
+                                datePicker_FechaF.getValue().toString() +" 23:59:59",
+                                comboBox_Manager.getItems().get(comboBox_Manager.getSelectionModel().getSelectedIndex()).getUserID(),
+                                "", isEarningsReport);
+                        multipleXYChart.forEach(multiple_xyChart -> {
+                            //Genero un chart para cada sucursal
+                            final NumberAxis xAxis = new NumberAxis();
+                            final NumberAxis yAxis = new NumberAxis();
+                            xAxis.setLabel("Día");
+
+                            xAxis.setAutoRanging(false);
+                            xAxis.setLowerBound(multiple_xyChart.getMinValue());
+                            xAxis.setUpperBound(multiple_xyChart.getMaxValue());
+                            xAxis.setTickUnit(1);
+                            xAxis.setMinorTickVisible(false);
+
+                            yAxis.setLabel((String)toggleGroup.getSelectedToggle().getUserData());
+                            final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
+                            lineChart.setMinWidth(800);
+                            lineChart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData() + ": " + theMonth(multiple_xyChart.getMonth())+"\n"+multiple_xyChart.getName());
+                            //Por cada serie
+                            multiple_xyChart.getSeriesList().forEach(series -> {
+                                lineChart.getData().add(series);
+                            });
+
+                            hBox_Charts.getChildren().add(lineChart);
+
+                        });
                     }else{
                         //Se desea hacer un chart por productos por fecha [Varios Charts]
                         ArrayList<Multiple_XYChart> multipleXYChart = ConnectionDB.getInstance().reporte_por_fecha_producto(
@@ -252,6 +310,7 @@ public class AdminReportes_Controller {
 
                             yAxis.setLabel((String)toggleGroup.getSelectedToggle().getUserData());
                             final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
+                            lineChart.setMinWidth(800);
                             lineChart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData() + ": " + theMonth(multiple_xyChart.getMonth()));
                             //Por cada serie
                             multiple_xyChart.getSeriesList().forEach(series -> {
@@ -283,6 +342,7 @@ public class AdminReportes_Controller {
 
                             yAxis.setLabel("Ventas");
                             final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
+                            lineChart.setMinWidth(800);
                             lineChart.setTitle("Reporte de "+toggleGroup.getSelectedToggle().getUserData()+": " + theMonth(multiple_xyChart.getMonth()));
                             //Por cada serie
                             multiple_xyChart.getSeriesList().forEach(series -> {
@@ -312,6 +372,7 @@ public class AdminReportes_Controller {
 
                             yAxis.setLabel((String)toggleGroup.getSelectedToggle().getUserData());
                             final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
+                            lineChart.setMinWidth(800);
                             lineChart.setTitle("Reporte de "+toggleGroup.getSelectedToggle().getUserData()+": " + theMonth(multiple_xyChart.getMonth()));
                             //Por cada serie
                             multiple_xyChart.getSeriesList().forEach(series -> {
@@ -342,6 +403,7 @@ public class AdminReportes_Controller {
 
                             yAxis.setLabel((String)toggleGroup.getSelectedToggle().getUserData());
                             final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
+                            lineChart.setMinWidth(800);
                             lineChart.setTitle("Reporte de "+toggleGroup.getSelectedToggle().getUserData()+": 2018");
                             //Por cada serie
                             multiple_xyChart.getSeriesList().forEach(series -> {
@@ -352,31 +414,6 @@ public class AdminReportes_Controller {
                         });
                     }
                 }
-                /*
-                final NumberAxis xAxis = new NumberAxis();
-                final NumberAxis yAxis = new NumberAxis();
-                xAxis.setLabel("Número del día");
-                //creating the chart
-                final LineChart<Number,Number> lineChart = new LineChart<Number,Number>(xAxis,yAxis);
-
-                lineChart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
-                XYChart.Series series = new XYChart.Series();
-                series.setName("My portfolio");
-                //populating the series with data
-                series.getData().add(new XYChart.Data(1, 23));
-                series.getData().add(new XYChart.Data(2, 14));
-                series.getData().add(new XYChart.Data(3, 15));
-                series.getData().add(new XYChart.Data(4, 24));
-                series.getData().add(new XYChart.Data(5, 34));
-                series.getData().add(new XYChart.Data(6, 36));
-                series.getData().add(new XYChart.Data(7, 22));
-                series.getData().add(new XYChart.Data(8, 45));
-                series.getData().add(new XYChart.Data(9, 43));
-                series.getData().add(new XYChart.Data(10, 17));
-                series.getData().add(new XYChart.Data(11, 29));
-                series.getData().add(new XYChart.Data(12, 25));
-                lineChart.getData().add(series);
-                hBox_Charts.getChildren().add(lineChart);*/
             }
         }else{
             //Es necesario hacer un PieChart sin usar fechas
@@ -392,6 +429,7 @@ public class AdminReportes_Controller {
                         //Genero un chart para cada sucursal
                         System.out.println(multiple_pieChart.getName());
                         PieChart chart = new PieChart(multiple_pieChart.getPieChartDataList());
+                        chart.setMinWidth(800);
                         chart.setTitle("Sucursal " + multiple_pieChart.getName());
                         chart.setLegendSide(Side.LEFT);
 
@@ -409,12 +447,14 @@ public class AdminReportes_Controller {
                     //Se desea hacer por producto por gerente [Varios Charts]
                     ArrayList<Multiple_PieChart> multiplePieChart = ConnectionDB.getInstance().reporte_por_producto_por_gerente(
                             comboBox_Producto.getItems().get(comboBox_Producto.getSelectionModel().getSelectedIndex()).getProductID(),
-                            "","","",
-                            comboBox_Manager.getItems().get(comboBox_Manager.getSelectionModel().getSelectedIndex()).getUserID(),isEarningsReport);
+                            "","",
+                            comboBox_Manager.getItems().get(comboBox_Manager.getSelectionModel().getSelectedIndex()).getUserID(),
+                            "",isEarningsReport);
                     multiplePieChart.forEach(multiple_pieChart -> {
                         //Genero un chart para cada sucursal
                         System.out.println(multiple_pieChart.getName());
                         PieChart chart = new PieChart(multiple_pieChart.getPieChartDataList());
+                        chart.setMinWidth(800);
                         chart.setTitle("Gerente: " + multiple_pieChart.getName());
                         chart.setLegendSide(Side.LEFT);
 
@@ -433,6 +473,7 @@ public class AdminReportes_Controller {
                             comboBox_Producto.getItems().get(comboBox_Producto.getSelectionModel().getSelectedIndex()).getProductID(),
                             "","","", "",isEarningsReport);
                     PieChart chart = new PieChart(pieChartData);
+                    chart.setMinWidth(800);
                     chart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
                     chart.setLegendSide(Side.LEFT);
 
@@ -452,6 +493,7 @@ public class AdminReportes_Controller {
                     pieChartData = ConnectionDB.getInstance().reporte_por_sucursal("", "","","",
                             comboBox_Subsidiary.getItems().get(comboBox_Subsidiary.getSelectionModel().getSelectedIndex()).getID(),isEarningsReport);
                     PieChart chart = new PieChart(pieChartData);
+                    chart.setMinWidth(800);
                     chart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
                     chart.setLegendSide(Side.LEFT);
 
@@ -469,6 +511,7 @@ public class AdminReportes_Controller {
                             comboBox_Manager.getItems().get(comboBox_Manager.getSelectionModel().getSelectedIndex()).getUserID()
                             , "",isEarningsReport);
                     PieChart chart = new PieChart(pieChartData);
+                    chart.setMinWidth(800);
                     chart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
                     chart.setLegendSide(Side.LEFT);
 
@@ -484,6 +527,7 @@ public class AdminReportes_Controller {
                     ObservableList<PieChart.Data> pieChartData;
                     pieChartData = ConnectionDB.getInstance().reporte_total("", "","", "", "", isEarningsReport);
                     PieChart chart = new PieChart(pieChartData);
+                    chart.setMinWidth(800);
                     chart.setTitle("Reporte de " + toggleGroup.getSelectedToggle().getUserData());
                     chart.setLegendSide(Side.LEFT);
 

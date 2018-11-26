@@ -80,7 +80,7 @@
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fcbff" height="476.0" layoutY="192.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1204.0" />
-      <Pane layoutY="181.0" prefHeight="488.0" prefWidth="1204.0" style="-fx-background-color: #ffb03d;">
+      <Pane layoutY="181.0" prefHeight="488.0" prefWidth="1204.0" style="-fx-background-color: #ec9b24;">
          <children>
             <ScrollPane prefHeight="401.0" prefWidth="1204.0" style="-fx-background-color: #ffb03d;">
                <content>
