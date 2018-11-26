@@ -718,7 +718,7 @@ public class ConnectionDB {
             URLparameters = "&Producto=" + producto;
         }
         if(!gerente.isEmpty()){
-            URLparameters = "&Gerente=" + gerente;
+            URLparameters = URLparameters + "&Gerente=" + gerente;
         }
 
         URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Sucursal=" + sucursal + URLparameters;
@@ -759,6 +759,7 @@ public class ConnectionDB {
                         currentMonth = mes;
                     }
                     else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        mXYChart.addSeries();
                         listaRetorno.add(mXYChart);
                         mXYChart = new Multiple_XYChart();
                         mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
@@ -769,6 +770,7 @@ public class ConnectionDB {
                         currentEmp = nombreEmp;
                         currentMonth = mes;
                     }else if(!currentEmp.equals(nombreEmp)){//Es un empleado distinto, hago un chart nuevo
+                        mXYChart.addSeries();
                         listaRetorno.add(mXYChart);
                         mXYChart = new Multiple_XYChart();
                         mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
@@ -805,8 +807,8 @@ public class ConnectionDB {
         if(!producto.isEmpty()){
             URLparameters = "&Producto=" + producto;
         }
-        if(!gerente.isEmpty()){
-            URLparameters = "&Sucursal=" + sucursal;
+        if(!sucursal.isEmpty()){
+            URLparameters = URLparameters + "&Sucursal=" + sucursal;
         }
 
         URLparameters = "Fecha1=" + fecha1 + "&Fecha2=" + fecha2 + "&Gerente=" + gerente+ URLparameters;
@@ -826,7 +828,7 @@ public class ConnectionDB {
                 Multiple_XYChart mXYChart = new Multiple_XYChart();
                 boolean firstDate = true;
                 String currentProduct = "";
-                String currentEmp = "";
+                String currentSuc = "";
                 int currentMonth = 0;
 
                 for (int i = 0; i < results.length(); i++) {
@@ -843,10 +845,11 @@ public class ConnectionDB {
                         mXYChart.setName(nombreSuc);
                         firstDate = false;
                         currentProduct = nombre;
-                        currentEmp = nombreSuc;
+                        currentSuc = nombreSuc;
                         currentMonth = mes;
                     }
                     else if(currentMonth != mes){//Es un mes distinto, hago un chart nuevo
+                        mXYChart.addSeries();
                         listaRetorno.add(mXYChart);
                         mXYChart = new Multiple_XYChart();
                         mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
@@ -854,9 +857,10 @@ public class ConnectionDB {
                         mXYChart.setMonth(mes);
                         mXYChart.setName(nombreSuc);
                         currentProduct = nombre;
-                        currentEmp = nombreSuc;
+                        currentSuc = nombreSuc;
                         currentMonth = mes;
-                    }else if(!currentEmp.equals(nombreSuc)){//Es un empleado distinto, hago un chart nuevo
+                    }else if(!currentSuc.equals(nombreSuc)){//Es un empleado distinto, hago un chart nuevo
+                        mXYChart.addSeries();
                         listaRetorno.add(mXYChart);
                         mXYChart = new Multiple_XYChart();
                         mXYChart.addXYChartData(new XYChart.Data(dia, ventas));
@@ -864,7 +868,7 @@ public class ConnectionDB {
                         mXYChart.setMonth(mes);
                         mXYChart.setName(nombreSuc);
                         currentProduct = nombre;
-                        currentEmp = nombreSuc;
+                        currentSuc = nombreSuc;
                         currentMonth = mes;
                     }
                     else if(!currentProduct.equals(nombre)){//Es un producto distinto, nueva serie
