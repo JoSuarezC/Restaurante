@@ -226,10 +226,11 @@ public class AdminReportes_Controller {
                 if(tbtn_Producto.isSelected()){
                     if (tbtn_Subsidiary.isSelected()){
                         //Se desea hacer por producto por sucursal por fecha [Varios Charts] [NO SE PUEDE TODOS PRODUCTOS]
+                        Main.MessageBox("Reportes Individuales", "Realice los reportes individuales de cada uno.\n\n<Producto> y <Sucursal>");
 
                     }else if(tbtn_Manager.isSelected()){
                         //Se desea hacer por producto por gerente por fecha [Varios Charts] [NO SE PUEDE TODOS PRODUCTOS]
-
+                        Main.MessageBox("Reportes Individuales", "Realice los reportes individuales de cada uno.\n\n<Producto> y <Gerente>");
                     }else{
                         //Se desea hacer un chart por productos por fecha [Varios Charts]
                         ArrayList<Multiple_XYChart> multipleXYChart = ConnectionDB.getInstance().reporte_por_fecha_producto(
